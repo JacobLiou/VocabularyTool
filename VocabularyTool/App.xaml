@@ -4,6 +4,19 @@
              xmlns:local="clr-namespace:VocabularyTool"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <Style x:Key="DataGridTextCenterColumnStyle"
+                   BasedOn="{StaticResource DataGridCellStyle}"
+                   TargetType="DataGridCell">
+                <Setter Property="HorizontalContentAlignment"
+                        Value="Center" />
+            </Style>
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
