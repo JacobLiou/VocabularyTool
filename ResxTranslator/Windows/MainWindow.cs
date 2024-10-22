@@ -71,23 +71,6 @@ namespace ResxTranslator.Windows
                 resourceGrid1.Refresh();
             };
 
-            Settings.Binder.BindControl(ignoreEmptyResourcesToolStripMenuItem,
-                settings => settings.HideEmptyResources, this);
-            Settings.Binder.BindControl(copyDefaultValuesOnLanguageAddToolStripMenuItem,
-                settings => settings.AddDefaultValuesOnLanguageAdd, this);
-            Settings.Binder.BindControl(openLastDirectoryOnProgramStartToolStripMenuItem,
-                settings => settings.OpenLastDirOnStart, this);
-            Settings.Binder.BindControl(doNotShowResourcesWithoutAnyTranslationsToolStripMenuItem,
-                settings => settings.HideNontranslatedResources, this);
-            Settings.Binder.BindControl(markToTranslateOnlyIfDefaultValueIsInBracketsToolStripMenuItem,
-                settings => settings.TranslatableInBrackets, this);
-            Settings.Binder.BindControl(displayNullValuesAsGrayedToolStripMenuItem,
-                settings => settings.ShowNullValuesAsGrayed, this);
-            Settings.Binder.BindControl(loadAssembliesFromResourcePathToolStripMenuItem,
-                settings => settings.ReferencePathsFromResourceDir, this);
-            Settings.Binder.BindControl(storeAndLoadCommentsFromAllLanguageFilesToolStripMenuItem,
-                settings => settings.StoreCommentsInAllFiles, this);
-
             Settings.Binder.Subscribe((sender, args) => ResourceLoader.HideEmptyResources = args.NewValue,
                 settings => settings.HideEmptyResources, this);
             Settings.Binder.Subscribe((sender, args) => ResourceLoader.HideNontranslatedResources = args.NewValue,
@@ -252,14 +235,6 @@ namespace ResxTranslator.Windows
             {
                 removeLanguageToolStripMenuItem.DropDownItems.Add($"{info.Name} - {info.DisplayName}").Tag = info;
             }
-        }
-
-        private void toolsToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
-        {
-            var notNull = _currentResource != null;
-            removeNonTLFromOpenedTranslationsToolStripMenuItem.Enabled = notNull && CurrentResource.Languages.Count > 0;
-            removeNonTLFromAllTranslationsToolStripMenuItem.Enabled = ResourceLoader.Resources.Any(x => x.Languages.Count > 0);
-            trimWhitespaceFromCellsToolStripMenuItem.Enabled = notNull && resourceGrid1.SelectedCellCount > 0;
         }
 
         private void addLanguageToolStripMenuItem_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -558,11 +533,9 @@ namespace ResxTranslator.Windows
 
         private void helpToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            var readmePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "README.md");
+            var readmePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "帮助文档.docx");
             if (File.Exists(readmePath))
-                Process.Start("notepad.exe", $"\"{readmePath}\"");
-            else
-                Process.Start(Properties.Resources.Homepage);
+                Process.Start("explorer.exe", $"\"{readmePath}\"");
         }
 
         private void licenceToolStripMenuItem_Click(object sender, EventArgs e)
@@ -570,8 +543,6 @@ namespace ResxTranslator.Windows
             var licensePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "LICENSE");
             if (File.Exists(licensePath))
                 Process.Start("notepad.exe", $"\"{licensePath}\"");
-            else
-                Process.Start(Properties.Resources.Homepage);
         }
 
         private void setReferencePathsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -699,9 +670,10 @@ namespace ResxTranslator.Windows
                 {
                     var requestModel = new RequestModel(text, sourceLanguage, targetLanguage);
                     var item = await translatorApi.TranslateAsync(requestModel, CancellationToken.None);
-                    if (item != null && item.IsSuccess) {
+                    if (item != null && item.IsSuccess)
+                    {
                     }
-                    TranslationResult translationResult = new TranslationResult(text, item.Result.ToString(), sourceLanguage, 
+                    TranslationResult translationResult = new TranslationResult(text, item.Result.ToString(), sourceLanguage,
                         sourceLanguage, targetLanguage, TranslationModel.ServiceDefault);
                     result.Add(translationResult);
                 }

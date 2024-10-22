@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Security.Principal;
 
 namespace ResxTranslator.Tools
@@ -51,7 +54,21 @@ namespace ResxTranslator.Tools
             List<T> list = Enum.GetValues(typeof(T)).OfType<T>().ToList();
             list.ForEach(x =>
             {
-                dict.Add(x.GetDescription(), x);
+                Type type = x.GetType();
+                string name = Enum.GetName(type, x);
+                if (name != null)
+                {
+                    FieldInfo field = type.GetField(name);
+                    if (field != null)
+                    {
+                        DescriptionAttribute attr =
+                            Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute)) as DescriptionAttribute;
+                        if (attr != null)
+                        {
+                            dict.Add(attr.Description, x);
+                        }
+                    }
+                }              
             });
             return dict;
         }
