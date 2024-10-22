@@ -6,7 +6,6 @@ using ResxTranslator.Resources;
 using ResxTranslator.Tools;
 using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
@@ -25,11 +24,9 @@ namespace ResxTranslator.Windows
 
         private ResourceHolder _currentResource;
         private SearchParams _currentSearch;
-        private string[] _googleLanguages;
 
         public MainWindow()
         {
-            Opacity = 0;
             InitializeComponent();
 
             _defaultWindowTitle = $"{Text} {Assembly.GetAssembly(typeof(MainWindow)).GetName().Version.ToString(2)}";
@@ -446,9 +443,7 @@ namespace ResxTranslator.Windows
 
         private void UpdateTitlebar()
         {
-            Text = string.IsNullOrEmpty(ResourceLoader.OpenedPath)
-                                ? _defaultWindowTitle
-                                : $"{ResourceLoader.OpenedPath}{(CurrentResource?.IsDirty == true ? "*" : "")} - {_defaultWindowTitle}";
+            Text = $"{_defaultWindowTitle} - {(CurrentResource?.IsDirty == true ? "*" : "")}";
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -526,11 +521,6 @@ namespace ResxTranslator.Windows
                 LoadResourcesFromFolder(ResourceLoader.OpenedPath);
         }
 
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            AboutBox.ShowAboutBox(this);
-        }
-
         private void helpToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             var readmePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "帮助文档.docx");
@@ -538,57 +528,11 @@ namespace ResxTranslator.Windows
                 Process.Start("explorer.exe", $"\"{readmePath}\"");
         }
 
-        private void licenceToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var licensePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "LICENSE");
-            if (File.Exists(licensePath))
-                Process.Start("notepad.exe", $"\"{licensePath}\"");
-        }
-
-        private void setReferencePathsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var referencePaths = EditReferencePaths.ShowDialog(this,
-                Settings.Default.ReferencePaths?.Cast<string>().ToArray() ?? new string[] { });
-
-            if (referencePaths != null)
-            {
-                if (Settings.Default.ReferencePaths == null)
-                    Settings.Default.ReferencePaths = new StringCollection();
-
-                Settings.Default.ReferencePaths.Clear();
-                Settings.Default.ReferencePaths.AddRange(referencePaths);
-
-                LoadReferenceAssemblies();
-            }
-        }
-
-        private void fromOpenedTranslationsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (!AskToRemoveNontranslatable()) return;
-
-            CurrentResource?.SaveWithoutNontranslatableData();
-        }
-
         private static bool AskToRemoveNontranslatable()
         {
             return MessageBox.Show(Localization.MessageBox_RemoveNontranslatableQuestion_Message,
                 Localization.MessageBox_RemoveNontranslatableQuestion_Title, MessageBoxButtons.OKCancel,
                 MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK;
-        }
-
-        private void fromAllTranslationsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (!AskToRemoveNontranslatable()) return;
-
-            foreach (var resource in ResourceLoader.Resources)
-            {
-                resource.SaveWithoutNontranslatableData();
-            }
-        }
-
-        private void trimWhitespaceFromCellsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            resourceGrid1.TrimWhitespaceFromSelectedCells();
         }
 
         private void exportAllResourcesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -624,13 +568,6 @@ namespace ResxTranslator.Windows
 
         private async void toolStripMenuItemGT_Click(object sender, EventArgs e)
         {
-            /*
-             * If you are there, because you have exception from Google API authentication, please visit next page
-             * https://cloud.google.com/docs/authentication/production
-             * and setup global environment variable GOOGLE_APPLICATION_CREDENTIALS and reboot Visual Studio.
-             * Some time you also need to clear bin and obj files on close Visual Studio.
-             */
-
             if (CurrentResource == null)
             {
                 return;
