@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VocabularyTool", "VocabularyTool\VocabularyTool.csproj", "{0CB49043-4644-4BF7-A6D8-CFDA8CC25FE8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VocabularyTool", "VocabularyTool\VocabularyTool.csproj", "{0CB49043-4644-4BF7-A6D8-CFDA8CC25FE8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestProject1", "TestProject1\TestProject1.csproj", "{9A7234BE-4A4B-4A26-8274-954EEE285C2F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntryTranslation", "EntryTranslation\EntryTranslation.csproj", "{ECA0E9C0-8F64-41FA-BBAC-4E94A2E21EEA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{0CB49043-4644-4BF7-A6D8-CFDA8CC25FE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0CB49043-4644-4BF7-A6D8-CFDA8CC25FE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0CB49043-4644-4BF7-A6D8-CFDA8CC25FE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A7234BE-4A4B-4A26-8274-954EEE285C2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A7234BE-4A4B-4A26-8274-954EEE285C2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A7234BE-4A4B-4A26-8274-954EEE285C2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A7234BE-4A4B-4A26-8274-954EEE285C2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECA0E9C0-8F64-41FA-BBAC-4E94A2E21EEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECA0E9C0-8F64-41FA-BBAC-4E94A2E21EEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECA0E9C0-8F64-41FA-BBAC-4E94A2E21EEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECA0E9C0-8F64-41FA-BBAC-4E94A2E21EEA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

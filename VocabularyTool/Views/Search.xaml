@@ -1,0 +1,252 @@
+﻿<UserControl x:Class="VocabularyTool.Views.Search"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:hc="https://handyorg.github.io/handycontrol"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <TabControl>
+        <TabItem Header="创建">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                    <RowDefinition Height="18" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Grid Margin="8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0"
+                                Orientation="Horizontal">
+                        <Button Margin="28 0 0 0"
+                                Padding="5"
+                                Command="{Binding ExportPointTableCommand }"
+                                Content="{DynamicResource S.Common.Export}"
+                                hc:BorderElement.CornerRadius="0" />
+                        <Button Padding="5"
+                                Margin="18 0 0 0"
+                                Command="{Binding ImportPointTableCommand }"
+                                Style="{StaticResource ButtonDanger}"
+                                Content="{DynamicResource S.Common.Import}"
+                                hc:BorderElement.CornerRadius="0" />
+
+                        <Button Margin="28 0 0 0"
+                                Padding="5"
+                                Command="{Binding ExportXlsPointTableCommand }"
+                                Content="{DynamicResource S.Common.ExportXls}"
+                                hc:BorderElement.CornerRadius="0" />
+                        <Button Padding="5"
+                                Margin="18 0 0 0"
+                                Command="{Binding ImportXlsPointTableCommand }"
+                                Style="{StaticResource ButtonDanger}"
+                                Content="{DynamicResource S.Common.ImportXls}"
+                                hc:BorderElement.CornerRadius="0" />
+                    </StackPanel>
+                    <StackPanel Grid.Column="1"
+                                Margin="8"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Left">
+                        <!--<hc:SearchBar Name="searchBar"
+                                      Style="{StaticResource SearchBarPlus}"
+                                      hc:InfoElement.Placeholder="Search"
+                                      Width="280"
+                                      Margin="3"
+                                      IsRealTime="True">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="PreviewTextInput">
+                                    <i:InvokeCommandAction Command="{Binding PreviewTextInputCommand}" />
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="SearchStarted">
+                                    <i:InvokeCommandAction Command="{Binding SearchStartedCommand}"
+                                                           CommandParameter="{Binding Text, ElementName=searchBar}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </hc:SearchBar>-->
+                        <hc:TextBox Name="searchTextBox"
+                                    Width="250"
+                                    Text="{Binding SearchText}">
+                            <!--<i:Interaction.Triggers>
+                                <i:EventTrigger EventName="TextChanged">
+                                    <i:InvokeCommandAction Command="{Binding TextSearchClearedCommand}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>-->
+                        </hc:TextBox>
+                        <!--<hc:SplitButton Content="{DynamicResource S.Common.Search}"
+                                        Command="{Binding SearchStartedCommand}"
+                                        CommandParameter="{Binding ElementName=searchTextBox, Path=Text}" />-->
+                        <Button Width="24"
+                                Height="24"
+                                Style="{StaticResource ButtonCustom}"
+                                Command="{Binding SearchStartedCommand}">
+                            <Path Margin="0"
+                                  Fill="{DynamicResource PrimaryBrush}"
+                                  Stretch="Uniform"
+                                  Data="{StaticResource SearchGeometry}" />
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseDown">
+                                    <i:InvokeCommandAction Command="{Binding SearchStartedCommand}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                        <hc:ProgressButton Margin="16 0 0 0"
+                                           IsChecked="False"
+                                           Progress="0"
+                                           Content="{DynamicResource S.Common.Refresh}"
+                                           Foreground="{DynamicResource PrimaryTextBrush}"
+                                           hc:BorderElement.CornerRadius="0"
+                                           Command="{Binding RefreshDataCommand}" />
+                    </StackPanel>
+                    <StackPanel Grid.Column="3"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Right">
+                        <Button Margin="28 0 0 0"
+                                Padding="5"
+                                Style="{StaticResource ButtonPrimary}"
+                                hc:IconElement.Geometry="{StaticResource AddGeometry}"
+                                Command="{Binding AddPointTableCommand }"
+                                Content="{DynamicResource S.Common.Add}"
+                                hc:BorderElement.CornerRadius="0" />
+                        <Button Padding="5"
+                                Margin="18 0 0 0"
+                                Style="{StaticResource ButtonWarning}"
+                                hc:IconElement.Geometry="{StaticResource UpDownGeometry}"
+                                Content="{DynamicResource S.Common.Update}"
+                                Command="{Binding UpdatePointTableCommand}"
+                                CommandParameter="{Binding ElementName=dataGrid, Path=SelectedItem}"
+                                hc:BorderElement.CornerRadius="0" />
+                        <Button Padding="5"
+                                Margin="18 0 10 0"
+                                Style="{StaticResource ButtonDanger}"
+                                hc:IconElement.Geometry="{StaticResource DeleteGeometry}"
+                                Content="{DynamicResource S.Common.Delete}"
+                                Command="{Binding DeletePointTableCommand}"
+                                CommandParameter="{Binding ElementName=dataGrid, Path=SelectedItems}"
+                                hc:BorderElement.CornerRadius="0" />
+                    </StackPanel>
+                </Grid>
+
+                <DataGrid Grid.Row="1"
+                          x:Name="dataGrid"
+                          HeadersVisibility="All"
+                          RowHeaderWidth="60"
+                          AutoGenerateColumns="False"
+                          ItemsSource="{Binding PointTables}"
+                          SelectedItem="{Binding SelectedPoint}"
+                          SelectionMode="Extended"
+                          SelectionUnit="FullRow"
+                          hc:DataGridAttach.ShowSelectAllButton="True"
+                          IsReadOnly="True"
+                          Style="{DynamicResource DataGrid.Small}">
+                    <!--<DataGrid.ContextMenu>
+            <ContextMenu>
+                <MenuItem Header="{DynamicResource S.Search.AddToTestcase}"
+                          Command="{Binding AddToTestcaseCommand}"
+                          ItemsSource="{Binding AddToTestcaseList}">
+                    <MenuItem.Icon>
+                        <Path Data="{DynamicResource AddGeometry}"
+                              Fill="{DynamicResource SecondaryTextBrush}"
+                              Stretch="Uniform" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator />
+                <MenuItem Header="{DynamicResource S.Search.DeleteFromTestcase}"
+                          Command="{Binding DeleteFromTestcaseCommand}"
+                          CommandParameter="{Binding ElementName=dataGrid, Path=SelectedItems}"
+                          ItemsSource="{Binding DeleteFromTestcaseList}">
+                    <MenuItem.Icon>
+                        <Path Data="{DynamicResource DeleteGeometry}"
+                              Fill="{DynamicResource SecondaryTextBrush}"
+                              Stretch="Uniform" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </ContextMenu>
+        </DataGrid.ContextMenu>-->
+                    <!--<DataGrid.RowStyle>
+            <Style TargetType="DataGridRow">
+                <Setter Property="ContextMenu"
+                        Value="{Binding PointTableContextMenus}" />
+            </Style>
+        </DataGrid.RowStyle>-->
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Width="1*"
+                                            Binding="{Binding Id}"
+                                            Header="Id" />
+                        <DataGridTextColumn Width="1*"
+                                            Binding="{Binding AddressHex}"
+                                            Header="{DynamicResource S.Search.AddressHex}" />
+                        <DataGridTextColumn Width="4*"
+                                            Binding="{Binding NameEn}"
+                                            Header="{DynamicResource S.Search.NameEn}" />
+                        <DataGridTextColumn Width="4*"
+                                            Binding="{Binding NameZh}"
+                                            Header="{DynamicResource S.Search.NameZh}" />
+                        <DataGridTextColumn Width="*"
+                                            Binding="{Binding DataType}"
+                                            Header="{DynamicResource S.Search.DataType}" />
+                        <!--<DataGridCheckBoxColumn Width="100"
+                                    CanUserResize="False"
+                                    Binding="{Binding IsSelected}"
+                                    Header="Selected" />-->
+                        <DataGridTextColumn Width="1*"
+                                            Binding="{Binding Unit}"
+                                            Header="{DynamicResource S.Search.Unit}" />
+                        <DataGridTextColumn Width="1*"
+                                            Binding="{Binding Accuracy}"
+                                            Header="{DynamicResource S.Search.Accuracy}" />
+                        <DataGridTextColumn Width="1*"
+                                            Binding="{Binding Minimum}"
+                                            Header="{DynamicResource S.Search.Minimum}" />
+                        <DataGridTextColumn Width="1*"
+                                            Binding="{Binding Maximum}"
+                                            Header="{DynamicResource S.Search.Maximum}" />
+                        <DataGridTextColumn Width="1*"
+                                            Binding="{Binding ReadWrite}"
+                                            Header="{DynamicResource S.Search.ReadWrite}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <StackPanel Grid.Row="3"
+                            Margin="8"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Right">
+                    <ComboBox Width="100"
+                              SelectedIndex="{Binding BrowsePointTableModel.PageCountIndex}"
+                              ItemsSource="{Binding BrowsePointTableModel.PageCountList}">
+                        <hc:Interaction.Triggers>
+                            <hc:EventTrigger EventName="SelectionChanged">
+                                <hc:EventToCommand Command="{Binding RefreshPageCommand}"
+                                                   PassEventArgsToCommand="True" />
+                            </hc:EventTrigger>
+                        </hc:Interaction.Triggers>
+                    </ComboBox>
+                    <hc:Pagination Margin="10 0 20 0"
+                                   Width="200"
+                                   MaxPageCount="{Binding BrowsePointTableModel.MaxPageCount}"
+                                   PageIndex="{Binding BrowsePointTableModel.PageIndex}">
+                        <hc:Interaction.Triggers>
+                            <hc:EventTrigger EventName="PageUpdated">
+                                <hc:EventToCommand Command="{Binding UpdatePageCommand}"
+                                                   PassEventArgsToCommand="True" />
+                            </hc:EventTrigger>
+                        </hc:Interaction.Triggers>
+                    </hc:Pagination>
+                </StackPanel>
+            </Grid>
+        </TabItem>
+    </TabControl>
+</UserControl>
