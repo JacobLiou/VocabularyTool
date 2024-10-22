@@ -52,7 +52,7 @@ namespace PortableSettingsProvider
         {
             get
             {
-                //If we dont hold an xml document, try opening one.  
+                //If we dont hold an xml document, try opening one.
                 //If it doesnt exist then create a new one ready.
                 if (_settingsXml == null)
                 {
@@ -180,7 +180,7 @@ namespace PortableSettingsProvider
 
             //Determine if the setting is roaming.
             //If roaming then the value is stored as an element under the root
-            //Otherwise it is stored under a machine name node 
+            //Otherwise it is stored under a machine name node
             try
             {
                 if (IsRoaming(propVal.Property))

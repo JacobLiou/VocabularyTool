@@ -1,8 +1,7 @@
-﻿using System;
+﻿using ResxTranslator.ResourceOperations;
+using System;
 using System.Linq;
 using System.Windows.Forms;
-using ResxTranslator.ResourceOperations;
-using ResxTranslator.Resources;
 
 namespace ResxTranslator.Windows
 {
@@ -42,11 +41,11 @@ namespace ResxTranslator.Windows
             string errorString = null;
 
             if (_resourceHolder.FindByKey(keyName) != null)
-                errorString = Localization.Error_KeyAlreadyExists;
+                errorString = "键已经存在";
             else if (string.IsNullOrWhiteSpace(keyName))
-                errorString = Localization.Error_KeyCantBeEmpty;
+                errorString = "键不能为空";
             else if (keyName.Any(x => !char.IsLetterOrDigit(x) && x != '_'))
-                errorString = Localization.Error_InvalidKeyName;
+                errorString = "键非法";
 
             errorProvider.SetError(textboxKeyName, errorString);
 

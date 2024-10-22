@@ -5,7 +5,6 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using ResxTranslator.Resources;
 
 namespace ResxTranslator.ResourceOperations
 {
@@ -81,8 +80,8 @@ namespace ResxTranslator.ResourceOperations
 
             if (isDirty)
             {
-                var dialogResult = MessageBox.Show(Localization.MessageBox_SaveChangesBeforeClose_Message,
-                    Localization.MessageBox_SaveChangesBeforeClose_Title,
+                var dialogResult = MessageBox.Show("要在关闭之前保存更改吗？",
+                    "保存更改",
                     MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
 
                 // Return false only if user presses cancel
@@ -97,7 +96,7 @@ namespace ResxTranslator.ResourceOperations
         public void Close()
         {
             if (!CanClose())
-                throw new InvalidOperationException(Localization.Error_CantClose);
+                throw new InvalidOperationException("当前无法关闭");
 
             _resourceStore.Clear();
             OpenedPath = string.Empty;
@@ -115,7 +114,7 @@ namespace ResxTranslator.ResourceOperations
         {
             Close();
 
-            OnResourceLoadProgress(new ResourceLoadProgressEventArgs(Localization.LoadProgress_LoadingResources));
+            OnResourceLoadProgress(new ResourceLoadProgressEventArgs("加载资源..."));
 
             FindResx(selectedPath);
 
@@ -130,14 +129,13 @@ namespace ResxTranslator.ResourceOperations
                 {
                     _resourceStore.Remove(pair.Key);
 
-                    MessageBox.Show(string.Format(Localization.MessageBox_ResourcesFailedToLoad_Message + "\n\n" + ex.Message, pair.Value.Filename + "\n" + string.Join("\n", pair.Value.Languages.Values.Select(x=>x.Filename))),
-                        Localization.MessageBox_ResourcesFailedToLoad_Title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("加载资源失败", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
 
             OpenedPath = selectedPath;
 
-            OnResourceLoadProgress(new ResourceLoadProgressEventArgs(Localization.LoadProgress_Done));
+            OnResourceLoadProgress(new ResourceLoadProgressEventArgs(""));
         }
 
         public void SaveAll()
@@ -210,7 +208,7 @@ namespace ResxTranslator.ResourceOperations
                 if (culture != null)
                 {
                     if (resourceHolder.Languages.ContainsKey(culture.Name.ToLower()))
-                        throw new InvalidDataException(string.Format(Localization.Error_DuplicateResx, filename));
+                        throw new InvalidDataException(filename);
 
                     resourceHolder.Languages.Add(culture.Name.ToLower(), new LanguageHolder(culture.Name, filename));
                 }

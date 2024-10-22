@@ -1,7 +1,7 @@
-﻿using System.Drawing;
-using System.Windows.Forms;
-using ResxTranslator.Properties;
+﻿using ResxTranslator.Properties;
 using ScintillaNET;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace ResxTranslator.Windows
 {
@@ -10,7 +10,7 @@ namespace ResxTranslator.Windows
         public CellEditorWindow()
         {
             InitializeComponent();
-            
+
             textBoxString.Styles[Style.Default].Font = "Microsoft Sans Serif";
             textBoxString.Styles[Style.Default].Size = 11;
             textBoxString.StyleClearAll();

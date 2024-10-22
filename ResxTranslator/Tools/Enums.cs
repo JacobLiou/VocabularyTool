@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
+﻿using System.ComponentModel;
 
 namespace ResxTranslator.Tools;
 
@@ -82,4 +79,3 @@ public enum LanguageEnum
     [Description("土耳其语")]
     TR, //土耳其语
 }
-

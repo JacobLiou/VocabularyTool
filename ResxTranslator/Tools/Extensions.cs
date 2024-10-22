@@ -45,8 +45,8 @@ namespace ResxTranslator.Tools
         }
 
         /// <summary>
-        /// Rotate the collection to the left so that the item at startIndex becomes index 0. 
-        /// Elements rotated to the left wrap around, so the number of elements stays the same. 
+        /// Rotate the collection to the left so that the item at startIndex becomes index 0.
+        /// Elements rotated to the left wrap around, so the number of elements stays the same.
         /// </summary>
         public static System.Collections.Generic.IEnumerable<T> Rotate<T>(this System.Collections.Generic.ICollection<T> targets, int startIndex)
         {

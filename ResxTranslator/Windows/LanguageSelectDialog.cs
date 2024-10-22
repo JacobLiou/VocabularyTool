@@ -1,10 +1,9 @@
-﻿using System;
+﻿using ResxTranslator.Properties;
+using ResxTranslator.Tools;
+using System;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
-using ResxTranslator.Properties;
-using ResxTranslator.Resources;
-using ResxTranslator.Tools;
 
 namespace ResxTranslator.Windows
 {
@@ -44,8 +43,7 @@ namespace ResxTranslator.Windows
             }
             else
             {
-                MessageBox.Show(this, Localization.MessageBox_SelectedLanguageInvalid_Message,
-                    Localization.MessageBox_SelectedLanguageInvalid_Title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(this, "语言非法", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -53,7 +51,7 @@ namespace ResxTranslator.Windows
         {
             comboBox1.Items.Clear();
             comboBox1.Items.AddRange(CultureInfo.GetCultures(checkBox1.Checked ? CultureTypes.NeutralCultures : CultureTypes.AllCultures)
-                .Where(x=>!string.IsNullOrWhiteSpace(x.Name)) //Exclude the invariant culture
+                .Where(x => !string.IsNullOrWhiteSpace(x.Name)) //Exclude the invariant culture
                 .OrderBy(x => x.Name)
                 .Select(x => new ComboBoxWrapper<CultureInfo>(x, info => $"{info.Name} - {info.DisplayName}"))
                 .Cast<object>()

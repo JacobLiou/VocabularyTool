@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -12,7 +11,6 @@ namespace ResxTranslator.Tools
     public class CommonUtil
     {
         #region Other
-
 
         /// <summary>
         /// 执行程序
@@ -68,7 +66,7 @@ namespace ResxTranslator.Tools
                             dict.Add(attr.Description, x);
                         }
                     }
-                }              
+                }
             });
             return dict;
         }

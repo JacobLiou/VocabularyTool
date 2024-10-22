@@ -201,6 +201,7 @@ namespace ResxTranslator.Tools
         private interface ISettingChangedHandlerEntry
         {
             object Tag { get; set; }
+
             void SendEvent(object value);
         }
 
@@ -228,7 +229,7 @@ namespace ResxTranslator.Tools
             /// </summary>
             void ISettingChangedHandlerEntry.SendEvent(object value)
             {
-                Handler(this, new SettingChangedEventArgs<T>((T) value));
+                Handler(this, new SettingChangedEventArgs<T>((T)value));
             }
         }
     }

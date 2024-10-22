@@ -1,8 +1,6 @@
-﻿using Google.Cloud.Translation.V2;
-using Ionic.Zip;
+﻿using Ionic.Zip;
 using ResxTranslator.Properties;
 using ResxTranslator.ResourceOperations;
-using ResxTranslator.Resources;
 using ResxTranslator.Tools;
 using System;
 using System.Collections.Generic;
@@ -19,7 +17,7 @@ namespace ResxTranslator.Windows
 {
     public sealed partial class MainWindow : Form
     {
-        private static readonly string MoreLanguagesMenuitemName = Localization.MainWindow_MoreLanguagesMenuItem;
+        private static readonly string MoreLanguagesMenuitemName = "更多语言";
         private readonly string _defaultWindowTitle;
 
         private ResourceHolder _currentResource;
@@ -43,8 +41,7 @@ namespace ResxTranslator.Windows
             {
                 if (!args.Item.Languages.ContainsKey(args.Language.Name))
                 {
-                    if (MessageBox.Show(this, Localization.MessageBox_CreateMissingResource_Message,
-                        Localization.MessageBox_CreateMissingResource_Title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                    if (MessageBox.Show(this, "语言文件丢失", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                         return;
 
                     args.Item.AddLanguage(args.Language.Name, Settings.Default.AddDefaultValuesOnLanguageAdd);
@@ -90,8 +87,8 @@ namespace ResxTranslator.Windows
 
             if (value != null)
             {
-                MessageBox.Show(string.Format(Localization.Message_FindResults_Description, value.Text, hits),
-                                Localization.Message_FindResults_Title,
+                MessageBox.Show(string.Format("搜索到字符串 {0} {1}", value.Text, hits),
+                                "搜索",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Information);
             }
@@ -127,7 +124,7 @@ namespace ResxTranslator.Windows
                     resourceGrid1.SetVisibleLanguageColumns(
                         languageSettings1.EnabledLanguages.Select(x => x.Name).ToArray());
 
-                    tabPageEditedResource.Text = value?.Filename ?? Localization.MainWindow_CurrentResource_NoResourceLoaded;
+                    tabPageEditedResource.Text = value?.Filename ?? "未加载资源";
                     UpdateMenuStrip();
                 });
             }
@@ -149,7 +146,7 @@ namespace ResxTranslator.Windows
 
         private void LoadReferenceAssemblies()
         {
-            OnResourceLoadProgress(this, new ResourceLoadProgressEventArgs(Localization.LoadProgress_ReferenceAssemblies));
+            OnResourceLoadProgress(this, new ResourceLoadProgressEventArgs("加载程序集"));
 
             var assembliesToLoad = new List<string>();
 
@@ -173,11 +170,11 @@ namespace ResxTranslator.Windows
 
             if (assembliesToLoad.Count > 300 && MessageBox.Show(
                 string.Format(
-                    Localization.MessageBox_ConfirmLoadAssemblies_Message,
+                    "使用当前设置，此操作将尝试加载{0}程序集。你真的要把它们都装上吗？如果选择no，将跳过加载",
                     assembliesToLoad.Count),
-                Localization.MessageBox_ConfirmLoadAssemblies_Title, MessageBoxButtons.YesNo) != DialogResult.Yes)
+                "", MessageBoxButtons.YesNo) != DialogResult.Yes)
             {
-                OnResourceLoadProgress(this, new ResourceLoadProgressEventArgs(Localization.LoadProgress_Done, null, 0, 0));
+                OnResourceLoadProgress(this, new ResourceLoadProgressEventArgs("完成", null, 0, 0));
                 return;
             }
 
@@ -185,7 +182,7 @@ namespace ResxTranslator.Windows
             foreach (var filename in assembliesToLoad)
             {
                 count++;
-                OnResourceLoadProgress(this, new ResourceLoadProgressEventArgs(Localization.LoadProgress_ReferenceAssemblies,
+                OnResourceLoadProgress(this, new ResourceLoadProgressEventArgs("加载程序集...",
                     Path.GetFileName(filename), count, assembliesToLoad.Count));
 
                 try
@@ -201,7 +198,7 @@ namespace ResxTranslator.Windows
                 catch (FileLoadException) { }
             }
 
-            OnResourceLoadProgress(this, new ResourceLoadProgressEventArgs(Localization.LoadProgress_Done, null, 0, 0));
+            OnResourceLoadProgress(this, new ResourceLoadProgressEventArgs("完成", null, 0, 0));
         }
 
         private void UpdateMenuStrip()
@@ -267,7 +264,7 @@ namespace ResxTranslator.Windows
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.ToString(), Localization.MainWindow_Failed_to_create_a_new_row,
+                    MessageBox.Show(ex.ToString(), "创建新行失败",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
@@ -288,7 +285,7 @@ namespace ResxTranslator.Windows
             if (CurrentResource == null || resourceGrid1.RowCount == 0)
                 return;
 
-            if (MessageBox.Show(Localization.MessageBox_ConfirmDeleteRow_Message, Localization.MessageBox_ConfirmDeleteRow_Title,
+            if (MessageBox.Show("确定要删除当前选定的行吗？", "",
                 MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 resourceGrid1.DeleteSelectedRow();
@@ -325,7 +322,7 @@ namespace ResxTranslator.Windows
                 return;
 
             Enabled = false;
-            toolStripStatusLabel1.Text = string.Format(Localization.LoadProgress_OpeningDirectory, path);
+            toolStripStatusLabel1.Text = string.Format("打开 {0}...", path);
             Application.DoEvents();
 
             ResourceLoader.OpenProject(path);
@@ -382,14 +379,14 @@ namespace ResxTranslator.Windows
                 {
                     var fldr = new DirectoryInfo(path);
                     if (!fldr.Exists)
-                        throw new ArgumentException(string.Format(Localization.Error_DirectoryMissing, path));
+                        throw new ArgumentException(string.Format("文件夹{0}不存在", path));
                     path = (fldr.FullName + "\\").Replace("\\\\", "\\");
                     LoadResourcesFromFolder(path);
                 }
                 catch (Exception inner)
                 {
                     throw new ArgumentException(
-                        string.Format(Localization.Error_InvalidCommandLine, Environment.CommandLine, path), inner);
+                        string.Format("无效命令行{0} 路径：{1}", Environment.CommandLine, path), inner);
                 }
             }
             else if (Settings.Default.OpenLastDirOnStart &&
@@ -454,7 +451,7 @@ namespace ResxTranslator.Windows
             var folderDialog = new FolderBrowserDialog
             {
                 SelectedPath = Settings.Default.LastOpenedDirectory,
-                Description = Localization.MainWindow_OpenDirectory_Description
+                Description = ""
             };
 
             if (folderDialog.ShowDialog(this) == DialogResult.OK)
@@ -530,8 +527,8 @@ namespace ResxTranslator.Windows
 
         private static bool AskToRemoveNontranslatable()
         {
-            return MessageBox.Show(Localization.MessageBox_RemoveNontranslatableQuestion_Message,
-                Localization.MessageBox_RemoveNontranslatableQuestion_Title, MessageBoxButtons.OKCancel,
+            return MessageBox.Show("此操作将从翻译的资源（不是基本资源）中删除所有不是文本的内容。资源将被保存到正在处理的驱动器中，因此请确保您有备份",
+                "", MessageBoxButtons.OKCancel,
                 MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK;
         }
 
@@ -539,8 +536,8 @@ namespace ResxTranslator.Windows
         {
             var exportDialog = new SaveFileDialog
             {
-                Title = Localization.Dialog_Export_resources_Title,
-                Filter = Localization.Dialog_Export_resources_Filter,
+                Title = "Export resources",
+                Filter = ".zip Archive|.zip",
                 FileName = "Export.zip"
             };
 
@@ -560,7 +557,7 @@ namespace ResxTranslator.Windows
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.ToString(), Localization.Dialog_Export_resources_ErrorTitle,
+                    MessageBox.Show(ex.ToString(), "导出失败",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -602,18 +599,17 @@ namespace ResxTranslator.Windows
 
                 TranslatorApi translatorApi = new TranslatorApi();
 
-                IList<TranslationResult> result = new List<TranslationResult>();
+                IList<StranslationResult> result = new List<StranslationResult>();
                 foreach (var text in textToTranslate)
                 {
                     var requestModel = new RequestModel(text, sourceLanguage, targetLanguage);
                     var item = await translatorApi.TranslateAsync(requestModel, CancellationToken.None);
                     if (item != null && item.IsSuccess)
                     {
+                        result.Add(item);
                     }
-                    TranslationResult translationResult = new TranslationResult(text, item.Result.ToString(), sourceLanguage,
-                        sourceLanguage, targetLanguage, TranslationModel.ServiceDefault);
-                    result.Add(translationResult);
                 }
+
                 CurrentResource.SetTranslatedText(tad.TranslateAPIConfig, result);
             }
             catch (Exception exception)

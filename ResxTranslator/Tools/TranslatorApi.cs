@@ -85,6 +85,10 @@ public partial class StranslationResult
 {
     public bool IsSuccess { get; set; } = true;
 
+    public string SourceLang { get; set; }
+
+    public string TargetLang { get; set; }
+
     public object? Result { get; set; }
 
     // 可选，如果你想保留异常的详细信息

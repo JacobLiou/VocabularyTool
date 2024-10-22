@@ -1,4 +1,5 @@
-using Google.Cloud.Translation.V2;
+using ResxTranslator.Properties;
+using ResxTranslator.Tools;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
@@ -7,10 +8,6 @@ using System.IO;
 using System.Linq;
 using System.Resources;
 using System.Windows.Forms;
-using ResxTranslator.Properties;
-using ResxTranslator.Resources;
-using ResxTranslator.Tools;
-using ResxTranslator.Windows;
 
 namespace ResxTranslator.ResourceOperations
 {
@@ -24,6 +21,7 @@ namespace ResxTranslator.ResourceOperations
         private object _columnChangePreviousValue;
 
         public event EventHandler DirtyChanged;
+
         public event EventHandler LanguageChange;
 
         public ResourceHolder()
@@ -76,7 +74,7 @@ namespace ResxTranslator.ResourceOperations
 
         /// <summary>
         ///     The educated guess of the language code for the non translated column
-        /// 
+        ///
         /// </summary>
         public string NoLanguageLanguage
         {
@@ -256,7 +254,7 @@ namespace ResxTranslator.ResourceOperations
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, string.Format(Localization.Error_FailedSaving, Id),
+                MessageBox.Show(ex.Message, string.Format("保存时的异常：{0}", Id),
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -280,7 +278,7 @@ namespace ResxTranslator.ResourceOperations
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, string.Format(Localization.Error_FailedSaving, Id),
+                MessageBox.Show(ex.Message, string.Format("保存时的异常：{0}", Id),
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -696,24 +694,24 @@ namespace ResxTranslator.ResourceOperations
             return result;
         }
 
-        public void SetTranslatedText(TranslateAPIConfig translateApiConfig, IList<TranslationResult> translationResults)
+        public void SetTranslatedText(TranslateAPIConfig translateApiConfig, IList<StranslationResult> translationResults)
         {
-            DataRow[] rows = _stringsTable.Rows.Cast<DataRow>().ToArray();
+            //DataRow[] rows = _stringsTable.Rows.Cast<DataRow>().ToArray();
 
-            foreach (TranslationResult translationResult in translationResults)
-            {
-                string sl = translationResult.SpecifiedSourceLanguage == translateApiConfig.DefaultLanguage ? Properties.Resources.ColNameNoLang : translationResult.SpecifiedSourceLanguage;
+            //foreach (var translationResult in translationResults)
+            //{
+            //    string sl = translationResult.SpecifiedSourceLanguage == translateApiConfig.DefaultLanguage ? Properties.Resources.ColNameNoLang : translationResult.SpecifiedSourceLanguage;
 
-                foreach (DataRow row in rows)
-                {
-                    string sourceText = row[sl].ToString();
+            //    foreach (DataRow row in rows)
+            //    {
+            //        string sourceText = row[sl].ToString();
 
-                    if (sourceText == translationResult.OriginalText)
-                    {
-                        row[translateApiConfig.TargetLanguage] = translationResult.TranslatedText;
-                    }
-                }
-            }
+            //        if (sourceText == translationResult.OriginalText)
+            //        {
+            //            row[translateApiConfig.TargetLanguage] = translationResult.TranslatedText;
+            //        }
+            //    }
+            //}
         }
     }
 }

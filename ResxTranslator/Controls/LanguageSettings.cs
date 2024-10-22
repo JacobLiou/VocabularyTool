@@ -1,10 +1,10 @@
-﻿using System;
+﻿using ResxTranslator.Properties;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
-using ResxTranslator.Properties;
 
 namespace ResxTranslator.Controls
 {
@@ -107,9 +107,11 @@ namespace ResxTranslator.Controls
                     case CheckState.Checked:
                         item.Checked = true;
                         break;
+
                     case CheckState.Unchecked:
                         item.Checked = false;
                         break;
+
                     case CheckState.Indeterminate:
                         item.Checked = !item.Checked;
                         break;

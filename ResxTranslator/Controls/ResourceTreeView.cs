@@ -1,12 +1,12 @@
-﻿using System;
+﻿using ResxTranslator.ResourceOperations;
+using ResxTranslator.Tools;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using ResxTranslator.ResourceOperations;
-using ResxTranslator.Tools;
 
 namespace ResxTranslator.Controls
 {
@@ -117,7 +117,7 @@ namespace ResxTranslator.Controls
                 var found = false;
                 foreach (TreeNode treeNode in parentNode != null ? parentNode.Nodes : treeViewResx.Nodes)
                 {
-                    if (treeNode.Tag is PathHolder holder && 
+                    if (treeNode.Tag is PathHolder holder &&
                         holder.Id.Equals(subFolder, StringComparison.InvariantCultureIgnoreCase))
                     {
                         found = true;
@@ -128,12 +128,12 @@ namespace ResxTranslator.Controls
 
                 if (found) continue;
 
-                var pathTreeNode = new TreeNode("[" + subFolder + "]") {Tag = new PathHolder(subFolder), ImageIndex = 0};
+                var pathTreeNode = new TreeNode("[" + subFolder + "]") { Tag = new PathHolder(subFolder), ImageIndex = 0 };
                 (parentNode != null ? parentNode.Nodes : treeViewResx.Nodes).Add(pathTreeNode);
                 parentNode = pathTreeNode;
             }
 
-            var leafNode = new TreeNode(resource.Id) {Tag = resource, ImageIndex = 1};
+            var leafNode = new TreeNode(resource.Id) { Tag = resource, ImageIndex = 1 };
             parentNode?.Nodes.Add(leafNode);
 
             SetTreeNodeDirty(leafNode, resource);
@@ -154,7 +154,7 @@ namespace ResxTranslator.Controls
 
             Debug.Assert(selectedTreeNode.Tag is ResourceHolder);
 
-            OnResourceOpened(new ResourceOpenedEventArgs((ResourceHolder) selectedTreeNode.Tag));
+            OnResourceOpened(new ResourceOpenedEventArgs((ResourceHolder)selectedTreeNode.Tag));
         }
 
         private void SetTreeNodeDirty(TreeNode node, ResourceHolder res)

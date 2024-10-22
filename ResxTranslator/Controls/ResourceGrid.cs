@@ -1,13 +1,13 @@
-﻿using System;
+﻿using ResxTranslator.ResourceOperations;
+using ResxTranslator.Tools;
+using ResxTranslator.Windows;
+using System;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
-using System.Windows.Forms;
-using ResxTranslator.ResourceOperations;
-using ResxTranslator.Windows;
 using System.Text.RegularExpressions;
-using ResxTranslator.Tools;
+using System.Windows.Forms;
 
 namespace ResxTranslator.Controls
 {

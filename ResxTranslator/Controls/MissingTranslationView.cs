@@ -1,10 +1,10 @@
-﻿using System;
+﻿using ResxTranslator.ResourceOperations;
+using ResxTranslator.Tools;
+using ResxTranslator.Windows;
+using System;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
-using ResxTranslator.ResourceOperations;
-using ResxTranslator.Tools;
-using ResxTranslator.Windows;
 
 namespace ResxTranslator.Controls
 {
@@ -69,7 +69,7 @@ namespace ResxTranslator.Controls
                 listView1.Columns[1].AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent);
                 listView1.Columns[1].Width = Math.Max(95, listView1.Columns[1].Width);
             }
-            
+
             listView1.EndUpdate();
         }
 
