@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using ResxTranslator.ResourceOperations;
 
-namespace ResxTranslator.Windows
+namespace ResxTranslator.Dialogs
 {
     public partial class FindWindow : Form
     {

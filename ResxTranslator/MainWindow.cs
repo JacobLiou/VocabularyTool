@@ -1,7 +1,8 @@
 ﻿using Ionic.Zip;
+using ResxTranslator.Dialogs;
 using ResxTranslator.Properties;
 using ResxTranslator.ResourceOperations;
-using ResxTranslator.Tools;
+using ResxTranslator.Utils;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -13,7 +14,7 @@ using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace ResxTranslator.Windows
+namespace ResxTranslator
 {
     public sealed partial class MainWindow : Form
     {

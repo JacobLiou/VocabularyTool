@@ -3,7 +3,7 @@ using ScintillaNET;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace ResxTranslator.Windows
+namespace ResxTranslator.Dialogs
 {
     public sealed partial class CellEditorWindow : Form
     {

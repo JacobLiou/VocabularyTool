@@ -1,11 +1,11 @@
 ﻿using ResxTranslator.Properties;
-using ResxTranslator.Tools;
+using ResxTranslator.Utils;
 using System;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace ResxTranslator.Windows
+namespace ResxTranslator.Dialogs
 {
     public partial class LanguageSelectDialog : Form
     {

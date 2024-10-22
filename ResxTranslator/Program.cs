@@ -1,5 +1,4 @@
-﻿using ResxTranslator.Windows;
-using System;
+﻿using System;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;

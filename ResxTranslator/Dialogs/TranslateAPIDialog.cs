@@ -1,10 +1,10 @@
-﻿using ResxTranslator.Tools;
+﻿using ResxTranslator.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace ResxTranslator.Windows
+namespace ResxTranslator.Dialogs
 {
     public partial class TranslateAPIDialog : Form
     {

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace ResxTranslator.Windows
+namespace ResxTranslator.Dialogs
 {
     public partial class EditReferencePaths : Form
     {

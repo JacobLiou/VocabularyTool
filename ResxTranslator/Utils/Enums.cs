@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace ResxTranslator.Tools;
+namespace ResxTranslator.Utils;
 
 public enum LanguageEnum
 {

@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ResxTranslator.Tools
+namespace ResxTranslator.Utils
 {
     public class HttpUtil
     {

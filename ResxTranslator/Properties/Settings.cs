@@ -1,4 +1,4 @@
-﻿using ResxTranslator.Tools;
+﻿using ResxTranslator.Utils;
 
 namespace ResxTranslator.Properties
 {

@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace ResxTranslator.Tools
+namespace ResxTranslator.Utils
 {
     /// <summary>
     ///     Binding helper used for binding controls, variables and typed event handlers to custom Settings classes.

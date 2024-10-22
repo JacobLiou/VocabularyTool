@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ResxTranslator.Tools
+namespace ResxTranslator.Utils
 {
     public class ComboBoxWrapper<T>
     {

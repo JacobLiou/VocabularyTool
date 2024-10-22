@@ -1,5 +1,5 @@
 using ResxTranslator.Properties;
-using ResxTranslator.Tools;
+using ResxTranslator.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;

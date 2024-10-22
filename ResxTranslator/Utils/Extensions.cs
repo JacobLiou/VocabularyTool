@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Resources;
 using System.Windows.Forms;
 
-namespace ResxTranslator.Tools
+namespace ResxTranslator.Utils
 {
     public static class Extensions
     {

@@ -1,4 +1,4 @@
-﻿namespace ResxTranslator.Windows
+﻿namespace ResxTranslator.Dialogs
 {
     partial class FindWindow
     {

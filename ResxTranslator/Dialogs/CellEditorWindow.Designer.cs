@@ -1,4 +1,4 @@
-﻿namespace ResxTranslator.Windows
+﻿namespace ResxTranslator.Dialogs
 {
     sealed partial class CellEditorWindow
     {

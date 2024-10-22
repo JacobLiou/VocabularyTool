@@ -1,4 +1,4 @@
-﻿namespace ResxTranslator.Tools
+﻿namespace ResxTranslator.Utils
 {
     public class TranslateAPIConfig
     {

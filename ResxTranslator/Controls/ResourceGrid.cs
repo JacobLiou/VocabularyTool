@@ -1,6 +1,6 @@
-﻿using ResxTranslator.ResourceOperations;
-using ResxTranslator.Tools;
-using ResxTranslator.Windows;
+﻿using ResxTranslator.Dialogs;
+using ResxTranslator.ResourceOperations;
+using ResxTranslator.Utils;
 using System;
 using System.Data;
 using System.Diagnostics;
