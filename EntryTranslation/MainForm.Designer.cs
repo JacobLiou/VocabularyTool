@@ -61,6 +61,7 @@ namespace EntryTranslation
             removeLanguageToolStripMenuItem = new ToolStripMenuItem();
             helpToolStripMenuItem = new ToolStripMenuItem();
             helpToolStripMenuItem1 = new ToolStripMenuItem();
+            导入ToolStripMenuItem = new ToolStripMenuItem();
             panelMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainerMain).BeginInit();
             splitContainerMain.Panel1.SuspendLayout();
@@ -143,7 +144,7 @@ namespace EntryTranslation
             // 
             // fileToolStripMenuItem
             // 
-            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { openToolStripMenuItem, saveAllModifiedToolStripMenuItem, closeToolStripMenuItem, exportAllResourcesToolStripMenuItem, toolStripSeparator1, saveToolStripMenuItem, revertCurrentFileToolStripMenuItem, toolStripSeparator3 });
+            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { openToolStripMenuItem, saveAllModifiedToolStripMenuItem, closeToolStripMenuItem, 导入ToolStripMenuItem, exportAllResourcesToolStripMenuItem, toolStripSeparator1, saveToolStripMenuItem, revertCurrentFileToolStripMenuItem, toolStripSeparator3 });
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             resources.ApplyResources(fileToolStripMenuItem, "fileToolStripMenuItem");
             // 
@@ -277,6 +278,11 @@ namespace EntryTranslation
             resources.ApplyResources(helpToolStripMenuItem1, "helpToolStripMenuItem1");
             helpToolStripMenuItem1.Click += helpToolStripMenuItem1_Click;
             // 
+            // 导入ToolStripMenuItem
+            // 
+            导入ToolStripMenuItem.Name = "导入ToolStripMenuItem";
+            resources.ApplyResources(导入ToolStripMenuItem, "导入ToolStripMenuItem");
+            // 
             // MainForm
             // 
             AutoScaleMode = AutoScaleMode.None;
@@ -333,6 +339,7 @@ namespace EntryTranslation
         private TabControl tabControl1;
         private TabPage tabPage1;
         private Controls.LanguageSettings languageSettings1;
+        private ToolStripMenuItem 导入ToolStripMenuItem;
     }
 }
 

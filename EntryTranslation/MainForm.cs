@@ -3,7 +3,6 @@ using EntryTranslation.Helpers;
 using EntryTranslation.Properties;
 using EntryTranslation.ResourceOperations;
 using Sunny.UI;
-using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Globalization;
 using System.Reflection;
@@ -431,21 +430,9 @@ namespace EntryTranslation
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!ResourceLoader.CanClose())
-                return;
-
-            var folderDialog = new FolderBrowserDialog
-            {
-                SelectedPath = Settings.Default.LastOpenedDirectory,
-                Description = "MainWindow_OpenDirectory_Description"
-            };
-
-            if (folderDialog.ShowDialog(this) == DialogResult.OK)
-            {
-                CurrentResource = null;
-                Application.DoEvents();
-                LoadResourcesFromFolder(folderDialog.SelectedPath);
-            }
+            CurrentResource = null;
+            Application.DoEvents();
+            LoadResourcesFromFolder($@"{AppDomain.CurrentDomain.BaseDirectory}LangDic");
         }
 
         private void revertCurrentToolStripMenuItem_Click(object sender, EventArgs e)

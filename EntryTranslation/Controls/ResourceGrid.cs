@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 
 namespace EntryTranslation.Controls
 {
-    public partial class ResourceGrid : UserControl
+    public partial class ResourceGrid : UIUserControl
     {
         private static readonly string[] SpecialColNames =
         {

@@ -29,86 +29,80 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LanguageSettings));
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.columnHeaderCode = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButtonSelectAll = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonSelectNone = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonSelectInvert = new System.Windows.Forms.ToolStripButton();
-            this.toolStrip1.SuspendLayout();
-            this.SuspendLayout();
+            listView1 = new ListView();
+            columnHeaderCode = new ColumnHeader();
+            columnHeaderName = new ColumnHeader();
+            toolStrip1 = new ToolStrip();
+            toolStripButtonSelectAll = new ToolStripButton();
+            toolStripButtonSelectNone = new ToolStripButton();
+            toolStripButtonSelectInvert = new ToolStripButton();
+            toolStrip1.SuspendLayout();
+            SuspendLayout();
             // 
             // listView1
             // 
-            this.listView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listView1.CheckBoxes = true;
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeaderCode,
-            this.columnHeaderName});
-            resources.ApplyResources(this.listView1, "listView1");
-            this.listView1.GridLines = true;
-            this.listView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.listView1.HideSelection = false;
-            this.listView1.MultiSelect = false;
-            this.listView1.Name = "listView1";
-            this.listView1.ShowGroups = false;
-            this.listView1.ShowItemToolTips = true;
-            this.listView1.Sorting = System.Windows.Forms.SortOrder.Ascending;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
-            this.listView1.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.listView1_ItemChecked);
+            listView1.BorderStyle = BorderStyle.None;
+            listView1.CheckBoxes = true;
+            listView1.Columns.AddRange(new ColumnHeader[] { columnHeaderCode, columnHeaderName });
+            resources.ApplyResources(listView1, "listView1");
+            listView1.GridLines = true;
+            listView1.HeaderStyle = ColumnHeaderStyle.Nonclickable;
+            listView1.MultiSelect = false;
+            listView1.Name = "listView1";
+            listView1.ShowGroups = false;
+            listView1.ShowItemToolTips = true;
+            listView1.Sorting = SortOrder.Ascending;
+            listView1.UseCompatibleStateImageBehavior = false;
+            listView1.View = View.Details;
+            listView1.ItemChecked += listView1_ItemChecked;
             // 
             // columnHeaderCode
             // 
-            resources.ApplyResources(this.columnHeaderCode, "columnHeaderCode");
+            resources.ApplyResources(columnHeaderCode, "columnHeaderCode");
             // 
             // columnHeaderName
             // 
-            resources.ApplyResources(this.columnHeaderName, "columnHeaderName");
+            resources.ApplyResources(columnHeaderName, "columnHeaderName");
             // 
             // toolStrip1
             // 
-            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButtonSelectAll,
-            this.toolStripButtonSelectNone,
-            this.toolStripButtonSelectInvert});
-            resources.ApplyResources(this.toolStrip1, "toolStrip1");
-            this.toolStrip1.Name = "toolStrip1";
+            toolStrip1.GripStyle = ToolStripGripStyle.Hidden;
+            toolStrip1.ImageScalingSize = new Size(20, 20);
+            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButtonSelectAll, toolStripButtonSelectNone, toolStripButtonSelectInvert });
+            resources.ApplyResources(toolStrip1, "toolStrip1");
+            toolStrip1.Name = "toolStrip1";
             // 
             // toolStripButtonSelectAll
             // 
-            resources.ApplyResources(this.toolStripButtonSelectAll, "toolStripButtonSelectAll");
-            this.toolStripButtonSelectAll.Name = "toolStripButtonSelectAll";
-            this.toolStripButtonSelectAll.Click += new System.EventHandler(this.toolStripButtonSelectAll_Click);
+            resources.ApplyResources(toolStripButtonSelectAll, "toolStripButtonSelectAll");
+            toolStripButtonSelectAll.Name = "toolStripButtonSelectAll";
+            toolStripButtonSelectAll.Click += toolStripButtonSelectAll_Click;
             // 
             // toolStripButtonSelectNone
             // 
-            resources.ApplyResources(this.toolStripButtonSelectNone, "toolStripButtonSelectNone");
-            this.toolStripButtonSelectNone.Name = "toolStripButtonSelectNone";
-            this.toolStripButtonSelectNone.Click += new System.EventHandler(this.toolStripButtonSelectNone_Click);
+            resources.ApplyResources(toolStripButtonSelectNone, "toolStripButtonSelectNone");
+            toolStripButtonSelectNone.Name = "toolStripButtonSelectNone";
+            toolStripButtonSelectNone.Click += toolStripButtonSelectNone_Click;
             // 
             // toolStripButtonSelectInvert
             // 
-            this.toolStripButtonSelectInvert.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonSelectInvert.Image = global::EntryTranslation.Properties.Resources.clipboard;
-            resources.ApplyResources(this.toolStripButtonSelectInvert, "toolStripButtonSelectInvert");
-            this.toolStripButtonSelectInvert.Name = "toolStripButtonSelectInvert";
-            this.toolStripButtonSelectInvert.Click += new System.EventHandler(this.toolStripButtonSelectInvert_Click);
+            toolStripButtonSelectInvert.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toolStripButtonSelectInvert.Image = Properties.Resources.clipboard;
+            resources.ApplyResources(toolStripButtonSelectInvert, "toolStripButtonSelectInvert");
+            toolStripButtonSelectInvert.Name = "toolStripButtonSelectInvert";
+            toolStripButtonSelectInvert.Click += toolStripButtonSelectInvert_Click;
             // 
             // LanguageSettings
             // 
+            AutoScaleMode = AutoScaleMode.None;
+            Controls.Add(listView1);
+            Controls.Add(toolStrip1);
+            Name = "LanguageSettings";
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.listView1);
-            this.Controls.Add(this.toolStrip1);
-            this.Name = "LanguageSettings";
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            toolStrip1.ResumeLayout(false);
+            toolStrip1.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

@@ -1,4 +1,4 @@
-﻿namespace EntryTranslation.Controls
+﻿namespace ResxTranslator.Controls
 {
     partial class ResourceTreeView
     {

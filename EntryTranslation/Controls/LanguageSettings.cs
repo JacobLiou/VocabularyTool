@@ -5,7 +5,7 @@ using System.Globalization;
 
 namespace EntryTranslation.Controls
 {
-    public partial class LanguageSettings : UserControl
+    public partial class LanguageSettings : UIUserControl
     {
         public LanguageSettings()
         {

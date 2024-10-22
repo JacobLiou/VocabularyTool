@@ -10,6 +10,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <EmbeddedResource Remove="LangDic\en.resx" />
+    <EmbeddedResource Remove="LangDic\ja-JP.resx" />
+    <EmbeddedResource Remove="LangDic\zh-CN.resx" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="logo.ico" />
   </ItemGroup>
 
@@ -27,6 +33,18 @@
 
   <ItemGroup>
     <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="LangDic\en.resx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="LangDic\ja-JP.resx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="LangDic\zh-CN.resx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
