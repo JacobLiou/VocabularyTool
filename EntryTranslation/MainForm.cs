@@ -520,23 +520,6 @@ namespace EntryTranslation
                 Process.Start(Properties.Resources.Homepage);
         }
 
-        private void setReferencePathsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var referencePaths = EditReferencePaths.ShowDialog(this,
-                Settings.Default.ReferencePaths?.Cast<string>().ToArray() ?? new string[] { });
-
-            if (referencePaths != null)
-            {
-                if (Settings.Default.ReferencePaths == null)
-                    Settings.Default.ReferencePaths = new StringCollection();
-
-                Settings.Default.ReferencePaths.Clear();
-                Settings.Default.ReferencePaths.AddRange(referencePaths);
-
-                LoadReferenceAssemblies();
-            }
-        }
-
         private void fromOpenedTranslationsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!AskToRemoveNontranslatable()) return;

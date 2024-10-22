@@ -130,16 +130,16 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="labelKey.Location" type="System.Drawing.Point, System.Drawing">
-    <value>92, 6</value>
+    <value>29, 6</value>
   </data>
   <data name="labelKey.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 28</value>
+    <value>44, 28</value>
   </data>
   <data name="labelKey.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
   <data name="labelKey.Text" xml:space="preserve">
-    <value>Key name</value>
+    <value>名称</value>
   </data>
   <data name="labelKey.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -163,16 +163,16 @@
     <value>Right</value>
   </data>
   <data name="labelNoXlateValue.Location" type="System.Drawing.Point, System.Drawing">
-    <value>47, 34</value>
+    <value>11, 34</value>
   </data>
   <data name="labelNoXlateValue.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 28</value>
+    <value>62, 28</value>
   </data>
   <data name="labelNoXlateValue.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
   <data name="labelNoXlateValue.Text" xml:space="preserve">
-    <value>Default value</value>
+    <value>默认值</value>
   </data>
   <data name="labelNoXlateValue.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -193,10 +193,10 @@
     <value>Bottom</value>
   </data>
   <data name="textboxKeyName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>178, 9</value>
+    <value>79, 9</value>
   </data>
   <data name="textboxKeyName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>273, 28</value>
+    <value>332, 28</value>
   </data>
   <data name="textboxKeyName.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -220,10 +220,10 @@
     <value>Bottom</value>
   </data>
   <data name="textboxDefault.Location" type="System.Drawing.Point, System.Drawing">
-    <value>178, 37</value>
+    <value>79, 37</value>
   </data>
   <data name="textboxDefault.Size" type="System.Drawing.Size, System.Drawing">
-    <value>273, 28</value>
+    <value>332, 28</value>
   </data>
   <data name="textboxDefault.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -253,13 +253,13 @@
     <value>11, 62</value>
   </data>
   <data name="labelDefaultValue.Size" type="System.Drawing.Size, System.Drawing">
-    <value>161, 28</value>
+    <value>62, 28</value>
   </data>
   <data name="labelDefaultValue.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
   <data name="labelDefaultValue.Text" xml:space="preserve">
-    <value>Translated values</value>
+    <value>翻译值</value>
   </data>
   <data name="labelDefaultValue.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -280,10 +280,10 @@
     <value>Bottom</value>
   </data>
   <data name="textboxTranslated.Location" type="System.Drawing.Point, System.Drawing">
-    <value>178, 65</value>
+    <value>79, 65</value>
   </data>
   <data name="textboxTranslated.Size" type="System.Drawing.Size, System.Drawing">
-    <value>273, 28</value>
+    <value>332, 28</value>
   </data>
   <data name="textboxTranslated.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -350,7 +350,7 @@
     <value>0</value>
   </data>
   <data name="btnAdd.Text" xml:space="preserve">
-    <value>Add</value>
+    <value>增加</value>
   </data>
   <data name="&gt;&gt;btnAdd.Name" xml:space="preserve">
     <value>btnAdd</value>
@@ -383,7 +383,7 @@
     <value>1</value>
   </data>
   <data name="button1.Text" xml:space="preserve">
-    <value>Cancel</value>
+    <value>取消</value>
   </data>
   <data name="&gt;&gt;button1.Name" xml:space="preserve">
     <value>button1</value>
@@ -434,7 +434,7 @@
     <value>200, 170</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Add a new key</value>
+    <value>增加键值</value>
   </data>
   <data name="&gt;&gt;errorProvider.Name" xml:space="preserve">
     <value>errorProvider</value>

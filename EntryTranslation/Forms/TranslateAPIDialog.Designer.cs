@@ -134,7 +134,7 @@
             AcceptButton = btnOk;
             AutoScaleMode = AutoScaleMode.None;
             CancelButton = btnCancel;
-            ClientSize = new Size(309, 171);
+            ClientSize = new Size(610, 262);
             Controls.Add(cbDefaultLanguage);
             Controls.Add(lblDefaultLanguage);
             Controls.Add(btnCancel);
