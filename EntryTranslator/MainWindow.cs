@@ -20,6 +20,14 @@ namespace EntryTranslator
 {
     public sealed partial class MainWindow : WindowBase
     {
+        private static readonly string[] SpecialColNames =
+        {
+            Properties.Resources.ColNameComment,
+            Properties.Resources.ColNameError,
+            Properties.Resources.ColNameKey,
+            Properties.Resources.ColNameTranslated
+        };
+
         private readonly string _defaultWindowTitle;
 
         private ResourceHolder _currentResource;
@@ -449,8 +457,8 @@ namespace EntryTranslator
                     return;
                 }
 
-                string targetLanguage = tad.TranslateAPIConfig.TargetLanguage == Properties.Resources.ColNameNoLang ? tad.TranslateAPIConfig.DefaultLanguage : tad.TranslateAPIConfig.TargetLanguage;
-                string sourceLanguage = tad.TranslateAPIConfig.SourceLanguage == Properties.Resources.ColNameNoLang ? tad.TranslateAPIConfig.DefaultLanguage : tad.TranslateAPIConfig.SourceLanguage;
+                string targetLanguage = tad.TranslateAPIConfig.TargetLanguage;
+                string sourceLanguage = tad.TranslateAPIConfig.SourceLanguage;
 
                 //TranslatorApi translatorApi = new TranslatorApi();
                 TranslatorBaidu translatorBaidu = new TranslatorBaidu();
@@ -476,13 +484,14 @@ namespace EntryTranslator
             }
             finally
             {
+                OnResourceLoadProgress(this, new ResourceLoadProgressEventArgs("完成", null, 0, 0));
                 Cursor.Current = Cursors.Default;
             }
         }
 
         private void helpToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            var readmePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "帮助文档.docx");
+            var readmePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Help.pdf");
             if (File.Exists(readmePath))
                 Process.Start("explorer.exe", $"\"{readmePath}\"");
         }
@@ -567,15 +576,6 @@ namespace EntryTranslator
                 return false;
             }
         }
-
-        private static readonly string[] SpecialColNames =
-        {
-            Properties.Resources.ColNameComment,
-            Properties.Resources.ColNameError,
-            Properties.Resources.ColNameKey,
-            Properties.Resources.ColNameNoLang,
-            Properties.Resources.ColNameTranslated
-        };
 
         private void buttonExport_Click(object sender, EventArgs e)
         {

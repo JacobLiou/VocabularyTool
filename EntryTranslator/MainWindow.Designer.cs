@@ -309,9 +309,9 @@ namespace EntryTranslator
             this.menuStripMain.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.searchToolStripMenuItem,
             this.keysToolStripMenuItem,
             this.languagesToolStripMenuItem,
+            this.searchToolStripMenuItem,
             this.toolStripMenuItemGT,
             this.helpToolStripMenuItem});
             this.menuStripMain.Name = "menuStripMain";

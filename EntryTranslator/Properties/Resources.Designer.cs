@@ -138,15 +138,6 @@ namespace EntryTranslator.Properties {
         }
         
         /// <summary>
-        ///   查找类似 NoLanguageValue 的本地化字符串。
-        /// </summary>
-        internal static string ColNameNoLang {
-            get {
-                return ResourceManager.GetString("ColNameNoLang", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   查找类似 Translated 的本地化字符串。
         /// </summary>
         internal static string ColNameTranslated {

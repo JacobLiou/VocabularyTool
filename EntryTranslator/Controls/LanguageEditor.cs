@@ -20,7 +20,6 @@ namespace EntryTranslator.Controls
             Properties.Resources.ColNameComment,
             Properties.Resources.ColNameError,
             Properties.Resources.ColNameKey,
-            Properties.Resources.ColNameNoLang,
             Properties.Resources.ColNameTranslated
         };
 
@@ -115,8 +114,6 @@ namespace EntryTranslator.Controls
 
             ApplyConditionalCellFormatting(r.Cells[Properties.Resources.ColNameKey], SearchParams.TargetType.Key);
 
-            ApplyConditionalCellFormatting(r.Cells[Properties.Resources.ColNameNoLang], SearchParams.TargetType.OriginalText);
-
             foreach (var lng in CurrentResource.Languages.Values)
             {
                 ApplyConditionalCellFormatting(r.Cells[lng.LanguageId], SearchParams.TargetType.TranslatedText);
@@ -209,7 +206,6 @@ namespace EntryTranslator.Controls
 
             }
 
-            dataGridView1.Columns[Properties.Resources.ColNameNoLang].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dataGridView1.Columns[Properties.Resources.ColNameComment].DisplayIndex = dataGridView1.Columns.Count - 1;
 
             dataGridView1.Columns[Properties.Resources.ColNameTranslated].Visible = false;
@@ -400,7 +396,6 @@ namespace EntryTranslator.Controls
             if (CurrentSearch == null) return;
 
             var keyColumn = dataGridView1.Columns[Properties.Resources.ColNameKey];
-            var nolangColumn = dataGridView1.Columns[Properties.Resources.ColNameNoLang];
 
             var currentRow = dataGridView1.CurrentCell?.RowIndex ?? dataGridView1.RowCount;
             var currentColumn = dataGridView1.CurrentCell?.ColumnIndex ?? -1;
@@ -415,9 +410,7 @@ namespace EntryTranslator.Controls
 
                     var targetType = cell.OwningColumn == keyColumn
                         ? SearchParams.TargetType.Key
-                        : cell.OwningColumn == nolangColumn
-                            ? SearchParams.TargetType.OriginalText
-                            : SearchParams.TargetType.TranslatedText;
+                        : SearchParams.TargetType.TranslatedText;
 
                     if (CurrentSearch.Match(targetType, s))
                     {

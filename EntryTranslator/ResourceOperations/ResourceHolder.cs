@@ -211,8 +211,7 @@ namespace EntryTranslator.ResourceOperations
                 foreach (var originalResource in originalResources)
                 {
                     // Write localizable resource only if it is not empty, unless we are saving the default file
-                    if (valueColumnId.Equals(Properties.Resources.ColNameNoLang)
-                        || !localizableResourceKeys.Contains(originalResource.Key)
+                    if (!localizableResourceKeys.Contains(originalResource.Key)
                         || !string.IsNullOrWhiteSpace(originalResource.Value.GetValueAsString()))
                     {
                         if (!skipNontranslatableData || IsLocalizableString(originalResource.Key, originalResource.Value))
@@ -236,30 +235,6 @@ namespace EntryTranslator.ResourceOperations
         }
 
         /// <summary>
-        ///     Save translations of this resource without any non-translatable data, effectively removing it.
-        ///     The base (no language) resource is left intact.
-        /// </summary>
-        public void SaveWithoutNontranslatableData()
-        {
-            try
-            {
-                if (IsDirty)
-                    UpdateFile(Filename, Properties.Resources.ColNameNoLang, false, true);
-
-                foreach (var languageHolder in Languages.Values)
-                {
-                    UpdateFile(languageHolder.Filename, languageHolder.LanguageId, true, Settings.Default.StoreCommentsInAllFiles);
-                }
-                Dirty = false;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, string.Format("����ʱ���쳣��{0}", Id),
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        /// <summary>
         ///     Save this resource holder's data
         /// </summary>
         public void Save()
@@ -268,8 +243,6 @@ namespace EntryTranslator.ResourceOperations
                 return;
             try
             {
-                UpdateFile(Filename, Properties.Resources.ColNameNoLang, false, true);
-
                 foreach (var languageHolder in Languages.Values)
                 {
                     UpdateFile(languageHolder.Filename, languageHolder.LanguageId, false, Settings.Default.StoreCommentsInAllFiles);
@@ -308,7 +281,7 @@ namespace EntryTranslator.ResourceOperations
 
                     var value = dataNode.GetValueAsString();
 
-                    if (!valueColumn.Equals(Properties.Resources.ColNameNoLang) && string.IsNullOrWhiteSpace(value))
+                    if (string.IsNullOrWhiteSpace(value))
                     {
                         Dirty = true;
                         continue;
@@ -390,13 +363,6 @@ namespace EntryTranslator.ResourceOperations
                     row[colNameError] = true;
                     return;
                 }
-                var colNameNoLang = Properties.Resources.ColNameNoLang;
-                if (row[colNameNoLang] == DBNull.Value || string.IsNullOrEmpty((string)row[colNameNoLang]))
-                {
-                    // There are translations, but the main key is missing
-                    row[colNameError] = true;
-                    return;
-                }
             }
 
             row[colNameError] = false;
@@ -404,14 +370,6 @@ namespace EntryTranslator.ResourceOperations
 
         private static bool RowContainsTranslation(DataRow row, string languageId)
         {
-            if (Settings.Default.TranslatableInBrackets)
-            {
-                var defaultValue = ((string)row[Properties.Resources.ColNameNoLang]).Trim();
-                if (!defaultValue.StartsWith("[", StringComparison.InvariantCultureIgnoreCase) ||
-                    !defaultValue.EndsWith("]", StringComparison.InvariantCultureIgnoreCase))
-                    return true;
-            }
-
             if (row[languageId] == DBNull.Value)
                 return false;
 
@@ -433,8 +391,7 @@ namespace EntryTranslator.ResourceOperations
                 var colNameKey = Properties.Resources.ColNameKey;
                 _stringsTable.Columns.Add(colNameKey);
                 _stringsTable.PrimaryKey = new[] { _stringsTable.Columns[colNameKey] };
-                var colNameNoLang = Properties.Resources.ColNameNoLang;
-                _stringsTable.Columns.Add(colNameNoLang);
+
                 foreach (var languageHolder in Languages.Values)
                 {
                     _stringsTable.Columns.Add(languageHolder.LanguageId);
@@ -443,10 +400,7 @@ namespace EntryTranslator.ResourceOperations
                 _stringsTable.Columns.Add(Properties.Resources.ColNameTranslated, typeof(bool));
                 _stringsTable.Columns.Add(Properties.Resources.ColNameError, typeof(bool));
 
-                if (Filename != null && File.Exists(Filename))
-                {
-                    ReadResourceFile(Filename, _stringsTable, colNameNoLang, false);
-                }
+
                 foreach (var languageHolder in Languages.Values)
                 {
                     ReadResourceFile(languageHolder.Filename, _stringsTable, languageHolder.LanguageId, true);
@@ -538,7 +492,6 @@ namespace EntryTranslator.ResourceOperations
 
             var row = _stringsTable.NewRow();
             row[Properties.Resources.ColNameKey] = key;
-            row[Properties.Resources.ColNameNoLang] = noXlateValue;
             foreach (var languageHolder in Languages.Values)
             {
                 row[languageHolder.LanguageId] = defaultValue;
@@ -647,29 +600,9 @@ namespace EntryTranslator.ResourceOperations
             OnLanguageChange();
         }
 
-        public bool HasMissingTranslations(string cultureName)
-        {
-            var rows = _stringsTable.Rows.Cast<DataRow>().ToList();
-
-            if (Settings.Default.TranslatableInBrackets)
-            {
-                rows.RemoveAll(dataRow =>
-                {
-                    var defaultValue = ((string)dataRow[Properties.Resources.ColNameNoLang]).Trim();
-                    return !defaultValue.StartsWith("[", StringComparison.InvariantCultureIgnoreCase)
-                    || !defaultValue.EndsWith("]", StringComparison.InvariantCultureIgnoreCase);
-                });
-            }
-
-            if (!rows.Any())
-                return false;
-
-            return !Languages.ContainsKey(cultureName) || rows.Any(row => !RowContainsTranslation(row, cultureName));
-        }
-
         public List<string> GetTextForTranslating(TranslateAPIConfig translateApiConfig)
         {
-            string sl = translateApiConfig.SourceLanguage == translateApiConfig.DefaultLanguage ? Properties.Resources.ColNameNoLang : translateApiConfig.SourceLanguage;
+            string sl = translateApiConfig.SourceLanguage;
             var result = new List<string>();
             IEnumerable<DataRow> rows = _stringsTable.Rows.Cast<DataRow>();
 
