@@ -5,6 +5,7 @@ using System;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -15,11 +16,7 @@ namespace EntryTranslator.Controls
     {
         private static readonly string[] SpecialColNames =
         {
-            Properties.Resources.ColNameComment,
-            Properties.Resources.ColNameError,
             Properties.Resources.ColNameKey,
-            Properties.Resources.ColNameNoLang,
-            Properties.Resources.ColNameTranslated
         };
 
         private ResourceHolder _currentResource;
@@ -41,7 +38,8 @@ namespace EntryTranslator.Controls
             set
             {
                 _currentResource = value;
-                ShowResourceInGrid(value);
+                if (_currentResource != null)
+                    ShowResourceInGrid(_currentResource);
             }
         }
 
@@ -98,22 +96,10 @@ namespace EntryTranslator.Controls
 
         private void ApplyConditionalFormatting(DataGridViewRow r)
         {
-            var colNameError = Properties.Resources.ColNameError;
-            if (!string.IsNullOrEmpty(r.Cells[colNameError].Value?.ToString()) && (bool)r.Cells[colNameError].Value)
-            {
-                r.DefaultCellStyle.ForeColor = Color.Red;
-            }
-            else
-            {
-                r.DefaultCellStyle.ForeColor = dataGridView1.DefaultCellStyle.ForeColor;
-            }
-
             if (r == dataGridView1.Rows[RowCount - 1])
                 return;
 
             ApplyConditionalCellFormatting(r.Cells[Properties.Resources.ColNameKey], SearchParams.TargetType.Key);
-
-            ApplyConditionalCellFormatting(r.Cells[Properties.Resources.ColNameNoLang], SearchParams.TargetType.OriginalText);
 
             foreach (var lng in CurrentResource.Languages.Values)
             {
@@ -197,11 +183,11 @@ namespace EntryTranslator.Controls
                 dataGridView1.Columns[languageHolder.LanguageId].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             }
 
-            dataGridView1.Columns[Properties.Resources.ColNameNoLang].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            dataGridView1.Columns[Properties.Resources.ColNameComment].DisplayIndex = dataGridView1.Columns.Count - 1;
-
-            dataGridView1.Columns[Properties.Resources.ColNameTranslated].Visible = false;
-            dataGridView1.Columns[Properties.Resources.ColNameError].Visible = false;
+            foreach (var languageHolder in resource.Languages.Values)
+            {
+                if(CultureInfo.CurrentCulture.Name == languageHolder.CultureInfo.Name)
+                    dataGridView1.Columns[languageHolder.LanguageId].DisplayIndex = 1;
+            }
 
             dataGridView1.Columns[Properties.Resources.ColNameKey].ReadOnly = true;
         }
@@ -387,8 +373,6 @@ namespace EntryTranslator.Controls
             if (CurrentSearch == null) return;
 
             var keyColumn = dataGridView1.Columns[Properties.Resources.ColNameKey];
-            var nolangColumn = dataGridView1.Columns[Properties.Resources.ColNameNoLang];
-
             var currentRow = dataGridView1.CurrentCell?.RowIndex ?? dataGridView1.RowCount;
             var currentColumn = dataGridView1.CurrentCell?.ColumnIndex ?? -1;
 
@@ -400,11 +384,7 @@ namespace EntryTranslator.Controls
 
                     if (!(cell.Value is string s)) continue;
 
-                    var targetType = cell.OwningColumn == keyColumn
-                        ? SearchParams.TargetType.Key
-                        : cell.OwningColumn == nolangColumn
-                            ? SearchParams.TargetType.OriginalText
-                            : SearchParams.TargetType.TranslatedText;
+                    var targetType = cell.OwningColumn == keyColumn ? SearchParams.TargetType.Key : SearchParams.TargetType.OriginalText;
 
                     if (CurrentSearch.Match(targetType, s))
                     {
@@ -412,6 +392,7 @@ namespace EntryTranslator.Controls
                         return;
                     }
                 }
+
                 // Skip cells only in the currently selected row (the selected row is first in order thanks to Rotate call)
                 currentColumn = -1;
             }

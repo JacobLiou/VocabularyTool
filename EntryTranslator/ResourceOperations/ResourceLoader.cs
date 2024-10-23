@@ -93,15 +93,6 @@ namespace EntryTranslator.ResourceOperations
             return true;
         }
 
-        public void Close()
-        {
-            if (!CanClose())
-                throw new InvalidOperationException("��ǰ�޷��ر�");
-
-            _resourceStore.Clear();
-            OpenedPath = string.Empty;
-        }
-
         public IEnumerable<CultureInfo> GetUsedLanguages()
         {
             return Resources.Aggregate(Enumerable.Empty<LanguageHolder>(),
@@ -112,7 +103,8 @@ namespace EntryTranslator.ResourceOperations
 
         public void OpenProject(string selectedPath)
         {
-            Close();
+            _resourceStore.Clear();
+            OpenedPath = string.Empty;
 
             OnResourceLoadProgress(new ResourceLoadProgressEventArgs("������Դ..."));
 
@@ -129,7 +121,7 @@ namespace EntryTranslator.ResourceOperations
                 {
                     _resourceStore.Remove(pair.Key);
 
-                    MessageBox.Show("������Դʧ��", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("加载语言文件错误", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
 
