@@ -4,12 +4,14 @@ using EntryTranslator.ResourceOperations;
 using EntryTranslator.Utils;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Resources;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -302,7 +304,7 @@ namespace EntryTranslator
 
         private void ImportToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            buttonImport_Click(sender, e);
         }
 
         private void exportAllResourcesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -480,12 +482,150 @@ namespace EntryTranslator
 
         private void buttonImport_Click(object sender, EventArgs e)
         {
+            var dialogResult = MessageBox.Show("导入将删除现有的所有数据", "导入", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
+            if (dialogResult != DialogResult.Yes)
+                return;
+
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.InitialDirectory = $@"{AppDomain.CurrentDomain.BaseDirectory}Templates";
+
+            if (uiRadioButtonExcel.Checked)
+                openFileDialog.Filter = "Excel Files|*.xlsx";
+            else
+                openFileDialog.Filter = "CSV Files|*.csv";
+
+            openFileDialog.FilterIndex = 2;
+            openFileDialog.RestoreDirectory = true;
+
+            if (openFileDialog.ShowDialog() != DialogResult.OK)
+                return;
+
+            string fileName = openFileDialog.FileName;
+            DataTable dataTable;
+            if (uiRadioButtonExcel.Checked)
+                dataTable = ExcelUtil.ImportExcelFile(fileName);
+            else
+                dataTable = CsvUtil.ImportFromCsv(fileName);
+
+            if (DataTableToResxFiles(dataTable))
+                MessageBox.Show("文件导入成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else
+                MessageBox.Show("导入文件失败！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        private bool DataTableToResxFiles(DataTable dataTable)
+        {
+            try
+            {
+                ResourceLoader.Close();
+                DirectoryInfo dir = new DirectoryInfo($@"{AppDomain.CurrentDomain.BaseDirectory}LangDic");
+                FileInfo[] files = dir.GetFiles();
+                foreach (FileInfo file in files)
+                {
+                    file.Delete();
+                }
+
+                foreach (DataColumn column in dataTable.Columns)
+                {
+                    if (SpecialColNames.Contains(column.ColumnName))
+                        continue;
+                    string fileName = $@"{AppDomain.CurrentDomain.BaseDirectory}LangDic\Sofar.{column.ColumnName}.resx";
+
+                    // 创建ResXResourceSet
+                    using (ResXResourceWriter resx = new ResXResourceWriter(fileName))
+                    {
+                        // 将列数据添加到ResX
+                        for (int i = 0; i < dataTable.Rows.Count; i++)
+                        {
+                            if (!SpecialColNames.Contains(column.ColumnName))
+                                resx.AddResource(dataTable.Rows[i][Properties.Resources.ColNameKey].ToString(),
+                                    dataTable.Rows[i][column.ColumnName].ToString());
+                        }
+                    }
+                }
+
+                LoadResourcesFromFolder($@"{AppDomain.CurrentDomain.BaseDirectory}LangDic");
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        private static readonly string[] SpecialColNames =
+        {
+            Properties.Resources.ColNameComment,
+            Properties.Resources.ColNameError,
+            Properties.Resources.ColNameKey,
+            Properties.Resources.ColNameNoLang,
+            Properties.Resources.ColNameTranslated
+        };
 
         private void buttonExport_Click(object sender, EventArgs e)
         {
-            ExcelUtil.ExportExcelFile(CurrentResource.StringsTable);
+            using (SaveFileDialog sfd = new SaveFileDialog())
+            {
+                sfd.Filter = "Excel Files|*.xlsx";
+                sfd.Title = "保存Excel文件";
+                sfd.DefaultExt = "xlsx";
+
+                if (uiRadioButtonExcel.Checked)
+                {
+                    sfd.Filter = "Excel Files|*.xlsx";
+                    sfd.Title = "保存Excel文件";
+                    sfd.DefaultExt = "xlsx";
+                }
+                else
+                {
+                    sfd.Filter = "CSV Files|*.csv";
+                    sfd.Title = "保存CSV文件";
+                    sfd.DefaultExt = "csv";
+                }
+
+                sfd.AddExtension = true;
+                sfd.FileName = "搜航词条库_" + DateTime.Now.ToString("yyyyMMdd");
+
+                if (sfd.ShowDialog() != DialogResult.OK)
+                    return;
+
+                if (uiRadioButtonExcel.Checked)
+                    SaveExcelFile(sfd);
+                else
+                    SaveCSVFile(sfd);
+            }
+        }
+
+        private void SaveExcelFile(SaveFileDialog sfd)
+        {
+            try
+            {
+                if (ExcelUtil.DataTableToExcel(CurrentResource.StringsTable, sfd.FileName))
+                    MessageBox.Show("文件保存成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else
+                    MessageBox.Show("保存文件失败！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("保存文件失败：" + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void SaveCSVFile(SaveFileDialog sfd)
+        {
+            try
+            {
+                if (CsvUtil.ExportToCsv(CurrentResource.StringsTable, sfd.FileName))
+                    MessageBox.Show("文件保存成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else
+                    MessageBox.Show("保存文件失败！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("保存文件失败：" + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void buttonSearch_Click(object sender, EventArgs e)

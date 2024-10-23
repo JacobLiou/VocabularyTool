@@ -182,6 +182,7 @@
     <Reference Include="System.Xml.Serialization" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Utils\CsvUtil.cs" />
     <Compile Include="Utils\ExcelUtil.cs" />
     <Compile Include="WindowBase.cs">
       <SubType>Form</SubType>
@@ -226,12 +227,6 @@
     <EmbeddedResource Include="Controls\LanguageEditor.resx">
       <DependentUpon>LanguageEditor.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="LangDic\Sofar.en-US.resx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="LangDic\Sofar.zh-CN.resx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -321,6 +316,12 @@
     <None Include="Templates\ImportEntry.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Templates\搜航词条库_20241023.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\搜航词条库_20241023.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -381,7 +382,9 @@
     <None Include="Resources\112_RefreshArrow_Blue_16x16_72.png" />
     <None Include="Resources\109_AllAnnotations_Help_16x16_72.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="LangDic\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

@@ -74,6 +74,8 @@ namespace EntryTranslator
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.uiContextMenuStrip1 = new Sunny.UI.UIContextMenuStrip();
+            this.uiRadioButtonCSV = new Sunny.UI.UIRadioButton();
+            this.uiRadioButtonExcel = new Sunny.UI.UIRadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerAll)).BeginInit();
             this.splitContainerAll.Panel1.SuspendLayout();
             this.splitContainerAll.Panel2.SuspendLayout();
@@ -121,6 +123,8 @@ namespace EntryTranslator
             // groupBoxFile
             // 
             this.groupBoxFile.BackColor = System.Drawing.Color.LightGray;
+            this.groupBoxFile.Controls.Add(this.uiRadioButtonExcel);
+            this.groupBoxFile.Controls.Add(this.uiRadioButtonCSV);
             this.groupBoxFile.Controls.Add(this.buttonExport);
             this.groupBoxFile.Controls.Add(this.buttonImport);
             this.groupBoxFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -175,7 +179,6 @@ namespace EntryTranslator
             // buttonSearchNext
             // 
             this.buttonSearchNext.BackColor = System.Drawing.SystemColors.Control;
-            this.buttonSearchNext.Image = global::EntryTranslator.Properties.Resources.Find_VS;
             resources.ApplyResources(this.buttonSearchNext, "buttonSearchNext");
             this.buttonSearchNext.Name = "buttonSearchNext";
             this.buttonSearchNext.UseVisualStyleBackColor = false;
@@ -438,6 +441,19 @@ namespace EntryTranslator
             this.uiContextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.uiContextMenuStrip1.Name = "uiContextMenuStrip1";
             // 
+            // uiRadioButtonCSV
+            // 
+            this.uiRadioButtonCSV.Cursor = System.Windows.Forms.Cursors.Hand;
+            resources.ApplyResources(this.uiRadioButtonCSV, "uiRadioButtonCSV");
+            this.uiRadioButtonCSV.Name = "uiRadioButtonCSV";
+            // 
+            // uiRadioButtonExcel
+            // 
+            this.uiRadioButtonExcel.Checked = true;
+            this.uiRadioButtonExcel.Cursor = System.Windows.Forms.Cursors.Hand;
+            resources.ApplyResources(this.uiRadioButtonExcel, "uiRadioButtonExcel");
+            this.uiRadioButtonExcel.Name = "uiRadioButtonExcel";
+            // 
             // MainWindow
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -519,6 +535,8 @@ namespace EntryTranslator
         private TextBox textBoxSearch;
         private Button buttonSearchNext;
         private Sunny.UI.UIContextMenuStrip uiContextMenuStrip1;
+        private Sunny.UI.UIRadioButton uiRadioButtonExcel;
+        private Sunny.UI.UIRadioButton uiRadioButtonCSV;
     }
 }
 

@@ -108,35 +108,7 @@ internal class ExcelUtil
         }
     }
 
-    public static void ExportExcelFile(DataTable dt)
-    {
-        using (SaveFileDialog sfd = new SaveFileDialog())
-        {
-            sfd.Filter = "Excel Files|*.xlsx";
-            sfd.Title = "保存Excel文件";
-            sfd.DefaultExt = "xlsx";
-            sfd.AddExtension = true;
-            sfd.FileName = "导出数据_" + DateTime.Now.ToString("yyyyMMdd");
-
-            if (sfd.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    if (DataTableToExcel(dt, sfd.FileName))
-
-                        MessageBox.Show("文件保存成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    else
-                        MessageBox.Show("保存文件失败！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("保存文件失败：" + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-    }
-
-    private static bool DataTableToExcel(DataTable dt, string path)
+    public static bool DataTableToExcel(DataTable dt, string path)
     {
         bool result = false;
         IWorkbook workbook = null;

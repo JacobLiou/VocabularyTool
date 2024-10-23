@@ -131,6 +131,67 @@
   <data name="splitContainerAll.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
     <value>Horizontal</value>
   </data>
+  <data name="uiRadioButtonExcel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 12pt</value>
+  </data>
+  <data name="uiRadioButtonExcel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>26, 22</value>
+  </data>
+  <data name="uiRadioButtonExcel.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 1</value>
+  </data>
+  <data name="uiRadioButtonExcel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 29</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="uiRadioButtonExcel.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="uiRadioButtonExcel.Text" xml:space="preserve">
+    <value>Excel</value>
+  </data>
+  <data name="&gt;&gt;uiRadioButtonExcel.Name" xml:space="preserve">
+    <value>uiRadioButtonExcel</value>
+  </data>
+  <data name="&gt;&gt;uiRadioButtonExcel.Type" xml:space="preserve">
+    <value>Sunny.UI.UIRadioButton, SunnyUI, Version=3.7.2.0, Culture=neutral, PublicKeyToken=27d7d2e821d97aeb</value>
+  </data>
+  <data name="&gt;&gt;uiRadioButtonExcel.Parent" xml:space="preserve">
+    <value>groupBoxFile</value>
+  </data>
+  <data name="&gt;&gt;uiRadioButtonExcel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="uiRadioButtonCSV.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 12pt</value>
+  </data>
+  <data name="uiRadioButtonCSV.Location" type="System.Drawing.Point, System.Drawing">
+    <value>109, 22</value>
+  </data>
+  <data name="uiRadioButtonCSV.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 1</value>
+  </data>
+  <data name="uiRadioButtonCSV.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 29</value>
+  </data>
+  <data name="uiRadioButtonCSV.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="uiRadioButtonCSV.Text" xml:space="preserve">
+    <value>CSV</value>
+  </data>
+  <data name="&gt;&gt;uiRadioButtonCSV.Name" xml:space="preserve">
+    <value>uiRadioButtonCSV</value>
+  </data>
+  <data name="&gt;&gt;uiRadioButtonCSV.Type" xml:space="preserve">
+    <value>Sunny.UI.UIRadioButton, SunnyUI, Version=3.7.2.0, Culture=neutral, PublicKeyToken=27d7d2e821d97aeb</value>
+  </data>
+  <data name="&gt;&gt;uiRadioButtonCSV.Parent" xml:space="preserve">
+    <value>groupBoxFile</value>
+  </data>
+  <data name="&gt;&gt;uiRadioButtonCSV.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="buttonExport.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
@@ -138,12 +199,11 @@
     <value>NoControl</value>
   </data>
   <data name="buttonExport.Location" type="System.Drawing.Point, System.Drawing">
-    <value>101, 18</value>
+    <value>292, 16</value>
   </data>
   <data name="buttonExport.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 38</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="buttonExport.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
@@ -160,13 +220,13 @@
     <value>groupBoxFile</value>
   </data>
   <data name="&gt;&gt;buttonExport.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="buttonImport.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
   <data name="buttonImport.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 18</value>
+    <value>189, 16</value>
   </data>
   <data name="buttonImport.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 38</value>
@@ -187,7 +247,7 @@
     <value>groupBoxFile</value>
   </data>
   <data name="&gt;&gt;buttonImport.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="groupBoxFile.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 10.8pt</value>
@@ -196,7 +256,7 @@
     <value>3, 3</value>
   </data>
   <data name="groupBoxFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 62</value>
+    <value>394, 62</value>
   </data>
   <data name="groupBoxFile.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -220,7 +280,7 @@
     <value>65, 23</value>
   </data>
   <data name="textBoxSearch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>426, 28</value>
+    <value>337, 28</value>
   </data>
   <data name="textBoxSearch.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -244,7 +304,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonClearSearch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>743, 18</value>
+    <value>635, 18</value>
   </data>
   <data name="buttonClearSearch.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 38</value>
@@ -274,7 +334,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonSearchNext.Location" type="System.Drawing.Point, System.Drawing">
-    <value>640, 18</value>
+    <value>532, 18</value>
   </data>
   <data name="buttonSearchNext.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 38</value>
@@ -304,7 +364,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonSearch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>537, 18</value>
+    <value>429, 18</value>
   </data>
   <data name="buttonSearch.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 38</value>
@@ -331,10 +391,10 @@
     <value>宋体, 10.8pt</value>
   </data>
   <data name="groupBoxSearch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>209, 3</value>
+    <value>403, 3</value>
   </data>
   <data name="groupBoxSearch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>835, 62</value>
+    <value>727, 62</value>
   </data>
   <data name="groupBoxSearch.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -436,7 +496,7 @@
     <value>languageSettings1</value>
   </data>
   <data name="&gt;&gt;languageSettings1.Type" xml:space="preserve">
-    <value>EntryTranslator.Controls.LanguageSettings, EntryTranslator, Version=1.0.0.25466, Culture=neutral, PublicKeyToken=null</value>
+    <value>EntryTranslator.Controls.LanguageSettings, EntryTranslator, Version=1.0.0.26420, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;languageSettings1.Parent" xml:space="preserve">
     <value>tabPage1</value>
@@ -550,7 +610,7 @@
     <value>resourceGrid1</value>
   </data>
   <data name="&gt;&gt;resourceGrid1.Type" xml:space="preserve">
-    <value>EntryTranslator.Controls.LanguageEditor, EntryTranslator, Version=1.0.0.25466, Culture=neutral, PublicKeyToken=null</value>
+    <value>EntryTranslator.Controls.LanguageEditor, EntryTranslator, Version=1.0.0.26420, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;resourceGrid1.Parent" xml:space="preserve">
     <value>tabPageEditedResource</value>
@@ -1337,6 +1397,6 @@
     <value>MainWindow</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>EntryTranslator.WindowBase, EntryTranslator, Version=1.0.0.25466, Culture=neutral, PublicKeyToken=null</value>
+    <value>EntryTranslator.WindowBase, EntryTranslator, Version=1.0.0.26420, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>
