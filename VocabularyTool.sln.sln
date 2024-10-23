@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestProject1", "TestProject
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntryTranslation", "EntryTranslation\EntryTranslation.csproj", "{ECA0E9C0-8F64-41FA-BBAC-4E94A2E21EEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResxTranslator", "ResxTranslator\ResxTranslator.csproj", "{D26D4B43-EA97-4021-820F-5543E9B5C080}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntryTranslator", "EntryTranslator\EntryTranslator.csproj", "{D26D4B43-EA97-4021-820F-5543E9B5C080}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
