@@ -34,7 +34,6 @@ namespace ResxTranslator
             ResourceLoader.ResourceLoadProgress += OnResourceLoadProgress;
             ResourceLoader.ResourcesChanged += OnResourceLoaderOnResourcesChanged;
 
-            resourceTreeView1.ResourceOpened += (sender, args) => CurrentResource = args.Resource;
 
             languageSettings1.EnabledLanguagesChanged += (sender, args) =>
             {
@@ -63,12 +62,11 @@ namespace ResxTranslator
         public void SetCurrentSearch(SearchParams value)
         {
             _currentSearch = value;
-            var hits = resourceTreeView1.ExecuteFindInNodes(value);
             resourceGrid1.CurrentSearch = _currentSearch;
 
             if (value != null)
             {
-                MessageBox.Show(string.Format("搜索到字符串 {0} {1}", value.Text, hits),
+                MessageBox.Show(string.Format("搜索到字符串 {0}", value.Text),
                                 "搜索",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Information);
@@ -280,6 +278,8 @@ namespace ResxTranslator
             Application.DoEvents();
 
             ResourceLoader.OpenProject(path);
+            if (ResourceLoader.Resources.Count() != 0)
+                CurrentResource = ResourceLoader.Resources.First();
 
             Enabled = true;
         }
@@ -300,7 +300,6 @@ namespace ResxTranslator
                     break;
             }
 
-            Settings.Default.SplitterLeft = splitContainerLeft.SplitterDistance;
             Settings.Default.SplitterMain = splitContainerMain.SplitterDistance;
 
             Settings.Default.Save();
@@ -318,8 +317,6 @@ namespace ResxTranslator
                 WindowState = Settings.Default.WindowState;
             }
 
-            if (Settings.Default.SplitterLeft > 10)
-                splitContainerLeft.SplitterDistance = Settings.Default.SplitterLeft;
             if (Settings.Default.SplitterMain > 10)
                 splitContainerMain.SplitterDistance = Settings.Default.SplitterMain;
 
@@ -381,8 +378,6 @@ namespace ResxTranslator
                 UpdateTitlebar();
 
                 CurrentResource = null;
-
-                resourceTreeView1.LoadResources(ResourceLoader);
 
                 var usedLanguages = ResourceLoader.GetUsedLanguages().ToList();
 

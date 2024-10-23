@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 
-[assembly: AssemblyTitle("Resx Resource Translator")]
-[assembly: AssemblyDescription("A tool used to translate .resx (ASP.NET Resource data) files. It can work on entire projects at once and save considerable amounts of time and frustration.")]
+[assembly: AssemblyTitle("Translator")]
+[assembly: AssemblyDescription("首航词条库工具")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("HakanL/resxtranslator")]
-[assembly: AssemblyProduct("ResxTranslator")]
-[assembly: AssemblyCopyright("Copyright © Hakan Lindestaf 2010, Jörgen Lindell 2011, Marcin Szeniak 2017-2020, Ivan Perehynets")]
+[assembly: AssemblyCompany("SofarSolar")]
+[assembly: AssemblyProduct("Translator")]
+[assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -22,7 +22,7 @@ using System.Runtime.InteropServices;
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 
-[assembly: Guid("1a1c0971-0412-4591-b826-fbbde4aa1dfd")]
+[assembly: Guid("1D9723CB-563A-4F4C-9B76-F85A978E2C90")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -34,9 +34,4 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 
-[assembly: AssemblyVersion("2.12.0"
-#if DEBUG
-    + ".*")]
-#else
-    )]
-#endif
+[assembly: AssemblyVersion("1.0.0.*")]

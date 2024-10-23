@@ -37,16 +37,8 @@ namespace ResxTranslator
             this.toolStripStatusLabelCurrentItem = new System.Windows.Forms.ToolStripStatusLabel();
             this.panelMain = new System.Windows.Forms.Panel();
             this.splitContainerMain = new System.Windows.Forms.SplitContainer();
-            this.splitContainerLeft = new System.Windows.Forms.SplitContainer();
-            this.tabControl2 = new System.Windows.Forms.TabControl();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.resourceTreeView1 = new ResxTranslator.Controls.ResourceTreeView();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.languageSettings1 = new ResxTranslator.Controls.LanguageSettings();
             this.tabControl3 = new System.Windows.Forms.TabControl();
             this.tabPageEditedResource = new System.Windows.Forms.TabPage();
-            this.resourceGrid1 = new ResxTranslator.Controls.ResourceGrid();
             this.menuStripMain = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,23 +64,21 @@ namespace ResxTranslator
             this.toolStripMenuItemGT = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.languageSettings1 = new ResxTranslator.Controls.LanguageSettings();
+            this.resourceGrid1 = new ResxTranslator.Controls.ResourceGrid();
             this.statusStrip1.SuspendLayout();
             this.panelMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
             this.splitContainerMain.Panel2.SuspendLayout();
             this.splitContainerMain.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerLeft)).BeginInit();
-            this.splitContainerLeft.Panel1.SuspendLayout();
-            this.splitContainerLeft.Panel2.SuspendLayout();
-            this.splitContainerLeft.SuspendLayout();
-            this.tabControl2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
             this.tabControl3.SuspendLayout();
             this.tabPageEditedResource.SuspendLayout();
             this.menuStripMain.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -130,63 +120,11 @@ namespace ResxTranslator
             // 
             // splitContainerMain.Panel1
             // 
-            this.splitContainerMain.Panel1.Controls.Add(this.splitContainerLeft);
+            this.splitContainerMain.Panel1.Controls.Add(this.tabControl1);
             // 
             // splitContainerMain.Panel2
             // 
             this.splitContainerMain.Panel2.Controls.Add(this.tabControl3);
-            // 
-            // splitContainerLeft
-            // 
-            resources.ApplyResources(this.splitContainerLeft, "splitContainerLeft");
-            this.splitContainerLeft.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.splitContainerLeft.Name = "splitContainerLeft";
-            // 
-            // splitContainerLeft.Panel1
-            // 
-            this.splitContainerLeft.Panel1.Controls.Add(this.tabControl2);
-            // 
-            // splitContainerLeft.Panel2
-            // 
-            this.splitContainerLeft.Panel2.Controls.Add(this.tabControl1);
-            // 
-            // tabControl2
-            // 
-            this.tabControl2.Controls.Add(this.tabPage3);
-            resources.ApplyResources(this.tabControl2, "tabControl2");
-            this.tabControl2.Name = "tabControl2";
-            this.tabControl2.SelectedIndex = 0;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.resourceTreeView1);
-            resources.ApplyResources(this.tabPage3, "tabPage3");
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // resourceTreeView1
-            // 
-            resources.ApplyResources(this.resourceTreeView1, "resourceTreeView1");
-            this.resourceTreeView1.Name = "resourceTreeView1";
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            resources.ApplyResources(this.tabControl1, "tabControl1");
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.languageSettings1);
-            resources.ApplyResources(this.tabPage1, "tabPage1");
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // languageSettings1
-            // 
-            resources.ApplyResources(this.languageSettings1, "languageSettings1");
-            this.languageSettings1.Name = "languageSettings1";
             // 
             // tabControl3
             // 
@@ -201,14 +139,6 @@ namespace ResxTranslator
             resources.ApplyResources(this.tabPageEditedResource, "tabPageEditedResource");
             this.tabPageEditedResource.Name = "tabPageEditedResource";
             this.tabPageEditedResource.UseVisualStyleBackColor = true;
-            // 
-            // resourceGrid1
-            // 
-            this.resourceGrid1.CurrentResource = null;
-            this.resourceGrid1.CurrentSearch = null;
-            resources.ApplyResources(this.resourceGrid1, "resourceGrid1");
-            this.resourceGrid1.Name = "resourceGrid1";
-            this.resourceGrid1.ShowNullValuesAsGrayed = false;
             // 
             // menuStripMain
             // 
@@ -396,6 +326,33 @@ namespace ResxTranslator
             resources.ApplyResources(this.helpToolStripMenuItem1, "helpToolStripMenuItem1");
             this.helpToolStripMenuItem1.Click += new System.EventHandler(this.helpToolStripMenuItem1_Click);
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            resources.ApplyResources(this.tabControl1, "tabControl1");
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.languageSettings1);
+            resources.ApplyResources(this.tabPage1, "tabPage1");
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // languageSettings1
+            // 
+            resources.ApplyResources(this.languageSettings1, "languageSettings1");
+            this.languageSettings1.Name = "languageSettings1";
+            // 
+            // resourceGrid1
+            // 
+            this.resourceGrid1.CurrentResource = null;
+            this.resourceGrid1.CurrentSearch = null;
+            resources.ApplyResources(this.resourceGrid1, "resourceGrid1");
+            this.resourceGrid1.Name = "resourceGrid1";
+            this.resourceGrid1.ShowNullValuesAsGrayed = false;
+            // 
             // MainWindow
             // 
             resources.ApplyResources(this, "$this");
@@ -413,18 +370,12 @@ namespace ResxTranslator
             this.splitContainerMain.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).EndInit();
             this.splitContainerMain.ResumeLayout(false);
-            this.splitContainerLeft.Panel1.ResumeLayout(false);
-            this.splitContainerLeft.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerLeft)).EndInit();
-            this.splitContainerLeft.ResumeLayout(false);
-            this.tabControl2.ResumeLayout(false);
-            this.tabPage3.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
             this.tabControl3.ResumeLayout(false);
             this.tabPageEditedResource.ResumeLayout(false);
             this.menuStripMain.ResumeLayout(false);
             this.menuStripMain.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -453,12 +404,6 @@ namespace ResxTranslator
         private ToolStripMenuItem addLanguageToolStripMenuItem;
         private ToolStripStatusLabel toolStripStatusLabelCurrentItem;
         private Controls.ResourceGrid resourceGrid1;
-        private Controls.ResourceTreeView resourceTreeView1;
-        private Controls.LanguageSettings languageSettings1;
-        private TabControl tabControl1;
-        private TabPage tabPage1;
-        private TabControl tabControl2;
-        private TabPage tabPage3;
         private TabControl tabControl3;
         private TabPage tabPageEditedResource;
         private ToolStripMenuItem languagesToolStripMenuItem;
@@ -468,11 +413,13 @@ namespace ResxTranslator
         private ToolStripMenuItem reloadCurrentDirectoryToolStripMenuItem;
         private ToolStripMenuItem helpToolStripMenuItem;
         private ToolStripMenuItem helpToolStripMenuItem1;
-        private SplitContainer splitContainerLeft;
         private ToolStripSeparator toolStripSeparator3;
         private ToolStripMenuItem exportAllResourcesToolStripMenuItem;
         private ToolStripMenuItem findNextToolStripMenuItem;
         private ToolStripMenuItem toolStripMenuItemGT;
+        private TabControl tabControl1;
+        private TabPage tabPage1;
+        private Controls.LanguageSettings languageSettings1;
     }
 }
 
