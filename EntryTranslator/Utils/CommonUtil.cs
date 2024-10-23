@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EntryTranslator.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -10,8 +11,6 @@ namespace EntryTranslator.Utils
 {
     public class CommonUtil
     {
-        #region Other
-
         /// <summary>
         /// 执行程序
         /// </summary>
@@ -71,6 +70,21 @@ namespace EntryTranslator.Utils
             return dict;
         }
 
+        public static T GetEnumValueFromDescription<T>(string description)
+        {
+            var type = typeof(T);
+            if (!type.IsEnum)
+                throw new ArgumentException();
+            FieldInfo[] fields = type.GetFields();
+            var field = fields
+                            .SelectMany(f => f.GetCustomAttributes(
+                                typeof(DescriptionAttribute), false), (
+                                    f, a) => new { Field = f, Att = a })
+                            .Where(a => ((DescriptionAttribute)a.Att)
+                                .Description == description).SingleOrDefault();
+            return field == null ? default(T) : (T)field.Field.GetRawConstantValue();
+        }
+
         /// <summary>
         /// 是否为管理员权限
         /// </summary>
@@ -103,7 +117,5 @@ namespace EntryTranslator.Utils
                 result = (FactSize / 1024.00 / 1024.00 / 1024.00).ToString("F2") + " GB";
             return result;
         }
-
-        #endregion Other
     }
 }

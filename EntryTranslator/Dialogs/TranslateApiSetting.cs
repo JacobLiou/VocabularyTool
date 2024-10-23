@@ -1,4 +1,5 @@
-﻿using EntryTranslator.Utils;
+﻿using EntryTranslator.Models;
+using EntryTranslator.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,10 +9,9 @@ namespace EntryTranslator.Dialogs
 {
     public partial class TranslateApiSetting : WindowBase
     {
-        private readonly List<string> _languages;
-        private List<string> _languagesFrom;
-        private List<string> _languagesTo;
-        private bool init;
+        private List<CultureModel> _cultureModels;
+
+        private List<string> _curLangCodes;
 
         public TranslateAPIConfig TranslateAPIConfig { get; } = new TranslateAPIConfig();
 
@@ -26,6 +26,11 @@ namespace EntryTranslator.Dialogs
             cbTarget.SelectedIndex = -1;
         }
 
+        public TranslateApiSetting(List<string> curLangCodes) : this()
+        {
+            _curLangCodes = curLangCodes;
+        }
+
         private void ChbOverwrite_CheckedChanged(object sender, EventArgs e)
         {
             TranslateAPIConfig.Overwrite = chbOverwrite.Checked;
@@ -33,16 +38,47 @@ namespace EntryTranslator.Dialogs
 
         private void btnOk_Click(object sender, EventArgs e)
         {
-            TranslateAPIConfig.SourceLanguage = (string)cbSourse.SelectedItem;
-            TranslateAPIConfig.TargetLanguage = (string)cbTarget.SelectedItem;
-            if (TranslateAPIConfig.SourceLanguage == TranslateAPIConfig.TargetLanguage)
+            if (cbSourse.SelectedIndex < 0 ||
+                cbTarget.SelectedIndex < 0)
             {
-                MessageBox.Show("语言不能相同");
+                MessageBox.Show("输入输入语言");
+                this.DialogResult = DialogResult.Cancel;
                 return;
             }
 
+            if (cbSourse.SelectedIndex == cbTarget.SelectedIndex)
+            {
+                MessageBox.Show("语言不能相同");
+                this.DialogResult = DialogResult.Cancel;
+                return;
+            }
+
+            //var sourceLangCode = CommonUtil.GetEnumValueFromDescription<LanguageEnum>(cbSourse.SelectedText).ToString().ToLower();
+            //var targetLangCode = CommonUtil.GetEnumValueFromDescription<LanguageEnum>(cbTarget.SelectedText).ToString().ToLower();
+
+            var sourceLangCode = _cultureModels.FirstOrDefault(item =>
+                item.Name.Contains(cbSourse.SelectedText))?.Code;
+            var targetLangCode = _cultureModels.FirstOrDefault(item =>
+                item.Name.Contains(cbTarget.SelectedText))?.Code;
+
+            if (!_curLangCodes.Contains(sourceLangCode)
+                || !_curLangCodes.Contains(targetLangCode))
+            {
+                MessageBox.Show("当前语言编辑区还不存在翻译语言，请先添加");
+                this.DialogResult = DialogResult.Cancel;
+                return;
+            }
+
+            TranslateAPIConfig.SourceLanguage = sourceLangCode;
+            TranslateAPIConfig.TargetLanguage = targetLangCode;
+
             this.DialogResult = DialogResult.OK;
             this.Close();
+        }
+
+        private async void TranslateApiSetting_Load(object sender, EventArgs e)
+        {
+            _cultureModels = await CultureLangHelper.GetLanguageList();
         }
     }
 }

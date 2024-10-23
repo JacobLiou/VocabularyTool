@@ -696,22 +696,18 @@ namespace EntryTranslator.ResourceOperations
 
         public void SetTranslatedText(TranslateAPIConfig translateApiConfig, IList<StranslationResult> translationResults)
         {
-            //DataRow[] rows = _stringsTable.Rows.Cast<DataRow>().ToArray();
+            DataRow[] rows = _stringsTable.Rows.Cast<DataRow>().ToArray();
 
-            //foreach (var translationResult in translationResults)
-            //{
-            //    string sl = translationResult.SpecifiedSourceLanguage == translateApiConfig.DefaultLanguage ? Properties.Resources.ColNameNoLang : translationResult.SpecifiedSourceLanguage;
+            foreach (var translationResult in translationResults)
+            {
+                string sl = translationResult.SourceLang == translateApiConfig.DefaultLanguage ? Properties.Resources.ColNameNoLang : translationResult.SourceLang;
 
-            //    foreach (DataRow row in rows)
-            //    {
-            //        string sourceText = row[sl].ToString();
-
-            //        if (sourceText == translationResult.OriginalText)
-            //        {
-            //            row[translateApiConfig.TargetLanguage] = translationResult.TranslatedText;
-            //        }
-            //    }
-            //}
+                foreach (DataRow row in rows)
+                {
+                    string sourceText = row[sl].ToString();
+                    row[translateApiConfig.TargetLanguage] = translationResult.Result;
+                }
+            }
         }
     }
 }

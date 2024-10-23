@@ -39,7 +39,7 @@ namespace EntryTranslator
             this.buttonExport = new System.Windows.Forms.Button();
             this.buttonImport = new System.Windows.Forms.Button();
             this.groupBoxSearch = new System.Windows.Forms.GroupBox();
-            this.textBoxSearch = new System.Windows.Forms.TextBox();
+            this.textBoxSearch = new Sunny.UI.UITextBox();
             this.buttonClearSearch = new System.Windows.Forms.Button();
             this.buttonSearchNext = new System.Windows.Forms.Button();
             this.buttonSearch = new System.Windows.Forms.Button();
@@ -178,8 +178,15 @@ namespace EntryTranslator
             // 
             // textBoxSearch
             // 
+            this.textBoxSearch.ButtonRectColor = System.Drawing.SystemColors.InfoText;
+            this.textBoxSearch.ButtonStyleInherited = false;
+            this.textBoxSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
             resources.ApplyResources(this.textBoxSearch, "textBoxSearch");
             this.textBoxSearch.Name = "textBoxSearch";
+            this.textBoxSearch.RectColor = System.Drawing.SystemColors.ControlDark;
+            this.textBoxSearch.ShowText = false;
+            this.textBoxSearch.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.textBoxSearch.Watermark = "";
             // 
             // buttonClearSearch
             // 
@@ -479,7 +486,6 @@ namespace EntryTranslator
             this.flowLayoutPanel1.ResumeLayout(false);
             this.groupBoxFile.ResumeLayout(false);
             this.groupBoxSearch.ResumeLayout(false);
-            this.groupBoxSearch.PerformLayout();
             this.splitContainerMain.Panel1.ResumeLayout(false);
             this.splitContainerMain.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).EndInit();
@@ -540,12 +546,12 @@ namespace EntryTranslator
         private GroupBox groupBoxSearch;
         private Button buttonClearSearch;
         private Button buttonSearch;
-        private TextBox textBoxSearch;
         private Button buttonSearchNext;
         private Sunny.UI.UIContextMenuStrip uiContextMenuStrip1;
         private Sunny.UI.UIRadioButton uiRadioButtonExcel;
         private Sunny.UI.UIRadioButton uiRadioButtonCSV;
         private ToolStripMenuItem cultureoolStripMenuItem;
+        private Sunny.UI.UITextBox textBoxSearch;
     }
 }
 

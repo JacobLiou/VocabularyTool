@@ -225,6 +225,9 @@ namespace EntryTranslator
             if (!ResourceLoader.CanClose())
                 return;
 
+            if (!Directory.Exists(path))
+                return;
+
             Enabled = false;
             toolStripStatusLabel1.Text = string.Format("打开 {0}...", path);
             Application.DoEvents();
@@ -428,7 +431,7 @@ namespace EntryTranslator
 
             try
             {
-                using var tad = new TranslateApiSetting();
+                using var tad = new TranslateApiSetting(languages);
 
                 if (tad.ShowDialog() != DialogResult.OK)
                 {
@@ -451,10 +454,12 @@ namespace EntryTranslator
                 TranslatorApi translatorApi = new TranslatorApi();
 
                 IList<StranslationResult> result = new List<StranslationResult>();
-                foreach (var text in textToTranslate)
+                for (int i = 0; i < textToTranslate.Count; i++)
                 {
-                    var requestModel = new RequestModel(text, sourceLanguage, targetLanguage);
+                    var requestModel = new RequestModel(textToTranslate[i], sourceLanguage, targetLanguage);
                     var item = await translatorApi.TranslateAsync(requestModel, CancellationToken.None);
+                    Thread.Sleep(500);
+                    OnResourceLoadProgress(this, new ResourceLoadProgressEventArgs("联网翻译进行中...", null, i, textToTranslate.Count));
                     if (item != null && item.IsSuccess)
                     {
                         result.Add(item);
@@ -636,23 +641,34 @@ namespace EntryTranslator
 
         private void buttonSearch_Click(object sender, EventArgs e)
         {
-
+            if (string.IsNullOrEmpty(textBoxSearch.Text))
+            {
+                MessageBox.Show("搜索不能为空！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            var sp = new SearchParams(
+                textBoxSearch.Text
+                , false
+                , false
+                , true
+                , true
+                , false
+                , false
+                , false);
+            sp.Save();
+            SetCurrentSearch(sp);
         }
 
         private void buttonSearchNext_Click(object sender, EventArgs e)
         {
-
+            findNextToolStripMenuItem_Click(sender, e);
         }
 
         private void buttonClearSearch_Click(object sender, EventArgs e)
         {
-
+            clearSearchToolStripMenuItem_Click(sender, e);
         }
 
-
-
         #endregion 菜单快捷栏事件
-
-
     }
 }

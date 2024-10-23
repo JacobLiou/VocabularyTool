@@ -282,20 +282,32 @@
   <data name="&gt;&gt;groupBoxFile.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="textBoxSearch.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 10.8pt</value>
+  </data>
   <data name="textBoxSearch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>65, 23</value>
+    <value>51, 24</value>
+  </data>
+  <data name="textBoxSearch.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
+  </data>
+  <data name="textBoxSearch.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 16</value>
+  </data>
+  <data name="textBoxSearch.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 5, 5, 5</value>
   </data>
   <data name="textBoxSearch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>337, 27</value>
+    <value>347, 29</value>
   </data>
   <data name="textBoxSearch.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;textBoxSearch.Name" xml:space="preserve">
     <value>textBoxSearch</value>
   </data>
   <data name="&gt;&gt;textBoxSearch.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>Sunny.UI.UITextBox, SunnyUI, Version=3.7.2.0, Culture=neutral, PublicKeyToken=27d7d2e821d97aeb</value>
   </data>
   <data name="&gt;&gt;textBoxSearch.Parent" xml:space="preserve">
     <value>groupBoxSearch</value>
@@ -511,7 +523,7 @@
     <value>languageSettings1</value>
   </data>
   <data name="&gt;&gt;languageSettings1.Type" xml:space="preserve">
-    <value>EntryTranslator.Controls.LanguageSettings, EntryTranslator, Version=1.0.0.29680, Culture=neutral, PublicKeyToken=null</value>
+    <value>EntryTranslator.Controls.LanguageSettings, EntryTranslator, Version=1.0.0.33494, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;languageSettings1.Parent" xml:space="preserve">
     <value>tabPage1</value>
@@ -625,7 +637,7 @@
     <value>resourceGrid1</value>
   </data>
   <data name="&gt;&gt;resourceGrid1.Type" xml:space="preserve">
-    <value>EntryTranslator.Controls.LanguageEditor, EntryTranslator, Version=1.0.0.29680, Culture=neutral, PublicKeyToken=null</value>
+    <value>EntryTranslator.Controls.LanguageEditor, EntryTranslator, Version=1.0.0.33494, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;resourceGrid1.Parent" xml:space="preserve">
     <value>tabPageEditedResource</value>
@@ -982,13 +994,13 @@
     <value>Ctrl+H</value>
   </data>
   <data name="helpToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 26</value>
+    <value>180, 26</value>
   </data>
   <data name="helpToolStripMenuItem1.Text" xml:space="preserve">
     <value>文档</value>
   </data>
   <data name="cultureoolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 26</value>
+    <value>180, 26</value>
   </data>
   <data name="cultureoolStripMenuItem.Text" xml:space="preserve">
     <value>国家语言</value>
@@ -1430,6 +1442,6 @@
     <value>MainWindow</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>EntryTranslator.WindowBase, EntryTranslator, Version=1.0.0.29680, Culture=neutral, PublicKeyToken=null</value>
+    <value>EntryTranslator.WindowBase, EntryTranslator, Version=1.0.0.33494, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

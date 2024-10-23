@@ -41,7 +41,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>embedded</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\bin\Debug\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>1</WarningLevel>
@@ -53,7 +53,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>embedded</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\bin\Release\</OutputPath>
+    <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -213,7 +213,7 @@
       <DependentUpon>LanguageEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\CommonUtil.cs" />
-    <Compile Include="Utils\Enums.cs" />
+    <Compile Include="Models\LanguageEnum.cs" />
     <Compile Include="Utils\Extensions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -229,6 +229,12 @@
     <EmbeddedResource Include="Dialogs\LanguageHelp.resx">
       <DependentUpon>LanguageHelp.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="LangDic\Sofar.en.resx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="LangDic\Sofar.zh.resx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <EmbeddedResource Include="WindowBase.resx">
       <DependentUpon>WindowBase.cs</DependentUpon>
     </EmbeddedResource>
@@ -382,7 +388,6 @@
     <None Include="Resources\109_AllAnnotations_Help_16x16_72.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="LangDic\" />
     <Folder Include="Templates\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

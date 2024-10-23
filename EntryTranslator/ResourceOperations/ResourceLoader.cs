@@ -80,8 +80,8 @@ namespace EntryTranslator.ResourceOperations
 
             if (isDirty)
             {
-                var dialogResult = MessageBox.Show("Ҫ�ڹر�֮ǰ���������",
-                    "�������",
+                var dialogResult = MessageBox.Show("当前有未保存数据",
+                    "数据保存",
                     MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
 
                 // Return false only if user presses cancel

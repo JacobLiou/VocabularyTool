@@ -36,6 +36,7 @@
             this.cbSourse = new Sunny.UI.UIComboBox();
             this.uiLabel1 = new Sunny.UI.UILabel();
             this.cbTarget = new Sunny.UI.UIComboBox();
+            this.uiLabel2 = new Sunny.UI.UILabel();
             this.SuspendLayout();
             // 
             // chbOverwrite
@@ -102,6 +103,7 @@
             // cbSourse
             // 
             this.cbSourse.DataSource = null;
+            this.cbSourse.DropDownStyle = Sunny.UI.UIDropDownStyle.DropDownList;
             this.cbSourse.FillColor = System.Drawing.Color.White;
             this.cbSourse.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cbSourse.ItemHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
@@ -132,6 +134,7 @@
             // cbTarget
             // 
             this.cbTarget.DataSource = null;
+            this.cbTarget.DropDownStyle = Sunny.UI.UIDropDownStyle.DropDownList;
             this.cbTarget.FillColor = System.Drawing.Color.White;
             this.cbTarget.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cbTarget.ItemHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
@@ -147,13 +150,26 @@
             this.cbTarget.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.cbTarget.Watermark = "";
             // 
+            // uiLabel2
+            // 
+            this.uiLabel2.BackColor = System.Drawing.Color.Cornsilk;
+            this.uiLabel2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.uiLabel2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel2.ForeColor = System.Drawing.Color.Firebrick;
+            this.uiLabel2.Location = new System.Drawing.Point(224, 319);
+            this.uiLabel2.Name = "uiLabel2";
+            this.uiLabel2.Size = new System.Drawing.Size(155, 28);
+            this.uiLabel2.TabIndex = 101;
+            this.uiLabel2.Text = "联网API查询可能受限";
+            // 
             // TranslateApiSetting
             // 
             this.AcceptButton = this.btnOk;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(636, 325);
+            this.ClientSize = new System.Drawing.Size(636, 359);
             this.Controls.Add(this.cbTarget);
+            this.Controls.Add(this.uiLabel2);
             this.Controls.Add(this.uiLabel1);
             this.Controls.Add(this.cbSourse);
             this.Controls.Add(this.btnCancel);
@@ -168,6 +184,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "翻译设置";
             this.TitleFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Load += new System.EventHandler(this.TranslateApiSetting_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -183,5 +200,6 @@
         private Sunny.UI.UIComboBox cbSourse;
         private Sunny.UI.UILabel uiLabel1;
         private Sunny.UI.UIComboBox cbTarget;
+        private Sunny.UI.UILabel uiLabel2;
     }
 }

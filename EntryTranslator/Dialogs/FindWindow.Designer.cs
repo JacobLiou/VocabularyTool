@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FindWindow));
-            this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButtonRegexp = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -48,6 +47,7 @@
             this.buttonFind = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.textBoxSearch = new Sunny.UI.UITextBox();
             this.groupBox1.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -57,11 +57,6 @@
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // textBoxSearch
-            // 
-            resources.ApplyResources(this.textBoxSearch, "textBoxSearch");
-            this.textBoxSearch.Name = "textBoxSearch";
             // 
             // radioButton1
             // 
@@ -190,6 +185,16 @@
             resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             // 
+            // textBoxSearch
+            // 
+            this.textBoxSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
+            resources.ApplyResources(this.textBoxSearch, "textBoxSearch");
+            this.textBoxSearch.Name = "textBoxSearch";
+            this.textBoxSearch.RectColor = System.Drawing.SystemColors.ControlDark;
+            this.textBoxSearch.ShowText = false;
+            this.textBoxSearch.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.textBoxSearch.Watermark = "";
+            // 
             // FindWindow
             // 
             this.AcceptButton = this.buttonFind;
@@ -225,8 +230,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBoxSearch;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButtonRegexp;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -245,5 +248,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.CheckBox checkBoxTranslText;
+        private Sunny.UI.UITextBox textBoxSearch;
     }
 }
