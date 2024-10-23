@@ -41,8 +41,6 @@ namespace ResxTranslator
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.resourceTreeView1 = new ResxTranslator.Controls.ResourceTreeView();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.missingTranslationView1 = new ResxTranslator.Controls.MissingTranslationView();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.languageSettings1 = new ResxTranslator.Controls.LanguageSettings();
@@ -61,7 +59,6 @@ namespace ResxTranslator
             this.revertCurrentFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openResourceLocationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.findToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.findToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.findNextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -87,7 +84,6 @@ namespace ResxTranslator
             this.splitContainerLeft.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage3.SuspendLayout();
-            this.tabPage5.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl3.SuspendLayout();
@@ -157,7 +153,6 @@ namespace ResxTranslator
             // tabControl2
             // 
             this.tabControl2.Controls.Add(this.tabPage3);
-            this.tabControl2.Controls.Add(this.tabPage5);
             resources.ApplyResources(this.tabControl2, "tabControl2");
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
@@ -173,19 +168,6 @@ namespace ResxTranslator
             // 
             resources.ApplyResources(this.resourceTreeView1, "resourceTreeView1");
             this.resourceTreeView1.Name = "resourceTreeView1";
-            // 
-            // tabPage5
-            // 
-            this.tabPage5.Controls.Add(this.missingTranslationView1);
-            resources.ApplyResources(this.tabPage5, "tabPage5");
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // missingTranslationView1
-            // 
-            resources.ApplyResources(this.missingTranslationView1, "missingTranslationView1");
-            this.missingTranslationView1.Name = "missingTranslationView1";
-            this.missingTranslationView1.ResourceLoader = null;
             // 
             // tabControl1
             // 
@@ -253,8 +235,7 @@ namespace ResxTranslator
             this.saveToolStripMenuItem,
             this.revertCurrentFileToolStripMenuItem,
             this.openResourceLocationToolStripMenuItem,
-            this.toolStripSeparator3,
-            this.exitToolStripMenuItem});
+            this.toolStripSeparator3});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
             // 
@@ -320,12 +301,6 @@ namespace ResxTranslator
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            resources.ApplyResources(this.exitToolStripMenuItem, "exitToolStripMenuItem");
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // findToolStripMenuItem
             // 
@@ -444,7 +419,6 @@ namespace ResxTranslator
             this.splitContainerLeft.ResumeLayout(false);
             this.tabControl2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
-            this.tabPage5.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabControl3.ResumeLayout(false);
@@ -471,7 +445,6 @@ namespace ResxTranslator
         private ToolStripMenuItem saveToolStripMenuItem;
         private ToolStripMenuItem revertCurrentFileToolStripMenuItem;
         private ToolStripMenuItem closeToolStripMenuItem;
-        private ToolStripMenuItem exitToolStripMenuItem;
         private ToolStripMenuItem findToolStripMenuItem;
         private ToolStripMenuItem findToolStripMenuItem1;
         private ToolStripMenuItem keysToolStripMenuItem;
@@ -488,8 +461,6 @@ namespace ResxTranslator
         private TabPage tabPage3;
         private TabControl tabControl3;
         private TabPage tabPageEditedResource;
-        private TabPage tabPage5;
-        private Controls.MissingTranslationView missingTranslationView1;
         private ToolStripMenuItem languagesToolStripMenuItem;
         private ToolStripMenuItem removeLanguageToolStripMenuItem;
         private ToolStripMenuItem clearSearchToolStripMenuItem;

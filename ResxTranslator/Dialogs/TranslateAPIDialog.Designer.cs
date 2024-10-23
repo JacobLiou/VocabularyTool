@@ -43,9 +43,9 @@
             this.chbOverwrite.Location = new System.Drawing.Point(7, 110);
             this.chbOverwrite.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.chbOverwrite.Name = "chbOverwrite";
-            this.chbOverwrite.Size = new System.Drawing.Size(445, 19);
+            this.chbOverwrite.Size = new System.Drawing.Size(149, 19);
             this.chbOverwrite.TabIndex = 3;
-            this.chbOverwrite.Text = "Overwrite already translated text in target language";
+            this.chbOverwrite.Text = "覆盖已有翻译词条";
             this.chbOverwrite.UseVisualStyleBackColor = true;
             this.chbOverwrite.CheckedChanged += new System.EventHandler(this.ChbOverwrite_CheckedChanged);
             // 
@@ -75,27 +75,28 @@
             this.label1.Location = new System.Drawing.Point(7, 12);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(207, 15);
+            this.label1.Size = new System.Drawing.Size(52, 15);
             this.label1.TabIndex = 98;
-            this.label1.Text = "Translate source language";
+            this.label1.Text = "源语言";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label2.Location = new System.Drawing.Point(7, 61);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(207, 15);
+            this.label2.Size = new System.Drawing.Size(67, 15);
             this.label2.TabIndex = 99;
-            this.label2.Text = "Translate target language";
+            this.label2.Text = "目标语言";
             // 
             // btnOk
             // 
             this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOk.Location = new System.Drawing.Point(7, 144);
+            this.btnOk.Location = new System.Drawing.Point(66, 158);
             this.btnOk.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(160, 46);
+            this.btnOk.Size = new System.Drawing.Size(101, 32);
             this.btnOk.TabIndex = 4;
             this.btnOk.Text = "Ok";
             this.btnOk.UseVisualStyleBackColor = true;
@@ -104,10 +105,10 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(244, 144);
+            this.btnCancel.Location = new System.Drawing.Point(244, 158);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(160, 46);
+            this.btnCancel.Size = new System.Drawing.Size(101, 32);
             this.btnCancel.TabIndex = 5;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -132,7 +133,7 @@
             this.MinimizeBox = false;
             this.Name = "TranslateAPIDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "TranslateAPIDialog";
+            this.Text = "翻译设置";
             this.ResumeLayout(false);
             this.PerformLayout();
 

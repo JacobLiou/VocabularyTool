@@ -41,7 +41,6 @@
             this.checkBoxTranslText = new System.Windows.Forms.CheckBox();
             this.checkBoxKey = new System.Windows.Forms.CheckBox();
             this.checkBoxLang = new System.Windows.Forms.CheckBox();
-            this.checkBoxFile = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.checkBoxCS = new System.Windows.Forms.CheckBox();
@@ -112,7 +111,6 @@
             this.flowLayoutPanel4.Controls.Add(this.checkBoxTranslText);
             this.flowLayoutPanel4.Controls.Add(this.checkBoxKey);
             this.flowLayoutPanel4.Controls.Add(this.checkBoxLang);
-            this.flowLayoutPanel4.Controls.Add(this.checkBoxFile);
             resources.ApplyResources(this.flowLayoutPanel4, "flowLayoutPanel4");
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
             // 
@@ -143,12 +141,6 @@
             resources.ApplyResources(this.checkBoxLang, "checkBoxLang");
             this.checkBoxLang.Name = "checkBoxLang";
             this.checkBoxLang.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxFile
-            // 
-            resources.ApplyResources(this.checkBoxFile, "checkBoxFile");
-            this.checkBoxFile.Name = "checkBoxFile";
-            this.checkBoxFile.UseVisualStyleBackColor = true;
             // 
             // groupBox4
             // 
@@ -248,7 +240,6 @@
         private System.Windows.Forms.CheckBox checkBoxWord;
         private System.Windows.Forms.CheckBox checkBoxCS;
         private System.Windows.Forms.Button buttonFind;
-        private System.Windows.Forms.CheckBox checkBoxFile;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;

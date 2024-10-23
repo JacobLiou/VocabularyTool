@@ -22,7 +22,7 @@ namespace ResxTranslator.ResourceOperations
         {
         }
 
-        public SearchParams(string text, bool searchLanguage, bool searchKeys, bool searchOriginalText, bool searchTranslatedText, bool searchFileName, bool useRegex, bool optCase, bool optWord)
+        public SearchParams(string text, bool searchLanguage, bool searchKeys, bool searchOriginalText, bool searchTranslatedText, bool useRegex, bool optCase, bool optWord)
         {
             Text = text;
 
@@ -30,7 +30,6 @@ namespace ResxTranslator.ResourceOperations
             SearchKeys = searchKeys;
             SearchOriginalText = searchOriginalText;
             SearchTranslatedText = searchTranslatedText;
-            SearchFileName = searchFileName;
             UseRegex = useRegex;
             OptCase = optCase;
             OptWord = optWord;

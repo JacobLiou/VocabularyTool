@@ -34,27 +34,7 @@ namespace ResxTranslator
             ResourceLoader.ResourceLoadProgress += OnResourceLoadProgress;
             ResourceLoader.ResourcesChanged += OnResourceLoaderOnResourcesChanged;
 
-            missingTranslationView1.ResourceLoader = ResourceLoader;
-
             resourceTreeView1.ResourceOpened += (sender, args) => CurrentResource = args.Resource;
-
-            missingTranslationView1.ItemOpened += (sender, args) =>
-            {
-                if (!args.Item.Languages.ContainsKey(args.Language.Name))
-                {
-                    if (MessageBox.Show(this, "语言文件丢失", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-                        return;
-
-                    args.Item.AddLanguage(args.Language.Name, Settings.Default.AddDefaultValuesOnLanguageAdd);
-                    resourceGrid1.RefreshResourceDisplay();
-                }
-
-                languageSettings1.SetLanguageState(args.Language.Name, true);
-                CurrentResource = args.Item;
-
-                resourceGrid1.Focus();
-                resourceGrid1.SelectNextMissingTranslation(args.Language.Name);
-            };
 
             languageSettings1.EnabledLanguagesChanged += (sender, args) =>
             {
@@ -291,11 +271,6 @@ namespace ResxTranslator
             {
                 resourceGrid1.DeleteSelectedRow();
             }
-        }
-
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Close();
         }
 
         private void findToolStripMenuItem1_Click(object sender, EventArgs e)

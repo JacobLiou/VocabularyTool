@@ -1,6 +1,6 @@
-﻿using System;
+﻿using ResxTranslator.ResourceOperations;
+using System;
 using System.Windows.Forms;
-using ResxTranslator.ResourceOperations;
 
 namespace ResxTranslator.Dialogs
 {
@@ -31,7 +31,6 @@ namespace ResxTranslator.Dialogs
                 , checkBoxKey.Checked
                 , checkBoxOrigText.Checked
                 , checkBoxTranslText.Checked
-                , checkBoxFile.Checked
                 , radioButtonRegexp.Checked
                 , checkBoxCS.Checked
                 , checkBoxWord.Checked);
@@ -51,7 +50,6 @@ namespace ResxTranslator.Dialogs
             checkBoxKey.Checked = sp.SearchKeys;
             checkBoxOrigText.Checked = sp.SearchOriginalText;
             checkBoxTranslText.Checked = sp.SearchTranslatedText;
-            checkBoxFile.Checked = sp.SearchFileName;
             radioButtonRegexp.Checked = sp.UseRegex;
             checkBoxCS.Checked = sp.OptCase;
             checkBoxWord.Checked = sp.OptWord;

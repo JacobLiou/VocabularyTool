@@ -123,10 +123,13 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="textBoxSearch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 18</value>
+    <value>8, 24</value>
+  </data>
+  <data name="textBoxSearch.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
   </data>
   <data name="textBoxSearch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>338, 20</value>
+    <value>451, 25</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="textBoxSearch.TabIndex" type="System.Int32, mscorlib">
@@ -148,10 +151,13 @@
     <value>True</value>
   </data>
   <data name="radioButton1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+    <value>4, 3</value>
+  </data>
+  <data name="radioButton1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
   </data>
   <data name="radioButton1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 17</value>
+    <value>60, 19</value>
   </data>
   <data name="radioButton1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -175,10 +181,13 @@
     <value>True</value>
   </data>
   <data name="radioButtonRegexp.Location" type="System.Drawing.Point, System.Drawing">
-    <value>55, 3</value>
+    <value>72, 3</value>
+  </data>
+  <data name="radioButtonRegexp.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
   </data>
   <data name="radioButtonRegexp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 17</value>
+    <value>76, 19</value>
   </data>
   <data name="radioButtonRegexp.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -208,13 +217,13 @@
     <value>Top</value>
   </data>
   <data name="flowLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 18</value>
+    <value>8, 24</value>
   </data>
   <data name="flowLayoutPanel3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="flowLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>338, 23</value>
+    <value>451, 25</value>
   </data>
   <data name="flowLayoutPanel3.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -235,19 +244,22 @@
     <value>Top</value>
   </data>
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 125</value>
+    <value>8, 152</value>
+  </data>
+  <data name="groupBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
   </data>
   <data name="groupBox1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 5, 6, 8</value>
+    <value>8, 6, 8, 9</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>350, 49</value>
+    <value>467, 58</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
-    <value>Use:</value>
+    <value>使用:</value>
   </data>
   <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
     <value>groupBox1</value>
@@ -268,19 +280,22 @@
     <value>Top</value>
   </data>
   <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 6</value>
+    <value>8, 7</value>
+  </data>
+  <data name="groupBox2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
   </data>
   <data name="groupBox2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 5, 6, 8</value>
+    <value>8, 6, 8, 9</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>350, 46</value>
+    <value>467, 58</value>
   </data>
   <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
-    <value>Find:</value>
+    <value>输入:</value>
   </data>
   <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
     <value>groupBox2</value>
@@ -304,16 +319,19 @@
     <value>True</value>
   </data>
   <data name="checkBoxOrigText.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+    <value>4, 3</value>
+  </data>
+  <data name="checkBoxOrigText.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
   </data>
   <data name="checkBoxOrigText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 17</value>
+    <value>74, 19</value>
   </data>
   <data name="checkBoxOrigText.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="checkBoxOrigText.Text" xml:space="preserve">
-    <value>Original Text</value>
+    <value>源文本</value>
   </data>
   <data name="&gt;&gt;checkBoxOrigText.Name" xml:space="preserve">
     <value>checkBoxOrigText</value>
@@ -334,16 +352,19 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxTranslText.Location" type="System.Drawing.Point, System.Drawing">
-    <value>94, 3</value>
+    <value>86, 3</value>
+  </data>
+  <data name="checkBoxTranslText.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
   </data>
   <data name="checkBoxTranslText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 17</value>
+    <value>89, 19</value>
   </data>
   <data name="checkBoxTranslText.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
   <data name="checkBoxTranslText.Text" xml:space="preserve">
-    <value>Translated Text</value>
+    <value>翻译文本</value>
   </data>
   <data name="&gt;&gt;checkBoxTranslText.Name" xml:space="preserve">
     <value>checkBoxTranslText</value>
@@ -361,16 +382,19 @@
     <value>True</value>
   </data>
   <data name="checkBoxKey.Location" type="System.Drawing.Point, System.Drawing">
-    <value>200, 3</value>
+    <value>183, 3</value>
+  </data>
+  <data name="checkBoxKey.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
   </data>
   <data name="checkBoxKey.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 17</value>
+    <value>59, 19</value>
   </data>
   <data name="checkBoxKey.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="checkBoxKey.Text" xml:space="preserve">
-    <value>Key</value>
+    <value>键值</value>
   </data>
   <data name="&gt;&gt;checkBoxKey.Name" xml:space="preserve">
     <value>checkBoxKey</value>
@@ -390,14 +414,17 @@
   <data name="checkBoxLang.Location" type="System.Drawing.Point, System.Drawing">
     <value>250, 3</value>
   </data>
+  <data name="checkBoxLang.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
+  </data>
   <data name="checkBoxLang.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 17</value>
+    <value>59, 19</value>
   </data>
   <data name="checkBoxLang.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
   <data name="checkBoxLang.Text" xml:space="preserve">
-    <value>Language</value>
+    <value>语言</value>
   </data>
   <data name="&gt;&gt;checkBoxLang.Name" xml:space="preserve">
     <value>checkBoxLang</value>
@@ -411,44 +438,17 @@
   <data name="&gt;&gt;checkBoxLang.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="checkBoxFile.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBoxFile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 26</value>
-  </data>
-  <data name="checkBoxFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 17</value>
-  </data>
-  <data name="checkBoxFile.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="checkBoxFile.Text" xml:space="preserve">
-    <value>File name</value>
-  </data>
-  <data name="&gt;&gt;checkBoxFile.Name" xml:space="preserve">
-    <value>checkBoxFile</value>
-  </data>
-  <data name="&gt;&gt;checkBoxFile.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxFile.Parent" xml:space="preserve">
-    <value>flowLayoutPanel4</value>
-  </data>
-  <data name="&gt;&gt;checkBoxFile.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="flowLayoutPanel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
   <data name="flowLayoutPanel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 18</value>
+    <value>8, 24</value>
   </data>
   <data name="flowLayoutPanel4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="flowLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>338, 47</value>
+    <value>451, 54</value>
   </data>
   <data name="flowLayoutPanel4.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -469,19 +469,22 @@
     <value>Top</value>
   </data>
   <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 52</value>
+    <value>8, 65</value>
+  </data>
+  <data name="groupBox3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
   </data>
   <data name="groupBox3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 5, 6, 8</value>
+    <value>8, 6, 8, 9</value>
   </data>
   <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>350, 73</value>
+    <value>467, 87</value>
   </data>
   <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="groupBox3.Text" xml:space="preserve">
-    <value>What:</value>
+    <value>方式:</value>
   </data>
   <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
     <value>groupBox3</value>
@@ -505,10 +508,13 @@
     <value>True</value>
   </data>
   <data name="checkBoxCS.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+    <value>4, 3</value>
+  </data>
+  <data name="checkBoxCS.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
   </data>
   <data name="checkBoxCS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 17</value>
+    <value>141, 19</value>
   </data>
   <data name="checkBoxCS.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -532,10 +538,13 @@
     <value>True</value>
   </data>
   <data name="checkBoxWord.Location" type="System.Drawing.Point, System.Drawing">
-    <value>103, 3</value>
+    <value>153, 3</value>
+  </data>
+  <data name="checkBoxWord.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
   </data>
   <data name="checkBoxWord.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 17</value>
+    <value>109, 19</value>
   </data>
   <data name="checkBoxWord.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -559,13 +568,13 @@
     <value>Top</value>
   </data>
   <data name="flowLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 18</value>
+    <value>8, 24</value>
   </data>
   <data name="flowLayoutPanel2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>338, 23</value>
+    <value>451, 25</value>
   </data>
   <data name="flowLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -586,19 +595,22 @@
     <value>Top</value>
   </data>
   <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 174</value>
+    <value>8, 210</value>
+  </data>
+  <data name="groupBox4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
   </data>
   <data name="groupBox4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 5, 6, 8</value>
+    <value>8, 6, 8, 9</value>
   </data>
   <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>350, 49</value>
+    <value>467, 58</value>
   </data>
   <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
   <data name="groupBox4.Text" xml:space="preserve">
-    <value>Options:</value>
+    <value>可选项:</value>
   </data>
   <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
     <value>groupBox4</value>
@@ -613,16 +625,19 @@
     <value>1</value>
   </data>
   <data name="buttonFind.Location" type="System.Drawing.Point, System.Drawing">
-    <value>191, 3</value>
+    <value>255, 3</value>
+  </data>
+  <data name="buttonFind.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
   </data>
   <data name="buttonFind.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
+    <value>100, 27</value>
   </data>
   <data name="buttonFind.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="buttonFind.Text" xml:space="preserve">
-    <value>Find all</value>
+    <value>查找全部</value>
   </data>
   <data name="&gt;&gt;buttonFind.Name" xml:space="preserve">
     <value>buttonFind</value>
@@ -637,16 +652,19 @@
     <value>1</value>
   </data>
   <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>272, 3</value>
+    <value>363, 3</value>
+  </data>
+  <data name="button1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
   </data>
   <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
+    <value>100, 27</value>
   </data>
   <data name="button1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="button1.Text" xml:space="preserve">
-    <value>Cancel</value>
+    <value>取消</value>
   </data>
   <data name="&gt;&gt;button1.Name" xml:space="preserve">
     <value>button1</value>
@@ -670,13 +688,13 @@
     <value>RightToLeft</value>
   </data>
   <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 223</value>
+    <value>8, 268</value>
   </data>
   <data name="flowLayoutPanel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>350, 29</value>
+    <value>467, 33</value>
   </data>
   <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -697,7 +715,7 @@
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+    <value>8, 15</value>
   </data>
   <data name="$this.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -706,16 +724,19 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>362, 246</value>
+    <value>483, 339</value>
+  </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>342, 39</value>
+    <value>450, 47</value>
   </data>
   <data name="$this.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>8, 7, 8, 7</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Find...</value>
+    <value>查找</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FindWindow</value>

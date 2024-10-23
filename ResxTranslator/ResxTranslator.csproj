@@ -194,9 +194,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dialogs\EditReferencePaths.resx">
-      <DependentUpon>EditReferencePaths.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\AddResourceKeyWindow.resx">
       <DependentUpon>AddResourceKeyWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -245,12 +242,6 @@
     <Compile Include="Utils\SettingBinder.cs" />
     <Compile Include="Utils\SettingChangedEventArgs.cs" />
     <Compile Include="Properties\Settings.cs" />
-    <Compile Include="Dialogs\EditReferencePaths.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Dialogs\EditReferencePaths.Designer.cs">
-      <DependentUpon>EditReferencePaths.cs</DependentUpon>
-    </Compile>
     <Compile Include="Dialogs\AddResourceKeyWindow.cs">
       <SubType>Form</SubType>
     </Compile>
