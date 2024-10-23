@@ -367,7 +367,7 @@ namespace ResxTranslator
             this.addLanguageToolStripMenuItem.Image = global::ResxTranslator.Properties.Resources.Add;
             this.addLanguageToolStripMenuItem.Name = "addLanguageToolStripMenuItem";
             resources.ApplyResources(this.addLanguageToolStripMenuItem, "addLanguageToolStripMenuItem");
-            this.addLanguageToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.addLanguageToolStripMenuItem_DropDownItemClicked);
+            this.addLanguageToolStripMenuItem.Click += new System.EventHandler(this.addLanguageToolStripMenuItem_Clicked);
             // 
             // removeLanguageToolStripMenuItem
             // 

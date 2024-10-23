@@ -118,14 +118,14 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="columnHeaderCode.Text" xml:space="preserve">
-    <value>Code</value>
+    <value>语言代码</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="columnHeaderCode.Width" type="System.Int32, mscorlib">
     <value>80</value>
   </data>
   <data name="columnHeaderName.Text" xml:space="preserve">
-    <value>Language name</value>
+    <value>语言名称</value>
   </data>
   <data name="columnHeaderName.Width" type="System.Int32, mscorlib">
     <value>130</value>
@@ -136,10 +136,13 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="listView1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 25</value>
+    <value>0, 27</value>
+  </data>
+  <data name="listView1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
   </data>
   <data name="listView1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>372, 324</value>
+    <value>496, 376</value>
   </data>
   <data name="listView1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -159,10 +162,13 @@
   <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="toolStripButtonSelectAll.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 9pt</value>
+  </data>
   <data name="toolStripButtonSelectAll.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJKSURBVGhD7ZmvNwVRFIVfEARBEAVBFQRBEARBEARBEPwJ
+        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAJKSURBVGhD7ZmvNwVRFIVfEARBEAVBFQRBEARBEARBEPwJ
         gqAKgigIgj9AEEVRFBRBEARBEARBYG/LZTvrzp0fzuGtZb61vvBm7t1n3rw7796ZGfT09PT8a+bhBXyG
         rwVv4BIcSmZg3RdQX+AsHDp2Ye6AS7LPUDECr2A6wGM4BS1jcB+mdpcf236dbXgN04HkPId1sE2ub/IR
         8gvzBLmzA3NFrU2Gyx7M9bWGDL0HmCtmXYV1sE2ur/UOuqMFFP5bpe38W20yHNhGh+gcVNJ26k5VuF68
@@ -179,15 +185,18 @@
     <value>Magenta</value>
   </data>
   <data name="toolStripButtonSelectAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 22</value>
+    <value>61, 24</value>
   </data>
   <data name="toolStripButtonSelectAll.Text" xml:space="preserve">
-    <value>Select all</value>
+    <value>全选</value>
+  </data>
+  <data name="toolStripButtonSelectNone.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 9pt</value>
   </data>
   <data name="toolStripButtonSelectNone.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF3SURBVGhD7ZkhTsRAGIUrEIg9BBdAIBB7ACQCwVEQWASC
+        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAF3SURBVGhD7ZkhTsRAGIUrEIg9BBdAIBB7ACQCwVEQWASC
         AyA5CnLlCgwCiUAgkIgV8P6ESf68DNtmmQ+aMF/ymen0vbaZVnSGTqfT+dcs5Uq+y48tPskTOUsO5dgN
         ZDfySM6OK1m74G3GObNiTz7IcoF38kA6C3kjy7z119ivcyEfZbmQmvdyjJhTO7f4JuOG4wE151LWSt0p
         y+Va1s51kaX3Kmtl7pkcI+bUznWfZXNyQSa+VmU8PqtTlkPMyUv0WGbKeNic78Lzy7urtzKTjzWnFh5P
@@ -201,16 +210,19 @@
     <value>Magenta</value>
   </data>
   <data name="toolStripButtonSelectNone.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 22</value>
+    <value>76, 24</value>
   </data>
   <data name="toolStripButtonSelectNone.Text" xml:space="preserve">
-    <value>Select none</value>
+    <value>全不选</value>
+  </data>
+  <data name="toolStripButtonSelectInvert.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 9pt</value>
   </data>
   <data name="toolStripButtonSelectInvert.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
   <data name="toolStripButtonSelectInvert.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
+    <value>29, 24</value>
   </data>
   <data name="toolStripButtonSelectInvert.Text" xml:space="preserve">
     <value>Invert selection</value>
@@ -219,7 +231,7 @@
     <value>0, 0</value>
   </data>
   <data name="toolStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>372, 25</value>
+    <value>496, 27</value>
   </data>
   <data name="toolStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -243,10 +255,13 @@
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+    <value>8, 15</value>
+  </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>372, 349</value>
+    <value>496, 403</value>
   </data>
   <data name="&gt;&gt;columnHeaderCode.Name" xml:space="preserve">
     <value>columnHeaderCode</value>

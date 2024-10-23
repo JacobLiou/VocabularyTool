@@ -70,6 +70,7 @@
             // toolStrip1
             // 
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButtonSelectAll,
             this.toolStripButtonSelectNone,
@@ -92,8 +93,8 @@
             // toolStripButtonSelectInvert
             // 
             this.toolStripButtonSelectInvert.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonSelectInvert.Image = global::ResxTranslator.Properties.Resources.clipboard;
             resources.ApplyResources(this.toolStripButtonSelectInvert, "toolStripButtonSelectInvert");
+            this.toolStripButtonSelectInvert.Image = global::ResxTranslator.Properties.Resources.clipboard;
             this.toolStripButtonSelectInvert.Name = "toolStripButtonSelectInvert";
             this.toolStripButtonSelectInvert.Click += new System.EventHandler(this.toolStripButtonSelectInvert_Click);
             // 

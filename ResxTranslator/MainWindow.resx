@@ -121,19 +121,6 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="toolStripStatusLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 16</value>
-  </data>
-  <data name="toolStripProgressBar1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>133, 20</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="toolStripProgressBar1.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="toolStripStatusLabelCurrentItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 16</value>
-  </data>
   <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 725</value>
   </data>
@@ -147,6 +134,7 @@
   <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
     <value>1179, 22</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="statusStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
@@ -164,6 +152,57 @@
   </data>
   <data name="&gt;&gt;statusStrip1.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="toolStripStatusLabel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 16</value>
+  </data>
+  <data name="toolStripProgressBar1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>133, 20</value>
+  </data>
+  <data name="toolStripProgressBar1.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="toolStripStatusLabelCurrentItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 16</value>
+  </data>
+  <data name="&gt;&gt;splitContainerMain.Name" xml:space="preserve">
+    <value>splitContainerMain</value>
+  </data>
+  <data name="&gt;&gt;splitContainerMain.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainerMain.Parent" xml:space="preserve">
+    <value>panelMain</value>
+  </data>
+  <data name="&gt;&gt;splitContainerMain.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panelMain.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="panelMain.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 30</value>
+  </data>
+  <data name="panelMain.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 7</value>
+  </data>
+  <data name="panelMain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1179, 695</value>
+  </data>
+  <data name="panelMain.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;panelMain.Name" xml:space="preserve">
+    <value>panelMain</value>
+  </data>
+  <data name="&gt;&gt;panelMain.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelMain.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panelMain.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="splitContainerMain.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -185,48 +224,6 @@
   </data>
   <data name="splitContainerLeft.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
     <value>Horizontal</value>
-  </data>
-  <data name="resourceTreeView1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="resourceTreeView1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="resourceTreeView1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="resourceTreeView1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>238, 342</value>
-  </data>
-  <data name="resourceTreeView1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;resourceTreeView1.Name" xml:space="preserve">
-    <value>resourceTreeView1</value>
-  </data>
-  <data name="&gt;&gt;resourceTreeView1.Type" xml:space="preserve">
-    <value>ResxTranslator.Controls.ResourceTreeView, ResxTranslator, Version=2.12.0.35784, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;resourceTreeView1.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;resourceTreeView1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tabPage3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 28</value>
-  </data>
-  <data name="tabPage3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="tabPage3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>238, 342</value>
-  </data>
-  <data name="tabPage3.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="tabPage3.Text" xml:space="preserve">
-    <value>All resources</value>
   </data>
   <data name="&gt;&gt;tabPage3.Name" xml:space="preserve">
     <value>tabPage3</value>
@@ -250,7 +247,7 @@
     <value>4, 4, 4, 4</value>
   </data>
   <data name="tabControl2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>246, 374</value>
+    <value>246, 370</value>
   </data>
   <data name="tabControl2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -279,48 +276,6 @@
   <data name="&gt;&gt;splitContainerLeft.Panel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="languageSettings1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="languageSettings1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="languageSettings1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="languageSettings1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>238, 283</value>
-  </data>
-  <data name="languageSettings1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;languageSettings1.Name" xml:space="preserve">
-    <value>languageSettings1</value>
-  </data>
-  <data name="&gt;&gt;languageSettings1.Type" xml:space="preserve">
-    <value>ResxTranslator.Controls.LanguageSettings, ResxTranslator, Version=2.12.0.35784, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;languageSettings1.Parent" xml:space="preserve">
-    <value>tabPage1</value>
-  </data>
-  <data name="&gt;&gt;languageSettings1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tabPage1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 28</value>
-  </data>
-  <data name="tabPage1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>238, 283</value>
-  </data>
-  <data name="tabPage1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="tabPage1.Text" xml:space="preserve">
-    <value>Displayed languages</value>
-  </data>
   <data name="&gt;&gt;tabPage1.Name" xml:space="preserve">
     <value>tabPage1</value>
   </data>
@@ -343,7 +298,7 @@
     <value>4, 4, 4, 4</value>
   </data>
   <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>246, 315</value>
+    <value>246, 319</value>
   </data>
   <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -376,7 +331,7 @@
     <value>246, 695</value>
   </data>
   <data name="splitContainerLeft.SplitterDistance" type="System.Int32, mscorlib">
-    <value>374</value>
+    <value>370</value>
   </data>
   <data name="splitContainerLeft.SplitterWidth" type="System.Int32, mscorlib">
     <value>6</value>
@@ -410,48 +365,6 @@
   </data>
   <data name="splitContainerMain.Panel1MinSize" type="System.Int32, mscorlib">
     <value>125</value>
-  </data>
-  <data name="resourceGrid1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="resourceGrid1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="resourceGrid1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="resourceGrid1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>920, 663</value>
-  </data>
-  <data name="resourceGrid1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;resourceGrid1.Name" xml:space="preserve">
-    <value>resourceGrid1</value>
-  </data>
-  <data name="&gt;&gt;resourceGrid1.Type" xml:space="preserve">
-    <value>ResxTranslator.Controls.ResourceGrid, ResxTranslator, Version=2.12.0.35784, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;resourceGrid1.Parent" xml:space="preserve">
-    <value>tabPageEditedResource</value>
-  </data>
-  <data name="&gt;&gt;resourceGrid1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tabPageEditedResource.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 28</value>
-  </data>
-  <data name="tabPageEditedResource.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="tabPageEditedResource.Size" type="System.Drawing.Size, System.Drawing">
-    <value>920, 663</value>
-  </data>
-  <data name="tabPageEditedResource.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="tabPageEditedResource.Text" xml:space="preserve">
-    <value>Resource editor</value>
   </data>
   <data name="&gt;&gt;tabPageEditedResource.Name" xml:space="preserve">
     <value>tabPageEditedResource</value>
@@ -531,31 +444,202 @@
   <data name="&gt;&gt;splitContainerMain.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="panelMain.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="&gt;&gt;resourceTreeView1.Name" xml:space="preserve">
+    <value>resourceTreeView1</value>
+  </data>
+  <data name="&gt;&gt;resourceTreeView1.Type" xml:space="preserve">
+    <value>ResxTranslator.Controls.ResourceTreeView, ResxTranslator, Version=2.12.0.36169, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;resourceTreeView1.Parent" xml:space="preserve">
+    <value>tabPage3</value>
+  </data>
+  <data name="&gt;&gt;resourceTreeView1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tabPage3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 28</value>
+  </data>
+  <data name="tabPage3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="tabPage3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>238, 338</value>
+  </data>
+  <data name="tabPage3.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="tabPage3.Text" xml:space="preserve">
+    <value>All resources</value>
+  </data>
+  <data name="&gt;&gt;tabPage3.Name" xml:space="preserve">
+    <value>tabPage3</value>
+  </data>
+  <data name="&gt;&gt;tabPage3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPage3.Parent" xml:space="preserve">
+    <value>tabControl2</value>
+  </data>
+  <data name="&gt;&gt;tabPage3.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="resourceTreeView1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="panelMain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 30</value>
+  <data name="resourceTreeView1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
-  <data name="panelMain.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 7</value>
+  <data name="resourceTreeView1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
-  <data name="panelMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1179, 695</value>
+  <data name="resourceTreeView1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>238, 338</value>
   </data>
-  <data name="panelMain.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="resourceTreeView1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <data name="&gt;&gt;panelMain.Name" xml:space="preserve">
-    <value>panelMain</value>
+  <data name="&gt;&gt;resourceTreeView1.Name" xml:space="preserve">
+    <value>resourceTreeView1</value>
   </data>
-  <data name="&gt;&gt;panelMain.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;resourceTreeView1.Type" xml:space="preserve">
+    <value>ResxTranslator.Controls.ResourceTreeView, ResxTranslator, Version=2.12.0.36169, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;panelMain.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;resourceTreeView1.Parent" xml:space="preserve">
+    <value>tabPage3</value>
   </data>
-  <data name="&gt;&gt;panelMain.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;resourceTreeView1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;languageSettings1.Name" xml:space="preserve">
+    <value>languageSettings1</value>
+  </data>
+  <data name="&gt;&gt;languageSettings1.Type" xml:space="preserve">
+    <value>ResxTranslator.Controls.LanguageSettings, ResxTranslator, Version=2.12.0.36169, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;languageSettings1.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;languageSettings1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tabPage1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 28</value>
+  </data>
+  <data name="tabPage1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>238, 287</value>
+  </data>
+  <data name="tabPage1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="tabPage1.Text" xml:space="preserve">
+    <value>Displayed languages</value>
+  </data>
+  <data name="&gt;&gt;tabPage1.Name" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;tabPage1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPage1.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabPage1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="languageSettings1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="languageSettings1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="languageSettings1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="languageSettings1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>238, 287</value>
+  </data>
+  <data name="languageSettings1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;languageSettings1.Name" xml:space="preserve">
+    <value>languageSettings1</value>
+  </data>
+  <data name="&gt;&gt;languageSettings1.Type" xml:space="preserve">
+    <value>ResxTranslator.Controls.LanguageSettings, ResxTranslator, Version=2.12.0.36169, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;languageSettings1.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;languageSettings1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;resourceGrid1.Name" xml:space="preserve">
+    <value>resourceGrid1</value>
+  </data>
+  <data name="&gt;&gt;resourceGrid1.Type" xml:space="preserve">
+    <value>ResxTranslator.Controls.ResourceGrid, ResxTranslator, Version=2.12.0.36169, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;resourceGrid1.Parent" xml:space="preserve">
+    <value>tabPageEditedResource</value>
+  </data>
+  <data name="&gt;&gt;resourceGrid1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tabPageEditedResource.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 28</value>
+  </data>
+  <data name="tabPageEditedResource.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="tabPageEditedResource.Size" type="System.Drawing.Size, System.Drawing">
+    <value>920, 663</value>
+  </data>
+  <data name="tabPageEditedResource.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="tabPageEditedResource.Text" xml:space="preserve">
+    <value>Resource editor</value>
+  </data>
+  <data name="&gt;&gt;tabPageEditedResource.Name" xml:space="preserve">
+    <value>tabPageEditedResource</value>
+  </data>
+  <data name="&gt;&gt;tabPageEditedResource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageEditedResource.Parent" xml:space="preserve">
+    <value>tabControl3</value>
+  </data>
+  <data name="&gt;&gt;tabPageEditedResource.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="resourceGrid1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="resourceGrid1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="resourceGrid1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="resourceGrid1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>920, 663</value>
+  </data>
+  <data name="resourceGrid1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;resourceGrid1.Name" xml:space="preserve">
+    <value>resourceGrid1</value>
+  </data>
+  <data name="&gt;&gt;resourceGrid1.Type" xml:space="preserve">
+    <value>ResxTranslator.Controls.ResourceGrid, ResxTranslator, Version=2.12.0.36169, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;resourceGrid1.Parent" xml:space="preserve">
+    <value>tabPageEditedResource</value>
+  </data>
+  <data name="&gt;&gt;resourceGrid1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="menuStripMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -565,58 +649,58 @@
     <value>Ctrl+O</value>
   </data>
   <data name="openToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>273, 26</value>
+    <value>224, 26</value>
   </data>
   <data name="openToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Open directory...</value>
+    <value>打开目录</value>
   </data>
   <data name="saveAllModifiedToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+S</value>
   </data>
   <data name="saveAllModifiedToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>273, 26</value>
+    <value>224, 26</value>
   </data>
   <data name="saveAllModifiedToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Save all modified</value>
+    <value>保存更改</value>
   </data>
   <data name="closeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>273, 26</value>
+    <value>224, 26</value>
   </data>
   <data name="closeToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Close directory</value>
+    <value>关闭目录</value>
   </data>
   <data name="reloadCurrentDirectoryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>273, 26</value>
+    <value>224, 26</value>
   </data>
   <data name="reloadCurrentDirectoryToolStripMenuItem.Text" xml:space="preserve">
-    <value>Reload current directory</value>
+    <value>重载当前</value>
   </data>
   <data name="exportAllResourcesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>273, 26</value>
+    <value>224, 26</value>
   </data>
   <data name="exportAllResourcesToolStripMenuItem.Text" xml:space="preserve">
-    <value>Export all resources...</value>
+    <value>导出</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
     <value>270, 6</value>
   </data>
   <data name="saveToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>273, 26</value>
+    <value>224, 26</value>
   </data>
   <data name="saveToolStripMenuItem.Text" xml:space="preserve">
-    <value>Save current resource</value>
+    <value>保存当前</value>
   </data>
   <data name="revertCurrentFileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>273, 26</value>
+    <value>224, 26</value>
   </data>
   <data name="revertCurrentFileToolStripMenuItem.Text" xml:space="preserve">
-    <value>Revert current resource</value>
+    <value>撤销当前</value>
   </data>
   <data name="openResourceLocationToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>273, 26</value>
+    <value>224, 26</value>
   </data>
   <data name="openResourceLocationToolStripMenuItem.Text" xml:space="preserve">
-    <value>Open resource location</value>
+    <value>打开位置</value>
   </data>
   <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
     <value>270, 6</value>
@@ -627,71 +711,17 @@
   <data name="fileToolStripMenuItem.Text" xml:space="preserve">
     <value>文件</value>
   </data>
-  <data name="findToolStripMenuItem1.ShortcutKeyDisplayString" xml:space="preserve">
-    <value>Control+F</value>
-  </data>
-  <data name="findToolStripMenuItem1.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+F</value>
-  </data>
-  <data name="findToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>205, 26</value>
-  </data>
-  <data name="findToolStripMenuItem1.Text" xml:space="preserve">
-    <value>查找</value>
-  </data>
-  <data name="findNextToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>F3</value>
-  </data>
-  <data name="findNextToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>205, 26</value>
-  </data>
-  <data name="findNextToolStripMenuItem.Text" xml:space="preserve">
-    <value>定位下一个</value>
-  </data>
-  <data name="clearSearchToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>205, 26</value>
-  </data>
-  <data name="clearSearchToolStripMenuItem.Text" xml:space="preserve">
-    <value>清除搜索</value>
-  </data>
   <data name="findToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 24</value>
   </data>
   <data name="findToolStripMenuItem.Text" xml:space="preserve">
     <value>搜索</value>
   </data>
-  <data name="addNewKeyToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+N</value>
-  </data>
-  <data name="addNewKeyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>225, 26</value>
-  </data>
-  <data name="addNewKeyToolStripMenuItem.Text" xml:space="preserve">
-    <value>增加新键值</value>
-  </data>
-  <data name="deleteKeyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>225, 26</value>
-  </data>
-  <data name="deleteKeyToolStripMenuItem.Text" xml:space="preserve">
-    <value>删除键值</value>
-  </data>
   <data name="keysToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>68, 24</value>
   </data>
   <data name="keysToolStripMenuItem.Text" xml:space="preserve">
     <value>词条键</value>
-  </data>
-  <data name="addLanguageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 26</value>
-  </data>
-  <data name="addLanguageToolStripMenuItem.Text" xml:space="preserve">
-    <value>增加新语言</value>
-  </data>
-  <data name="removeLanguageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 26</value>
-  </data>
-  <data name="removeLanguageToolStripMenuItem.Text" xml:space="preserve">
-    <value>删除语言</value>
   </data>
   <data name="languagesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 24</value>
@@ -704,12 +734,6 @@
   </data>
   <data name="toolStripMenuItemGT.Text" xml:space="preserve">
     <value>在线翻译</value>
-  </data>
-  <data name="helpToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 26</value>
-  </data>
-  <data name="helpToolStripMenuItem1.Text" xml:space="preserve">
-    <value>文档</value>
   </data>
   <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 24</value>
@@ -743,6 +767,66 @@
   </data>
   <data name="&gt;&gt;menuStripMain.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="findToolStripMenuItem1.ShortcutKeyDisplayString" xml:space="preserve">
+    <value>Control+F</value>
+  </data>
+  <data name="findToolStripMenuItem1.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+F</value>
+  </data>
+  <data name="findToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>205, 26</value>
+  </data>
+  <data name="findToolStripMenuItem1.Text" xml:space="preserve">
+    <value>查找</value>
+  </data>
+  <data name="findNextToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>F3</value>
+  </data>
+  <data name="findNextToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>205, 26</value>
+  </data>
+  <data name="findNextToolStripMenuItem.Text" xml:space="preserve">
+    <value>定位下一个</value>
+  </data>
+  <data name="clearSearchToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>205, 26</value>
+  </data>
+  <data name="clearSearchToolStripMenuItem.Text" xml:space="preserve">
+    <value>清除搜索</value>
+  </data>
+  <data name="addNewKeyToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+N</value>
+  </data>
+  <data name="addNewKeyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>225, 26</value>
+  </data>
+  <data name="addNewKeyToolStripMenuItem.Text" xml:space="preserve">
+    <value>增加新键值</value>
+  </data>
+  <data name="deleteKeyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>225, 26</value>
+  </data>
+  <data name="deleteKeyToolStripMenuItem.Text" xml:space="preserve">
+    <value>删除键值</value>
+  </data>
+  <data name="addLanguageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 26</value>
+  </data>
+  <data name="addLanguageToolStripMenuItem.Text" xml:space="preserve">
+    <value>增加新语言</value>
+  </data>
+  <data name="removeLanguageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 26</value>
+  </data>
+  <data name="removeLanguageToolStripMenuItem.Text" xml:space="preserve">
+    <value>删除语言</value>
+  </data>
+  <data name="helpToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 26</value>
+  </data>
+  <data name="helpToolStripMenuItem1.Text" xml:space="preserve">
+    <value>文档</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
