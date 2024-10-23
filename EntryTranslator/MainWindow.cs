@@ -287,6 +287,7 @@ namespace EntryTranslator
             addNewKeyToolStripMenuItem.Enabled = notNull;
             languagesToolStripMenuItem.Enabled = notNull;
             toolStripMenuItemGT.Enabled = notNull;
+            groupBoxSearch.Enabled = notNull;
 
             removeLanguageToolStripMenuItem.DropDownItems.Clear();
             addLanguageToolStripMenuItem.DropDownItems.Clear();
@@ -474,6 +475,31 @@ namespace EntryTranslator
             var readmePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "帮助文档.docx");
             if (File.Exists(readmePath))
                 Process.Start("explorer.exe", $"\"{readmePath}\"");
+        }
+
+        private void buttonImport_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonExport_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonSearchNext_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonClearSearch_Click(object sender, EventArgs e)
+        {
+
         }
 
         #endregion 菜单快捷栏事件

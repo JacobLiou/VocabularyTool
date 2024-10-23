@@ -36,6 +36,16 @@ namespace EntryTranslator
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripStatusLabelCurrentItem = new System.Windows.Forms.ToolStripStatusLabel();
             this.panelMain = new System.Windows.Forms.Panel();
+            this.splitContainerAll = new System.Windows.Forms.SplitContainer();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.groupBoxFile = new System.Windows.Forms.GroupBox();
+            this.buttonExport = new System.Windows.Forms.Button();
+            this.buttonImport = new System.Windows.Forms.Button();
+            this.groupBoxSearch = new System.Windows.Forms.GroupBox();
+            this.textBoxSearch = new System.Windows.Forms.TextBox();
+            this.buttonClearSearch = new System.Windows.Forms.Button();
+            this.buttonSearchNext = new System.Windows.Forms.Button();
+            this.buttonSearch = new System.Windows.Forms.Button();
             this.splitContainerMain = new System.Windows.Forms.SplitContainer();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -65,6 +75,13 @@ namespace EntryTranslator
             this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
             this.panelMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerAll)).BeginInit();
+            this.splitContainerAll.Panel1.SuspendLayout();
+            this.splitContainerAll.Panel2.SuspendLayout();
+            this.splitContainerAll.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.groupBoxFile.SuspendLayout();
+            this.groupBoxSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
             this.splitContainerMain.Panel2.SuspendLayout();
@@ -103,9 +120,103 @@ namespace EntryTranslator
             // 
             // panelMain
             // 
-            this.panelMain.Controls.Add(this.splitContainerMain);
+            this.panelMain.Controls.Add(this.splitContainerAll);
             resources.ApplyResources(this.panelMain, "panelMain");
             this.panelMain.Name = "panelMain";
+            // 
+            // splitContainerAll
+            // 
+            resources.ApplyResources(this.splitContainerAll, "splitContainerAll");
+            this.splitContainerAll.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerAll.Name = "splitContainerAll";
+            // 
+            // splitContainerAll.Panel1
+            // 
+            this.splitContainerAll.Panel1.Controls.Add(this.flowLayoutPanel1);
+            // 
+            // splitContainerAll.Panel2
+            // 
+            this.splitContainerAll.Panel2.Controls.Add(this.splitContainerMain);
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.flowLayoutPanel1.Controls.Add(this.groupBoxFile);
+            this.flowLayoutPanel1.Controls.Add(this.groupBoxSearch);
+            resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            // 
+            // groupBoxFile
+            // 
+            this.groupBoxFile.BackColor = System.Drawing.Color.LightGray;
+            this.groupBoxFile.Controls.Add(this.buttonExport);
+            this.groupBoxFile.Controls.Add(this.buttonImport);
+            this.groupBoxFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            resources.ApplyResources(this.groupBoxFile, "groupBoxFile");
+            this.groupBoxFile.Name = "groupBoxFile";
+            this.groupBoxFile.TabStop = false;
+            // 
+            // buttonExport
+            // 
+            this.buttonExport.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonExport.Image = global::EntryTranslator.Properties.Resources.GoToParentFolderHS;
+            resources.ApplyResources(this.buttonExport, "buttonExport");
+            this.buttonExport.Name = "buttonExport";
+            this.buttonExport.UseVisualStyleBackColor = false;
+            this.buttonExport.Click += new System.EventHandler(this.buttonExport_Click);
+            // 
+            // buttonImport
+            // 
+            this.buttonImport.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonImport.Image = global::EntryTranslator.Properties.Resources.openfolderHS;
+            resources.ApplyResources(this.buttonImport, "buttonImport");
+            this.buttonImport.Name = "buttonImport";
+            this.buttonImport.UseVisualStyleBackColor = false;
+            this.buttonImport.Click += new System.EventHandler(this.buttonImport_Click);
+            // 
+            // groupBoxSearch
+            // 
+            this.groupBoxSearch.BackColor = System.Drawing.Color.LightGray;
+            this.groupBoxSearch.Controls.Add(this.textBoxSearch);
+            this.groupBoxSearch.Controls.Add(this.buttonClearSearch);
+            this.groupBoxSearch.Controls.Add(this.buttonSearchNext);
+            this.groupBoxSearch.Controls.Add(this.buttonSearch);
+            this.groupBoxSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            resources.ApplyResources(this.groupBoxSearch, "groupBoxSearch");
+            this.groupBoxSearch.Name = "groupBoxSearch";
+            this.groupBoxSearch.TabStop = false;
+            // 
+            // textBoxSearch
+            // 
+            resources.ApplyResources(this.textBoxSearch, "textBoxSearch");
+            this.textBoxSearch.Name = "textBoxSearch";
+            // 
+            // buttonClearSearch
+            // 
+            this.buttonClearSearch.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonClearSearch.Image = global::EntryTranslator.Properties.Resources.Edit_UndoHS;
+            resources.ApplyResources(this.buttonClearSearch, "buttonClearSearch");
+            this.buttonClearSearch.Name = "buttonClearSearch";
+            this.buttonClearSearch.UseVisualStyleBackColor = false;
+            this.buttonClearSearch.Click += new System.EventHandler(this.buttonClearSearch_Click);
+            // 
+            // buttonSearchNext
+            // 
+            this.buttonSearchNext.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonSearchNext.Image = global::EntryTranslator.Properties.Resources.Find_VS;
+            resources.ApplyResources(this.buttonSearchNext, "buttonSearchNext");
+            this.buttonSearchNext.Name = "buttonSearchNext";
+            this.buttonSearchNext.UseVisualStyleBackColor = false;
+            this.buttonSearchNext.Click += new System.EventHandler(this.buttonSearchNext_Click);
+            // 
+            // buttonSearch
+            // 
+            this.buttonSearch.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonSearch.Image = global::EntryTranslator.Properties.Resources.Find_VS;
+            resources.ApplyResources(this.buttonSearch, "buttonSearch");
+            this.buttonSearch.Name = "buttonSearch";
+            this.buttonSearch.UseVisualStyleBackColor = false;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // splitContainerMain
             // 
@@ -195,6 +306,7 @@ namespace EntryTranslator
             // 
             // exportToolStripMenuItem
             // 
+            this.exportToolStripMenuItem.Image = global::EntryTranslator.Properties.Resources.GoToParentFolderHS;
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
             resources.ApplyResources(this.exportToolStripMenuItem, "exportToolStripMenuItem");
             this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportAllResourcesToolStripMenuItem_Click);
@@ -326,6 +438,14 @@ namespace EntryTranslator
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             this.panelMain.ResumeLayout(false);
+            this.splitContainerAll.Panel1.ResumeLayout(false);
+            this.splitContainerAll.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerAll)).EndInit();
+            this.splitContainerAll.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.groupBoxFile.ResumeLayout(false);
+            this.groupBoxSearch.ResumeLayout(false);
+            this.groupBoxSearch.PerformLayout();
             this.splitContainerMain.Panel1.ResumeLayout(false);
             this.splitContainerMain.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).EndInit();
@@ -347,7 +467,6 @@ namespace EntryTranslator
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
         private Panel panelMain;
-        private SplitContainer splitContainerMain;
         private MenuStrip menuStripMain;
         private ToolStripMenuItem fileToolStripMenuItem;
         private ToolStripMenuItem saveAllModifiedToolStripMenuItem;
@@ -358,9 +477,6 @@ namespace EntryTranslator
         private ToolStripMenuItem deleteKeyToolStripMenuItem;
         private ToolStripMenuItem addLanguageToolStripMenuItem;
         private ToolStripStatusLabel toolStripStatusLabelCurrentItem;
-        private Controls.LanguageEditor resourceGrid1;
-        private TabControl tabControl3;
-        private TabPage tabPageEditedResource;
         private ToolStripMenuItem languagesToolStripMenuItem;
         private ToolStripMenuItem removeLanguageToolStripMenuItem;
         private ToolStripMenuItem clearSearchToolStripMenuItem;
@@ -371,10 +487,24 @@ namespace EntryTranslator
         private ToolStripMenuItem exportToolStripMenuItem;
         private ToolStripMenuItem findNextToolStripMenuItem;
         private ToolStripMenuItem toolStripMenuItemGT;
+        private ToolStripMenuItem ImportToolStripMenuItem;
+        private SplitContainer splitContainerAll;
+        private FlowLayoutPanel flowLayoutPanel1;
+        private SplitContainer splitContainerMain;
         private TabControl tabControl1;
         private TabPage tabPage1;
         private Controls.LanguageSettings languageSettings1;
-        private ToolStripMenuItem ImportToolStripMenuItem;
+        private TabControl tabControl3;
+        private TabPage tabPageEditedResource;
+        private Controls.LanguageEditor resourceGrid1;
+        private GroupBox groupBoxFile;
+        private Button buttonImport;
+        private Button buttonExport;
+        private GroupBox groupBoxSearch;
+        private Button buttonClearSearch;
+        private Button buttonSearch;
+        private TextBox textBoxSearch;
+        private Button buttonSearchNext;
     }
 }
 
