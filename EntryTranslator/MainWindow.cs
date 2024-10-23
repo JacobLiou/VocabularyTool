@@ -367,9 +367,9 @@ namespace EntryTranslator
         private void addLanguageToolStripMenuItem_Clicked(object sender, EventArgs e)
         {
             var language = LanguageSelect.ShowLanguageSelectDialog(this);
-            if (language != null && !CurrentResource.Languages.ContainsKey(language.Name))
+            if (language != null && !CurrentResource.Languages.ContainsKey(language))
             {
-                CurrentResource.AddLanguage(language.Name, Settings.Default.AddDefaultValuesOnLanguageAdd);
+                CurrentResource.AddLanguage(language, Settings.Default.AddDefaultValuesOnLanguageAdd);
 
                 UpdateMenuStrip();
                 resourceGrid1.RefreshResourceDisplay();

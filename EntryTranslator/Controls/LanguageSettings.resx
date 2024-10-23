@@ -136,16 +136,16 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="listView1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>宋体, 10.8pt</value>
+    <value>微软雅黑, 10.8pt</value>
   </data>
   <data name="listView1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 27</value>
+    <value>0, 31</value>
   </data>
   <data name="listView1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 3, 4, 3</value>
   </data>
   <data name="listView1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>496, 376</value>
+    <value>496, 372</value>
   </data>
   <data name="listView1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -166,10 +166,10 @@
     <value>17, 17</value>
   </metadata>
   <data name="toolStrip1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>宋体, 10.8pt</value>
+    <value>微软雅黑, 9pt</value>
   </data>
   <data name="toolStripButtonSelectAll.Font" type="System.Drawing.Font, System.Drawing">
-    <value>宋体, 9pt</value>
+    <value>微软雅黑, 9pt</value>
   </data>
   <data name="toolStripButtonSelectAll.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -191,13 +191,13 @@
     <value>Magenta</value>
   </data>
   <data name="toolStripButtonSelectAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 28</value>
+    <value>63, 28</value>
   </data>
   <data name="toolStripButtonSelectAll.Text" xml:space="preserve">
     <value>全选</value>
   </data>
   <data name="toolStripButtonSelectNone.Font" type="System.Drawing.Font, System.Drawing">
-    <value>宋体, 9pt</value>
+    <value>微软雅黑, 9pt</value>
   </data>
   <data name="toolStripButtonSelectNone.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -216,13 +216,13 @@
     <value>Magenta</value>
   </data>
   <data name="toolStripButtonSelectNone.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 28</value>
+    <value>78, 28</value>
   </data>
   <data name="toolStripButtonSelectNone.Text" xml:space="preserve">
     <value>全不选</value>
   </data>
   <data name="toolStripButtonSelectInvert.Font" type="System.Drawing.Font, System.Drawing">
-    <value>宋体, 9pt</value>
+    <value>微软雅黑, 9pt</value>
   </data>
   <data name="toolStripButtonSelectInvert.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
@@ -237,7 +237,7 @@
     <value>0, 0</value>
   </data>
   <data name="toolStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>496, 27</value>
+    <value>496, 31</value>
   </data>
   <data name="toolStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -260,6 +260,9 @@
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 9pt</value>
+  </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 3, 4, 3</value>
   </data>

@@ -75,8 +75,8 @@ namespace EntryTranslator
             this.toolStripMenuItemGT = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.uiContextMenuStrip1 = new Sunny.UI.UIContextMenuStrip();
             this.cultureoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.uiContextMenuStrip1 = new Sunny.UI.UIContextMenuStrip();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerAll)).BeginInit();
             this.splitContainerAll.Panel1.SuspendLayout();
             this.splitContainerAll.Panel2.SuspendLayout();
@@ -123,7 +123,7 @@ namespace EntryTranslator
             // 
             // groupBoxFile
             // 
-            this.groupBoxFile.BackColor = System.Drawing.Color.LightGray;
+            this.groupBoxFile.BackColor = System.Drawing.Color.White;
             this.groupBoxFile.Controls.Add(this.uiRadioButtonExcel);
             this.groupBoxFile.Controls.Add(this.uiRadioButtonCSV);
             this.groupBoxFile.Controls.Add(this.buttonExport);
@@ -149,8 +149,8 @@ namespace EntryTranslator
             // buttonExport
             // 
             this.buttonExport.BackColor = System.Drawing.SystemColors.Control;
-            this.buttonExport.Image = global::EntryTranslator.Properties.Resources.GoToParentFolderHS;
             resources.ApplyResources(this.buttonExport, "buttonExport");
+            this.buttonExport.Image = global::EntryTranslator.Properties.Resources.GoToParentFolderHS;
             this.buttonExport.Name = "buttonExport";
             this.buttonExport.UseVisualStyleBackColor = false;
             this.buttonExport.Click += new System.EventHandler(this.buttonExport_Click);
@@ -158,15 +158,15 @@ namespace EntryTranslator
             // buttonImport
             // 
             this.buttonImport.BackColor = System.Drawing.SystemColors.Control;
-            this.buttonImport.Image = global::EntryTranslator.Properties.Resources.openfolderHS;
             resources.ApplyResources(this.buttonImport, "buttonImport");
+            this.buttonImport.Image = global::EntryTranslator.Properties.Resources.openfolderHS;
             this.buttonImport.Name = "buttonImport";
             this.buttonImport.UseVisualStyleBackColor = false;
             this.buttonImport.Click += new System.EventHandler(this.buttonImport_Click);
             // 
             // groupBoxSearch
             // 
-            this.groupBoxSearch.BackColor = System.Drawing.Color.LightGray;
+            this.groupBoxSearch.BackColor = System.Drawing.Color.White;
             this.groupBoxSearch.Controls.Add(this.textBoxSearch);
             this.groupBoxSearch.Controls.Add(this.buttonClearSearch);
             this.groupBoxSearch.Controls.Add(this.buttonSearchNext);
@@ -184,8 +184,8 @@ namespace EntryTranslator
             // buttonClearSearch
             // 
             this.buttonClearSearch.BackColor = System.Drawing.SystemColors.Control;
-            this.buttonClearSearch.Image = global::EntryTranslator.Properties.Resources.Edit_UndoHS;
             resources.ApplyResources(this.buttonClearSearch, "buttonClearSearch");
+            this.buttonClearSearch.Image = global::EntryTranslator.Properties.Resources.Edit_UndoHS;
             this.buttonClearSearch.Name = "buttonClearSearch";
             this.buttonClearSearch.UseVisualStyleBackColor = false;
             this.buttonClearSearch.Click += new System.EventHandler(this.buttonClearSearch_Click);
@@ -201,8 +201,8 @@ namespace EntryTranslator
             // buttonSearch
             // 
             this.buttonSearch.BackColor = System.Drawing.SystemColors.Control;
-            this.buttonSearch.Image = global::EntryTranslator.Properties.Resources.Find_VS;
             resources.ApplyResources(this.buttonSearch, "buttonSearch");
+            this.buttonSearch.Image = global::EntryTranslator.Properties.Resources.Find_VS;
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.UseVisualStyleBackColor = false;
             this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
@@ -449,18 +449,18 @@ namespace EntryTranslator
             resources.ApplyResources(this.helpToolStripMenuItem1, "helpToolStripMenuItem1");
             this.helpToolStripMenuItem1.Click += new System.EventHandler(this.helpToolStripMenuItem1_Click);
             // 
+            // cultureoolStripMenuItem
+            // 
+            this.cultureoolStripMenuItem.Name = "cultureoolStripMenuItem";
+            resources.ApplyResources(this.cultureoolStripMenuItem, "cultureoolStripMenuItem");
+            this.cultureoolStripMenuItem.Click += new System.EventHandler(this.cultureoolStripMenuItem_Click);
+            // 
             // uiContextMenuStrip1
             // 
             this.uiContextMenuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             resources.ApplyResources(this.uiContextMenuStrip1, "uiContextMenuStrip1");
             this.uiContextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.uiContextMenuStrip1.Name = "uiContextMenuStrip1";
-            // 
-            // cultureoolStripMenuItem
-            // 
-            this.cultureoolStripMenuItem.Name = "cultureoolStripMenuItem";
-            resources.ApplyResources(this.cultureoolStripMenuItem, "cultureoolStripMenuItem");
-            this.cultureoolStripMenuItem.Click += new System.EventHandler(this.cultureoolStripMenuItem_Click);
             // 
             // MainWindow
             // 

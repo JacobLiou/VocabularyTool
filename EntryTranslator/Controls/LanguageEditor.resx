@@ -154,13 +154,13 @@
     <value>17, 17</value>
   </metadata>
   <data name="contextMenuStrip1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>宋体, 10.8pt</value>
+    <value>微软雅黑, 9pt</value>
   </data>
   <data name="copyToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+C</value>
   </data>
   <data name="copyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 24</value>
+    <value>210, 24</value>
   </data>
   <data name="copyToolStripMenuItem.Text" xml:space="preserve">
     <value>Copy</value>
@@ -169,19 +169,19 @@
     <value>Ctrl+V</value>
   </data>
   <data name="pasteToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 24</value>
+    <value>210, 24</value>
   </data>
   <data name="pasteToolStripMenuItem.Text" xml:space="preserve">
     <value>Paste</value>
   </data>
   <data name="setToEmptyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 24</value>
+    <value>210, 24</value>
   </data>
   <data name="setToEmptyToolStripMenuItem.Text" xml:space="preserve">
     <value>Delete</value>
   </data>
   <data name="contextMenuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 98</value>
+    <value>211, 104</value>
   </data>
   <data name="&gt;&gt;contextMenuStrip1.Name" xml:space="preserve">
     <value>contextMenuStrip1</value>
@@ -193,7 +193,7 @@
     <value>True</value>
   </metadata>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>宋体, 10.8pt</value>
+    <value>微软雅黑, 9pt</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>

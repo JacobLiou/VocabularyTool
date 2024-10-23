@@ -187,13 +187,13 @@
     <value>Left</value>
   </data>
   <data name="checkBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>106, 7</value>
+    <value>95, 7</value>
   </data>
   <data name="checkBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 3, 4, 3</value>
   </data>
   <data name="checkBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 29</value>
+    <value>91, 29</value>
   </data>
   <data name="checkBox1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -226,7 +226,7 @@
     <value>4, 3, 4, 3</value>
   </data>
   <data name="chbShowWhitespace.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 29</value>
+    <value>91, 29</value>
   </data>
   <data name="chbShowWhitespace.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -342,6 +342,9 @@
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>594, 339</value>
   </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 9pt</value>
+  </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 3, 4, 3</value>
   </data>
@@ -361,6 +364,6 @@
     <value>CellEditor</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>EntryTranslator.WindowBase, EntryTranslator, Version=1.0.0.24721, Culture=neutral, PublicKeyToken=null</value>
+    <value>EntryTranslator.WindowBase, EntryTranslator, Version=1.0.0.30100, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

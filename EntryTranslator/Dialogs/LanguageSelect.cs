@@ -1,7 +1,8 @@
-﻿using EntryTranslator.Properties;
+﻿using EntryTranslator.Models;
+using EntryTranslator.Properties;
 using EntryTranslator.Utils;
 using System;
-using System.Globalization;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -9,7 +10,16 @@ namespace EntryTranslator.Dialogs
 {
     public partial class LanguageSelect : WindowBase
     {
-        public static CultureInfo ShowLanguageSelectDialog(Form owner)
+        private string _selectedLanguage;
+
+        private List<CultureModel> cultureModels;
+
+        /// <summary>
+        /// 返回语言的Code代号
+        /// </summary>
+        /// <param name="owner"></param>
+        /// <returns></returns>
+        public static string ShowLanguageSelectDialog(Form owner)
         {
             using (var window = new LanguageSelect())
             {
@@ -22,22 +32,24 @@ namespace EntryTranslator.Dialogs
         private LanguageSelect()
         {
             InitializeComponent();
+        }
 
-            UpdateComboboxItems(this, EventArgs.Empty);
-            button1.Enabled = false;
+        private async void LanguageSelect_Load(object sender, EventArgs e)
+        {
+            comboBox1.Items.Clear();
+            cultureModels = await CultureLangHelper.GetLanguageList();
+            comboBox1.Items.AddRange(cultureModels.Select(item => item.CodeName).ToArray());
 
-            Settings.Binder.BindControl(checkBox1, s => s.LanguageSelectOnlyNeutral, this);
             Settings.Binder.SendUpdates(this);
         }
 
-        private CultureInfo _selectedLanguage;
-
-        private void button1_Click(object sender, EventArgs e)
+        private void button_OK_Click(object sender, EventArgs e)
         {
-            var selection = comboBox1.SelectedItem as ComboBoxWrapper<CultureInfo>;
-            if (selection != null)
+            if(comboBox1.SelectedIndex < 0) return;
+            var langCodeName = comboBox1.Text;
+            if (langCodeName != null)
             {
-                _selectedLanguage = selection.WrappedObject;
+                _selectedLanguage = cultureModels.FirstOrDefault(item => langCodeName == item.CodeName).Code;
                 DialogResult = DialogResult.OK;
                 Close();
             }
@@ -47,21 +59,11 @@ namespace EntryTranslator.Dialogs
             }
         }
 
-        private void UpdateComboboxItems(object sender, EventArgs e)
+        private async void UpdateComboboxItems(object sender, EventArgs e)
         {
             comboBox1.Items.Clear();
-            comboBox1.Items.AddRange(CultureInfo.GetCultures(checkBox1.Checked ? CultureTypes.NeutralCultures : CultureTypes.AllCultures)
-                .Where(x => !string.IsNullOrWhiteSpace(x.Name)) //Exclude the invariant culture
-                .OrderBy(x => x.Name)
-                .Select(x => new ComboBoxWrapper<CultureInfo>(x, info => $"{info.Name} - {info.DisplayName}"))
-                .Cast<object>()
-                .ToArray());
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var selection = comboBox1.SelectedItem as ComboBoxWrapper<CultureInfo>;
-            button1.Enabled = selection != null;
+            var languaes = await CultureLangHelper.GetLanguageList();
+            comboBox1.Items.AddRange(languaes.Select(item => item.CodeName).ToArray());
         }
 
         private void LanguageSelectDialog_FormClosed(object sender, FormClosedEventArgs e)

@@ -38,6 +38,7 @@ namespace EntryTranslator
             this.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "WindowBase";
+            this.TitleFont = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.ZoomScaleRect = new System.Drawing.Rectangle(19, 19, 800, 480);
             this.ResumeLayout(false);
 

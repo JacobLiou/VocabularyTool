@@ -130,13 +130,13 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="labelKey.Location" type="System.Drawing.Point, System.Drawing">
-    <value>33, 7</value>
+    <value>30, 7</value>
   </data>
   <data name="labelKey.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 0, 4, 0</value>
   </data>
   <data name="labelKey.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 32</value>
+    <value>39, 32</value>
   </data>
   <data name="labelKey.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -172,7 +172,7 @@
     <value>4, 0, 4, 0</value>
   </data>
   <data name="labelNoXlateValue.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 32</value>
+    <value>54, 32</value>
   </data>
   <data name="labelNoXlateValue.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -199,13 +199,13 @@
     <value>Bottom</value>
   </data>
   <data name="textboxKeyName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>85, 10</value>
+    <value>77, 10</value>
   </data>
   <data name="textboxKeyName.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 3, 4, 3</value>
   </data>
   <data name="textboxKeyName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>433, 28</value>
+    <value>433, 27</value>
   </data>
   <data name="textboxKeyName.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -226,13 +226,13 @@
     <value>Bottom</value>
   </data>
   <data name="textboxDefault.Location" type="System.Drawing.Point, System.Drawing">
-    <value>85, 42</value>
+    <value>77, 42</value>
   </data>
   <data name="textboxDefault.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 3, 4, 3</value>
   </data>
   <data name="textboxDefault.Size" type="System.Drawing.Size, System.Drawing">
-    <value>433, 28</value>
+    <value>433, 27</value>
   </data>
   <data name="textboxDefault.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -262,7 +262,7 @@
     <value>4, 0, 4, 0</value>
   </data>
   <data name="labelDefaultValue.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 32</value>
+    <value>54, 32</value>
   </data>
   <data name="labelDefaultValue.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -289,13 +289,13 @@
     <value>Bottom</value>
   </data>
   <data name="textboxTranslated.Location" type="System.Drawing.Point, System.Drawing">
-    <value>85, 74</value>
+    <value>77, 74</value>
   </data>
   <data name="textboxTranslated.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 3, 4, 3</value>
   </data>
   <data name="textboxTranslated.Size" type="System.Drawing.Size, System.Drawing">
-    <value>433, 28</value>
+    <value>433, 27</value>
   </data>
   <data name="textboxTranslated.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -450,6 +450,9 @@
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 9pt</value>
+  </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 3, 4, 3</value>
   </data>
@@ -469,6 +472,6 @@
     <value>AddResourceKey</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>EntryTranslator.WindowBase, EntryTranslator, Version=1.0.0.24721, Culture=neutral, PublicKeyToken=null</value>
+    <value>EntryTranslator.WindowBase, EntryTranslator, Version=1.0.0.29680, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>
