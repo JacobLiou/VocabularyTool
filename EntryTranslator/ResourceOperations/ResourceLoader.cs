@@ -106,10 +106,11 @@ namespace EntryTranslator.ResourceOperations
             _resourceStore.Clear();
             OpenedPath = string.Empty;
 
-            OnResourceLoadProgress(new ResourceLoadProgressEventArgs("加载语言资源..."));
+            OnResourceLoadProgress(new ResourceLoadProgressEventArgs("������Դ..."));
 
             FindResx(selectedPath);
 
+            // Test for bad files
             foreach (var pair in _resourceStore.ToList())
             {
                 try

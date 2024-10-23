@@ -43,6 +43,8 @@ namespace EntryTranslator
                     }
 
                     resourceGrid1.CurrentResource = value;
+                    resourceGrid1.SetVisibleLanguageColumns(
+                        languageSettings1.EnabledLanguages.Select(x => x.Name).ToArray());
                     UpdateMenuStrip();
                 });
             }
@@ -69,6 +71,7 @@ namespace EntryTranslator
                 if (resourceGrid1.CurrentResource == null) return;
 
                 var languageIds = languageSettings1.EnabledLanguages.Select(x => x.Name).ToArray();
+                resourceGrid1.SetVisibleLanguageColumns(languageIds);
                 resourceGrid1.Refresh();
             };
 
@@ -432,8 +435,8 @@ namespace EntryTranslator
                     return;
                 }
 
-                string targetLanguage = tad.TranslateAPIConfig.TargetLanguage;
-                string sourceLanguage = tad.TranslateAPIConfig.SourceLanguage;
+                string targetLanguage = tad.TranslateAPIConfig.TargetLanguage == Properties.Resources.ColNameNoLang ? tad.TranslateAPIConfig.DefaultLanguage : tad.TranslateAPIConfig.TargetLanguage;
+                string sourceLanguage = tad.TranslateAPIConfig.SourceLanguage == Properties.Resources.ColNameNoLang ? tad.TranslateAPIConfig.DefaultLanguage : tad.TranslateAPIConfig.SourceLanguage;
 
                 TranslatorApi translatorApi = new TranslatorApi();
 
