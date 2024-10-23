@@ -14,13 +14,10 @@ namespace EntryTranslator.Controls
 {
     public partial class LanguageEditor : UserControl
     {
-        private static readonly string[] SpecialColNames =
-        {
-            Properties.Resources.ColNameKey,
-        };
-
         private ResourceHolder _currentResource;
+
         private SearchParams _currentSearch;
+
         private bool _showNullValuesAsGrayed;
 
         public LanguageEditor()
@@ -77,29 +74,12 @@ namespace EntryTranslator.Controls
             ShowResourceInGrid(CurrentResource);
         }
 
-        public void SetLanguageColumnVisible(string languageId, bool visible)
-        {
-            if (dataGridView1.Columns.Contains(languageId) && dataGridView1.Columns[languageId] != null)
-                dataGridView1.Columns[languageId].Visible = visible;
-        }
-
-        public void SetVisibleLanguageColumns(params string[] languageIds)
-        {
-            foreach (
-                var column in
-                    dataGridView1.Columns.Cast<DataGridViewColumn>()
-                        .Where(column => !SpecialColNames.Contains(column.Name)))
-            {
-                column.Visible = languageIds.Any(x => x.Equals(column.Name, StringComparison.OrdinalIgnoreCase));
-            }
-        }
-
         private void ApplyConditionalFormatting(DataGridViewRow r)
         {
             if (r == dataGridView1.Rows[RowCount - 1])
                 return;
 
-            ApplyConditionalCellFormatting(r.Cells[Properties.Resources.ColNameKey], SearchParams.TargetType.Key);
+            ApplyConditionalCellFormatting(r.Cells["Key"], SearchParams.TargetType.Key);
 
             foreach (var lng in CurrentResource.Languages.Values)
             {
@@ -185,11 +165,11 @@ namespace EntryTranslator.Controls
 
             foreach (var languageHolder in resource.Languages.Values)
             {
-                if(CultureInfo.CurrentCulture.Name == languageHolder.CultureInfo.Name)
+                if (CultureInfo.CurrentCulture.Name == languageHolder.CultureInfo.Name)
                     dataGridView1.Columns[languageHolder.LanguageId].DisplayIndex = 1;
             }
 
-            dataGridView1.Columns[Properties.Resources.ColNameKey].ReadOnly = true;
+            dataGridView1.Columns["Key"].ReadOnly = true;
         }
 
         private void CopyToClipboard()
@@ -372,7 +352,7 @@ namespace EntryTranslator.Controls
         {
             if (CurrentSearch == null) return;
 
-            var keyColumn = dataGridView1.Columns[Properties.Resources.ColNameKey];
+            var keyColumn = dataGridView1.Columns["Key"];
             var currentRow = dataGridView1.CurrentCell?.RowIndex ?? dataGridView1.RowCount;
             var currentColumn = dataGridView1.CurrentCell?.ColumnIndex ?? -1;
 

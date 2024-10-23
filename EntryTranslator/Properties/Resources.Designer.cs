@@ -111,66 +111,11 @@ namespace EntryTranslator.Properties {
         }
         
         /// <summary>
-        ///   查找类似 Comment 的本地化字符串。
-        /// </summary>
-        internal static string ColNameComment {
-            get {
-                return ResourceManager.GetString("ColNameComment", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Error 的本地化字符串。
-        /// </summary>
-        internal static string ColNameError {
-            get {
-                return ResourceManager.GetString("ColNameError", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Key 的本地化字符串。
-        /// </summary>
-        internal static string ColNameKey {
-            get {
-                return ResourceManager.GetString("ColNameKey", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 NoLanguageValue 的本地化字符串。
-        /// </summary>
-        internal static string ColNameNoLang {
-            get {
-                return ResourceManager.GetString("ColNameNoLang", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Translated 的本地化字符串。
-        /// </summary>
-        internal static string ColNameTranslated {
-            get {
-                return ResourceManager.GetString("ColNameTranslated", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
         internal static System.Drawing.Bitmap Delete_black_32x32 {
             get {
                 object obj = ResourceManager.GetObject("Delete_black_32x32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap DocumentHS {
-            get {
-                object obj = ResourceManager.GetObject("DocumentHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
