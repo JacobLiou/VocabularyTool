@@ -321,12 +321,6 @@
     <Compile Include="Dialogs\CellEditor.Designer.cs">
       <DependentUpon>CellEditor.cs</DependentUpon>
     </Compile>
-    <None Include="Templates\搜航词条库_20241023.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Templates\搜航词条库_20241023.xlsx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -389,6 +383,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="LangDic\" />
+    <Folder Include="Templates\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
