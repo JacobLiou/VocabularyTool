@@ -125,11 +125,11 @@
             this.uiLabel1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.uiLabel1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiLabel1.ForeColor = System.Drawing.Color.Firebrick;
-            this.uiLabel1.Location = new System.Drawing.Point(80, 280);
+            this.uiLabel1.Location = new System.Drawing.Point(114, 278);
             this.uiLabel1.Name = "uiLabel1";
-            this.uiLabel1.Size = new System.Drawing.Size(464, 28);
+            this.uiLabel1.Size = new System.Drawing.Size(364, 28);
             this.uiLabel1.TabIndex = 101;
-            this.uiLabel1.Text = "实验性功能，翻译来自于腾讯翻译君，语言语种受到限制";
+            this.uiLabel1.Text = "实验性功能，翻译来自于网络，语言语种受到限制";
             // 
             // cbTarget
             // 

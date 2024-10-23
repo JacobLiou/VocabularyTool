@@ -698,15 +698,9 @@ namespace EntryTranslator.ResourceOperations
         {
             DataRow[] rows = _stringsTable.Rows.Cast<DataRow>().ToArray();
 
-            foreach (var translationResult in translationResults)
+            for (int i = 0; i < rows.Length; i++)
             {
-                string sl = translationResult.SourceLang == translateApiConfig.DefaultLanguage ? Properties.Resources.ColNameNoLang : translationResult.SourceLang;
-
-                foreach (DataRow row in rows)
-                {
-                    string sourceText = row[sl].ToString();
-                    row[translateApiConfig.TargetLanguage] = translationResult.Result;
-                }
+                rows[i][translateApiConfig.TargetLanguage] = translationResults[i].Result;
             }
         }
     }

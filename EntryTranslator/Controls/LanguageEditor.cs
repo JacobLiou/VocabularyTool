@@ -6,6 +6,7 @@ using System;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -198,11 +199,22 @@ namespace EntryTranslator.Controls
                 dataGridView1.Columns[languageHolder.LanguageId].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             }
 
+            foreach (var languageHolder in resource.Languages.Values)
+            {
+                if (CultureInfo.CurrentCulture.Name.Contains(languageHolder.CultureInfo.Name))
+                {
+                    dataGridView1.Columns[languageHolder.LanguageId].DisplayIndex = 1;
+                    break;
+                }
+
+            }
+
             dataGridView1.Columns[Properties.Resources.ColNameNoLang].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dataGridView1.Columns[Properties.Resources.ColNameComment].DisplayIndex = dataGridView1.Columns.Count - 1;
 
             dataGridView1.Columns[Properties.Resources.ColNameTranslated].Visible = false;
             dataGridView1.Columns[Properties.Resources.ColNameError].Visible = false;
+            dataGridView1.Columns[Properties.Resources.ColNameComment].Visible = false;
 
             dataGridView1.Columns[Properties.Resources.ColNameKey].ReadOnly = true;
         }

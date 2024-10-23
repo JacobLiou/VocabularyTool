@@ -2,6 +2,7 @@
 using EntryTranslator.Properties;
 using EntryTranslator.ResourceOperations;
 using EntryTranslator.Utils;
+using STranslate.ViewModels.Preference.Services;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -451,15 +452,16 @@ namespace EntryTranslator
                 string targetLanguage = tad.TranslateAPIConfig.TargetLanguage == Properties.Resources.ColNameNoLang ? tad.TranslateAPIConfig.DefaultLanguage : tad.TranslateAPIConfig.TargetLanguage;
                 string sourceLanguage = tad.TranslateAPIConfig.SourceLanguage == Properties.Resources.ColNameNoLang ? tad.TranslateAPIConfig.DefaultLanguage : tad.TranslateAPIConfig.SourceLanguage;
 
-                TranslatorApi translatorApi = new TranslatorApi();
+                //TranslatorApi translatorApi = new TranslatorApi();
+                TranslatorBaidu translatorBaidu = new TranslatorBaidu();
 
                 IList<StranslationResult> result = new List<StranslationResult>();
                 for (int i = 0; i < textToTranslate.Count; i++)
                 {
                     var requestModel = new RequestModel(textToTranslate[i], sourceLanguage, targetLanguage);
-                    var item = await translatorApi.TranslateAsync(requestModel, CancellationToken.None);
-                    Thread.Sleep(500);
-                    OnResourceLoadProgress(this, new ResourceLoadProgressEventArgs("联网翻译进行中...", null, i, textToTranslate.Count));
+                    var item = await translatorBaidu.TranslateAsync(requestModel, CancellationToken.None);
+                    Thread.Sleep(1000);
+                    OnResourceLoadProgress(this, new ResourceLoadProgressEventArgs("联网翻译进行中...", null, i + 1, textToTranslate.Count));
                     if (item != null && item.IsSuccess)
                     {
                         result.Add(item);

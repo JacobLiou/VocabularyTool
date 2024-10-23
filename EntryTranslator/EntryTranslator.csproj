@@ -192,6 +192,8 @@
     <Compile Include="Utils\CsvUtil.cs" />
     <Compile Include="Utils\CultureLangHelper.cs" />
     <Compile Include="Utils\ExcelUtil.cs" />
+    <Compile Include="Utils\StringUtil.cs" />
+    <Compile Include="Utils\TranslatorBaidu.cs" />
     <Compile Include="WindowBase.cs">
       <SubType>Form</SubType>
     </Compile>

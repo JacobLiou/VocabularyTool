@@ -511,7 +511,7 @@
     <value>1, 1</value>
   </data>
   <data name="languageSettings1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>238, 555</value>
+    <value>238, 549</value>
   </data>
   <data name="languageSettings1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -523,7 +523,7 @@
     <value>languageSettings1</value>
   </data>
   <data name="&gt;&gt;languageSettings1.Type" xml:space="preserve">
-    <value>EntryTranslator.Controls.LanguageSettings, EntryTranslator, Version=1.0.0.33494, Culture=neutral, PublicKeyToken=null</value>
+    <value>EntryTranslator.Controls.LanguageSettings, EntryTranslator, Version=1.0.0.34697, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;languageSettings1.Parent" xml:space="preserve">
     <value>tabPage1</value>
@@ -541,7 +541,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>238, 555</value>
+    <value>238, 549</value>
   </data>
   <data name="tabPage1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -574,7 +574,7 @@
     <value>4, 4, 4, 4</value>
   </data>
   <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>246, 588</value>
+    <value>246, 582</value>
   </data>
   <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -625,7 +625,7 @@
     <value>1, 1</value>
   </data>
   <data name="resourceGrid1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>920, 555</value>
+    <value>920, 549</value>
   </data>
   <data name="resourceGrid1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -637,7 +637,7 @@
     <value>resourceGrid1</value>
   </data>
   <data name="&gt;&gt;resourceGrid1.Type" xml:space="preserve">
-    <value>EntryTranslator.Controls.LanguageEditor, EntryTranslator, Version=1.0.0.33494, Culture=neutral, PublicKeyToken=null</value>
+    <value>EntryTranslator.Controls.LanguageEditor, EntryTranslator, Version=1.0.0.34697, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;resourceGrid1.Parent" xml:space="preserve">
     <value>tabPageEditedResource</value>
@@ -655,7 +655,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="tabPageEditedResource.Size" type="System.Drawing.Size, System.Drawing">
-    <value>920, 555</value>
+    <value>920, 549</value>
   </data>
   <data name="tabPageEditedResource.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -688,7 +688,7 @@
     <value>4, 4, 4, 4</value>
   </data>
   <data name="tabControl3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>928, 588</value>
+    <value>928, 582</value>
   </data>
   <data name="tabControl3.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -721,7 +721,7 @@
     <value>125</value>
   </data>
   <data name="splitContainerMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1179, 588</value>
+    <value>1179, 582</value>
   </data>
   <data name="splitContainerMain.SplitterDistance" type="System.Int32, mscorlib">
     <value>246</value>
@@ -760,7 +760,7 @@
     <value>1</value>
   </data>
   <data name="splitContainerAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1179, 660</value>
+    <value>1179, 654</value>
   </data>
   <data name="splitContainerAll.SplitterDistance" type="System.Int32, mscorlib">
     <value>68</value>
@@ -783,8 +783,11 @@
   <metadata name="statusStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="statusStrip.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 9pt</value>
+  </data>
   <data name="toolStripStatusLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 16</value>
+    <value>0, 22</value>
   </data>
   <data name="toolStripProgressBar1.Size" type="System.Drawing.Size, System.Drawing">
     <value>133, 20</value>
@@ -793,10 +796,10 @@
     <value>False</value>
   </data>
   <data name="toolStripStatusLabelCurrentItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 16</value>
+    <value>0, 22</value>
   </data>
   <data name="statusStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 725</value>
+    <value>0, 719</value>
   </data>
   <data name="statusStrip.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -805,7 +808,7 @@
     <value>1, 0, 19, 0</value>
   </data>
   <data name="statusStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1179, 22</value>
+    <value>1179, 28</value>
   </data>
   <data name="statusStrip.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -838,7 +841,7 @@
     <value>4, 4, 4, 7</value>
   </data>
   <data name="panelMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1179, 660</value>
+    <value>1179, 654</value>
   </data>
   <data name="panelMain.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -1442,6 +1445,6 @@
     <value>MainWindow</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>EntryTranslator.WindowBase, EntryTranslator, Version=1.0.0.33494, Culture=neutral, PublicKeyToken=null</value>
+    <value>EntryTranslator.WindowBase, EntryTranslator, Version=1.0.0.34697, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>
