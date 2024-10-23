@@ -15,7 +15,7 @@ using System.Windows.Forms;
 
 namespace EntryTranslator
 {
-    public sealed partial class MainWindow : Form
+    public sealed partial class MainWindow : WindowBase
     {
         private readonly string _defaultWindowTitle;
 

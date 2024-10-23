@@ -73,6 +73,7 @@ namespace EntryTranslator
             this.toolStripMenuItemGT = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.uiContextMenuStrip1 = new Sunny.UI.UIContextMenuStrip();
             this.statusStrip.SuspendLayout();
             this.panelMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerAll)).BeginInit();
@@ -425,10 +426,17 @@ namespace EntryTranslator
             resources.ApplyResources(this.helpToolStripMenuItem1, "helpToolStripMenuItem1");
             this.helpToolStripMenuItem1.Click += new System.EventHandler(this.helpToolStripMenuItem1_Click);
             // 
+            // uiContextMenuStrip1
+            // 
+            this.uiContextMenuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            resources.ApplyResources(this.uiContextMenuStrip1, "uiContextMenuStrip1");
+            this.uiContextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.uiContextMenuStrip1.Name = "uiContextMenuStrip1";
+            // 
             // MainWindow
             // 
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.menuStripMain);
             this.Controls.Add(this.statusStrip);
@@ -505,6 +513,7 @@ namespace EntryTranslator
         private Button buttonSearch;
         private TextBox textBoxSearch;
         private Button buttonSearchNext;
+        private Sunny.UI.UIContextMenuStrip uiContextMenuStrip1;
     }
 }
 
