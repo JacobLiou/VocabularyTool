@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace EntryTranslator.Dialogs
 {
-    public partial class AddResourceKeyWindow : Form
+    public partial class AddResourceKey : Form
     {
         public string DefaultTranslatedText => textboxTranslated.Text;
         public string KeyName => textboxKeyName.Text;
@@ -13,7 +13,7 @@ namespace EntryTranslator.Dialogs
 
         private readonly ResourceHolder _resourceHolder;
 
-        private AddResourceKeyWindow(ResourceHolder resourceHolder)
+        private AddResourceKey(ResourceHolder resourceHolder)
         {
             InitializeComponent();
 
@@ -22,7 +22,7 @@ namespace EntryTranslator.Dialogs
 
         public static bool ShowDialog(Form owner, ResourceHolder resource)
         {
-            using (var window = new AddResourceKeyWindow(resource))
+            using (var window = new AddResourceKey(resource))
             {
                 window.Icon = owner.Icon;
                 window.StartPosition = FormStartPosition.CenterParent;

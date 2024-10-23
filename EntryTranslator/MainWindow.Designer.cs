@@ -61,7 +61,7 @@ namespace EntryTranslator
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.languageSettings1 = new EntryTranslator.Controls.LanguageSettings();
-            this.resourceGrid1 = new EntryTranslator.Controls.ResourceGrid();
+            this.resourceGrid1 = new EntryTranslator.Controls.LanguageEditor();
             this.ImportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
             this.panelMain.SuspendLayout();
@@ -357,7 +357,7 @@ namespace EntryTranslator
         private ToolStripMenuItem deleteKeyToolStripMenuItem;
         private ToolStripMenuItem addLanguageToolStripMenuItem;
         private ToolStripStatusLabel toolStripStatusLabelCurrentItem;
-        private Controls.ResourceGrid resourceGrid1;
+        private Controls.LanguageEditor resourceGrid1;
         private TabControl tabControl3;
         private TabPage tabPageEditedResource;
         private ToolStripMenuItem languagesToolStripMenuItem;

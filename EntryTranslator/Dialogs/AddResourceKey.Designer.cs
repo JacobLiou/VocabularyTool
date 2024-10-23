@@ -1,6 +1,6 @@
 ﻿namespace EntryTranslator.Dialogs
 {
-    partial class AddResourceKeyWindow
+    partial class AddResourceKey
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddResourceKeyWindow));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddResourceKey));
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.labelKey = new System.Windows.Forms.Label();
             this.labelNoXlateValue = new System.Windows.Forms.Label();

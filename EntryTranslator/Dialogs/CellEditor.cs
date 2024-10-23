@@ -5,9 +5,9 @@ using System.Windows.Forms;
 
 namespace EntryTranslator.Dialogs
 {
-    public sealed partial class CellEditorWindow : Form
+    public sealed partial class CellEditor : Form
     {
-        public CellEditorWindow()
+        public CellEditor()
         {
             InitializeComponent();
 

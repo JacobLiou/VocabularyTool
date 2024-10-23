@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace EntryTranslator.Dialogs
 {
-    public partial class TranslateAPIDialog : Form
+    public partial class TranslateApiSetting : Form
     {
         private readonly List<string> _languages;
         private List<string> _languagesFrom;
@@ -15,7 +15,7 @@ namespace EntryTranslator.Dialogs
 
         public TranslateAPIConfig TranslateAPIConfig { get; } = new TranslateAPIConfig();
 
-        public TranslateAPIDialog()
+        public TranslateApiSetting()
         {
             InitializeComponent();
             var le = CommonUtil.GetEnumList<LanguageEnum>();

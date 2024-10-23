@@ -1,6 +1,6 @@
 ﻿namespace EntryTranslator.Dialogs
 {
-    partial class TranslateAPIDialog
+    partial class TranslateApiSetting
     {
         /// <summary>
         /// Required designer variable.

@@ -7,11 +7,11 @@ using System.Windows.Forms;
 
 namespace EntryTranslator.Dialogs
 {
-    public partial class LanguageSelectDialog : Form
+    public partial class LanguageSelect : Form
     {
         public static CultureInfo ShowLanguageSelectDialog(Form owner)
         {
-            using (var window = new LanguageSelectDialog())
+            using (var window = new LanguageSelect())
             {
                 window.Icon = owner.Icon;
                 window.StartPosition = FormStartPosition.CenterParent;
@@ -19,7 +19,7 @@ namespace EntryTranslator.Dialogs
             }
         }
 
-        private LanguageSelectDialog()
+        private LanguageSelect()
         {
             InitializeComponent();
 

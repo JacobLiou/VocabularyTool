@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace EntryTranslator.Controls
 {
-    public partial class ResourceGrid : UserControl
+    public partial class LanguageEditor : UserControl
     {
         private static readonly string[] SpecialColNames =
         {
@@ -26,7 +26,7 @@ namespace EntryTranslator.Controls
         private SearchParams _currentSearch;
         private bool _showNullValuesAsGrayed;
 
-        public ResourceGrid()
+        public LanguageEditor()
         {
             InitializeComponent();
         }
@@ -157,7 +157,7 @@ namespace EntryTranslator.Controls
                 dataGridView1.EndEdit();
             }
 
-            using (var frm = new CellEditorWindow())
+            using (var frm = new CellEditor())
             {
                 var value = dataGridView1.CurrentCell.Value;
                 if (value == DBNull.Value)

@@ -201,7 +201,7 @@ namespace EntryTranslator
 
         private void addLanguageToolStripMenuItem_Clicked(object sender, EventArgs e)
         {
-            var language = LanguageSelectDialog.ShowLanguageSelectDialog(this);
+            var language = LanguageSelect.ShowLanguageSelectDialog(this);
             if (language != null && !CurrentResource.Languages.ContainsKey(language.Name))
             {
                 CurrentResource.AddLanguage(language.Name, Settings.Default.AddDefaultValuesOnLanguageAdd);
@@ -217,7 +217,7 @@ namespace EntryTranslator
             {
                 try
                 {
-                    AddResourceKeyWindow.ShowDialog(this, CurrentResource);
+                    AddResourceKey.ShowDialog(this, CurrentResource);
                 }
                 catch (Exception ex)
                 {
@@ -503,7 +503,7 @@ namespace EntryTranslator
 
             try
             {
-                using var tad = new TranslateAPIDialog();
+                using var tad = new TranslateApiSetting();
 
                 if (tad.ShowDialog() != DialogResult.OK)
                 {
