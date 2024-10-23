@@ -244,11 +244,11 @@ namespace EntryTranslator.ResourceOperations
             try
             {
                 if (IsDirty)
-                    UpdateFile(Filename, Properties.Resources.ColNameNoLang, false, false);
+                    UpdateFile(Filename, Properties.Resources.ColNameNoLang, false, true);
 
                 foreach (var languageHolder in Languages.Values)
                 {
-                    UpdateFile(languageHolder.Filename, languageHolder.LanguageId, true, false);
+                    UpdateFile(languageHolder.Filename, languageHolder.LanguageId, true, Settings.Default.StoreCommentsInAllFiles);
                 }
                 Dirty = false;
             }
@@ -268,17 +268,17 @@ namespace EntryTranslator.ResourceOperations
                 return;
             try
             {
-                UpdateFile(Filename, Properties.Resources.ColNameNoLang, false, false);
+                UpdateFile(Filename, Properties.Resources.ColNameNoLang, false, true);
 
                 foreach (var languageHolder in Languages.Values)
                 {
-                    UpdateFile(languageHolder.Filename, languageHolder.LanguageId, false, false);
+                    UpdateFile(languageHolder.Filename, languageHolder.LanguageId, false, Settings.Default.StoreCommentsInAllFiles);
                 }
                 Dirty = false;
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, string.Format("保存失败", Id),
+                MessageBox.Show(ex.Message, string.Format("����ʱ���쳣��{0}", Id),
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -289,6 +289,11 @@ namespace EntryTranslator.ResourceOperations
         private void ReadResourceFile(string filename, DataTable stringsTable,
             string valueColumn, bool isTranslated)
         {
+            var loadComments = !isTranslated || Settings.Default.StoreCommentsInAllFiles;
+
+            var colNameComment = Properties.Resources.ColNameComment;
+            var colNameTranslated = Properties.Resources.ColNameTranslated;
+
             using (var reader = new ResXResourceReader(filename))
             {
                 reader.UseResXDataNodes = true;
@@ -314,12 +319,28 @@ namespace EntryTranslator.ResourceOperations
                     {
                         var newRow = stringsTable.NewRow();
                         newRow[Properties.Resources.ColNameKey] = key;
+
                         newRow[valueColumn] = value;
+
+                        if (loadComments) newRow[colNameComment] = dataNode.Comment;
+                        newRow[Properties.Resources.ColNameError] = false;
+                        newRow[colNameTranslated] = isTranslated && !string.IsNullOrEmpty(value);
                         stringsTable.Rows.Add(newRow);
                     }
                     else
                     {
                         r[valueColumn] = value;
+
+                        if (loadComments && string.IsNullOrEmpty(r[colNameComment] as string) &&
+                            !string.IsNullOrEmpty(dataNode.Comment))
+                        {
+                            r[colNameComment] = dataNode.Comment;
+                        }
+
+                        if (isTranslated && !string.IsNullOrEmpty(value))
+                        {
+                            r[colNameTranslated] = true;
+                        }
                     }
                 }
             }
@@ -349,7 +370,53 @@ namespace EntryTranslator.ResourceOperations
         /// </summary>
         public void EvaluateRow(DataRow row)
         {
+            EvaluateRow(row, _lastLanguagesToCheck);
+        }
 
+        /// <summary>
+        ///     Sets error field on the row depending on missing translations etc
+        /// </summary>
+        public void EvaluateRow(DataRow row, string[] languagesToCheck)
+        {
+            _lastLanguagesToCheck = languagesToCheck;
+            var colNameError = Properties.Resources.ColNameError;
+            foreach (var languageHolder in languagesToCheck == null || languagesToCheck.Length < 1 ?
+                Languages.Values :
+                Languages.Values.Where(x => languagesToCheck.Any(y => x.LanguageId.Equals(y, StringComparison.OrdinalIgnoreCase))))
+            {
+                if (!RowContainsTranslation(row, languageHolder.LanguageId))
+                {
+                    // Some translations are missing
+                    row[colNameError] = true;
+                    return;
+                }
+                var colNameNoLang = Properties.Resources.ColNameNoLang;
+                if (row[colNameNoLang] == DBNull.Value || string.IsNullOrEmpty((string)row[colNameNoLang]))
+                {
+                    // There are translations, but the main key is missing
+                    row[colNameError] = true;
+                    return;
+                }
+            }
+
+            row[colNameError] = false;
+        }
+
+        private static bool RowContainsTranslation(DataRow row, string languageId)
+        {
+            if (Settings.Default.TranslatableInBrackets)
+            {
+                var defaultValue = ((string)row[Properties.Resources.ColNameNoLang]).Trim();
+                if (!defaultValue.StartsWith("[", StringComparison.InvariantCultureIgnoreCase) ||
+                    !defaultValue.EndsWith("]", StringComparison.InvariantCultureIgnoreCase))
+                    return true;
+            }
+
+            if (row[languageId] == DBNull.Value)
+                return false;
+
+            var value = (string)row[languageId];
+            return !string.IsNullOrWhiteSpace(value) && !(value.StartsWith("[") && value.TrimEnd().EndsWith("]"));
         }
 
         /// <summary>
@@ -366,22 +433,32 @@ namespace EntryTranslator.ResourceOperations
                 var colNameKey = Properties.Resources.ColNameKey;
                 _stringsTable.Columns.Add(colNameKey);
                 _stringsTable.PrimaryKey = new[] { _stringsTable.Columns[colNameKey] };
+                var colNameNoLang = Properties.Resources.ColNameNoLang;
+                _stringsTable.Columns.Add(colNameNoLang);
                 foreach (var languageHolder in Languages.Values)
                 {
                     _stringsTable.Columns.Add(languageHolder.LanguageId);
                 }
+                _stringsTable.Columns.Add(Properties.Resources.ColNameComment);
+                _stringsTable.Columns.Add(Properties.Resources.ColNameTranslated, typeof(bool));
+                _stringsTable.Columns.Add(Properties.Resources.ColNameError, typeof(bool));
 
+                if (Filename != null && File.Exists(Filename))
+                {
+                    ReadResourceFile(Filename, _stringsTable, colNameNoLang, false);
+                }
                 foreach (var languageHolder in Languages.Values)
                 {
                     ReadResourceFile(languageHolder.Filename, _stringsTable, languageHolder.LanguageId, true);
                 }
+
+                EvaluateAllRows();
 
                 _stringsTable.ColumnChanging += stringsTable_ColumnChanging;
                 _stringsTable.ColumnChanged += stringsTable_ColumnChanged;
                 _stringsTable.RowDeleting += stringsTable_RowDeleting;
                 _stringsTable.TableNewRow += stringsTable_RowInserted;
             }
-
             OnLanguageChange();
         }
 
@@ -407,18 +484,21 @@ namespace EntryTranslator.ResourceOperations
         /// </summary>
         private void stringsTable_ColumnChanged(object sender, DataColumnChangeEventArgs e)
         {
-            var colNameKey = Properties.Resources.ColNameKey;
-            if (e.Column == e.Column.Table.Columns[colNameKey])
+            if (e.Column != e.Column.Table.Columns[Properties.Resources.ColNameError])
             {
-                // row key was changed -> treat old as being delete
-                _deletedKeys.Add((string)_columnChangePreviousValue);
+                var colNameKey = Properties.Resources.ColNameKey;
+                if (e.Column == e.Column.Table.Columns[colNameKey])
+                {
+                    // row key was changed -> treat old as being delete
+                    _deletedKeys.Add((string)_columnChangePreviousValue);
 
-                // maybe we create/renamed a key to a previously deleted one -> remove that
-                _deletedKeys.Remove((string)e.ProposedValue);
+                    // maybe we create/renamed a key to a previously deleted one -> remove that
+                    _deletedKeys.Remove((string)e.ProposedValue);
+                }
+
+                Dirty = true;
+                EvaluateRow(e.Row);
             }
-
-            Dirty = true;
-            EvaluateRow(e.Row);
 
             _columnChangePreviousValue = null;
         }
@@ -525,8 +605,18 @@ namespace EntryTranslator.ResourceOperations
 
             ReadResourceFile(languageHolder.Filename, _stringsTable, languageHolder.LanguageId, true);
 
+            EvaluateAllRows();
+
             Dirty = true;
             OnLanguageChange();
+        }
+
+        public void EvaluateAllRows(string[] languagesToCheck = null)
+        {
+            foreach (DataRow row in _stringsTable.Rows)
+            {
+                EvaluateRow(row, languagesToCheck);
+            }
         }
 
         /// <summary>
@@ -574,7 +664,7 @@ namespace EntryTranslator.ResourceOperations
             if (!rows.Any())
                 return false;
 
-            return !Languages.ContainsKey(cultureName);
+            return !Languages.ContainsKey(cultureName) || rows.Any(row => !RowContainsTranslation(row, cultureName));
         }
 
         public List<string> GetTextForTranslating(TranslateAPIConfig translateApiConfig)

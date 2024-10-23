@@ -2,6 +2,9 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="EntryTranslator.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
+    <Setting Name="LastOpenedDirectory" Provider="PortableSettingsProvider.PortableSettingsProvider" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
     <Setting Name="HideEmptyResources" Provider="PortableSettingsProvider.PortableSettingsProvider" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
@@ -43,6 +46,9 @@
     </Setting>
     <Setting Name="CellEditorShowWhitespace" Provider="PortableSettingsProvider.PortableSettingsProvider" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="StoreCommentsInAllFiles" Provider="PortableSettingsProvider.PortableSettingsProvider" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="SplitterMain" Provider="PortableSettingsProvider.PortableSettingsProvider" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>

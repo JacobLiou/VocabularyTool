@@ -40,6 +40,9 @@ namespace EntryTranslator
                     {
                         _currentResource.LanguageChange += OnCurrentResourceLanguageChange;
                         _currentResource.DirtyChanged += _currentResource_DirtyChanged;
+
+                        _currentResource.EvaluateAllRows(
+                            languageSettings1.EnabledLanguages.Select(x => x.Name).ToArray());
                     }
 
                     resourceGrid1.CurrentResource = value;
@@ -71,6 +74,7 @@ namespace EntryTranslator
                 if (resourceGrid1.CurrentResource == null) return;
 
                 var languageIds = languageSettings1.EnabledLanguages.Select(x => x.Name).ToArray();
+                resourceGrid1.CurrentResource.EvaluateAllRows(languageIds);
                 resourceGrid1.SetVisibleLanguageColumns(languageIds);
                 resourceGrid1.Refresh();
             };
@@ -170,11 +174,15 @@ namespace EntryTranslator
             if (Settings.Default.SplitterMain > 10)
                 splitContainerMain.SplitterDistance = Settings.Default.SplitterMain;
 
+            Opacity = 1;
+
             LoadResourcesFromFolder($@"{AppDomain.CurrentDomain.BaseDirectory}LangDic");
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            Settings.Default.LastOpenedDirectory = ResourceLoader.OpenedPath ?? string.Empty;
+
             switch (WindowState)
             {
                 case FormWindowState.Normal:
@@ -216,7 +224,6 @@ namespace EntryTranslator
                 return;
 
             Enabled = false;
-
             toolStripStatusLabel1.Text = string.Format("打开 {0}...", path);
             Application.DoEvents();
 
