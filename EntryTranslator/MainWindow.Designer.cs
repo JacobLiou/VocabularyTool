@@ -38,6 +38,10 @@ namespace EntryTranslator
             this.uiRadioButtonCSV = new Sunny.UI.UIRadioButton();
             this.buttonExport = new System.Windows.Forms.Button();
             this.buttonImport = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttondeleteKey = new System.Windows.Forms.Button();
+            this.buttonaddNewKey = new System.Windows.Forms.Button();
+            this.buttonaddLanguage = new System.Windows.Forms.Button();
             this.groupBoxSearch = new System.Windows.Forms.GroupBox();
             this.textBoxSearch = new Sunny.UI.UITextBox();
             this.buttonClearSearch = new System.Windows.Forms.Button();
@@ -62,16 +66,16 @@ namespace EntryTranslator
             this.saveAllModifiedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reloadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openLocationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.languagesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addLanguageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeLanguageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.keysToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addNewKeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteKeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.findToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.findNextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearSearchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.keysToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addNewKeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteKeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.languagesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addLanguageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeLanguageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemGT = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -83,6 +87,7 @@ namespace EntryTranslator
             this.splitContainerAll.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.groupBoxFile.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.groupBoxSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -117,6 +122,7 @@ namespace EntryTranslator
             // 
             this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.flowLayoutPanel1.Controls.Add(this.groupBoxFile);
+            this.flowLayoutPanel1.Controls.Add(this.groupBox1);
             this.flowLayoutPanel1.Controls.Add(this.groupBoxSearch);
             resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -163,6 +169,41 @@ namespace EntryTranslator
             this.buttonImport.Name = "buttonImport";
             this.buttonImport.UseVisualStyleBackColor = false;
             this.buttonImport.Click += new System.EventHandler(this.buttonImport_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.White;
+            this.groupBox1.Controls.Add(this.buttondeleteKey);
+            this.groupBox1.Controls.Add(this.buttonaddNewKey);
+            this.groupBox1.Controls.Add(this.buttonaddLanguage);
+            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
+            // 
+            // buttondeleteKey
+            // 
+            this.buttondeleteKey.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.buttondeleteKey, "buttondeleteKey");
+            this.buttondeleteKey.Name = "buttondeleteKey";
+            this.buttondeleteKey.UseVisualStyleBackColor = false;
+            this.buttondeleteKey.Click += new System.EventHandler(this.buttondeleteKey_Click);
+            // 
+            // buttonaddNewKey
+            // 
+            this.buttonaddNewKey.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.buttonaddNewKey, "buttonaddNewKey");
+            this.buttonaddNewKey.Name = "buttonaddNewKey";
+            this.buttonaddNewKey.UseVisualStyleBackColor = false;
+            this.buttonaddNewKey.Click += new System.EventHandler(this.buttonaddNewKey_Click);
+            // 
+            // buttonaddLanguage
+            // 
+            this.buttonaddLanguage.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.buttonaddLanguage, "buttonaddLanguage");
+            this.buttonaddLanguage.Name = "buttonaddLanguage";
+            this.buttonaddLanguage.UseVisualStyleBackColor = false;
+            this.buttonaddLanguage.Click += new System.EventHandler(this.buttonaddLanguage_Click);
             // 
             // groupBoxSearch
             // 
@@ -309,8 +350,8 @@ namespace EntryTranslator
             this.menuStripMain.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.keysToolStripMenuItem,
             this.languagesToolStripMenuItem,
+            this.keysToolStripMenuItem,
             this.searchToolStripMenuItem,
             this.toolStripMenuItemGT,
             this.helpToolStripMenuItem});
@@ -361,6 +402,51 @@ namespace EntryTranslator
             resources.ApplyResources(this.openLocationToolStripMenuItem, "openLocationToolStripMenuItem");
             this.openLocationToolStripMenuItem.Click += new System.EventHandler(this.openLocationToolStripMenuItem_Click);
             // 
+            // languagesToolStripMenuItem
+            // 
+            this.languagesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addLanguageToolStripMenuItem,
+            this.removeLanguageToolStripMenuItem});
+            this.languagesToolStripMenuItem.Name = "languagesToolStripMenuItem";
+            resources.ApplyResources(this.languagesToolStripMenuItem, "languagesToolStripMenuItem");
+            this.languagesToolStripMenuItem.DropDownOpened += new System.EventHandler(this.languagesToolStripMenuItem_DropDownOpened);
+            // 
+            // addLanguageToolStripMenuItem
+            // 
+            this.addLanguageToolStripMenuItem.Image = global::EntryTranslator.Properties.Resources.Add;
+            this.addLanguageToolStripMenuItem.Name = "addLanguageToolStripMenuItem";
+            resources.ApplyResources(this.addLanguageToolStripMenuItem, "addLanguageToolStripMenuItem");
+            this.addLanguageToolStripMenuItem.Click += new System.EventHandler(this.addLanguageToolStripMenuItem_Clicked);
+            // 
+            // removeLanguageToolStripMenuItem
+            // 
+            this.removeLanguageToolStripMenuItem.Image = global::EntryTranslator.Properties.Resources.Delete_black_32x32;
+            this.removeLanguageToolStripMenuItem.Name = "removeLanguageToolStripMenuItem";
+            resources.ApplyResources(this.removeLanguageToolStripMenuItem, "removeLanguageToolStripMenuItem");
+            this.removeLanguageToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.removeLanguageToolStripMenuItem_DropDownItemClicked);
+            // 
+            // keysToolStripMenuItem
+            // 
+            this.keysToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addNewKeyToolStripMenuItem,
+            this.deleteKeyToolStripMenuItem});
+            this.keysToolStripMenuItem.Name = "keysToolStripMenuItem";
+            resources.ApplyResources(this.keysToolStripMenuItem, "keysToolStripMenuItem");
+            // 
+            // addNewKeyToolStripMenuItem
+            // 
+            this.addNewKeyToolStripMenuItem.Image = global::EntryTranslator.Properties.Resources.Add;
+            this.addNewKeyToolStripMenuItem.Name = "addNewKeyToolStripMenuItem";
+            resources.ApplyResources(this.addNewKeyToolStripMenuItem, "addNewKeyToolStripMenuItem");
+            this.addNewKeyToolStripMenuItem.Click += new System.EventHandler(this.addNewKeyToolStripMenuItem_Click);
+            // 
+            // deleteKeyToolStripMenuItem
+            // 
+            this.deleteKeyToolStripMenuItem.Image = global::EntryTranslator.Properties.Resources.Delete_black_32x32;
+            this.deleteKeyToolStripMenuItem.Name = "deleteKeyToolStripMenuItem";
+            resources.ApplyResources(this.deleteKeyToolStripMenuItem, "deleteKeyToolStripMenuItem");
+            this.deleteKeyToolStripMenuItem.Click += new System.EventHandler(this.deleteKeyToolStripMenuItem_Click);
+            // 
             // searchToolStripMenuItem
             // 
             this.searchToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -389,51 +475,6 @@ namespace EntryTranslator
             this.clearSearchToolStripMenuItem.Name = "clearSearchToolStripMenuItem";
             resources.ApplyResources(this.clearSearchToolStripMenuItem, "clearSearchToolStripMenuItem");
             this.clearSearchToolStripMenuItem.Click += new System.EventHandler(this.clearSearchToolStripMenuItem_Click);
-            // 
-            // keysToolStripMenuItem
-            // 
-            this.keysToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addNewKeyToolStripMenuItem,
-            this.deleteKeyToolStripMenuItem});
-            this.keysToolStripMenuItem.Name = "keysToolStripMenuItem";
-            resources.ApplyResources(this.keysToolStripMenuItem, "keysToolStripMenuItem");
-            // 
-            // addNewKeyToolStripMenuItem
-            // 
-            this.addNewKeyToolStripMenuItem.Image = global::EntryTranslator.Properties.Resources.Add;
-            this.addNewKeyToolStripMenuItem.Name = "addNewKeyToolStripMenuItem";
-            resources.ApplyResources(this.addNewKeyToolStripMenuItem, "addNewKeyToolStripMenuItem");
-            this.addNewKeyToolStripMenuItem.Click += new System.EventHandler(this.addNewKeyToolStripMenuItem_Click);
-            // 
-            // deleteKeyToolStripMenuItem
-            // 
-            this.deleteKeyToolStripMenuItem.Image = global::EntryTranslator.Properties.Resources.Delete_black_32x32;
-            this.deleteKeyToolStripMenuItem.Name = "deleteKeyToolStripMenuItem";
-            resources.ApplyResources(this.deleteKeyToolStripMenuItem, "deleteKeyToolStripMenuItem");
-            this.deleteKeyToolStripMenuItem.Click += new System.EventHandler(this.deleteKeyToolStripMenuItem_Click);
-            // 
-            // languagesToolStripMenuItem
-            // 
-            this.languagesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addLanguageToolStripMenuItem,
-            this.removeLanguageToolStripMenuItem});
-            this.languagesToolStripMenuItem.Name = "languagesToolStripMenuItem";
-            resources.ApplyResources(this.languagesToolStripMenuItem, "languagesToolStripMenuItem");
-            this.languagesToolStripMenuItem.DropDownOpened += new System.EventHandler(this.languagesToolStripMenuItem_DropDownOpened);
-            // 
-            // addLanguageToolStripMenuItem
-            // 
-            this.addLanguageToolStripMenuItem.Image = global::EntryTranslator.Properties.Resources.Add;
-            this.addLanguageToolStripMenuItem.Name = "addLanguageToolStripMenuItem";
-            resources.ApplyResources(this.addLanguageToolStripMenuItem, "addLanguageToolStripMenuItem");
-            this.addLanguageToolStripMenuItem.Click += new System.EventHandler(this.addLanguageToolStripMenuItem_Clicked);
-            // 
-            // removeLanguageToolStripMenuItem
-            // 
-            this.removeLanguageToolStripMenuItem.Image = global::EntryTranslator.Properties.Resources.Delete_black_32x32;
-            this.removeLanguageToolStripMenuItem.Name = "removeLanguageToolStripMenuItem";
-            resources.ApplyResources(this.removeLanguageToolStripMenuItem, "removeLanguageToolStripMenuItem");
-            this.removeLanguageToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.removeLanguageToolStripMenuItem_DropDownItemClicked);
             // 
             // toolStripMenuItemGT
             // 
@@ -485,6 +526,7 @@ namespace EntryTranslator
             this.splitContainerAll.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.groupBoxFile.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.groupBoxSearch.ResumeLayout(false);
             this.splitContainerMain.Panel1.ResumeLayout(false);
             this.splitContainerMain.Panel2.ResumeLayout(false);
@@ -552,6 +594,10 @@ namespace EntryTranslator
         private Sunny.UI.UIRadioButton uiRadioButtonCSV;
         private ToolStripMenuItem cultureoolStripMenuItem;
         private Sunny.UI.UITextBox textBoxSearch;
+        private GroupBox groupBox1;
+        private Button buttondeleteKey;
+        private Button buttonaddNewKey;
+        private Button buttonaddLanguage;
     }
 }
 

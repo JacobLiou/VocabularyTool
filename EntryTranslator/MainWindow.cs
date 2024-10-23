@@ -641,6 +641,21 @@ namespace EntryTranslator
             }
         }
 
+        private void buttonaddLanguage_Click(object sender, EventArgs e)
+        {
+            addLanguageToolStripMenuItem_Clicked(sender, e);
+        }
+
+        private void buttonaddNewKey_Click(object sender, EventArgs e)
+        {
+            addNewKeyToolStripMenuItem_Click(sender, e);
+        }
+
+        private void buttondeleteKey_Click(object sender, EventArgs e)
+        {
+            deleteKeyToolStripMenuItem_Click(sender, e);
+        }
+
         private void buttonSearch_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(textBoxSearch.Text))
