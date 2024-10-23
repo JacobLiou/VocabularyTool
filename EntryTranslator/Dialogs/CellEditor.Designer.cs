@@ -88,17 +88,18 @@
             this.textBoxString.ScrollWidth = 200;
             this.textBoxString.WhitespaceSize = 2;
             // 
-            // CellEditorWindow
+            // CellEditor
             // 
             this.AcceptButton = this.buttonOK;
-            resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.CancelButton = this.buttonCancel;
+            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.textBoxString);
             this.Controls.Add(this.panel1);
             this.KeyPreview = true;
+            this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "CellEditorWindow";
+            this.Name = "CellEditor";
             this.ShowInTaskbar = false;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ZoomWindow_FormClosed);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CellEditorWindow_KeyPress);

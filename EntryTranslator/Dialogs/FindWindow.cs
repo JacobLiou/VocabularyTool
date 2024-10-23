@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace EntryTranslator.Dialogs
 {
-    public partial class FindWindow : Form
+    public partial class FindWindow : WindowBase
     {
         public static SearchParams ShowDialog(Form owner)
         {

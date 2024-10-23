@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace EntryTranslator.Dialogs
 {
-    public partial class LanguageSelect : Form
+    public partial class LanguageSelect : WindowBase
     {
         public static CultureInfo ShowLanguageSelectDialog(Form owner)
         {

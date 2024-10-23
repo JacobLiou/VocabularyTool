@@ -134,10 +134,12 @@ namespace EntryTranslator
             // splitContainerAll.Panel1
             // 
             this.splitContainerAll.Panel1.Controls.Add(this.flowLayoutPanel1);
+            resources.ApplyResources(this.splitContainerAll.Panel1, "splitContainerAll.Panel1");
             // 
             // splitContainerAll.Panel2
             // 
             this.splitContainerAll.Panel2.Controls.Add(this.splitContainerMain);
+            resources.ApplyResources(this.splitContainerAll.Panel2, "splitContainerAll.Panel2");
             // 
             // flowLayoutPanel1
             // 
@@ -228,6 +230,7 @@ namespace EntryTranslator
             // splitContainerMain.Panel1
             // 
             this.splitContainerMain.Panel1.Controls.Add(this.tabControl1);
+            resources.ApplyResources(this.splitContainerMain.Panel1, "splitContainerMain.Panel1");
             // 
             // splitContainerMain.Panel2
             // 
@@ -276,6 +279,7 @@ namespace EntryTranslator
             // 
             // menuStripMain
             // 
+            resources.ApplyResources(this.menuStripMain, "menuStripMain");
             this.menuStripMain.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
@@ -284,7 +288,6 @@ namespace EntryTranslator
             this.languagesToolStripMenuItem,
             this.toolStripMenuItemGT,
             this.helpToolStripMenuItem});
-            resources.ApplyResources(this.menuStripMain, "menuStripMain");
             this.menuStripMain.Name = "menuStripMain";
             // 
             // fileToolStripMenuItem
@@ -441,6 +444,7 @@ namespace EntryTranslator
             this.Controls.Add(this.menuStripMain);
             this.Controls.Add(this.statusStrip);
             this.Name = "MainWindow";
+            this.TitleFont = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Shown += new System.EventHandler(this.MainForm_Shown);
             this.statusStrip.ResumeLayout(false);

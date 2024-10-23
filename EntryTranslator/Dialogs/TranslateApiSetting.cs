@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace EntryTranslator.Dialogs
 {
-    public partial class TranslateApiSetting : Form
+    public partial class TranslateApiSetting : WindowBase
     {
         private readonly List<string> _languages;
         private List<string> _languagesFrom;

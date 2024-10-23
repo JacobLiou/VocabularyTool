@@ -5,18 +5,18 @@ using System.Windows.Forms;
 
 namespace EntryTranslator.Dialogs
 {
-    public sealed partial class CellEditor : Form
+    public sealed partial class CellEditor : WindowBase
     {
         public CellEditor()
         {
             InitializeComponent();
 
-            textBoxString.Styles[Style.Default].Font = "Microsoft Sans Serif";
-            textBoxString.Styles[Style.Default].Size = 11;
+            textBoxString.Styles[ScintillaNET.Style.Default].Font = "Microsoft Sans Serif";
+            textBoxString.Styles[ScintillaNET.Style.Default].Size = 11;
             textBoxString.StyleClearAll();
 
-            textBoxString.Styles[Style.LineNumber].BackColor = Color.DarkGray;
-            textBoxString.Styles[Style.LineNumber].ForeColor = Color.LightGray;
+            textBoxString.Styles[ScintillaNET.Style.LineNumber].BackColor = Color.DarkGray;
+            textBoxString.Styles[ScintillaNET.Style.LineNumber].ForeColor = Color.LightGray;
             var nums = textBoxString.Margins[1];
             nums.Type = MarginType.Number;
             nums.Mask = 0;

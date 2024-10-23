@@ -1,6 +1,7 @@
 ﻿using EntryTranslator.Dialogs;
 using EntryTranslator.ResourceOperations;
 using EntryTranslator.Utils;
+using Sunny.UI;
 using System;
 using System.Data;
 using System.Diagnostics;
@@ -11,7 +12,7 @@ using System.Windows.Forms;
 
 namespace EntryTranslator.Controls
 {
-    public partial class LanguageEditor : UserControl
+    public partial class LanguageEditor : UIUserControl
     {
         private static readonly string[] SpecialColNames =
         {

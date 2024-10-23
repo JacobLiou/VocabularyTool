@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace EntryTranslator.Dialogs
 {
-    public partial class AddResourceKey : Form
+    public partial class AddResourceKey : WindowBase
     {
         public string DefaultTranslatedText => textboxTranslated.Text;
         public string KeyName => textboxKeyName.Text;

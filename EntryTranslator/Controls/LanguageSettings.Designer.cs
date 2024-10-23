@@ -69,13 +69,13 @@
             // 
             // toolStrip1
             // 
+            resources.ApplyResources(this.toolStrip1, "toolStrip1");
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButtonSelectAll,
             this.toolStripButtonSelectNone,
             this.toolStripButtonSelectInvert});
-            resources.ApplyResources(this.toolStrip1, "toolStrip1");
             this.toolStrip1.Name = "toolStrip1";
             // 
             // toolStripButtonSelectAll
@@ -100,10 +100,10 @@
             // 
             // LanguageSettings
             // 
-            resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.toolStrip1);
+            resources.ApplyResources(this, "$this");
             this.Name = "LanguageSettings";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

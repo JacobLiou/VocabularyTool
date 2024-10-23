@@ -113,18 +113,17 @@
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
-            // AddResourceKeyWindow
+            // AddResourceKey
             // 
             this.AcceptButton = this.btnAdd;
-            resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.CancelButton = this.button1;
+            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.tableLayoutPanel);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "AddResourceKeyWindow";
+            this.Name = "AddResourceKey";
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.tableLayoutPanel.ResumeLayout(false);

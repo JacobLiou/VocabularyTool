@@ -1,4 +1,5 @@
 ﻿using EntryTranslator.Properties;
+using Sunny.UI;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -8,7 +9,7 @@ using System.Windows.Forms;
 
 namespace EntryTranslator.Controls
 {
-    public partial class LanguageSettings : UserControl
+    public partial class LanguageSettings : UIUserControl
     {
         public LanguageSettings()
         {

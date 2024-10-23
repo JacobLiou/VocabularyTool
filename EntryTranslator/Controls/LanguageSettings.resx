@@ -135,6 +135,9 @@
     <value>Fill</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="listView1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 10.8pt</value>
+  </data>
   <data name="listView1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 27</value>
   </data>
@@ -162,6 +165,9 @@
   <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="toolStrip1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 10.8pt</value>
+  </data>
   <data name="toolStripButtonSelectAll.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 9pt</value>
   </data>
@@ -185,7 +191,7 @@
     <value>Magenta</value>
   </data>
   <data name="toolStripButtonSelectAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 24</value>
+    <value>61, 28</value>
   </data>
   <data name="toolStripButtonSelectAll.Text" xml:space="preserve">
     <value>全选</value>
@@ -210,7 +216,7 @@
     <value>Magenta</value>
   </data>
   <data name="toolStripButtonSelectNone.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 24</value>
+    <value>76, 28</value>
   </data>
   <data name="toolStripButtonSelectNone.Text" xml:space="preserve">
     <value>全不选</value>
@@ -222,7 +228,7 @@
     <value>Magenta</value>
   </data>
   <data name="toolStripButtonSelectInvert.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 24</value>
+    <value>29, 28</value>
   </data>
   <data name="toolStripButtonSelectInvert.Text" xml:space="preserve">
     <value>Invert selection</value>
@@ -254,9 +260,6 @@
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>8, 15</value>
-  </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 3, 4, 3</value>
   </data>
@@ -297,6 +300,6 @@
     <value>LanguageSettings</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>Sunny.UI.UIUserControl, SunnyUI, Version=3.7.2.0, Culture=neutral, PublicKeyToken=27d7d2e821d97aeb</value>
   </data>
 </root>
