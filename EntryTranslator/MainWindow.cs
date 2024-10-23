@@ -302,11 +302,12 @@ namespace EntryTranslator
 
         private void ImportToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
         }
 
         private void exportAllResourcesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            buttonExport_Click(sender, e);
         }
 
         private void reloadCurrentDirectoryToolStripMenuItem_Click(object sender, EventArgs e)
@@ -484,7 +485,7 @@ namespace EntryTranslator
 
         private void buttonExport_Click(object sender, EventArgs e)
         {
-
+            ExcelUtil.ExportExcelFile(CurrentResource.StringsTable);
         }
 
         private void buttonSearch_Click(object sender, EventArgs e)

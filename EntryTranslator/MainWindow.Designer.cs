@@ -31,11 +31,6 @@ namespace EntryTranslator
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
-            this.statusStrip = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
-            this.toolStripStatusLabelCurrentItem = new System.Windows.Forms.ToolStripStatusLabel();
-            this.panelMain = new System.Windows.Forms.Panel();
             this.splitContainerAll = new System.Windows.Forms.SplitContainer();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBoxFile = new System.Windows.Forms.GroupBox();
@@ -53,6 +48,11 @@ namespace EntryTranslator
             this.tabControl3 = new System.Windows.Forms.TabControl();
             this.tabPageEditedResource = new System.Windows.Forms.TabPage();
             this.resourceGrid1 = new EntryTranslator.Controls.LanguageEditor();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            this.toolStripStatusLabelCurrentItem = new System.Windows.Forms.ToolStripStatusLabel();
+            this.panelMain = new System.Windows.Forms.Panel();
             this.menuStripMain = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ImportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,8 +74,6 @@ namespace EntryTranslator
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.uiContextMenuStrip1 = new Sunny.UI.UIContextMenuStrip();
-            this.statusStrip.SuspendLayout();
-            this.panelMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerAll)).BeginInit();
             this.splitContainerAll.Panel1.SuspendLayout();
             this.splitContainerAll.Panel2.SuspendLayout();
@@ -91,39 +89,10 @@ namespace EntryTranslator
             this.tabPage1.SuspendLayout();
             this.tabControl3.SuspendLayout();
             this.tabPageEditedResource.SuspendLayout();
+            this.statusStrip.SuspendLayout();
+            this.panelMain.SuspendLayout();
             this.menuStripMain.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // statusStrip
-            // 
-            this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1,
-            this.toolStripProgressBar1,
-            this.toolStripStatusLabelCurrentItem});
-            resources.ApplyResources(this.statusStrip, "statusStrip");
-            this.statusStrip.Name = "statusStrip";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            resources.ApplyResources(this.toolStripStatusLabel1, "toolStripStatusLabel1");
-            // 
-            // toolStripProgressBar1
-            // 
-            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            resources.ApplyResources(this.toolStripProgressBar1, "toolStripProgressBar1");
-            // 
-            // toolStripStatusLabelCurrentItem
-            // 
-            this.toolStripStatusLabelCurrentItem.Name = "toolStripStatusLabelCurrentItem";
-            resources.ApplyResources(this.toolStripStatusLabelCurrentItem, "toolStripStatusLabelCurrentItem");
-            // 
-            // panelMain
-            // 
-            this.panelMain.Controls.Add(this.splitContainerAll);
-            resources.ApplyResources(this.panelMain, "panelMain");
-            this.panelMain.Name = "panelMain";
             // 
             // splitContainerAll
             // 
@@ -254,6 +223,7 @@ namespace EntryTranslator
             // 
             resources.ApplyResources(this.languageSettings1, "languageSettings1");
             this.languageSettings1.Name = "languageSettings1";
+            this.languageSettings1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tabControl3
             // 
@@ -276,6 +246,38 @@ namespace EntryTranslator
             resources.ApplyResources(this.resourceGrid1, "resourceGrid1");
             this.resourceGrid1.Name = "resourceGrid1";
             this.resourceGrid1.ShowNullValuesAsGrayed = false;
+            this.resourceGrid1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // statusStrip
+            // 
+            this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.toolStripProgressBar1,
+            this.toolStripStatusLabelCurrentItem});
+            resources.ApplyResources(this.statusStrip, "statusStrip");
+            this.statusStrip.Name = "statusStrip";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            resources.ApplyResources(this.toolStripStatusLabel1, "toolStripStatusLabel1");
+            // 
+            // toolStripProgressBar1
+            // 
+            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
+            resources.ApplyResources(this.toolStripProgressBar1, "toolStripProgressBar1");
+            // 
+            // toolStripStatusLabelCurrentItem
+            // 
+            this.toolStripStatusLabelCurrentItem.Name = "toolStripStatusLabelCurrentItem";
+            resources.ApplyResources(this.toolStripStatusLabelCurrentItem, "toolStripStatusLabelCurrentItem");
+            // 
+            // panelMain
+            // 
+            this.panelMain.Controls.Add(this.splitContainerAll);
+            resources.ApplyResources(this.panelMain, "panelMain");
+            this.panelMain.Name = "panelMain";
             // 
             // menuStripMain
             // 
@@ -444,12 +446,8 @@ namespace EntryTranslator
             this.Controls.Add(this.menuStripMain);
             this.Controls.Add(this.statusStrip);
             this.Name = "MainWindow";
-            this.TitleFont = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Shown += new System.EventHandler(this.MainForm_Shown);
-            this.statusStrip.ResumeLayout(false);
-            this.statusStrip.PerformLayout();
-            this.panelMain.ResumeLayout(false);
             this.splitContainerAll.Panel1.ResumeLayout(false);
             this.splitContainerAll.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerAll)).EndInit();
@@ -466,6 +464,9 @@ namespace EntryTranslator
             this.tabPage1.ResumeLayout(false);
             this.tabControl3.ResumeLayout(false);
             this.tabPageEditedResource.ResumeLayout(false);
+            this.statusStrip.ResumeLayout(false);
+            this.statusStrip.PerformLayout();
+            this.panelMain.ResumeLayout(false);
             this.menuStripMain.ResumeLayout(false);
             this.menuStripMain.PerformLayout();
             this.ResumeLayout(false);
