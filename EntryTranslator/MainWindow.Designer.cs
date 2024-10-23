@@ -34,6 +34,8 @@ namespace EntryTranslator
             this.splitContainerAll = new System.Windows.Forms.SplitContainer();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBoxFile = new System.Windows.Forms.GroupBox();
+            this.uiRadioButtonExcel = new Sunny.UI.UIRadioButton();
+            this.uiRadioButtonCSV = new Sunny.UI.UIRadioButton();
             this.buttonExport = new System.Windows.Forms.Button();
             this.buttonImport = new System.Windows.Forms.Button();
             this.groupBoxSearch = new System.Windows.Forms.GroupBox();
@@ -74,8 +76,7 @@ namespace EntryTranslator
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.uiContextMenuStrip1 = new Sunny.UI.UIContextMenuStrip();
-            this.uiRadioButtonCSV = new Sunny.UI.UIRadioButton();
-            this.uiRadioButtonExcel = new Sunny.UI.UIRadioButton();
+            this.cultureoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerAll)).BeginInit();
             this.splitContainerAll.Panel1.SuspendLayout();
             this.splitContainerAll.Panel2.SuspendLayout();
@@ -131,6 +132,19 @@ namespace EntryTranslator
             resources.ApplyResources(this.groupBoxFile, "groupBoxFile");
             this.groupBoxFile.Name = "groupBoxFile";
             this.groupBoxFile.TabStop = false;
+            // 
+            // uiRadioButtonExcel
+            // 
+            this.uiRadioButtonExcel.Checked = true;
+            this.uiRadioButtonExcel.Cursor = System.Windows.Forms.Cursors.Hand;
+            resources.ApplyResources(this.uiRadioButtonExcel, "uiRadioButtonExcel");
+            this.uiRadioButtonExcel.Name = "uiRadioButtonExcel";
+            // 
+            // uiRadioButtonCSV
+            // 
+            this.uiRadioButtonCSV.Cursor = System.Windows.Forms.Cursors.Hand;
+            resources.ApplyResources(this.uiRadioButtonCSV, "uiRadioButtonCSV");
+            this.uiRadioButtonCSV.Name = "uiRadioButtonCSV";
             // 
             // buttonExport
             // 
@@ -423,7 +437,8 @@ namespace EntryTranslator
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.helpToolStripMenuItem1});
+            this.helpToolStripMenuItem1,
+            this.cultureoolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             resources.ApplyResources(this.helpToolStripMenuItem, "helpToolStripMenuItem");
             // 
@@ -441,18 +456,11 @@ namespace EntryTranslator
             this.uiContextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.uiContextMenuStrip1.Name = "uiContextMenuStrip1";
             // 
-            // uiRadioButtonCSV
+            // cultureoolStripMenuItem
             // 
-            this.uiRadioButtonCSV.Cursor = System.Windows.Forms.Cursors.Hand;
-            resources.ApplyResources(this.uiRadioButtonCSV, "uiRadioButtonCSV");
-            this.uiRadioButtonCSV.Name = "uiRadioButtonCSV";
-            // 
-            // uiRadioButtonExcel
-            // 
-            this.uiRadioButtonExcel.Checked = true;
-            this.uiRadioButtonExcel.Cursor = System.Windows.Forms.Cursors.Hand;
-            resources.ApplyResources(this.uiRadioButtonExcel, "uiRadioButtonExcel");
-            this.uiRadioButtonExcel.Name = "uiRadioButtonExcel";
+            this.cultureoolStripMenuItem.Name = "cultureoolStripMenuItem";
+            resources.ApplyResources(this.cultureoolStripMenuItem, "cultureoolStripMenuItem");
+            this.cultureoolStripMenuItem.Click += new System.EventHandler(this.cultureoolStripMenuItem_Click);
             // 
             // MainWindow
             // 
@@ -537,6 +545,7 @@ namespace EntryTranslator
         private Sunny.UI.UIContextMenuStrip uiContextMenuStrip1;
         private Sunny.UI.UIRadioButton uiRadioButtonExcel;
         private Sunny.UI.UIRadioButton uiRadioButtonCSV;
+        private ToolStripMenuItem cultureoolStripMenuItem;
     }
 }
 

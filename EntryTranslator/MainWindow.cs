@@ -480,6 +480,12 @@ namespace EntryTranslator
                 Process.Start("explorer.exe", $"\"{readmePath}\"");
         }
 
+        private void cultureoolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using var language = new LanguageHelp();
+            language.ShowDialog();
+        }
+
         private void buttonImport_Click(object sender, EventArgs e)
         {
             var dialogResult = MessageBox.Show("导入将删除现有的所有数据", "导入", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -586,7 +592,7 @@ namespace EntryTranslator
                 }
 
                 sfd.AddExtension = true;
-                sfd.FileName = "搜航词条库_" + DateTime.Now.ToString("yyyyMMdd");
+                sfd.FileName = "搜航词条库_" + DateTime.Now.ToString("yyyyMMddHHmmss");
 
                 if (sfd.ShowDialog() != DialogResult.OK)
                     return;
@@ -643,6 +649,10 @@ namespace EntryTranslator
 
         }
 
+
+
         #endregion 菜单快捷栏事件
+
+
     }
 }

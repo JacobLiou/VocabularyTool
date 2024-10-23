@@ -182,7 +182,15 @@
     <Reference Include="System.Xml.Serialization" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dialogs\LanguageHelp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\LanguageHelp.Designer.cs">
+      <DependentUpon>LanguageHelp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CultureModel.cs" />
     <Compile Include="Utils\CsvUtil.cs" />
+    <Compile Include="Utils\CultureLangHelper.cs" />
     <Compile Include="Utils\ExcelUtil.cs" />
     <Compile Include="WindowBase.cs">
       <SubType>Form</SubType>
@@ -218,6 +226,9 @@
     <Compile Include="Dialogs\TranslateApiSetting.Designer.cs">
       <DependentUpon>TranslateApiSetting.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Dialogs\LanguageHelp.resx">
+      <DependentUpon>LanguageHelp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WindowBase.resx">
       <DependentUpon>WindowBase.cs</DependentUpon>
     </EmbeddedResource>
@@ -310,12 +321,6 @@
     <Compile Include="Dialogs\CellEditor.Designer.cs">
       <DependentUpon>CellEditor.cs</DependentUpon>
     </Compile>
-    <None Include="Templates\ExportEntry.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Templates\ImportEntry.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="Templates\搜航词条库_20241023.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

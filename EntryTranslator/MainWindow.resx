@@ -132,7 +132,7 @@
     <value>Horizontal</value>
   </data>
   <data name="uiRadioButtonExcel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>宋体, 12pt</value>
+    <value>宋体, 10.8pt</value>
   </data>
   <data name="uiRadioButtonExcel.Location" type="System.Drawing.Point, System.Drawing">
     <value>26, 22</value>
@@ -163,7 +163,7 @@
     <value>0</value>
   </data>
   <data name="uiRadioButtonCSV.Font" type="System.Drawing.Font, System.Drawing">
-    <value>宋体, 12pt</value>
+    <value>宋体, 10.8pt</value>
   </data>
   <data name="uiRadioButtonCSV.Location" type="System.Drawing.Point, System.Drawing">
     <value>109, 22</value>
@@ -484,7 +484,7 @@
     <value>1, 1</value>
   </data>
   <data name="languageSettings1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>238, 558</value>
+    <value>238, 556</value>
   </data>
   <data name="languageSettings1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -496,7 +496,7 @@
     <value>languageSettings1</value>
   </data>
   <data name="&gt;&gt;languageSettings1.Type" xml:space="preserve">
-    <value>EntryTranslator.Controls.LanguageSettings, EntryTranslator, Version=1.0.0.26420, Culture=neutral, PublicKeyToken=null</value>
+    <value>EntryTranslator.Controls.LanguageSettings, EntryTranslator, Version=1.0.0.28848, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;languageSettings1.Parent" xml:space="preserve">
     <value>tabPage1</value>
@@ -514,7 +514,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>238, 558</value>
+    <value>238, 556</value>
   </data>
   <data name="tabPage1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -547,7 +547,7 @@
     <value>4, 4, 4, 4</value>
   </data>
   <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>246, 590</value>
+    <value>246, 588</value>
   </data>
   <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -598,7 +598,7 @@
     <value>1, 1</value>
   </data>
   <data name="resourceGrid1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>920, 558</value>
+    <value>920, 556</value>
   </data>
   <data name="resourceGrid1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -610,7 +610,7 @@
     <value>resourceGrid1</value>
   </data>
   <data name="&gt;&gt;resourceGrid1.Type" xml:space="preserve">
-    <value>EntryTranslator.Controls.LanguageEditor, EntryTranslator, Version=1.0.0.26420, Culture=neutral, PublicKeyToken=null</value>
+    <value>EntryTranslator.Controls.LanguageEditor, EntryTranslator, Version=1.0.0.28848, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;resourceGrid1.Parent" xml:space="preserve">
     <value>tabPageEditedResource</value>
@@ -625,7 +625,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="tabPageEditedResource.Size" type="System.Drawing.Size, System.Drawing">
-    <value>920, 558</value>
+    <value>920, 556</value>
   </data>
   <data name="tabPageEditedResource.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -655,7 +655,7 @@
     <value>4, 4, 4, 4</value>
   </data>
   <data name="tabControl3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>928, 590</value>
+    <value>928, 588</value>
   </data>
   <data name="tabControl3.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -688,7 +688,7 @@
     <value>125</value>
   </data>
   <data name="splitContainerMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1179, 590</value>
+    <value>1179, 588</value>
   </data>
   <data name="splitContainerMain.SplitterDistance" type="System.Int32, mscorlib">
     <value>246</value>
@@ -727,7 +727,7 @@
     <value>1</value>
   </data>
   <data name="splitContainerAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1179, 662</value>
+    <value>1179, 660</value>
   </data>
   <data name="splitContainerAll.SplitterDistance" type="System.Int32, mscorlib">
     <value>68</value>
@@ -799,13 +799,13 @@
     <value>宋体, 10.8pt</value>
   </data>
   <data name="panelMain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 63</value>
+    <value>0, 65</value>
   </data>
   <data name="panelMain.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 7</value>
   </data>
   <data name="panelMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1179, 662</value>
+    <value>1179, 660</value>
   </data>
   <data name="panelMain.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -826,13 +826,13 @@
     <value>133, 17</value>
   </metadata>
   <data name="menuStripMain.Font" type="System.Drawing.Font, System.Drawing">
-    <value>宋体, 10.8pt</value>
+    <value>宋体, 9pt</value>
   </data>
   <data name="ImportToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+O</value>
   </data>
   <data name="ImportToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 26</value>
+    <value>203, 26</value>
   </data>
   <data name="ImportToolStripMenuItem.Text" xml:space="preserve">
     <value>导入</value>
@@ -841,7 +841,7 @@
     <value>Ctrl+E</value>
   </data>
   <data name="exportToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 26</value>
+    <value>203, 26</value>
   </data>
   <data name="exportToolStripMenuItem.Text" xml:space="preserve">
     <value>导出</value>
@@ -850,25 +850,25 @@
     <value>Ctrl+S</value>
   </data>
   <data name="saveAllModifiedToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 26</value>
+    <value>203, 26</value>
   </data>
   <data name="saveAllModifiedToolStripMenuItem.Text" xml:space="preserve">
     <value>保存更改</value>
   </data>
   <data name="reloadToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 26</value>
+    <value>203, 26</value>
   </data>
   <data name="reloadToolStripMenuItem.Text" xml:space="preserve">
     <value>重载当前</value>
   </data>
   <data name="openLocationToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 26</value>
+    <value>203, 26</value>
   </data>
   <data name="openLocationToolStripMenuItem.Text" xml:space="preserve">
     <value>打开位置</value>
   </data>
   <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 22</value>
+    <value>51, 24</value>
   </data>
   <data name="fileToolStripMenuItem.Text" xml:space="preserve">
     <value>文件</value>
@@ -880,7 +880,7 @@
     <value>Ctrl+F</value>
   </data>
   <data name="findToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>269, 26</value>
+    <value>243, 26</value>
   </data>
   <data name="findToolStripMenuItem1.Text" xml:space="preserve">
     <value>高级搜索</value>
@@ -889,7 +889,7 @@
     <value>F3</value>
   </data>
   <data name="findNextToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>269, 26</value>
+    <value>243, 26</value>
   </data>
   <data name="findNextToolStripMenuItem.Text" xml:space="preserve">
     <value>定位下一个</value>
@@ -898,13 +898,13 @@
     <value>Ctrl+Delete</value>
   </data>
   <data name="clearSearchToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>269, 26</value>
+    <value>243, 26</value>
   </data>
   <data name="clearSearchToolStripMenuItem.Text" xml:space="preserve">
     <value>清除搜索</value>
   </data>
   <data name="searchToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 22</value>
+    <value>51, 24</value>
   </data>
   <data name="searchToolStripMenuItem.Text" xml:space="preserve">
     <value>搜索</value>
@@ -913,19 +913,19 @@
     <value>Ctrl+N</value>
   </data>
   <data name="addNewKeyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>242, 26</value>
+    <value>218, 26</value>
   </data>
   <data name="addNewKeyToolStripMenuItem.Text" xml:space="preserve">
     <value>增加新键值</value>
   </data>
   <data name="deleteKeyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>242, 26</value>
+    <value>218, 26</value>
   </data>
   <data name="deleteKeyToolStripMenuItem.Text" xml:space="preserve">
     <value>删除键值</value>
   </data>
   <data name="keysToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 22</value>
+    <value>66, 24</value>
   </data>
   <data name="keysToolStripMenuItem.Text" xml:space="preserve">
     <value>词条键</value>
@@ -934,25 +934,25 @@
     <value>Ctrl+L</value>
   </data>
   <data name="addLanguageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>242, 26</value>
+    <value>218, 26</value>
   </data>
   <data name="addLanguageToolStripMenuItem.Text" xml:space="preserve">
     <value>增加新语言</value>
   </data>
   <data name="removeLanguageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>242, 26</value>
+    <value>218, 26</value>
   </data>
   <data name="removeLanguageToolStripMenuItem.Text" xml:space="preserve">
     <value>删除语言</value>
   </data>
   <data name="languagesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 22</value>
+    <value>51, 24</value>
   </data>
   <data name="languagesToolStripMenuItem.Text" xml:space="preserve">
     <value>语言</value>
   </data>
   <data name="toolStripMenuItemGT.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 22</value>
+    <value>81, 24</value>
   </data>
   <data name="toolStripMenuItemGT.Text" xml:space="preserve">
     <value>在线翻译</value>
@@ -961,13 +961,19 @@
     <value>Ctrl+H</value>
   </data>
   <data name="helpToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 26</value>
+    <value>224, 26</value>
   </data>
   <data name="helpToolStripMenuItem1.Text" xml:space="preserve">
     <value>文档</value>
   </data>
+  <data name="cultureoolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 26</value>
+  </data>
+  <data name="cultureoolStripMenuItem.Text" xml:space="preserve">
+    <value>国家语言</value>
+  </data>
   <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 22</value>
+    <value>51, 24</value>
   </data>
   <data name="helpToolStripMenuItem.Text" xml:space="preserve">
     <value>帮助</value>
@@ -979,7 +985,7 @@
     <value>8, 3, 0, 3</value>
   </data>
   <data name="menuStripMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1179, 28</value>
+    <value>1179, 30</value>
   </data>
   <data name="menuStripMain.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1393,10 +1399,16 @@
   <data name="&gt;&gt;helpToolStripMenuItem1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;cultureoolStripMenuItem.Name" xml:space="preserve">
+    <value>cultureoolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;cultureoolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainWindow</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>EntryTranslator.WindowBase, EntryTranslator, Version=1.0.0.26420, Culture=neutral, PublicKeyToken=null</value>
+    <value>EntryTranslator.WindowBase, EntryTranslator, Version=1.0.0.28848, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

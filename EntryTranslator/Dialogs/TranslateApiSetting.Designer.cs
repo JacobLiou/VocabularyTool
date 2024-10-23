@@ -29,53 +29,34 @@
         private void InitializeComponent()
         {
             this.chbOverwrite = new System.Windows.Forms.CheckBox();
-            this.cbSourse = new System.Windows.Forms.ComboBox();
-            this.cbTarget = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.cbSourse = new Sunny.UI.UIComboBox();
+            this.uiLabel1 = new Sunny.UI.UILabel();
+            this.cbTarget = new Sunny.UI.UIComboBox();
             this.SuspendLayout();
             // 
             // chbOverwrite
             // 
             this.chbOverwrite.AutoSize = true;
-            this.chbOverwrite.Location = new System.Drawing.Point(7, 110);
+            this.chbOverwrite.Location = new System.Drawing.Point(74, 185);
             this.chbOverwrite.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.chbOverwrite.Name = "chbOverwrite";
-            this.chbOverwrite.Size = new System.Drawing.Size(149, 19);
+            this.chbOverwrite.Size = new System.Drawing.Size(174, 22);
             this.chbOverwrite.TabIndex = 3;
             this.chbOverwrite.Text = "覆盖已有翻译词条";
             this.chbOverwrite.UseVisualStyleBackColor = true;
             this.chbOverwrite.CheckedChanged += new System.EventHandler(this.ChbOverwrite_CheckedChanged);
             // 
-            // cbSourse
-            // 
-            this.cbSourse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbSourse.FormattingEnabled = true;
-            this.cbSourse.Location = new System.Drawing.Point(232, 7);
-            this.cbSourse.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.cbSourse.Name = "cbSourse";
-            this.cbSourse.Size = new System.Drawing.Size(171, 23);
-            this.cbSourse.TabIndex = 0;
-            // 
-            // cbTarget
-            // 
-            this.cbTarget.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbTarget.FormattingEnabled = true;
-            this.cbTarget.Location = new System.Drawing.Point(232, 57);
-            this.cbTarget.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.cbTarget.Name = "cbTarget";
-            this.cbTarget.Size = new System.Drawing.Size(169, 23);
-            this.cbTarget.TabIndex = 2;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 12);
+            this.label1.Location = new System.Drawing.Point(71, 71);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 15);
+            this.label1.Size = new System.Drawing.Size(62, 18);
             this.label1.TabIndex = 98;
             this.label1.Text = "源语言";
             // 
@@ -83,17 +64,17 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label2.Location = new System.Drawing.Point(7, 61);
+            this.label2.Location = new System.Drawing.Point(71, 126);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 15);
+            this.label2.Size = new System.Drawing.Size(80, 18);
             this.label2.TabIndex = 99;
             this.label2.Text = "目标语言";
             // 
             // btnOk
             // 
             this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOk.Location = new System.Drawing.Point(66, 158);
+            this.btnOk.Location = new System.Drawing.Point(165, 226);
             this.btnOk.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(101, 32);
@@ -105,7 +86,7 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(244, 158);
+            this.btnCancel.Location = new System.Drawing.Point(343, 226);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(101, 32);
@@ -113,25 +94,72 @@
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
-            // TranslateAPIDialog
+            // cbSourse
+            // 
+            this.cbSourse.DataSource = null;
+            this.cbSourse.FillColor = System.Drawing.Color.White;
+            this.cbSourse.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cbSourse.ItemHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            this.cbSourse.ItemSelectForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
+            this.cbSourse.Location = new System.Drawing.Point(211, 66);
+            this.cbSourse.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cbSourse.MinimumSize = new System.Drawing.Size(63, 0);
+            this.cbSourse.Name = "cbSourse";
+            this.cbSourse.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
+            this.cbSourse.Size = new System.Drawing.Size(293, 29);
+            this.cbSourse.SymbolSize = 24;
+            this.cbSourse.TabIndex = 100;
+            this.cbSourse.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.cbSourse.Watermark = "";
+            // 
+            // uiLabel1
+            // 
+            this.uiLabel1.BackColor = System.Drawing.Color.Cornsilk;
+            this.uiLabel1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.uiLabel1.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel1.ForeColor = System.Drawing.Color.Firebrick;
+            this.uiLabel1.Location = new System.Drawing.Point(80, 280);
+            this.uiLabel1.Name = "uiLabel1";
+            this.uiLabel1.Size = new System.Drawing.Size(464, 28);
+            this.uiLabel1.TabIndex = 101;
+            this.uiLabel1.Text = "实验性功能，翻译来自于腾讯翻译君，语言语种受到限制";
+            // 
+            // cbTarget
+            // 
+            this.cbTarget.DataSource = null;
+            this.cbTarget.FillColor = System.Drawing.Color.White;
+            this.cbTarget.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cbTarget.ItemHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            this.cbTarget.ItemSelectForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
+            this.cbTarget.Location = new System.Drawing.Point(211, 121);
+            this.cbTarget.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cbTarget.MinimumSize = new System.Drawing.Size(63, 0);
+            this.cbTarget.Name = "cbTarget";
+            this.cbTarget.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
+            this.cbTarget.Size = new System.Drawing.Size(293, 29);
+            this.cbTarget.SymbolSize = 24;
+            this.cbTarget.TabIndex = 102;
+            this.cbTarget.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.cbTarget.Watermark = "";
+            // 
+            // TranslateApiSetting
             // 
             this.AcceptButton = this.btnOk;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(412, 197);
+            this.ClientSize = new System.Drawing.Size(636, 325);
+            this.Controls.Add(this.cbTarget);
+            this.Controls.Add(this.uiLabel1);
+            this.Controls.Add(this.cbSourse);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.cbTarget);
-            this.Controls.Add(this.cbSourse);
             this.Controls.Add(this.chbOverwrite);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "TranslateAPIDialog";
+            this.Name = "TranslateApiSetting";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "翻译设置";
             this.ResumeLayout(false);
@@ -142,11 +170,12 @@
         #endregion
 
         private System.Windows.Forms.CheckBox chbOverwrite;
-        private System.Windows.Forms.ComboBox cbSourse;
-        private System.Windows.Forms.ComboBox cbTarget;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button btnCancel;
+        private Sunny.UI.UIComboBox cbSourse;
+        private Sunny.UI.UILabel uiLabel1;
+        private Sunny.UI.UIComboBox cbTarget;
     }
 }
