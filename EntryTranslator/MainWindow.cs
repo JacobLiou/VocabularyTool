@@ -322,30 +322,7 @@ namespace EntryTranslator
 
             Opacity = 1;
 
-            var args = Environment.GetCommandLineArgs();
-            if (args.Length > 1 && !string.IsNullOrEmpty(args[1].Trim()))
-            {
-                var path = args[1].Trim();
-                try
-                {
-                    var fldr = new DirectoryInfo(path);
-                    if (!fldr.Exists)
-                        throw new ArgumentException(string.Format("文件夹{0}不存在", path));
-                    path = (fldr.FullName + "\\").Replace("\\\\", "\\");
-                    LoadResourcesFromFolder(path);
-                }
-                catch (Exception inner)
-                {
-                    throw new ArgumentException(
-                        string.Format("无效命令行{0} 路径：{1}", Environment.CommandLine, path), inner);
-                }
-            }
-            else if (Settings.Default.OpenLastDirOnStart &&
-                     !string.IsNullOrEmpty(Settings.Default.LastOpenedDirectory) &&
-                     Directory.Exists(Settings.Default.LastOpenedDirectory))
-            {
-                LoadResourcesFromFolder(Settings.Default.LastOpenedDirectory);
-            }
+            LoadResourcesFromFolder($@"{AppDomain.CurrentDomain.BaseDirectory}LangDic" );
         }
 
         private void OnResourceLoadProgress(object sender, ResourceLoadProgressEventArgs args)
@@ -373,7 +350,7 @@ namespace EntryTranslator
             (this).InvokeIfRequired(_ =>
             {
                 var nothingLoaded = string.IsNullOrEmpty(ResourceLoader.OpenedPath);
-                findToolStripMenuItem.Enabled = !nothingLoaded;
+                searchToolStripMenuItem.Enabled = !nothingLoaded;
 
                 UpdateTitlebar();
 
@@ -407,7 +384,7 @@ namespace EntryTranslator
             {
                 CurrentResource = null;
                 Application.DoEvents();
-                LoadResourcesFromFolder(folderDialog.SelectedPath);
+                
             }
         }
 

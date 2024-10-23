@@ -31,7 +31,7 @@ namespace EntryTranslator
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripStatusLabelCurrentItem = new System.Windows.Forms.ToolStripStatusLabel();
@@ -39,19 +39,15 @@ namespace EntryTranslator
             this.splitContainerMain = new System.Windows.Forms.SplitContainer();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.languageSettings1 = new EntryTranslator.Controls.LanguageSettings();
             this.tabControl3 = new System.Windows.Forms.TabControl();
             this.tabPageEditedResource = new System.Windows.Forms.TabPage();
-            this.resourceGrid1 = new EntryTranslator.Controls.ResourceGrid();
             this.menuStripMain = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAllModifiedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reloadCurrentDirectoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportAllResourcesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.openResourceLocationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.findToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reloadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openLocationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.findToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.findNextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearSearchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,7 +60,10 @@ namespace EntryTranslator
             this.toolStripMenuItemGT = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.statusStrip1.SuspendLayout();
+            this.languageSettings1 = new EntryTranslator.Controls.LanguageSettings();
+            this.resourceGrid1 = new EntryTranslator.Controls.ResourceGrid();
+            this.ImportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip.SuspendLayout();
             this.panelMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -77,15 +76,15 @@ namespace EntryTranslator
             this.menuStripMain.SuspendLayout();
             this.SuspendLayout();
             // 
-            // statusStrip1
+            // statusStrip
             // 
-            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.toolStripProgressBar1,
             this.toolStripStatusLabelCurrentItem});
-            resources.ApplyResources(this.statusStrip1, "statusStrip1");
-            this.statusStrip1.Name = "statusStrip1";
+            resources.ApplyResources(this.statusStrip, "statusStrip");
+            this.statusStrip.Name = "statusStrip";
             // 
             // toolStripStatusLabel1
             // 
@@ -136,11 +135,6 @@ namespace EntryTranslator
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // languageSettings1
-            // 
-            resources.ApplyResources(this.languageSettings1, "languageSettings1");
-            this.languageSettings1.Name = "languageSettings1";
-            // 
             // tabControl3
             // 
             this.tabControl3.Controls.Add(this.tabPageEditedResource);
@@ -155,20 +149,12 @@ namespace EntryTranslator
             this.tabPageEditedResource.Name = "tabPageEditedResource";
             this.tabPageEditedResource.UseVisualStyleBackColor = true;
             // 
-            // resourceGrid1
-            // 
-            this.resourceGrid1.CurrentResource = null;
-            this.resourceGrid1.CurrentSearch = null;
-            resources.ApplyResources(this.resourceGrid1, "resourceGrid1");
-            this.resourceGrid1.Name = "resourceGrid1";
-            this.resourceGrid1.ShowNullValuesAsGrayed = false;
-            // 
             // menuStripMain
             // 
             this.menuStripMain.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.findToolStripMenuItem,
+            this.searchToolStripMenuItem,
             this.keysToolStripMenuItem,
             this.languagesToolStripMenuItem,
             this.toolStripMenuItemGT,
@@ -179,21 +165,13 @@ namespace EntryTranslator
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openToolStripMenuItem,
+            this.ImportToolStripMenuItem,
+            this.exportToolStripMenuItem,
             this.saveAllModifiedToolStripMenuItem,
-            this.reloadCurrentDirectoryToolStripMenuItem,
-            this.openResourceLocationToolStripMenuItem,
-            this.exportAllResourcesToolStripMenuItem,
-            this.toolStripSeparator1});
+            this.reloadToolStripMenuItem,
+            this.openLocationToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
-            // 
-            // openToolStripMenuItem
-            // 
-            this.openToolStripMenuItem.Image = global::EntryTranslator.Properties.Resources.openfolderHS;
-            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            resources.ApplyResources(this.openToolStripMenuItem, "openToolStripMenuItem");
-            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveAllModifiedToolStripMenuItem
             // 
@@ -202,39 +180,34 @@ namespace EntryTranslator
             resources.ApplyResources(this.saveAllModifiedToolStripMenuItem, "saveAllModifiedToolStripMenuItem");
             this.saveAllModifiedToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
-            // reloadCurrentDirectoryToolStripMenuItem
+            // reloadToolStripMenuItem
             // 
-            this.reloadCurrentDirectoryToolStripMenuItem.Image = global::EntryTranslator.Properties.Resources.RefreshArrow;
-            this.reloadCurrentDirectoryToolStripMenuItem.Name = "reloadCurrentDirectoryToolStripMenuItem";
-            resources.ApplyResources(this.reloadCurrentDirectoryToolStripMenuItem, "reloadCurrentDirectoryToolStripMenuItem");
-            this.reloadCurrentDirectoryToolStripMenuItem.Click += new System.EventHandler(this.reloadCurrentDirectoryToolStripMenuItem_Click);
+            this.reloadToolStripMenuItem.Image = global::EntryTranslator.Properties.Resources.RefreshArrow;
+            this.reloadToolStripMenuItem.Name = "reloadToolStripMenuItem";
+            resources.ApplyResources(this.reloadToolStripMenuItem, "reloadToolStripMenuItem");
+            this.reloadToolStripMenuItem.Click += new System.EventHandler(this.reloadCurrentDirectoryToolStripMenuItem_Click);
             // 
-            // exportAllResourcesToolStripMenuItem
+            // exportToolStripMenuItem
             // 
-            this.exportAllResourcesToolStripMenuItem.Name = "exportAllResourcesToolStripMenuItem";
-            resources.ApplyResources(this.exportAllResourcesToolStripMenuItem, "exportAllResourcesToolStripMenuItem");
-            this.exportAllResourcesToolStripMenuItem.Click += new System.EventHandler(this.exportAllResourcesToolStripMenuItem_Click);
+            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
+            resources.ApplyResources(this.exportToolStripMenuItem, "exportToolStripMenuItem");
+            this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportAllResourcesToolStripMenuItem_Click);
             // 
-            // toolStripSeparator1
+            // openLocationToolStripMenuItem
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
+            this.openLocationToolStripMenuItem.Name = "openLocationToolStripMenuItem";
+            resources.ApplyResources(this.openLocationToolStripMenuItem, "openLocationToolStripMenuItem");
+            this.openLocationToolStripMenuItem.Click += new System.EventHandler(this.openResourceLocationToolStripMenuItem_Click);
             // 
-            // openResourceLocationToolStripMenuItem
+            // searchToolStripMenuItem
             // 
-            this.openResourceLocationToolStripMenuItem.Name = "openResourceLocationToolStripMenuItem";
-            resources.ApplyResources(this.openResourceLocationToolStripMenuItem, "openResourceLocationToolStripMenuItem");
-            this.openResourceLocationToolStripMenuItem.Click += new System.EventHandler(this.openResourceLocationToolStripMenuItem_Click);
-            // 
-            // findToolStripMenuItem
-            // 
-            this.findToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.searchToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.findToolStripMenuItem1,
             this.findNextToolStripMenuItem,
             this.clearSearchToolStripMenuItem});
-            this.findToolStripMenuItem.Name = "findToolStripMenuItem";
-            resources.ApplyResources(this.findToolStripMenuItem, "findToolStripMenuItem");
-            this.findToolStripMenuItem.DropDownOpened += new System.EventHandler(this.findToolStripMenuItem_DropDownOpened);
+            this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
+            resources.ApplyResources(this.searchToolStripMenuItem, "searchToolStripMenuItem");
+            this.searchToolStripMenuItem.DropDownOpened += new System.EventHandler(this.findToolStripMenuItem_DropDownOpened);
             // 
             // findToolStripMenuItem1
             // 
@@ -320,18 +293,37 @@ namespace EntryTranslator
             resources.ApplyResources(this.helpToolStripMenuItem1, "helpToolStripMenuItem1");
             this.helpToolStripMenuItem1.Click += new System.EventHandler(this.helpToolStripMenuItem1_Click);
             // 
+            // languageSettings1
+            // 
+            resources.ApplyResources(this.languageSettings1, "languageSettings1");
+            this.languageSettings1.Name = "languageSettings1";
+            // 
+            // resourceGrid1
+            // 
+            this.resourceGrid1.CurrentResource = null;
+            this.resourceGrid1.CurrentSearch = null;
+            resources.ApplyResources(this.resourceGrid1, "resourceGrid1");
+            this.resourceGrid1.Name = "resourceGrid1";
+            this.resourceGrid1.ShowNullValuesAsGrayed = false;
+            // 
+            // ImportToolStripMenuItem
+            // 
+            this.ImportToolStripMenuItem.Image = global::EntryTranslator.Properties.Resources.openfolderHS;
+            this.ImportToolStripMenuItem.Name = "ImportToolStripMenuItem";
+            resources.ApplyResources(this.ImportToolStripMenuItem, "ImportToolStripMenuItem");
+            // 
             // MainWindow
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.menuStripMain);
-            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.statusStrip);
             this.Name = "MainWindow";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Shown += new System.EventHandler(this.MainForm_Shown);
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
+            this.statusStrip.ResumeLayout(false);
+            this.statusStrip.PerformLayout();
             this.panelMain.ResumeLayout(false);
             this.splitContainerMain.Panel1.ResumeLayout(false);
             this.splitContainerMain.Panel2.ResumeLayout(false);
@@ -350,17 +342,15 @@ namespace EntryTranslator
 
         #endregion
 
-        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
         private Panel panelMain;
         private SplitContainer splitContainerMain;
         private MenuStrip menuStripMain;
         private ToolStripMenuItem fileToolStripMenuItem;
-        private ToolStripMenuItem openToolStripMenuItem;
         private ToolStripMenuItem saveAllModifiedToolStripMenuItem;
-        private ToolStripSeparator toolStripSeparator1;
-        private ToolStripMenuItem findToolStripMenuItem;
+        private ToolStripMenuItem searchToolStripMenuItem;
         private ToolStripMenuItem findToolStripMenuItem1;
         private ToolStripMenuItem keysToolStripMenuItem;
         private ToolStripMenuItem addNewKeyToolStripMenuItem;
@@ -373,16 +363,17 @@ namespace EntryTranslator
         private ToolStripMenuItem languagesToolStripMenuItem;
         private ToolStripMenuItem removeLanguageToolStripMenuItem;
         private ToolStripMenuItem clearSearchToolStripMenuItem;
-        private ToolStripMenuItem openResourceLocationToolStripMenuItem;
-        private ToolStripMenuItem reloadCurrentDirectoryToolStripMenuItem;
+        private ToolStripMenuItem openLocationToolStripMenuItem;
+        private ToolStripMenuItem reloadToolStripMenuItem;
         private ToolStripMenuItem helpToolStripMenuItem;
         private ToolStripMenuItem helpToolStripMenuItem1;
-        private ToolStripMenuItem exportAllResourcesToolStripMenuItem;
+        private ToolStripMenuItem exportToolStripMenuItem;
         private ToolStripMenuItem findNextToolStripMenuItem;
         private ToolStripMenuItem toolStripMenuItemGT;
         private TabControl tabControl1;
         private TabPage tabPage1;
         private Controls.LanguageSettings languageSettings1;
+        private ToolStripMenuItem ImportToolStripMenuItem;
     }
 }
 
