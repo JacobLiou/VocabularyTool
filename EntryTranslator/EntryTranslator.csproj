@@ -72,9 +72,6 @@
     <Reference Include="CsvHelper, Version=33.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
       <HintPath>..\packages\CsvHelper.33.0.1\lib\net48\CsvHelper.dll</HintPath>
     </Reference>
-    <Reference Include="DotNetZip, Version=1.13.6.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
-      <HintPath>packages\DotNetZip.1.13.6\lib\net40\DotNetZip.dll</HintPath>
-    </Reference>
     <Reference Include="EPPlus, Version=7.4.1.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
       <HintPath>..\packages\EPPlus.7.4.1\lib\net462\EPPlus.dll</HintPath>
     </Reference>

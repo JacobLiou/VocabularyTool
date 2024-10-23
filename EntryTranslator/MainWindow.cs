@@ -1,5 +1,4 @@
-﻿using Ionic.Zip;
-using EntryTranslator.Dialogs;
+﻿using EntryTranslator.Dialogs;
 using EntryTranslator.Properties;
 using EntryTranslator.ResourceOperations;
 using EntryTranslator.Utils;
@@ -21,59 +20,6 @@ namespace EntryTranslator
         private readonly string _defaultWindowTitle;
 
         private ResourceHolder _currentResource;
-
-        private SearchParams _currentSearch;
-
-        public MainWindow()
-        {
-            InitializeComponent();
-
-            _defaultWindowTitle = $"{Text} {Assembly.GetAssembly(typeof(MainWindow)).GetName().Version.ToString(2)}";
-
-            ResourceLoader = new ResourceLoader();
-            ResourceLoader.ResourceLoadProgress += OnResourceLoadProgress;
-            ResourceLoader.ResourcesChanged += OnResourceLoaderOnResourcesChanged;
-
-
-            languageSettings1.EnabledLanguagesChanged += (sender, args) =>
-            {
-                if (resourceGrid1.CurrentResource == null) return;
-
-                var languageIds = languageSettings1.EnabledLanguages.Select(x => x.Name).ToArray();
-                resourceGrid1.CurrentResource.EvaluateAllRows(languageIds);
-                resourceGrid1.SetVisibleLanguageColumns(languageIds);
-                resourceGrid1.Refresh();
-            };
-
-            Settings.Binder.Subscribe((sender, args) => ResourceLoader.HideEmptyResources = args.NewValue,
-                settings => settings.HideEmptyResources, this);
-            Settings.Binder.Subscribe((sender, args) => ResourceLoader.HideNontranslatedResources = args.NewValue,
-                settings => settings.HideNontranslatedResources, this);
-            Settings.Binder.Subscribe((sender, args) => resourceGrid1.ShowNullValuesAsGrayed = args.NewValue,
-                settings => settings.ShowNullValuesAsGrayed, this);
-
-            Settings.Binder.SendUpdates(this);
-
-            Icon = Icon.ExtractAssociatedIcon(Assembly.GetAssembly(typeof(MainWindow)).Location);
-        }
-
-        public SearchParams CurrentSearch => _currentSearch;
-
-        public void SetCurrentSearch(SearchParams value)
-        {
-            _currentSearch = value;
-            resourceGrid1.CurrentSearch = _currentSearch;
-
-            if (value != null)
-            {
-                MessageBox.Show(string.Format("搜索到字符串 {0}", value.Text),
-                                "搜索",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Information);
-            }
-        }
-
-        public ResourceLoader ResourceLoader { get; }
 
         private ResourceHolder CurrentResource
         {
@@ -102,11 +48,47 @@ namespace EntryTranslator
                     resourceGrid1.CurrentResource = value;
                     resourceGrid1.SetVisibleLanguageColumns(
                         languageSettings1.EnabledLanguages.Select(x => x.Name).ToArray());
-
-                    tabPageEditedResource.Text = value?.Filename ?? "未加载资源";
                     UpdateMenuStrip();
                 });
             }
+        }
+
+        private SearchParams _currentSearch;
+
+        public SearchParams CurrentSearch => _currentSearch;
+
+        public ResourceLoader ResourceLoader { get; }
+
+        public MainWindow()
+        {
+            InitializeComponent();
+
+            _defaultWindowTitle = $"{Text} {Assembly.GetAssembly(typeof(MainWindow)).GetName().Version.ToString(2)}";
+
+            ResourceLoader = new ResourceLoader();
+            ResourceLoader.ResourceLoadProgress += OnResourceLoadProgress;
+            ResourceLoader.ResourcesChanged += OnResourceLoaderOnResourcesChanged;
+
+            languageSettings1.EnabledLanguagesChanged += (sender, args) =>
+            {
+                if (resourceGrid1.CurrentResource == null) return;
+
+                var languageIds = languageSettings1.EnabledLanguages.Select(x => x.Name).ToArray();
+                resourceGrid1.CurrentResource.EvaluateAllRows(languageIds);
+                resourceGrid1.SetVisibleLanguageColumns(languageIds);
+                resourceGrid1.Refresh();
+            };
+
+            Settings.Binder.Subscribe((sender, args) => ResourceLoader.HideEmptyResources = args.NewValue,
+                settings => settings.HideEmptyResources, this);
+            Settings.Binder.Subscribe((sender, args) => ResourceLoader.HideNontranslatedResources = args.NewValue,
+                settings => settings.HideNontranslatedResources, this);
+            Settings.Binder.Subscribe((sender, args) => resourceGrid1.ShowNullValuesAsGrayed = args.NewValue,
+                settings => settings.ShowNullValuesAsGrayed, this);
+
+            Settings.Binder.SendUpdates(this);
+
+            Icon = Icon.ExtractAssociatedIcon(Assembly.GetAssembly(typeof(MainWindow)).Location);
         }
 
         private void _currentResource_DirtyChanged(object sender, EventArgs e)
@@ -180,92 +162,60 @@ namespace EntryTranslator
             OnResourceLoadProgress(this, new ResourceLoadProgressEventArgs("完成", null, 0, 0));
         }
 
-        private void UpdateMenuStrip()
+        private void MainForm_Shown(object sender, EventArgs e)
         {
-            var notNull = _currentResource != null;
-            keysToolStripMenuItem.Enabled = notNull;
-            addNewKeyToolStripMenuItem.Enabled = notNull;
-            languagesToolStripMenuItem.Enabled = notNull;
-            toolStripMenuItemGT.Enabled = notNull;
-
-            removeLanguageToolStripMenuItem.DropDownItems.Clear();
-            addLanguageToolStripMenuItem.DropDownItems.Clear();
-
-            if (_currentResource == null) return;
-
-            foreach (var info in _currentResource.Languages.Values.Select(x => x.CultureInfo).OrderBy(x => x.Name))
+            if (!Settings.Default.WindowSize.IsEmpty)
             {
-                removeLanguageToolStripMenuItem.DropDownItems.Add($"{info.Name} - {info.DisplayName}").Tag = info;
+                Location = Settings.Default.WindowLocation;
+                Size = Settings.Default.WindowSize;
+                WindowState = Settings.Default.WindowState;
             }
+
+            if (Settings.Default.SplitterMain > 10)
+                splitContainerMain.SplitterDistance = Settings.Default.SplitterMain;
+
+            Opacity = 1;
+
+            LoadResourcesFromFolder($@"{AppDomain.CurrentDomain.BaseDirectory}LangDic");
         }
 
-        private void addLanguageToolStripMenuItem_Clicked(object sender, EventArgs e)
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            var language = LanguageSelect.ShowLanguageSelectDialog(this);
-            if (language != null && !CurrentResource.Languages.ContainsKey(language.Name))
+            Settings.Default.LastOpenedDirectory = ResourceLoader.OpenedPath ?? string.Empty;
+
+            switch (WindowState)
             {
-                CurrentResource.AddLanguage(language.Name, Settings.Default.AddDefaultValuesOnLanguageAdd);
+                case FormWindowState.Normal:
+                    Settings.Default.WindowLocation = Location;
+                    Settings.Default.WindowSize = Size;
+                    Settings.Default.WindowState = WindowState;
+                    break;
 
-                UpdateMenuStrip();
-                resourceGrid1.RefreshResourceDisplay();
+                case FormWindowState.Maximized:
+                    Settings.Default.WindowState = WindowState;
+                    break;
             }
-        }
 
-        private void addNewKeyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (CurrentResource != null)
-            {
-                try
-                {
-                    AddResourceKey.ShowDialog(this, CurrentResource);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString(), "创建新行失败",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            Settings.Default.SplitterMain = splitContainerMain.SplitterDistance;
 
-                resourceGrid1.RefreshResourceDisplay();
-            }
-        }
+            Settings.Default.Save();
 
-        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
             if (!ResourceLoader.CanClose())
-                return;
-
-            ResourceLoader.Close();
+                e.Cancel = true;
         }
 
-        private void deleteKeyToolStripMenuItem_Click(object sender, EventArgs e)
+        public void SetCurrentSearch(SearchParams value)
         {
-            if (CurrentResource == null || resourceGrid1.RowCount == 0)
-                return;
+            _currentSearch = value;
+            resourceGrid1.CurrentSearch = _currentSearch;
 
-            if (MessageBox.Show("确定要删除当前选定的行吗？", "",
-                MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (value != null)
             {
-                resourceGrid1.DeleteSelectedRow();
+                MessageBox.Show(string.Format("搜索到字符串 {0}", value.Text),
+                                "搜索",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
             }
-        }
-
-        private void findToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            var result = FindWindow.ShowDialog(this);
-            if (result != null)
-                SetCurrentSearch(result);
-        }
-
-        private void findNextToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (CurrentSearch == null)
-            {
-                findToolStripMenuItem1_Click(sender, e);
-                return;
-            }
-
-            resourceGrid1.Focus();
-            resourceGrid1.SelectNextSearchResult();
         }
 
         private void LoadResourcesFromFolder(string path)
@@ -282,47 +232,6 @@ namespace EntryTranslator
                 CurrentResource = ResourceLoader.Resources.First();
 
             Enabled = true;
-        }
-
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Settings.Default.LastOpenedDirectory = ResourceLoader.OpenedPath ?? string.Empty;
-
-            switch (WindowState)
-            {
-                case FormWindowState.Normal:
-                    Settings.Default.WindowLocation = Location;
-                    Settings.Default.WindowSize = Size;
-                    Settings.Default.WindowState = WindowState;
-                    break;
-                case FormWindowState.Maximized:
-                    Settings.Default.WindowState = WindowState;
-                    break;
-            }
-
-            Settings.Default.SplitterMain = splitContainerMain.SplitterDistance;
-
-            Settings.Default.Save();
-
-            if (!ResourceLoader.CanClose())
-                e.Cancel = true;
-        }
-
-        private void MainForm_Shown(object sender, EventArgs e)
-        {
-            if (!Settings.Default.WindowSize.IsEmpty)
-            {
-                Location = Settings.Default.WindowLocation;
-                Size = Settings.Default.WindowSize;
-                WindowState = Settings.Default.WindowState;
-            }
-
-            if (Settings.Default.SplitterMain > 10)
-                splitContainerMain.SplitterDistance = Settings.Default.SplitterMain;
-
-            Opacity = 1;
-
-            LoadResourcesFromFolder($@"{AppDomain.CurrentDomain.BaseDirectory}LangDic" );
         }
 
         private void OnResourceLoadProgress(object sender, ResourceLoadProgressEventArgs args)
@@ -366,47 +275,101 @@ namespace EntryTranslator
 
         private void UpdateTitlebar()
         {
-            Text = $"{_defaultWindowTitle} - {(CurrentResource?.IsDirty == true ? "*" : "")}";
+            Text = $"{_defaultWindowTitle}{(CurrentResource?.IsDirty == true ? " - *" : "")}";
         }
 
-        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        #region 菜单快捷栏事件
+
+        private void UpdateMenuStrip()
         {
-            if (!ResourceLoader.CanClose())
-                return;
+            var notNull = _currentResource != null;
+            keysToolStripMenuItem.Enabled = notNull;
+            addNewKeyToolStripMenuItem.Enabled = notNull;
+            languagesToolStripMenuItem.Enabled = notNull;
+            toolStripMenuItemGT.Enabled = notNull;
 
-            var folderDialog = new FolderBrowserDialog
-            {
-                SelectedPath = Settings.Default.LastOpenedDirectory,
-                Description = ""
-            };
+            removeLanguageToolStripMenuItem.DropDownItems.Clear();
+            addLanguageToolStripMenuItem.DropDownItems.Clear();
 
-            if (folderDialog.ShowDialog(this) == DialogResult.OK)
+            if (_currentResource == null) return;
+
+            foreach (var info in _currentResource.Languages.Values.Select(x => x.CultureInfo).OrderBy(x => x.Name))
             {
-                CurrentResource = null;
-                Application.DoEvents();
-                
+                removeLanguageToolStripMenuItem.DropDownItems.Add($"{info.Name} - {info.DisplayName}").Tag = info;
             }
         }
 
-        private void revertCurrentToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ImportToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (CurrentResource == null)
-                return;
-
-            CurrentResource.Revert();
-            resourceGrid1.RefreshResourceDisplay();
         }
 
-        private void saveCurrentToolStripMenuItem_Click(object sender, EventArgs e)
+        private void exportAllResourcesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            resourceGrid1.ApplyCurrentCellEdit();
-            CurrentResource?.Save();
+
+        }
+
+        private void reloadCurrentDirectoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(ResourceLoader.OpenedPath))
+                LoadResourcesFromFolder(ResourceLoader.OpenedPath);
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             resourceGrid1.ApplyCurrentCellEdit();
             ResourceLoader.SaveAll();
+        }
+
+        private void openLocationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (CurrentResource != null)
+                Process.Start("explorer.exe", $"\"{Path.GetDirectoryName(CurrentResource.Filename)}\"");
+        }
+
+        private void findToolStripMenuItem_DropDownOpened(object sender, EventArgs e)
+        {
+            clearSearchToolStripMenuItem.Enabled = CurrentSearch != null;
+        }
+
+        private void findToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            var result = FindWindow.ShowDialog(this);
+            if (result != null)
+                SetCurrentSearch(result);
+        }
+
+        private void findNextToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (CurrentSearch == null)
+            {
+                findToolStripMenuItem1_Click(sender, e);
+                return;
+            }
+
+            resourceGrid1.Focus();
+            resourceGrid1.SelectNextSearchResult();
+        }
+
+        private void clearSearchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetCurrentSearch(null);
+        }
+
+        private void languagesToolStripMenuItem_DropDownOpened(object sender, EventArgs e)
+        {
+            removeLanguageToolStripMenuItem.Enabled = removeLanguageToolStripMenuItem.DropDownItems.Count > 0;
+        }
+
+        private void addLanguageToolStripMenuItem_Clicked(object sender, EventArgs e)
+        {
+            var language = LanguageSelect.ShowLanguageSelectDialog(this);
+            if (language != null && !CurrentResource.Languages.ContainsKey(language.Name))
+            {
+                CurrentResource.AddLanguage(language.Name, Settings.Default.AddDefaultValuesOnLanguageAdd);
+
+                UpdateMenuStrip();
+                resourceGrid1.RefreshResourceDisplay();
+            }
         }
 
         private void removeLanguageToolStripMenuItem_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -417,79 +380,37 @@ namespace EntryTranslator
             resourceGrid1.RefreshResourceDisplay();
         }
 
-        private void languagesToolStripMenuItem_DropDownOpened(object sender, EventArgs e)
+        private void addNewKeyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            removeLanguageToolStripMenuItem.Enabled = removeLanguageToolStripMenuItem.DropDownItems.Count > 0;
-        }
-
-        private void clearSearchToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SetCurrentSearch(null);
-        }
-
-        private void findToolStripMenuItem_DropDownOpened(object sender, EventArgs e)
-        {
-            clearSearchToolStripMenuItem.Enabled = CurrentSearch != null;
-        }
-
-        private void openResourceLocationToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (CurrentResource == null) return;
-            Process.Start("explorer.exe", $"\"{Path.GetDirectoryName(CurrentResource.Filename)}\"");
-        }
-
-        private void reloadCurrentDirectoryToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(ResourceLoader.OpenedPath))
-                LoadResourcesFromFolder(ResourceLoader.OpenedPath);
-        }
-
-        private void helpToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            var readmePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "帮助文档.docx");
-            if (File.Exists(readmePath))
-                Process.Start("explorer.exe", $"\"{readmePath}\"");
-        }
-
-        private static bool AskToRemoveNontranslatable()
-        {
-            return MessageBox.Show("此操作将从翻译的资源（不是基本资源）中删除所有不是文本的内容。资源将被保存到正在处理的驱动器中，因此请确保您有备份",
-                "", MessageBoxButtons.OKCancel,
-                MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK;
-        }
-
-        private void exportAllResourcesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var exportDialog = new SaveFileDialog
-            {
-                Title = "Export resources",
-                Filter = ".zip Archive|.zip",
-                FileName = "Export.zip"
-            };
-
-            if (exportDialog.ShowDialog(this) == DialogResult.OK)
+            if (CurrentResource != null)
             {
                 try
                 {
-                    File.Delete(exportDialog.FileName);
-                    using (var zf = new ZipFile(exportDialog.FileName))
-                    {
-                        zf.AddFiles(ResourceLoader.Resources.Select(x => x.Filename)
-                            // Make sure the base resource exists, it might not. Languages always exist if they are loaded.
-                            .Where(File.Exists));
-                        zf.AddFiles(ResourceLoader.Resources.SelectMany(x => x.Languages.Select(l => l.Value.Filename)));
-                        zf.Save();
-                    }
+                    AddResourceKey.ShowDialog(this, CurrentResource);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.ToString(), "导出失败",
+                    MessageBox.Show(ex.ToString(), "创建新行失败",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+
+                resourceGrid1.RefreshResourceDisplay();
             }
         }
 
-        private async void toolStripMenuItemGT_Click(object sender, EventArgs e)
+        private void deleteKeyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (CurrentResource == null || resourceGrid1.RowCount == 0)
+                return;
+
+            if (MessageBox.Show("确定要删除当前选定的行吗？", "",
+                MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                resourceGrid1.DeleteSelectedRow();
+            }
+        }
+
+        private async void translateToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (CurrentResource == null)
             {
@@ -547,5 +468,14 @@ namespace EntryTranslator
                 Cursor.Current = Cursors.Default;
             }
         }
+
+        private void helpToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            var readmePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "帮助文档.docx");
+            if (File.Exists(readmePath))
+                Process.Start("explorer.exe", $"\"{readmePath}\"");
+        }
+
+        #endregion 菜单快捷栏事件
     }
 }

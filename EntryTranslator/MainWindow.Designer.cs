@@ -39,13 +39,16 @@ namespace EntryTranslator
             this.splitContainerMain = new System.Windows.Forms.SplitContainer();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.languageSettings1 = new EntryTranslator.Controls.LanguageSettings();
             this.tabControl3 = new System.Windows.Forms.TabControl();
             this.tabPageEditedResource = new System.Windows.Forms.TabPage();
+            this.resourceGrid1 = new EntryTranslator.Controls.LanguageEditor();
             this.menuStripMain = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ImportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAllModifiedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reloadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openLocationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.findToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,9 +63,6 @@ namespace EntryTranslator
             this.toolStripMenuItemGT = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.languageSettings1 = new EntryTranslator.Controls.LanguageSettings();
-            this.resourceGrid1 = new EntryTranslator.Controls.LanguageEditor();
-            this.ImportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
             this.panelMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -135,6 +135,11 @@ namespace EntryTranslator
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // languageSettings1
+            // 
+            resources.ApplyResources(this.languageSettings1, "languageSettings1");
+            this.languageSettings1.Name = "languageSettings1";
+            // 
             // tabControl3
             // 
             this.tabControl3.Controls.Add(this.tabPageEditedResource);
@@ -148,6 +153,14 @@ namespace EntryTranslator
             resources.ApplyResources(this.tabPageEditedResource, "tabPageEditedResource");
             this.tabPageEditedResource.Name = "tabPageEditedResource";
             this.tabPageEditedResource.UseVisualStyleBackColor = true;
+            // 
+            // resourceGrid1
+            // 
+            this.resourceGrid1.CurrentResource = null;
+            this.resourceGrid1.CurrentSearch = null;
+            resources.ApplyResources(this.resourceGrid1, "resourceGrid1");
+            this.resourceGrid1.Name = "resourceGrid1";
+            this.resourceGrid1.ShowNullValuesAsGrayed = false;
             // 
             // menuStripMain
             // 
@@ -173,6 +186,19 @@ namespace EntryTranslator
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
             // 
+            // ImportToolStripMenuItem
+            // 
+            this.ImportToolStripMenuItem.Image = global::EntryTranslator.Properties.Resources.openfolderHS;
+            this.ImportToolStripMenuItem.Name = "ImportToolStripMenuItem";
+            resources.ApplyResources(this.ImportToolStripMenuItem, "ImportToolStripMenuItem");
+            this.ImportToolStripMenuItem.Click += new System.EventHandler(this.ImportToolStripMenuItem_Click);
+            // 
+            // exportToolStripMenuItem
+            // 
+            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
+            resources.ApplyResources(this.exportToolStripMenuItem, "exportToolStripMenuItem");
+            this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportAllResourcesToolStripMenuItem_Click);
+            // 
             // saveAllModifiedToolStripMenuItem
             // 
             this.saveAllModifiedToolStripMenuItem.Image = global::EntryTranslator.Properties.Resources.SaveAllHS;
@@ -187,17 +213,11 @@ namespace EntryTranslator
             resources.ApplyResources(this.reloadToolStripMenuItem, "reloadToolStripMenuItem");
             this.reloadToolStripMenuItem.Click += new System.EventHandler(this.reloadCurrentDirectoryToolStripMenuItem_Click);
             // 
-            // exportToolStripMenuItem
-            // 
-            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            resources.ApplyResources(this.exportToolStripMenuItem, "exportToolStripMenuItem");
-            this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportAllResourcesToolStripMenuItem_Click);
-            // 
             // openLocationToolStripMenuItem
             // 
             this.openLocationToolStripMenuItem.Name = "openLocationToolStripMenuItem";
             resources.ApplyResources(this.openLocationToolStripMenuItem, "openLocationToolStripMenuItem");
-            this.openLocationToolStripMenuItem.Click += new System.EventHandler(this.openResourceLocationToolStripMenuItem_Click);
+            this.openLocationToolStripMenuItem.Click += new System.EventHandler(this.openLocationToolStripMenuItem_Click);
             // 
             // searchToolStripMenuItem
             // 
@@ -277,7 +297,7 @@ namespace EntryTranslator
             // 
             this.toolStripMenuItemGT.Name = "toolStripMenuItemGT";
             resources.ApplyResources(this.toolStripMenuItemGT, "toolStripMenuItemGT");
-            this.toolStripMenuItemGT.Click += new System.EventHandler(this.toolStripMenuItemGT_Click);
+            this.toolStripMenuItemGT.Click += new System.EventHandler(this.translateToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -292,25 +312,6 @@ namespace EntryTranslator
             this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
             resources.ApplyResources(this.helpToolStripMenuItem1, "helpToolStripMenuItem1");
             this.helpToolStripMenuItem1.Click += new System.EventHandler(this.helpToolStripMenuItem1_Click);
-            // 
-            // languageSettings1
-            // 
-            resources.ApplyResources(this.languageSettings1, "languageSettings1");
-            this.languageSettings1.Name = "languageSettings1";
-            // 
-            // resourceGrid1
-            // 
-            this.resourceGrid1.CurrentResource = null;
-            this.resourceGrid1.CurrentSearch = null;
-            resources.ApplyResources(this.resourceGrid1, "resourceGrid1");
-            this.resourceGrid1.Name = "resourceGrid1";
-            this.resourceGrid1.ShowNullValuesAsGrayed = false;
-            // 
-            // ImportToolStripMenuItem
-            // 
-            this.ImportToolStripMenuItem.Image = global::EntryTranslator.Properties.Resources.openfolderHS;
-            this.ImportToolStripMenuItem.Name = "ImportToolStripMenuItem";
-            resources.ApplyResources(this.ImportToolStripMenuItem, "ImportToolStripMenuItem");
             // 
             // MainWindow
             // 
