@@ -69,6 +69,8 @@ namespace EntryTranslator.Dialogs
                 return;
             }
 
+            TranslateAPIConfig.SourceLanguageZh = cbSourse.SelectedText;
+            TranslateAPIConfig.TargetLanguageZh = cbTarget.SelectedText;
             TranslateAPIConfig.SourceLanguage = sourceLangCode;
             TranslateAPIConfig.TargetLanguage = targetLangCode;
 

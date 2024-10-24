@@ -1,3 +1,4 @@
+using EntryTranslator.Models;
 using EntryTranslator.Properties;
 using EntryTranslator.Utils;
 using System;

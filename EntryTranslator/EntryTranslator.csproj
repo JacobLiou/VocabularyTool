@@ -194,9 +194,10 @@
     <Compile Include="Dialogs\LanguageHelp.Designer.cs">
       <DependentUpon>LanguageHelp.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\BaiduModel.cs" />
+    <Compile Include="Models\TranslatorBaiduModel.cs" />
     <Compile Include="Models\CultureModel.cs" />
     <Compile Include="Models\LangValuePair.cs" />
+    <Compile Include="Models\TranslatorApiModel.cs" />
     <Compile Include="Utils\CsvUtil.cs" />
     <Compile Include="Utils\CultureLangHelper.cs" />
     <Compile Include="Utils\ExcelUtil.cs" />
@@ -228,7 +229,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\HttpUtil.cs" />
-    <Compile Include="Utils\TranslateAPIConfig.cs" />
+    <Compile Include="Models\TranslateAPIConfig.cs" />
     <Compile Include="Utils\TranslatorApi.cs" />
     <Compile Include="Dialogs\TranslateApiSetting.cs">
       <SubType>Form</SubType>

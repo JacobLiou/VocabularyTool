@@ -25,15 +25,17 @@ namespace STranslate.ViewModels.Preference.Services
             string salt = new Random().Next(100000).ToString();
             string sign = StringUtil.EncryptString(_appID + request.Text + salt + _appKey);
 
+            //百度API和CultureInfo不一样 需要转换
             var queryparams = new Dictionary<string, string>
                 {
                     { "q", request.Text },
-                    { "from", request.SourceLang.ToLower() },
-                    { "to", request.TargetLang.ToLower() },
+                    { "from",BaiduLang.LangDic[request.SourceLangText] },
+                    { "to", BaiduLang.LangDic[request.TargetLangText] },
                     { "appid", _appID },
                     { "salt", salt },
                     { "sign", sign }
                 };
+
 
             string resp = await HttpUtil.GetAsync(_url, queryparams, token);
             if (string.IsNullOrEmpty(resp))

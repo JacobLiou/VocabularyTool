@@ -79,6 +79,7 @@ namespace EntryTranslator.Models
             { "因特语",  "ina"},
             { "伊博语",  "ibo"},
             { "亚美尼亚语",  "arm"},
+            { "中文",  "zh"},
             { "中文(简体)",  "zh"},
             { "中文(粤语)",  "yue"},
             { "祖鲁语",  "zul"},

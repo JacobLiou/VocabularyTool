@@ -1,4 +1,5 @@
 ﻿using EntryTranslator.Dialogs;
+using EntryTranslator.Models;
 using EntryTranslator.Properties;
 using EntryTranslator.ResourceOperations;
 using EntryTranslator.Utils;
@@ -469,13 +470,20 @@ namespace EntryTranslator
                 string targetLanguage = tad.TranslateAPIConfig.TargetLanguage;
                 string sourceLanguage = tad.TranslateAPIConfig.SourceLanguage;
 
-                //TranslatorApi translatorApi = new TranslatorApi();
-                TranslatorBaidu translatorBaidu = new TranslatorBaidu();
+                //var translatorApi = new TranslatorApi();
+                var translatorBaidu = new TranslatorBaidu();
 
                 IList<StranslationResult> result = new List<StranslationResult>();
                 for (int i = 0; i < textToTranslate.Count; i++)
                 {
-                    var requestModel = new RequestModel(textToTranslate[i], sourceLanguage, targetLanguage);
+                    var requestModel = new RequestModel
+                    {
+                        Text = textToTranslate[i],
+                        SourceLang = sourceLanguage,
+                        TargetLang = targetLanguage,
+                        SourceLangText = tad.TranslateAPIConfig.SourceLanguageZh,
+                        TargetLangText = tad.TranslateAPIConfig.TargetLanguageZh,
+                    };
                     var item = await translatorBaidu.TranslateAsync(requestModel, CancellationToken.None);
                     Thread.Sleep(1000);
                     OnResourceLoadProgress(this, new ResourceLoadProgressEventArgs("联网翻译进行中...", null, i + 1, textToTranslate.Count));
