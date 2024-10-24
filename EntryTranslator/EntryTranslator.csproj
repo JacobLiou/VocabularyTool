@@ -182,13 +182,21 @@
     <Reference Include="System.Xml.Serialization" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dialogs\RowEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\RowEditor.Designer.cs">
+      <DependentUpon>RowEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\LanguageHelp.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Dialogs\LanguageHelp.Designer.cs">
       <DependentUpon>LanguageHelp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\BaiduModel.cs" />
     <Compile Include="Models\CultureModel.cs" />
+    <Compile Include="Models\LangValuePair.cs" />
     <Compile Include="Utils\CsvUtil.cs" />
     <Compile Include="Utils\CultureLangHelper.cs" />
     <Compile Include="Utils\ExcelUtil.cs" />
@@ -228,6 +236,9 @@
     <Compile Include="Dialogs\TranslateApiSetting.Designer.cs">
       <DependentUpon>TranslateApiSetting.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Dialogs\RowEditor.resx">
+      <DependentUpon>RowEditor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\LanguageHelp.resx">
       <DependentUpon>LanguageHelp.cs</DependentUpon>
     </EmbeddedResource>

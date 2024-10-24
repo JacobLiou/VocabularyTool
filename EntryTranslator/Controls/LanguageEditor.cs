@@ -1,8 +1,10 @@
 ﻿using EntryTranslator.Dialogs;
+using EntryTranslator.Models;
 using EntryTranslator.ResourceOperations;
 using EntryTranslator.Utils;
 using Sunny.UI;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
@@ -153,10 +155,16 @@ namespace EntryTranslator.Controls
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex < 0 || e.ColumnIndex < 1)
+            {
+                return;
+            }
+
             if (dataGridView1.RowCount == 0)
             {
                 return;
             }
+
             if (dataGridView1.CurrentCell.IsInEditMode)
             {
                 dataGridView1.EndEdit();
@@ -176,6 +184,51 @@ namespace EntryTranslator.Controls
                 if (frm.ShowDialog(ParentForm) == DialogResult.OK)
                 {
                     dataGridView1.CurrentCell.Value = frm.textBoxString.Text;
+                    dataGridView1.EndEdit();
+                }
+            }
+        }
+
+        private void dataGridView1_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            //弹出编辑整行 属于动态词条
+
+            var editStrings = new List<LangValuePair>();
+            // 遍历当前行的每个单元格  
+            foreach (DataGridViewCell cell in dataGridView1.CurrentRow.Cells)
+            {
+                DataGridViewColumn column = cell.OwningColumn;
+                string columnHeaderText = column.HeaderText;
+
+                if (SpecialColNames.Contains(columnHeaderText))
+                    continue;
+
+                editStrings.Add(new LangValuePair
+                {
+                    Name = columnHeaderText,
+                    Value = cell.Value.ToString()
+                });
+            }
+
+            using (var frm = new RowEditor(editStrings))
+            {
+                frm.Icon = ParentForm?.Icon;
+                frm.StartPosition = FormStartPosition.CenterParent;
+
+                if (frm.ShowDialog(ParentForm) == DialogResult.OK)
+                {
+                    foreach (DataGridViewCell cell in dataGridView1.CurrentRow.Cells)
+                    {
+                        DataGridViewColumn column = cell.OwningColumn;
+                        string columnHeaderText = column.HeaderText;
+
+                        if (SpecialColNames.Contains(columnHeaderText))
+                            continue;
+
+                        var value = frm.EditLangValuePairs.FirstOrDefault(item => item.Name == columnHeaderText)?.Value;
+                        cell.Value = value;
+                    }
+
                     dataGridView1.EndEdit();
                 }
             }
@@ -367,34 +420,6 @@ namespace EntryTranslator.Controls
         public void ApplyCurrentCellEdit()
         {
             dataGridView1.CommitEdit(DataGridViewDataErrorContexts.Commit);
-        }
-
-        public void SelectNextMissingTranslation(string languageName)
-        {
-            if (!dataGridView1.Columns.Contains(languageName)) return;
-
-            var targets = dataGridView1.Rows.Cast<DataGridViewRow>();
-
-            // Get the next element after the current selection if something is already selected
-            if (dataGridView1.CurrentCell != null)
-            {
-                var rowIndex = dataGridView1.Rows.IndexOf(dataGridView1.CurrentCell.OwningRow);
-                targets = targets.ToList().Rotate(rowIndex + 1);
-            }
-
-            var missingCell = targets.Select((x, i) =>
-            {
-                var cell = x.Cells[languageName];
-                if (cell == null) return null;
-
-                var hasTranslation = cell.Value is string s &&
-                    !string.IsNullOrWhiteSpace(s) &&
-                    !(s.StartsWith("[") && s.TrimEnd().EndsWith("]"));
-
-                return hasTranslation ? null : cell;
-            }).FirstOrDefault(x => x != null);
-
-            if (missingCell != null) dataGridView1.CurrentCell = missingCell;
         }
 
         public void SelectNextSearchResult()

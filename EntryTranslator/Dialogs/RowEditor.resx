@@ -180,48 +180,6 @@
   <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="checkBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="checkBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>104, 24</value>
-  </data>
-  <data name="checkBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;checkBox1.Name" xml:space="preserve">
-    <value>checkBox1</value>
-  </data>
-  <data name="&gt;&gt;checkBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBox1.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;checkBox1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="chbShowWhitespace.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="chbShowWhitespace.Size" type="System.Drawing.Size, System.Drawing">
-    <value>104, 24</value>
-  </data>
-  <data name="chbShowWhitespace.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;chbShowWhitespace.Name" xml:space="preserve">
-    <value>chbShowWhitespace</value>
-  </data>
-  <data name="&gt;&gt;chbShowWhitespace.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chbShowWhitespace.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;chbShowWhitespace.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="buttonCancel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -253,13 +211,13 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;buttonCancel.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>2</value>
   </data>
   <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
   </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 297</value>
+    <value>4, 347</value>
   </data>
   <data name="panel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 3, 4, 3</value>
@@ -285,38 +243,65 @@
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="textBoxString.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 11.25pt</value>
+  <data name="uiDataGridView1.ColumnHeadersHeight" type="System.Int32, mscorlib">
+    <value>32</value>
   </data>
-  <data name="textBoxString.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 35</value>
+  <metadata name="Id.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="Id.HeaderText" xml:space="preserve">
+    <value>语言代码</value>
   </data>
-  <data name="textBoxString.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 3, 4, 3</value>
+  <data name="Id.MinimumWidth" type="System.Int32, mscorlib">
+    <value>6</value>
   </data>
-  <data name="textBoxString.Size" type="System.Drawing.Size, System.Drawing">
-    <value>586, 256</value>
+  <data name="Id.Width" type="System.Int32, mscorlib">
+    <value>150</value>
   </data>
-  <data name="textBoxString.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <metadata name="Value.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="Value.HeaderText" xml:space="preserve">
+    <value>编辑值</value>
   </data>
-  <data name="&gt;&gt;textBoxString.Name" xml:space="preserve">
-    <value>textBoxString</value>
+  <data name="Value.MinimumWidth" type="System.Int32, mscorlib">
+    <value>6</value>
   </data>
-  <data name="&gt;&gt;textBoxString.Type" xml:space="preserve">
-    <value>ScintillaNET.Scintilla, ScintillaNET, Version=3.6.3.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="Value.Width" type="System.Int32, mscorlib">
+    <value>180</value>
   </data>
-  <data name="&gt;&gt;textBoxString.Parent" xml:space="preserve">
+  <data name="uiDataGridView1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 12pt</value>
+  </data>
+  <data name="uiDataGridView1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>72, 63</value>
+  </data>
+  <data name="uiDataGridView1.RowHeadersWidth" type="System.Int32, mscorlib">
+    <value>51</value>
+  </data>
+  <data name="uiDataGridView1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>429, 255</value>
+  </data>
+  <data name="uiDataGridView1.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;uiDataGridView1.Name" xml:space="preserve">
+    <value>uiDataGridView1</value>
+  </data>
+  <data name="&gt;&gt;uiDataGridView1.Type" xml:space="preserve">
+    <value>Sunny.UI.UIDataGridView, SunnyUI, Version=3.7.2.0, Culture=neutral, PublicKeyToken=27d7d2e821d97aeb</value>
+  </data>
+  <data name="&gt;&gt;uiDataGridView1.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;textBoxString.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;uiDataGridView1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>594, 339</value>
+    <value>594, 389</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 9pt</value>
@@ -334,12 +319,24 @@
     <value>CenterParent</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>词条单元编辑器</value>
+    <value>词条整行编辑器</value>
+  </data>
+  <data name="&gt;&gt;Id.Name" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="&gt;&gt;Id.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Value.Name" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="&gt;&gt;Value.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>CellEditor</value>
+    <value>RowEditor</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>EntryTranslator.WindowBase, EntryTranslator, Version=1.0.0.20869, Culture=neutral, PublicKeyToken=null</value>
+    <value>EntryTranslator.WindowBase, EntryTranslator, Version=1.0.0.25548, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

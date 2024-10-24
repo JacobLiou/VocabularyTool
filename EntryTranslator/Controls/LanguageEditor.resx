@@ -160,7 +160,7 @@
     <value>Ctrl+C</value>
   </data>
   <data name="copyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 24</value>
+    <value>164, 24</value>
   </data>
   <data name="copyToolStripMenuItem.Text" xml:space="preserve">
     <value>复制</value>
@@ -169,19 +169,19 @@
     <value>Ctrl+V</value>
   </data>
   <data name="pasteToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 24</value>
+    <value>164, 24</value>
   </data>
   <data name="pasteToolStripMenuItem.Text" xml:space="preserve">
     <value>粘贴</value>
   </data>
   <data name="setToEmptyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 24</value>
+    <value>164, 24</value>
   </data>
   <data name="setToEmptyToolStripMenuItem.Text" xml:space="preserve">
     <value>删除</value>
   </data>
   <data name="contextMenuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 104</value>
+    <value>165, 76</value>
   </data>
   <data name="&gt;&gt;contextMenuStrip1.Name" xml:space="preserve">
     <value>contextMenuStrip1</value>

@@ -1,4 +1,5 @@
-﻿using EntryTranslator.Util;
+﻿using EntryTranslator.Models;
+using EntryTranslator.Util;
 using EntryTranslator.Utils;
 using Newtonsoft.Json;
 using System;
@@ -52,26 +53,5 @@ namespace STranslate.ViewModels.Preference.Services
 
             return StranslationResult.Success(data);
         }
-    }
-
-    public class ResponseBaidu
-    {
-        [JsonProperty("from")]
-        public string From { get; set; } = "";
-
-        [JsonProperty("to")]
-        public string To { get; set; } = "";
-
-        [JsonProperty("trans_result")]
-        public TransResult[]? TransResult { get; set; }
-    }
-
-    public class TransResult
-    {
-        [JsonProperty("src")]
-        public string Src { get; set; } = "";
-
-        [JsonProperty("dst")]
-        public string Dst { get; set; } = "";
     }
 }
