@@ -69,10 +69,16 @@ namespace EntryTranslator.Controls
 
         public void DeleteSelectedRow()
         {
-            if (dataGridView1.SelectedRows.Count == 0) return;
+            if (dataGridView1.SelectedRows == null ||
+                dataGridView1.SelectedRows.Count == 0)
+                return;
 
-            var dataRow = dataGridView1.SelectedRows[0].DataBoundItem as DataRowView;
-            dataRow?.Row.Delete();
+            //删除多个选中
+            for (int i = dataGridView1.SelectedRows.Count - 1; i > 0; i--)
+            {
+                var dataRow = dataGridView1.SelectedRows[i].DataBoundItem as DataRowView;
+                dataRow?.Row.Delete();
+            }
         }
 
         public void RefreshResourceDisplay()
