@@ -329,6 +329,12 @@
     <Compile Include="Dialogs\CellEditor.Designer.cs">
       <DependentUpon>CellEditor.cs</DependentUpon>
     </Compile>
+    <None Include="Templates\Sofar词条库_20241024093053.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Sofar词条库_20241024093058.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -392,9 +398,7 @@
     <None Include="Resources\112_RefreshArrow_Blue_16x16_72.png" />
     <None Include="Resources\109_AllAnnotations_Help_16x16_72.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Templates\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

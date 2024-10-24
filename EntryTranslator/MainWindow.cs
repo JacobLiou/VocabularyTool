@@ -28,6 +28,13 @@ namespace EntryTranslator
             Properties.Resources.ColNameTranslated
         };
 
+        private static readonly List<string> FilterColNames = new List<string>
+        {
+            Properties.Resources.ColNameComment,
+            Properties.Resources.ColNameTranslated,
+            Properties.Resources.ColNameError,
+        };
+
         private readonly string _defaultWindowTitle;
 
         private ResourceHolder _currentResource;
@@ -419,7 +426,7 @@ namespace EntryTranslator
             if (CurrentResource == null || resourceGrid1.RowCount == 0)
                 return;
 
-            var dialogResult = MessageBox.Show("确定要删除当前选定的行吗", "删除键", 
+            var dialogResult = MessageBox.Show("确定要删除当前选定的行吗", "删除键",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (dialogResult == DialogResult.Yes)
@@ -617,7 +624,7 @@ namespace EntryTranslator
         {
             try
             {
-                if (ExcelUtil.DataTableToExcel(CurrentResource.StringsTable, sfd.FileName))
+                if (ExcelUtil.DataTableToExcel(CurrentResource.StringsTable, sfd.FileName, FilterColNames))
                     MessageBox.Show("文件保存成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 else
                     MessageBox.Show("保存文件失败！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);

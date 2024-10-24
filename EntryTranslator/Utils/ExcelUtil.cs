@@ -2,9 +2,9 @@
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.IO;
-using System.Windows.Forms;
 
 namespace EntryTranslator.Utils;
 
@@ -108,7 +108,7 @@ internal class ExcelUtil
         }
     }
 
-    public static bool DataTableToExcel(DataTable dt, string path)
+    public static bool DataTableToExcel(DataTable dt, string path, List<string> filterNames = null)
     {
         bool result = false;
         IWorkbook workbook = null;
@@ -129,6 +129,9 @@ internal class ExcelUtil
                 row = sheet.CreateRow(0);//excel第一行设为列头
                 for (int c = 0; c < columnCount; c++)
                 {
+                    if(filterNames.Contains(dt.Columns[c].ColumnName))
+                        continue;
+
                     cell = row.CreateCell(c);
                     cell.SetCellValue(dt.Columns[c].ColumnName);
                 }
@@ -139,6 +142,9 @@ internal class ExcelUtil
                     row = sheet.CreateRow(i + 1);
                     for (int j = 0; j < columnCount; j++)
                     {
+                        if (filterNames.Contains(dt.Columns[j].ColumnName))
+                            continue;
+
                         cell = row.CreateCell(j);//excel第二行开始写入数据
                         double dvalue;
                         if (double.TryParse(dt.Rows[i][j].ToString(), out dvalue))
@@ -151,6 +157,7 @@ internal class ExcelUtil
                         }
                     }
                 }
+
                 using (fs = File.OpenWrite(path))
                 {
                     workbook.Write(fs);//向打开的这个xls文件中写入数据

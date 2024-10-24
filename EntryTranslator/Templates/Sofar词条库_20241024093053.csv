@@ -1,0 +1,15 @@
+﻿Key,en,zh,Comment,Translated,Error
+Authorization,to grant authorization,授权,,True,False
+Exception,abnormal,异常,,True,False
+Export Excel,Export to Excel,导出 Excel,,True,False
+Export fail,Export failed,导出失败,,True,False
+Export Success,Export successful,导出成功,,True,False
+Logs,journal,日志,,True,False
+Logs Level,level,级别,,True,False
+Message Template,Template,模板,,True,False
+Properties,attribute,属性,,True,False
+Search,search,搜索,,True,False
+See all available options,Available functions,可用功能,,True,False
+Time Stamp,time,时间,,True,False
+Level,level,级别,,True,False
+Message,information,信息,,True,False

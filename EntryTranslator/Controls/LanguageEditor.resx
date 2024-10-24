@@ -163,7 +163,7 @@
     <value>210, 24</value>
   </data>
   <data name="copyToolStripMenuItem.Text" xml:space="preserve">
-    <value>Copy</value>
+    <value>复制</value>
   </data>
   <data name="pasteToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+V</value>
@@ -172,13 +172,13 @@
     <value>210, 24</value>
   </data>
   <data name="pasteToolStripMenuItem.Text" xml:space="preserve">
-    <value>Paste</value>
+    <value>粘贴</value>
   </data>
   <data name="setToEmptyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>210, 24</value>
   </data>
   <data name="setToEmptyToolStripMenuItem.Text" xml:space="preserve">
-    <value>Delete</value>
+    <value>删除</value>
   </data>
   <data name="contextMenuStrip1.Size" type="System.Drawing.Size, System.Drawing">
     <value>211, 104</value>
