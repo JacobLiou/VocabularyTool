@@ -208,7 +208,7 @@
     <value>75, 38</value>
   </data>
   <data name="buttonExport.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>10</value>
   </data>
   <data name="buttonExport.Text" xml:space="preserve">
     <value>导出</value>
@@ -649,7 +649,7 @@
     <value>languageSettings1</value>
   </data>
   <data name="&gt;&gt;languageSettings1.Type" xml:space="preserve">
-    <value>EntryTranslator.Controls.LanguageSettings, EntryTranslator, Version=1.0.0.35964, Culture=neutral, PublicKeyToken=null</value>
+    <value>EntryTranslator.Controls.LanguageSettings, EntryTranslator, Version=1.0.0.36006, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;languageSettings1.Parent" xml:space="preserve">
     <value>tabPage1</value>
@@ -763,7 +763,7 @@
     <value>resourceGrid1</value>
   </data>
   <data name="&gt;&gt;resourceGrid1.Type" xml:space="preserve">
-    <value>EntryTranslator.Controls.LanguageEditor, EntryTranslator, Version=1.0.0.35964, Culture=neutral, PublicKeyToken=null</value>
+    <value>EntryTranslator.Controls.LanguageEditor, EntryTranslator, Version=1.0.0.36006, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;resourceGrid1.Parent" xml:space="preserve">
     <value>tabPageEditedResource</value>
@@ -1571,6 +1571,6 @@
     <value>MainWindow</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>EntryTranslator.WindowBase, EntryTranslator, Version=1.0.0.35964, Culture=neutral, PublicKeyToken=null</value>
+    <value>EntryTranslator.WindowBase, EntryTranslator, Version=1.0.0.36006, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

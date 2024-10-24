@@ -419,8 +419,10 @@ namespace EntryTranslator
             if (CurrentResource == null || resourceGrid1.RowCount == 0)
                 return;
 
-            if (MessageBox.Show("确定要删除当前选定的行吗？", "",
-                MessageBoxButtons.YesNo) == DialogResult.Yes)
+            var dialogResult = MessageBox.Show("确定要删除当前选定的行吗", "删除键", 
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (dialogResult == DialogResult.Yes)
             {
                 resourceGrid1.DeleteSelectedRow();
             }
@@ -599,7 +601,7 @@ namespace EntryTranslator
                 }
 
                 sfd.AddExtension = true;
-                sfd.FileName = "搜航词条库_" + DateTime.Now.ToString("yyyyMMddHHmmss");
+                sfd.FileName = "Sofar词条库_" + DateTime.Now.ToString("yyyyMMddHHmmss");
 
                 if (sfd.ShowDialog() != DialogResult.OK)
                     return;
