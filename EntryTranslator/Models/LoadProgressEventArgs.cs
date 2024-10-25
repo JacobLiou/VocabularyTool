@@ -2,9 +2,9 @@ using System;
 
 namespace EntryTranslator.Models
 {
-    public sealed class ResourceLoadProgressEventArgs : EventArgs
+    public sealed class LoadProgressEventArgs : EventArgs
     {
-        public ResourceLoadProgressEventArgs(string currentProcess, string currentlyProcessedItem, int progress,
+        public LoadProgressEventArgs(string currentProcess, string currentlyProcessedItem, int progress,
             int progressTop)
         {
             Progress = progress;
@@ -13,7 +13,7 @@ namespace EntryTranslator.Models
             CurrentlyProcessedItem = currentlyProcessedItem;
         }
 
-        public ResourceLoadProgressEventArgs(string currentProcess)
+        public LoadProgressEventArgs(string currentProcess)
         {
             CurrentProcess = currentProcess;
         }

@@ -1,6 +1,5 @@
 ﻿using EntryTranslator.Dialogs;
 using EntryTranslator.Models;
-using EntryTranslator.ResourceOperations;
 using EntryTranslator.Utils;
 using Sunny.UI;
 using System;
@@ -8,7 +7,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
-using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -17,16 +15,10 @@ namespace EntryTranslator.Controls
 {
     public partial class LanguageEditor : UIUserControl
     {
-        private static readonly string[] SpecialColNames =
-        {
-            Properties.Resources.ColNameComment,
-            Properties.Resources.ColNameError,
-            Properties.Resources.ColNameKey,
-            Properties.Resources.ColNameTranslated
-        };
+        private LangDicHolder _currentResource;
 
-        private ResourceHolder _currentResource;
         private SearchParams _currentSearch;
+
         private bool _showNullValuesAsGrayed;
 
         public LanguageEditor()
@@ -36,9 +28,7 @@ namespace EntryTranslator.Controls
 
         public int RowCount => dataGridView1.RowCount;
 
-        public int SelectedCellCount => dataGridView1.SelectedCells.Count;
-
-        public ResourceHolder CurrentResource
+        public LangDicHolder LangDicHolder
         {
             get { return _currentResource; }
             set
@@ -85,24 +75,13 @@ namespace EntryTranslator.Controls
 
         public void RefreshResourceDisplay()
         {
-            ShowResourceInGrid(CurrentResource);
+            ShowResourceInGrid(LangDicHolder);
         }
 
         public void SetLanguageColumnVisible(string languageId, bool visible)
         {
             if (dataGridView1.Columns.Contains(languageId) && dataGridView1.Columns[languageId] != null)
                 dataGridView1.Columns[languageId].Visible = visible;
-        }
-
-        public void SetVisibleLanguageColumns(params string[] languageIds)
-        {
-            foreach (
-                var column in
-                    dataGridView1.Columns.Cast<DataGridViewColumn>()
-                        .Where(column => !SpecialColNames.Contains(column.Name)))
-            {
-                column.Visible = languageIds.Any(x => x.Equals(column.Name, StringComparison.OrdinalIgnoreCase));
-            }
         }
 
         private void ApplyConditionalFormatting(DataGridViewRow r)
@@ -122,7 +101,7 @@ namespace EntryTranslator.Controls
 
             ApplyConditionalCellFormatting(r.Cells[Properties.Resources.ColNameKey], SearchParams.TargetType.Key);
 
-            foreach (var lng in CurrentResource.Languages.Values)
+            foreach (var lng in LangDicHolder.Languages.Values)
             {
                 ApplyConditionalCellFormatting(r.Cells[lng.LanguageId], SearchParams.TargetType.TranslatedText);
             }
@@ -200,9 +179,6 @@ namespace EntryTranslator.Controls
                 DataGridViewColumn column = cell.OwningColumn;
                 string columnHeaderText = column.HeaderText;
 
-                if (SpecialColNames.Contains(columnHeaderText))
-                    continue;
-
                 editStrings.Add(new LangValuePair
                 {
                     Name = columnHeaderText,
@@ -222,9 +198,6 @@ namespace EntryTranslator.Controls
                         DataGridViewColumn column = cell.OwningColumn;
                         string columnHeaderText = column.HeaderText;
 
-                        if (SpecialColNames.Contains(columnHeaderText))
-                            continue;
-
                         var value = frm.EditLangValuePairs.FirstOrDefault(item => item.Name == columnHeaderText)?.Value;
                         cell.Value = value;
                     }
@@ -240,7 +213,7 @@ namespace EntryTranslator.Controls
             ((DataGridViewTextBoxEditingControl)e.Control).Multiline = true;
         }
 
-        private void ShowResourceInGrid(ResourceHolder resource)
+        private void ShowResourceInGrid(LangDicHolder resource)
         {
             if (resource == null)
             {
@@ -254,22 +227,6 @@ namespace EntryTranslator.Controls
             {
                 dataGridView1.Columns[languageHolder.LanguageId].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             }
-
-            foreach (var languageHolder in resource.Languages.Values)
-            {
-                if (CultureInfo.CurrentCulture.Name.Contains(languageHolder.CultureInfo.Name))
-                {
-                    dataGridView1.Columns[languageHolder.LanguageId].DisplayIndex = 1;
-                    break;
-                }
-
-            }
-
-            dataGridView1.Columns[Properties.Resources.ColNameComment].DisplayIndex = dataGridView1.Columns.Count - 1;
-
-            dataGridView1.Columns[Properties.Resources.ColNameTranslated].Visible = false;
-            dataGridView1.Columns[Properties.Resources.ColNameError].Visible = false;
-            dataGridView1.Columns[Properties.Resources.ColNameComment].Visible = false;
 
             dataGridView1.Columns[Properties.Resources.ColNameKey].ReadOnly = true;
         }

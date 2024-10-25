@@ -6,15 +6,12 @@ namespace EntryTranslator.Models
     {
         private string _languageId;
 
-        public LanguageHolder(string languageId, string filename)
+        public LanguageHolder(string languageId)
         {
             LanguageId = languageId;
-            Filename = filename;
         }
 
         public CultureInfo CultureInfo { get; private set; }
-
-        public string Filename { get; set; }
 
         public string LanguageId
         {

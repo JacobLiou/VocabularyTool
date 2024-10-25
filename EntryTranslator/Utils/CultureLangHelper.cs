@@ -42,7 +42,7 @@ namespace EntryTranslator.Utils
             return allCodes;
         }
 
-        private static List<string> GetLanguageCodesOffline()
+        public static List<string> GetLanguageCodesOffline()
         {
            return Enum.GetNames(typeof(LanguageEnum)).ToList();
         }

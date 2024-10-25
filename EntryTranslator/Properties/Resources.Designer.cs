@@ -111,15 +111,6 @@ namespace EntryTranslator.Properties {
         }
         
         /// <summary>
-        ///   查找类似 Comment 的本地化字符串。
-        /// </summary>
-        internal static string ColNameComment {
-            get {
-                return ResourceManager.GetString("ColNameComment", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   查找类似 Error 的本地化字符串。
         /// </summary>
         internal static string ColNameError {

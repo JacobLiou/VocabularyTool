@@ -1,4 +1,4 @@
-﻿using EntryTranslator.ResourceOperations;
+﻿using EntryTranslator.Models;
 using System;
 using System.Linq;
 using System.Windows.Forms;
@@ -11,16 +11,16 @@ namespace EntryTranslator.Dialogs
         public string KeyName => textboxKeyName.Text;
         public string DefaultText => textboxDefault.Text;
 
-        private readonly ResourceHolder _resourceHolder;
+        private readonly LangDicHolder _resourceHolder;
 
-        private AddResourceKey(ResourceHolder resourceHolder)
+        private AddResourceKey(LangDicHolder resourceHolder)
         {
             InitializeComponent();
 
             _resourceHolder = resourceHolder;
         }
 
-        public static bool ShowDialog(Form owner, ResourceHolder resource)
+        public static bool ShowDialog(Form owner, LangDicHolder resource)
         {
             using (var window = new AddResourceKey(resource))
             {

@@ -1,5 +1,6 @@
 ﻿using CsvHelper;
 using CsvHelper.Configuration;
+using EntryTranslator.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -14,6 +15,52 @@ namespace EntryTranslator.Utils
 {
     internal class CsvUtil
     {
+        public static DataTable CsvToDataTable(string filePath, Dictionary<string, LanguageHolder> langDic)
+        {
+            DataTable dataTable = new DataTable();
+            int totalLines = File.ReadAllLines(filePath).Length;
+            int currentLine = 0;
+
+            var csvConfig = new CsvConfiguration(CultureInfo.InvariantCulture)
+            {
+                HasHeaderRecord = true,
+                MissingFieldFound = null
+            };
+
+            using (var reader = new StreamReader(filePath))
+            using (var csv = new CsvReader(reader, csvConfig))
+            {
+                // 读取表头
+                csv.Read();
+                csv.ReadHeader();
+                foreach (var header in csv.HeaderRecord)
+                {
+                    if (CultureLangHelper.GetLanguageCodesOffline().Contains(header))
+                        langDic.Add(header, new LanguageHolder(header));
+
+                    dataTable.Columns.Add(header);
+                }
+
+                // 逐行读取数据
+                while (csv.Read())
+                {
+                    var row = dataTable.NewRow();
+                    foreach (DataColumn column in dataTable.Columns)
+                    {
+                        row[column.ColumnName] = csv.GetField(column.DataType, column.ColumnName);
+                    }
+
+                    dataTable.Rows.Add(row);
+
+                    currentLine++;
+                    int progressPercentage = (int)((float)currentLine / totalLines * 100);
+                }
+            }
+
+            return dataTable;
+        }
+
+
         public async Task<List<T>> LoadDataFromCsvAsync<T>(string filePath)
         {
             var dataStr = File.ReadAllText(filePath);
@@ -50,7 +97,7 @@ namespace EntryTranslator.Utils
         /// <summary>
         /// DataTable导出到CSV文件
         /// </summary>
-        public static bool ExportToCsv(DataTable dt, string filePath, bool includeHeaders = true)
+        public static bool ExportToCsv(DataTable dt, string filePath, List<string> filterColNames, bool includeHeaders = true)
         {
             try
             {
@@ -62,6 +109,9 @@ namespace EntryTranslator.Utils
                     {
                         foreach (DataColumn column in dt.Columns)
                         {
+                            if (filterColNames.Contains(column.ColumnName))
+                                continue;
+
                             csv.WriteField(column.ColumnName);
                         }
                         csv.NextRecord();
@@ -72,8 +122,12 @@ namespace EntryTranslator.Utils
                     {
                         for (int i = 0; i < dt.Columns.Count; i++)
                         {
+                            if (filterColNames.Contains(dt.Columns[i].ColumnName))
+                                continue;
+
                             csv.WriteField(row[i]?.ToString());
                         }
+
                         csv.NextRecord();
                     }
                 }
@@ -82,7 +136,7 @@ namespace EntryTranslator.Utils
             }
             catch (Exception ex)
             {
-               return false;
+                return false;
             }
         }
 

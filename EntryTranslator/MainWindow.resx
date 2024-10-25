@@ -577,7 +577,7 @@
     <value>0, 0</value>
   </data>
   <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1625, 68</value>
+    <value>1326, 68</value>
   </data>
   <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -649,7 +649,7 @@
     <value>languageSettings1</value>
   </data>
   <data name="&gt;&gt;languageSettings1.Type" xml:space="preserve">
-    <value>EntryTranslator.Controls.LanguageSettings, EntryTranslator, Version=1.0.0.39017, Culture=neutral, PublicKeyToken=null</value>
+    <value>EntryTranslator.Controls.LanguageSettings, EntryTranslator, Version=1.0.0.29758, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;languageSettings1.Parent" xml:space="preserve">
     <value>tabPage1</value>
@@ -751,7 +751,7 @@
     <value>1, 1</value>
   </data>
   <data name="resourceGrid1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1366, 555</value>
+    <value>1067, 555</value>
   </data>
   <data name="resourceGrid1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -763,7 +763,7 @@
     <value>resourceGrid1</value>
   </data>
   <data name="&gt;&gt;resourceGrid1.Type" xml:space="preserve">
-    <value>EntryTranslator.Controls.LanguageEditor, EntryTranslator, Version=1.0.0.39017, Culture=neutral, PublicKeyToken=null</value>
+    <value>EntryTranslator.Controls.LanguageEditor, EntryTranslator, Version=1.0.0.29758, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;resourceGrid1.Parent" xml:space="preserve">
     <value>tabPageEditedResource</value>
@@ -781,7 +781,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="tabPageEditedResource.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1366, 555</value>
+    <value>1067, 555</value>
   </data>
   <data name="tabPageEditedResource.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -814,7 +814,7 @@
     <value>4, 4, 4, 4</value>
   </data>
   <data name="tabControl3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1374, 588</value>
+    <value>1075, 588</value>
   </data>
   <data name="tabControl3.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -847,7 +847,7 @@
     <value>125</value>
   </data>
   <data name="splitContainerMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1625, 588</value>
+    <value>1326, 588</value>
   </data>
   <data name="splitContainerMain.SplitterDistance" type="System.Int32, mscorlib">
     <value>246</value>
@@ -886,7 +886,7 @@
     <value>1</value>
   </data>
   <data name="splitContainerAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1625, 660</value>
+    <value>1326, 660</value>
   </data>
   <data name="splitContainerAll.SplitterDistance" type="System.Int32, mscorlib">
     <value>68</value>
@@ -934,7 +934,7 @@
     <value>1, 0, 19, 0</value>
   </data>
   <data name="statusStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1625, 22</value>
+    <value>1326, 22</value>
   </data>
   <data name="statusStrip.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -967,7 +967,7 @@
     <value>4, 4, 4, 7</value>
   </data>
   <data name="panelMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1625, 660</value>
+    <value>1326, 660</value>
   </data>
   <data name="panelMain.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -1016,18 +1016,6 @@
   </data>
   <data name="saveAllModifiedToolStripMenuItem.Text" xml:space="preserve">
     <value>保存更改</value>
-  </data>
-  <data name="reloadToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>207, 26</value>
-  </data>
-  <data name="reloadToolStripMenuItem.Text" xml:space="preserve">
-    <value>重载当前</value>
-  </data>
-  <data name="openLocationToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>207, 26</value>
-  </data>
-  <data name="openLocationToolStripMenuItem.Text" xml:space="preserve">
-    <value>打开位置</value>
   </data>
   <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 24</value>
@@ -1147,7 +1135,7 @@
     <value>8, 3, 0, 3</value>
   </data>
   <data name="menuStripMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1625, 30</value>
+    <value>1326, 30</value>
   </data>
   <data name="menuStripMain.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1189,7 +1177,7 @@
     <value>86</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1625, 747</value>
+    <value>1326, 747</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1471,18 +1459,6 @@
   <data name="&gt;&gt;saveAllModifiedToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;reloadToolStripMenuItem.Name" xml:space="preserve">
-    <value>reloadToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;reloadToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;openLocationToolStripMenuItem.Name" xml:space="preserve">
-    <value>openLocationToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;openLocationToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;languagesToolStripMenuItem.Name" xml:space="preserve">
     <value>languagesToolStripMenuItem</value>
   </data>
@@ -1571,6 +1547,6 @@
     <value>MainWindow</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>EntryTranslator.WindowBase, EntryTranslator, Version=1.0.0.39017, Culture=neutral, PublicKeyToken=null</value>
+    <value>EntryTranslator.WindowBase, EntryTranslator, Version=1.0.0.29758, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

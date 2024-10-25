@@ -1,19 +1,17 @@
-﻿using EntryTranslator.Dialogs;
+﻿using EntryTranslator.Const;
+using EntryTranslator.Dialogs;
 using EntryTranslator.Models;
 using EntryTranslator.Properties;
-using EntryTranslator.ResourceOperations;
+using EntryTranslator.Models;
 using EntryTranslator.Utils;
 using STranslate.ViewModels.Preference.Services;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Resources;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -21,199 +19,22 @@ namespace EntryTranslator
 {
     public sealed partial class MainWindow : WindowBase
     {
-        private static readonly string[] SpecialColNames =
-        {
-            Properties.Resources.ColNameComment,
-            Properties.Resources.ColNameError,
-            Properties.Resources.ColNameKey,
-            Properties.Resources.ColNameTranslated
-        };
-
-        private static readonly List<string> FilterColNames = new List<string>
-        {
-            Properties.Resources.ColNameComment,
-            Properties.Resources.ColNameTranslated,
-            Properties.Resources.ColNameError,
-        };
-
-        private readonly string _defaultWindowTitle;
-
-        private ResourceHolder _currentResource;
-
-        private ResourceHolder CurrentResource
-        {
-            get { return _currentResource; }
-            set
-            {
-                this.InvokeIfRequired(_ =>
-                {
-                    if (_currentResource != null)
-                    {
-                        _currentResource.LanguageChange -= OnCurrentResourceLanguageChange;
-                        _currentResource.DirtyChanged -= _currentResource_DirtyChanged;
-                    }
-
-                    _currentResource = value;
-
-                    if (_currentResource != null)
-                    {
-                        _currentResource.LanguageChange += OnCurrentResourceLanguageChange;
-                        _currentResource.DirtyChanged += _currentResource_DirtyChanged;
-
-                        _currentResource.EvaluateAllRows(
-                            languageSettings1.EnabledLanguages.Select(x => x.Name).ToArray());
-                    }
-
-                    resourceGrid1.CurrentResource = value;
-                    resourceGrid1.SetVisibleLanguageColumns(
-                        languageSettings1.EnabledLanguages.Select(x => x.Name).ToArray());
-                    UpdateMenuStrip();
-                });
-            }
-        }
-
         private SearchParams _currentSearch;
 
-        public SearchParams CurrentSearch => _currentSearch;
-
-        public ResourceHolder ResourceLoader { get; }
+        public LangDicHolder LangDicHolder { get; }
 
         public MainWindow()
         {
             InitializeComponent();
 
-            _defaultWindowTitle = $"{Text} {Assembly.GetAssembly(typeof(MainWindow)).GetName().Version.ToString(2)}";
-
-            ResourceLoader = new ResourceHolder();
-            ResourceLoader.ResourceLoadProgress += OnResourceLoadProgress;
-            ResourceLoader.ResourcesChanged += OnResourceLoaderOnResourcesChanged;
-
-            languageSettings1.EnabledLanguagesChanged += (sender, args) =>
-            {
-                if (resourceGrid1.CurrentResource == null) return;
-
-                var languageIds = languageSettings1.EnabledLanguages.Select(x => x.Name).ToArray();
-                resourceGrid1.CurrentResource.EvaluateAllRows(languageIds);
-                resourceGrid1.SetVisibleLanguageColumns(languageIds);
-                resourceGrid1.Refresh();
-            };
-
-            Settings.Binder.SendUpdates(this);
-
-            Icon = Icon.ExtractAssociatedIcon(Assembly.GetAssembly(typeof(MainWindow)).Location);
-        }
-
-        private void _currentResource_DirtyChanged(object sender, EventArgs e)
-        {
-            UpdateTitlebar();
-        }
-
-        private void OnCurrentResourceLanguageChange(object sender, EventArgs eventArgs)
-        {
-            this.InvokeIfRequired(x =>
-            {
-                languageSettings1.RefreshLanguages(ResourceLoader.GetUsedLanguages(), true);
-                UpdateMenuStrip();
-            });
-        }
-
-        private void LoadReferenceAssemblies()
-        {
-            OnResourceLoadProgress(this, new ResourceLoadProgressEventArgs("加载程序集"));
-
-            var assembliesToLoad = new List<string>();
-
-            if (Settings.Default.ReferencePaths != null)
-            {
-                foreach (var path in Settings.Default.ReferencePaths.Cast<string>().Where(Directory.Exists))
-                {
-                    assembliesToLoad.AddRange(Directory.EnumerateFiles(path, "*.dll", SearchOption.TopDirectoryOnly));
-                }
-            }
-
-            if (Settings.Default.ReferencePathsFromResourceDir && Directory.Exists(ResourceLoader.OpenedPath))
-            {
-                assembliesToLoad.AddRange(Directory.EnumerateFiles(ResourceLoader.OpenedPath, "*.dll", SearchOption.AllDirectories));
-            }
-
-            var loadedAssemblies = AppDomain.CurrentDomain.GetAssemblies().Where(x => !x.IsDynamic)
-                .Select(x => x.Location).Distinct().ToList();
-
-            assembliesToLoad = assembliesToLoad.Select(x => x.ToLowerInvariant()).Distinct().ToList();
-
-            if (assembliesToLoad.Count > 300 && MessageBox.Show(
-                string.Format(
-                    "使用当前设置，此操作将尝试加载{0}程序集。你真的要把它们都装上吗？如果选择no，将跳过加载",
-                    assembliesToLoad.Count),
-                "", MessageBoxButtons.YesNo) != DialogResult.Yes)
-            {
-                OnResourceLoadProgress(this, new ResourceLoadProgressEventArgs("完成", null, 0, 0));
-                return;
-            }
-
-            var count = 0;
-            foreach (var filename in assembliesToLoad)
-            {
-                count++;
-                OnResourceLoadProgress(this, new ResourceLoadProgressEventArgs("加载程序集...",
-                    Path.GetFileName(filename), count, assembliesToLoad.Count));
-
-                try
-                {
-                    if (loadedAssemblies.All(x => !string.Equals(x, filename, StringComparison.OrdinalIgnoreCase)))
-                    {
-                        Assembly.LoadFile(filename);
-                        loadedAssemblies.Add(filename);
-                    }
-                }
-                catch (NotSupportedException) { }
-                catch (BadImageFormatException) { }
-                catch (FileLoadException) { }
-            }
-
-            OnResourceLoadProgress(this, new ResourceLoadProgressEventArgs("完成", null, 0, 0));
+            LangDicHolder = new LangDicHolder();
+            LangDicHolder.ResourceLoadProgress += OnResourceLoadProgress;
+            LangDicHolder.ResourcesChanged += OnResourceLoaderOnResourcesChanged;
         }
 
         private void MainForm_Shown(object sender, EventArgs e)
         {
-            if (!Settings.Default.WindowSize.IsEmpty)
-            {
-                Location = Settings.Default.WindowLocation;
-                Size = Settings.Default.WindowSize;
-                WindowState = Settings.Default.WindowState;
-            }
-
-            if (Settings.Default.SplitterMain > 10)
-                splitContainerMain.SplitterDistance = Settings.Default.SplitterMain;
-
-            Opacity = 1;
-
-            LoadResourcesFromFolder($@"{AppDomain.CurrentDomain.BaseDirectory}LangDic");
-        }
-
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Settings.Default.LastOpenedDirectory = ResourceLoader.OpenedPath ?? string.Empty;
-
-            switch (WindowState)
-            {
-                case FormWindowState.Normal:
-                    Settings.Default.WindowLocation = Location;
-                    Settings.Default.WindowSize = Size;
-                    Settings.Default.WindowState = WindowState;
-                    break;
-
-                case FormWindowState.Maximized:
-                    Settings.Default.WindowState = WindowState;
-                    break;
-            }
-
-            Settings.Default.SplitterMain = splitContainerMain.SplitterDistance;
-
-            Settings.Default.Save();
-
-            if (!ResourceLoader.CanClose())
-                e.Cancel = true;
+            LoadResourcesFromFolder();
         }
 
         public void SetCurrentSearch(SearchParams value)
@@ -230,25 +51,19 @@ namespace EntryTranslator
             }
         }
 
-        private void LoadResourcesFromFolder(string path)
+        private void LoadResourcesFromFolder()
         {
-            if (!ResourceLoader.CanClose())
-                return;
-
-            if (!Directory.Exists(path))
-                return;
-
             Enabled = false;
-            toolStripStatusLabel1.Text = string.Format("打开 {0}...", path);
+            toolStripStatusLabel1.Text = string.Format("打开..");
             Application.DoEvents();
 
-            ResourceLoader.OpenProject(path);
-            CurrentResource = ResourceLoader;
+            LangDicHolder.Load();
+            resourceGrid1.LangDicHolder = LangDicHolder;
 
             Enabled = true;
         }
 
-        private void OnResourceLoadProgress(object sender, ResourceLoadProgressEventArgs args)
+        private void OnResourceLoadProgress(object sender, LoadProgressEventArgs args)
         {
             this.InvokeIfRequired(_ =>
             {
@@ -272,43 +87,27 @@ namespace EntryTranslator
         {
             (this).InvokeIfRequired(_ =>
             {
-                var nothingLoaded = string.IsNullOrEmpty(ResourceLoader.OpenedPath);
-                searchToolStripMenuItem.Enabled = !nothingLoaded;
-
                 UpdateTitlebar();
 
-                CurrentResource = null;
+                var usedLanguages = LangDicHolder.GetUsedLanguages().ToList();
 
-                var usedLanguages = ResourceLoader.GetUsedLanguages().ToList();
-
-                languageSettings1.RefreshLanguages(usedLanguages, false);
-
-                LoadReferenceAssemblies();
+                languageSettings1.RefreshLanguages(usedLanguages);
             });
         }
 
         private void UpdateTitlebar()
         {
-            Text = $"{_defaultWindowTitle}{(CurrentResource?.IsDirty == true ? " - *" : "")}";
+
         }
 
         #region 菜单快捷栏事件
 
         private void UpdateMenuStrip()
         {
-            var notNull = _currentResource != null;
-            keysToolStripMenuItem.Enabled = notNull;
-            addNewKeyToolStripMenuItem.Enabled = notNull;
-            languagesToolStripMenuItem.Enabled = notNull;
-            toolStripMenuItemGT.Enabled = notNull;
-            groupBoxSearch.Enabled = notNull;
-
             removeLanguageToolStripMenuItem.DropDownItems.Clear();
             addLanguageToolStripMenuItem.DropDownItems.Clear();
 
-            if (_currentResource == null) return;
-
-            foreach (var info in _currentResource.Languages.Values.Select(x => x.CultureInfo).OrderBy(x => x.Name))
+            foreach (var info in LangDicHolder.Languages.Values.Select(x => x.CultureInfo).OrderBy(x => x.Name))
             {
                 removeLanguageToolStripMenuItem.DropDownItems.Add($"{info.Name} - {info.DisplayName}").Tag = info;
             }
@@ -324,27 +123,15 @@ namespace EntryTranslator
             buttonExport_Click(sender, e);
         }
 
-        private void reloadCurrentDirectoryToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(ResourceLoader.OpenedPath))
-                LoadResourcesFromFolder(ResourceLoader.OpenedPath);
-        }
-
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             resourceGrid1.ApplyCurrentCellEdit();
-            ResourceLoader.Save();
-        }
-
-        private void openLocationToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (CurrentResource != null)
-                Process.Start("explorer.exe", $"\"{Path.GetDirectoryName(CurrentResource.Filename)}\"");
+            LangDicHolder.Save();
         }
 
         private void findToolStripMenuItem_DropDownOpened(object sender, EventArgs e)
         {
-            clearSearchToolStripMenuItem.Enabled = CurrentSearch != null;
+            clearSearchToolStripMenuItem.Enabled = _currentSearch != null;
         }
 
         private void findToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -356,7 +143,7 @@ namespace EntryTranslator
 
         private void findNextToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (CurrentSearch == null)
+            if (_currentSearch == null)
             {
                 findToolStripMenuItem1_Click(sender, e);
                 return;
@@ -379,9 +166,9 @@ namespace EntryTranslator
         private void addLanguageToolStripMenuItem_Clicked(object sender, EventArgs e)
         {
             var language = LanguageSelect.ShowLanguageSelectDialog(this);
-            if (language != null && !CurrentResource.Languages.ContainsKey(language))
+            if (language != null && !LangDicHolder.Languages.ContainsKey(language))
             {
-                CurrentResource.AddLanguage(language, Settings.Default.AddDefaultValuesOnLanguageAdd);
+                LangDicHolder.AddLanguage(language, Settings.Default.AddDefaultValuesOnLanguageAdd);
 
                 UpdateMenuStrip();
                 resourceGrid1.RefreshResourceDisplay();
@@ -390,7 +177,7 @@ namespace EntryTranslator
 
         private void removeLanguageToolStripMenuItem_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            CurrentResource.DeleteLanguage(((CultureInfo)e.ClickedItem.Tag).Name);
+            LangDicHolder.DeleteLanguage(((CultureInfo)e.ClickedItem.Tag).Name);
 
             UpdateMenuStrip();
             resourceGrid1.RefreshResourceDisplay();
@@ -398,12 +185,12 @@ namespace EntryTranslator
 
         private void addNewKeyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (CurrentResource != null)
+            if (LangDicHolder != null)
             {
                 bool dialogResult = false;
                 try
                 {
-                    dialogResult = AddResourceKey.ShowDialog(this, CurrentResource);
+                    dialogResult = AddResourceKey.ShowDialog(this, LangDicHolder);
                 }
                 catch (Exception ex)
                 {
@@ -418,7 +205,7 @@ namespace EntryTranslator
 
         private void deleteKeyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (CurrentResource == null || resourceGrid1.RowCount == 0)
+            if (LangDicHolder == null || resourceGrid1.RowCount == 0)
                 return;
 
             var dialogResult = MessageBox.Show("确定要删除当前选定的行吗", "删除键",
@@ -432,15 +219,13 @@ namespace EntryTranslator
 
         private async void translateToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (CurrentResource == null)
+            if (LangDicHolder == null)
             {
                 return;
             }
 
             Cursor.Current = Cursors.WaitCursor;
-
-            SortedDictionary<string, LanguageHolder> lngs = CurrentResource?.Languages;
-            var languages = lngs.Select(x => x.Key).ToList();
+            var languages = LangDicHolder.Languages.Select(x => x.Key).ToList();
 
             try
             {
@@ -452,7 +237,7 @@ namespace EntryTranslator
                     return;
                 }
 
-                List<string> textToTranslate = CurrentResource.GetTextForTranslating(tad.TranslateAPIConfig);
+                List<string> textToTranslate = LangDicHolder.GetTextForTranslating(tad.TranslateAPIConfig);
 
                 if (textToTranslate == null || !textToTranslate.Any())
                 {
@@ -480,14 +265,14 @@ namespace EntryTranslator
                     };
                     var item = await translatorBaidu.TranslateAsync(requestModel, CancellationToken.None);
                     Thread.Sleep(1000);
-                    OnResourceLoadProgress(this, new ResourceLoadProgressEventArgs("联网翻译进行中...", null, i + 1, textToTranslate.Count));
+                    OnResourceLoadProgress(this, new LoadProgressEventArgs("联网翻译进行中...", null, i + 1, textToTranslate.Count));
                     if (item != null && item.IsSuccess)
                     {
                         result.Add(item);
                     }
                 }
 
-                CurrentResource.SetTranslatedText(tad.TranslateAPIConfig, result);
+                LangDicHolder.SetTranslatedText(tad.TranslateAPIConfig, result);
             }
             catch (Exception exception)
             {
@@ -495,7 +280,7 @@ namespace EntryTranslator
             }
             finally
             {
-                OnResourceLoadProgress(this, new ResourceLoadProgressEventArgs("完成", null, 0, 0));
+                OnResourceLoadProgress(this, new LoadProgressEventArgs("完成", null, 0, 0));
                 Cursor.Current = Cursors.Default;
             }
         }
@@ -540,51 +325,7 @@ namespace EntryTranslator
                 dataTable = ExcelUtil.ImportExcelFile(fileName);
             else
                 dataTable = CsvUtil.ImportFromCsv(fileName);
-
-            if (DataTableToResxFiles(dataTable))
-                MessageBox.Show("文件导入成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            else
-                MessageBox.Show("导入文件失败！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
-        private bool DataTableToResxFiles(DataTable dataTable)
-        {
-            try
-            {
-                DirectoryInfo dir = new DirectoryInfo($@"{AppDomain.CurrentDomain.BaseDirectory}LangDic");
-                FileInfo[] files = dir.GetFiles();
-                foreach (FileInfo file in files)
-                {
-                    file.Delete();
-                }
-
-                foreach (DataColumn column in dataTable.Columns)
-                {
-                    if (SpecialColNames.Contains(column.ColumnName))
-                        continue;
-                    string fileName = $@"{AppDomain.CurrentDomain.BaseDirectory}LangDic\Sofar.{column.ColumnName}.resx";
-
-                    // 创建ResXResourceSet
-                    using (ResXResourceWriter resx = new ResXResourceWriter(fileName))
-                    {
-                        // 将列数据添加到ResX
-                        for (int i = 0; i < dataTable.Rows.Count; i++)
-                        {
-                            if (!SpecialColNames.Contains(column.ColumnName))
-                                resx.AddResource(dataTable.Rows[i][Properties.Resources.ColNameKey].ToString(),
-                                    dataTable.Rows[i][column.ColumnName].ToString());
-                        }
-                    }
-                }
-
-                LoadResourcesFromFolder($@"{AppDomain.CurrentDomain.BaseDirectory}LangDic");
-
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
+            LangDicHolder.StringsTable = dataTable;
         }
 
         private void buttonExport_Click(object sender, EventArgs e)
@@ -625,7 +366,7 @@ namespace EntryTranslator
         {
             try
             {
-                if (ExcelUtil.DataTableToExcel(CurrentResource.StringsTable, sfd.FileName, FilterColNames))
+                if (ExcelUtil.DataTableToExcel(LangDicHolder.StringsTable, sfd.FileName, GlobalSettings.FilterColNames))
                     MessageBox.Show("文件保存成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 else
                     MessageBox.Show("保存文件失败！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -640,7 +381,7 @@ namespace EntryTranslator
         {
             try
             {
-                if (CsvUtil.ExportToCsv(CurrentResource.StringsTable, sfd.FileName))
+                if (CsvUtil.ExportToCsv(LangDicHolder.StringsTable, sfd.FileName, GlobalSettings.FilterColNames))
                     MessageBox.Show("文件保存成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 else
                     MessageBox.Show("保存文件失败！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);

@@ -485,33 +485,11 @@ namespace EntryTranslation
             Process.Start("explorer.exe", $"\"{Path.GetDirectoryName(CurrentResource.Filename)}\"");
         }
 
-        private void reloadCurrentDirectoryToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(ResourceLoader.OpenedPath))
-                LoadResourcesFromFolder(ResourceLoader.OpenedPath);
-        }
-
         private void helpToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             var readmePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "README.md");
             if (File.Exists(readmePath))
                 Process.Start("notepad.exe", $"\"{readmePath}\"");
-        }
-
-        private void licenceToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var licensePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "LICENSE");
-            if (File.Exists(licensePath))
-                Process.Start("notepad.exe", $"\"{licensePath}\"");
-            else
-                Process.Start(Properties.Resources.Homepage);
-        }
-
-        private void fromOpenedTranslationsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (!AskToRemoveNontranslatable()) return;
-
-            CurrentResource?.SaveWithoutNontranslatableData();
         }
 
         private static bool AskToRemoveNontranslatable()
@@ -521,29 +499,10 @@ namespace EntryTranslation
                 MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK;
         }
 
-        private void fromAllTranslationsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (!AskToRemoveNontranslatable()) return;
-
-            foreach (var resource in ResourceLoader.Resources)
-            {
-                resource.SaveWithoutNontranslatableData();
-            }
-        }
-
-        private void trimWhitespaceFromCellsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            resourceGrid1.TrimWhitespaceFromSelectedCells();
-        }
-
         private void exportAllResourcesToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
 
-        private async void toolStripMenuItemGT_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

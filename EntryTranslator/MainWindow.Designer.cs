@@ -64,8 +64,6 @@ namespace EntryTranslator
             this.ImportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAllModifiedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reloadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openLocationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.languagesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addLanguageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeLanguageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -306,7 +304,7 @@ namespace EntryTranslator
             // 
             // resourceGrid1
             // 
-            this.resourceGrid1.CurrentResource = null;
+            this.resourceGrid1.LangDicHolder = null;
             this.resourceGrid1.CurrentSearch = null;
             resources.ApplyResources(this.resourceGrid1, "resourceGrid1");
             this.resourceGrid1.Name = "resourceGrid1";
@@ -362,9 +360,7 @@ namespace EntryTranslator
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ImportToolStripMenuItem,
             this.exportToolStripMenuItem,
-            this.saveAllModifiedToolStripMenuItem,
-            this.reloadToolStripMenuItem,
-            this.openLocationToolStripMenuItem});
+            this.saveAllModifiedToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
             // 
@@ -388,19 +384,6 @@ namespace EntryTranslator
             this.saveAllModifiedToolStripMenuItem.Name = "saveAllModifiedToolStripMenuItem";
             resources.ApplyResources(this.saveAllModifiedToolStripMenuItem, "saveAllModifiedToolStripMenuItem");
             this.saveAllModifiedToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
-            // 
-            // reloadToolStripMenuItem
-            // 
-            this.reloadToolStripMenuItem.Image = global::EntryTranslator.Properties.Resources.RefreshArrow;
-            this.reloadToolStripMenuItem.Name = "reloadToolStripMenuItem";
-            resources.ApplyResources(this.reloadToolStripMenuItem, "reloadToolStripMenuItem");
-            this.reloadToolStripMenuItem.Click += new System.EventHandler(this.reloadCurrentDirectoryToolStripMenuItem_Click);
-            // 
-            // openLocationToolStripMenuItem
-            // 
-            this.openLocationToolStripMenuItem.Name = "openLocationToolStripMenuItem";
-            resources.ApplyResources(this.openLocationToolStripMenuItem, "openLocationToolStripMenuItem");
-            this.openLocationToolStripMenuItem.Click += new System.EventHandler(this.openLocationToolStripMenuItem_Click);
             // 
             // languagesToolStripMenuItem
             // 
@@ -518,7 +501,6 @@ namespace EntryTranslator
             this.Controls.Add(this.menuStripMain);
             this.Controls.Add(this.statusStrip);
             this.Name = "MainWindow";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Shown += new System.EventHandler(this.MainForm_Shown);
             this.splitContainerAll.Panel1.ResumeLayout(false);
             this.splitContainerAll.Panel2.ResumeLayout(false);
@@ -565,8 +547,6 @@ namespace EntryTranslator
         private ToolStripMenuItem languagesToolStripMenuItem;
         private ToolStripMenuItem removeLanguageToolStripMenuItem;
         private ToolStripMenuItem clearSearchToolStripMenuItem;
-        private ToolStripMenuItem openLocationToolStripMenuItem;
-        private ToolStripMenuItem reloadToolStripMenuItem;
         private ToolStripMenuItem helpToolStripMenuItem;
         private ToolStripMenuItem helpToolStripMenuItem1;
         private ToolStripMenuItem exportToolStripMenuItem;
