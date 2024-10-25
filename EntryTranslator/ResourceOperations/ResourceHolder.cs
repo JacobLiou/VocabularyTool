@@ -1,9 +1,12 @@
 using EntryTranslator.Models;
 using EntryTranslator.Properties;
 using EntryTranslator.Utils;
+using Sunny.UI;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Resources;
@@ -14,10 +17,15 @@ namespace EntryTranslator.ResourceOperations
     public class ResourceHolder
     {
         private readonly object _lockObject = new object();
+
         private readonly List<string> _deletedKeys;
+
         private bool _dirty;
+
         private string _noLanguageLanguage = string.Empty;
+
         private DataTable _stringsTable;
+
         private object _columnChangePreviousValue;
 
         public event EventHandler DirtyChanged;
@@ -25,9 +33,28 @@ namespace EntryTranslator.ResourceOperations
         public event EventHandler LanguageChange;
 
         public string Filename { get; set; }
+
         public string DisplayFolder { get; set; }
+
         public string Id { get; set; }
+
         public SortedDictionary<string, LanguageHolder> Languages { get; }
+
+        public event EventHandler<ResourceLoadProgressEventArgs> ResourceLoadProgress;
+
+        public event EventHandler ResourcesChanged;
+
+        private string _openedPath;
+
+        public string OpenedPath
+        {
+            get { return _openedPath; }
+            private set
+            {
+                _openedPath = value;
+                OnResourcesChanged();
+            }
+        }
 
         public ResourceHolder()
         {
@@ -69,6 +96,111 @@ namespace EntryTranslator.ResourceOperations
                     _dirty = value;
                     DirtyChanged?.Invoke(this, EventArgs.Empty);
                 }
+            }
+        }
+
+        /// <summary>
+        /// Check and prompt for save
+        /// </summary>
+        /// <returns>True if we can safely close</returns>
+        public bool CanClose()
+        {
+            if (IsDirty)
+            {
+                var dialogResult = MessageBox.Show("当前有未保存数据", "数据保存", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+
+                // Return false only if user presses cancel
+                if (dialogResult != DialogResult.Yes)
+                    return dialogResult == DialogResult.No;
+
+                Save();
+            }
+
+            return true;
+        }
+
+        public IEnumerable<CultureInfo> GetUsedLanguages()
+        {
+            var cultureInfos = new List<CultureInfo>();
+            Languages.ForEach(item =>
+             {
+                 cultureInfos.Add(item.Value.CultureInfo);
+             });
+
+            return cultureInfos;
+        }
+
+        public void OpenProject(string selectedPath)
+        {
+            OnResourceLoadProgress(new ResourceLoadProgressEventArgs("加载语言资源..."));
+
+            FindResx(selectedPath);
+
+            LoadResource();
+
+            OpenedPath = selectedPath;
+
+            OnResourceLoadProgress(new ResourceLoadProgressEventArgs(""));
+        }
+
+        protected virtual void OnResourceLoadProgress(ResourceLoadProgressEventArgs e)
+        {
+            ResourceLoadProgress?.Invoke(this, e);
+        }
+
+        protected virtual void OnResourcesChanged()
+        {
+            ResourcesChanged?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void FindResx(string rootDirectory)
+        {
+            FindResx(rootDirectory, rootDirectory);
+        }
+
+        private void FindResx(string rootDirectory, string currentDirectory)
+        {
+            var displayFolder = string.Empty;
+            if (currentDirectory.StartsWith(rootDirectory, StringComparison.InvariantCultureIgnoreCase))
+                displayFolder = currentDirectory.Substring(rootDirectory.Length);
+
+            displayFolder = displayFolder.TrimStart('\\', '/');
+
+            var files = Directory.GetFiles(currentDirectory, "*.resx");
+
+            foreach (var filename in files)
+            {
+                var filenameNoExt = Path.GetFileNameWithoutExtension(filename);
+                if (string.IsNullOrEmpty(filenameNoExt)) continue;
+
+                // Try to get the language code
+                var potentialLanguageCode = Path.GetExtension(filenameNoExt).TrimStart('.');
+
+                var culture = potentialLanguageCode;
+                filenameNoExt = Path.GetFileNameWithoutExtension(filenameNoExt);
+
+                var key = (displayFolder + "\\" + filenameNoExt).ToLower();
+
+                Id = filenameNoExt;
+                DisplayFolder = displayFolder;
+
+                var dir = Path.GetDirectoryName(filename);
+                Debug.Assert(dir != null, "dir != null");
+                Filename = Path.Combine(dir, filenameNoExt + ".resx");
+
+                if (culture != null)
+                {
+                    if (Languages.ContainsKey(culture.ToLower()))
+                        throw new InvalidDataException(filename);
+
+                    Languages.Add(culture.ToLower(), new LanguageHolder(culture, filename));
+                }
+            }
+
+            var subfolders = Directory.GetDirectories(currentDirectory);
+            foreach (var subfolder in subfolders)
+            {
+                FindResx(rootDirectory, subfolder);
             }
         }
 
@@ -338,7 +470,6 @@ namespace EntryTranslator.ResourceOperations
                 _stringsTable.Columns.Add(Properties.Resources.ColNameComment);
                 _stringsTable.Columns.Add(Properties.Resources.ColNameTranslated, typeof(bool));
                 _stringsTable.Columns.Add(Properties.Resources.ColNameError, typeof(bool));
-
 
                 foreach (var languageHolder in Languages.Values)
                 {

@@ -76,7 +76,7 @@ namespace EntryTranslator
 
         public SearchParams CurrentSearch => _currentSearch;
 
-        public ResourceLoader ResourceLoader { get; }
+        public ResourceHolder ResourceLoader { get; }
 
         public MainWindow()
         {
@@ -84,7 +84,7 @@ namespace EntryTranslator
 
             _defaultWindowTitle = $"{Text} {Assembly.GetAssembly(typeof(MainWindow)).GetName().Version.ToString(2)}";
 
-            ResourceLoader = new ResourceLoader();
+            ResourceLoader = new ResourceHolder();
             ResourceLoader.ResourceLoadProgress += OnResourceLoadProgress;
             ResourceLoader.ResourcesChanged += OnResourceLoaderOnResourcesChanged;
 
@@ -243,8 +243,7 @@ namespace EntryTranslator
             Application.DoEvents();
 
             ResourceLoader.OpenProject(path);
-            if (ResourceLoader.Resources.Count() != 0)
-                CurrentResource = ResourceLoader.Resources.First();
+            CurrentResource = ResourceLoader;
 
             Enabled = true;
         }
@@ -334,7 +333,7 @@ namespace EntryTranslator
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             resourceGrid1.ApplyCurrentCellEdit();
-            ResourceLoader.SaveAll();
+            ResourceLoader.Save();
         }
 
         private void openLocationToolStripMenuItem_Click(object sender, EventArgs e)
@@ -550,7 +549,6 @@ namespace EntryTranslator
         {
             try
             {
-                ResourceLoader.Close();
                 DirectoryInfo dir = new DirectoryInfo($@"{AppDomain.CurrentDomain.BaseDirectory}LangDic");
                 FileInfo[] files = dir.GetFiles();
                 foreach (FileInfo file in files)

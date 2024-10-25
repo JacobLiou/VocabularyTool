@@ -1,4 +1,4 @@
-﻿using EntryTranslator.ResourceOperations;
+﻿using EntryTranslator.Models;
 using System;
 using System.Windows.Forms;
 
