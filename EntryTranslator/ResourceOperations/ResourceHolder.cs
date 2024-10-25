@@ -26,13 +26,13 @@ namespace EntryTranslator.ResourceOperations
 
         private object _columnChangePreviousValue;
 
+        private string[] _lastLanguagesToCheck;
+
         public event EventHandler DirtyChanged;
 
         public event EventHandler LanguageChange;
 
         public string Filename { get; set; }
-
-        public string DisplayFolder { get; set; }
 
         public string Id { get; set; }
 
@@ -151,19 +151,8 @@ namespace EntryTranslator.ResourceOperations
             ResourcesChanged?.Invoke(this, EventArgs.Empty);
         }
 
-        private void FindResx(string rootDirectory)
+        private void FindResx(string currentDirectory)
         {
-            FindResx(rootDirectory, rootDirectory);
-        }
-
-        private void FindResx(string rootDirectory, string currentDirectory)
-        {
-            var displayFolder = string.Empty;
-            if (currentDirectory.StartsWith(rootDirectory, StringComparison.InvariantCultureIgnoreCase))
-                displayFolder = currentDirectory.Substring(rootDirectory.Length);
-
-            displayFolder = displayFolder.TrimStart('\\', '/');
-
             var files = Directory.GetFiles(currentDirectory, "*.resx");
 
             foreach (var filename in files)
@@ -177,11 +166,7 @@ namespace EntryTranslator.ResourceOperations
                 var culture = potentialLanguageCode;
                 filenameNoExt = Path.GetFileNameWithoutExtension(filenameNoExt);
 
-                var key = (displayFolder + "\\" + filenameNoExt).ToLower();
-
-                Id = filenameNoExt;
-                DisplayFolder = displayFolder;
-
+                var key = ("\\" + filenameNoExt).ToLower();
                 var dir = Path.GetDirectoryName(filename);
                 Debug.Assert(dir != null, "dir != null");
                 Filename = Path.Combine(dir, filenameNoExt + ".resx");
@@ -194,28 +179,15 @@ namespace EntryTranslator.ResourceOperations
                     Languages.Add(culture.ToLower(), new LanguageHolder(culture, filename));
                 }
             }
-
-            var subfolders = Directory.GetDirectories(currentDirectory);
-            foreach (var subfolder in subfolders)
-            {
-                FindResx(rootDirectory, subfolder);
-            }
         }
 
-        /// <summary>
-        ///     Trigger LanguageChange event when default language is set
-        /// </summary>
         private void OnLanguageChange()
         {
             LanguageChange?.Invoke(this, EventArgs.Empty);
         }
 
-        /// <summary>
-        ///     Save one resource file
-        /// </summary>
         private void UpdateFile(string filename, string valueColumnId, bool skipNontranslatableData, bool saveComments)
         {
-            // Read the entire resource file to a buffer
             var originalMetadatas = new Dictionary<string, object>();
             var originalResources = new Dictionary<string, ResXDataNode>();
 
@@ -238,22 +210,16 @@ namespace EntryTranslator.ResourceOperations
 
                 using (var reader = new ResXResourceReader(filename))
                 {
-                    // If GetMetadataEnumerator was already called setting the UseResXDataNodes to true will have no effect
-                    // Because of this creating a new reader is necessary
                     reader.UseResXDataNodes = true;
                     var dataEnumerator = reader.GetEnumerator();
                     while (dataEnumerator.MoveNext())
                     {
                         var key = (string)dataEnumerator.Key;
-                        // GetEnumerator will also get metadata items, filter them out
                         if (!originalMetadatas.ContainsKey(key))
                             originalResources.Add(key, (ResXDataNode)dataEnumerator.Value);
                     }
                 }
 
-                // Get rid of keys marked as deleted. If they have been restored they will be re-added later
-                // Only support localizable strings to avoid removing other resources by mistake
-                // BUG Clear the _deletedKeys?
                 foreach (var originalResource in originalResources
                     .Where(originalResource => _deletedKeys.Contains(originalResource.Key))
                     .ToList())
@@ -262,12 +228,8 @@ namespace EntryTranslator.ResourceOperations
                 }
             }
 
-            // Precache the valid keys
-            var localizableResourceKeys = originalResources
-                .Select(x => x.Key).ToList();
+            var localizableResourceKeys = originalResources.Select(x => x.Key).ToList();
 
-            // Update originalResources with information stored in _stringsTable.
-            // Adds keys if they are missing in originalResources
             foreach (DataRow dataRow in _stringsTable.Rows)
             {
                 var key = (string)dataRow[Properties.Resources.ColNameKey];
@@ -275,30 +237,24 @@ namespace EntryTranslator.ResourceOperations
                 var valueData = dataRow[valueColumnId] == DBNull.Value ? null : dataRow[valueColumnId];
                 var stringValueData = valueData?.ToString() ?? string.Empty;
 
-                var stringCommentData = saveComments ? TryGetCommentFromRow(dataRow) : string.Empty;
-
                 if (localizableResourceKeys.Contains(key))
                 {
-                    // Skip if the original value and comment is the same as the new one
-                    if (stringCommentData.Equals(originalResources[key].Comment, StringComparison.InvariantCulture) &&
-                        stringValueData.Equals(originalResources[key].GetValueAsString(), StringComparison.InvariantCulture))
+                    if (stringValueData.Equals(originalResources[key].GetValueAsString(), StringComparison.InvariantCulture))
                         continue;
 
-                    originalResources[key] = new ResXDataNode(originalResources[key].Name, stringValueData) { Comment = stringCommentData };
+                    originalResources[key] = new ResXDataNode(originalResources[key].Name, stringValueData) { };
                 }
                 else
                 {
-                    originalResources.Add(key, new ResXDataNode(key, stringValueData) { Comment = stringCommentData });
+                    originalResources.Add(key, new ResXDataNode(key, stringValueData) { });
                     localizableResourceKeys.Add(key);
                 }
             }
 
-            // Write the cached resources to the drive
             using (var writer = new ResXResourceWriter(filename))
             {
                 foreach (var originalResource in originalResources)
                 {
-                    // Write localizable resource only if it is not empty, unless we are saving the default file
                     if (!localizableResourceKeys.Contains(originalResource.Key)
                         || !string.IsNullOrWhiteSpace(originalResource.Value.GetValueAsString()))
                     {
@@ -315,16 +271,6 @@ namespace EntryTranslator.ResourceOperations
             }
         }
 
-        private static string TryGetCommentFromRow(DataRow dataRow)
-        {
-            var colNameComment = Properties.Resources.ColNameComment;
-            var commentData = dataRow[colNameComment] == DBNull.Value ? null : dataRow[colNameComment];
-            return commentData?.ToString() ?? string.Empty;
-        }
-
-        /// <summary>
-        ///     Save this resource holder's data
-        /// </summary>
         public void Save()
         {
             if (!IsDirty)
@@ -336,18 +282,15 @@ namespace EntryTranslator.ResourceOperations
                 {
                     UpdateFile(languageHolder.Filename, languageHolder.LanguageId, false, Settings.Default.StoreCommentsInAllFiles);
                 }
+
                 Dirty = false;
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, string.Format("����ʱ���쳣��{0}", Id),
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "保存失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        /// <summary>
-        ///     Read one resource file
-        /// </summary>
         private void ReadResourceFile(string filename, DataTable stringsTable,
             string valueColumn, bool isTranslated)
         {
@@ -405,19 +348,11 @@ namespace EntryTranslator.ResourceOperations
             }
         }
 
-        private string[] _lastLanguagesToCheck;
-
-        /// <summary>
-        ///     Sets error field on the row depending on missing translations etc
-        /// </summary>
         public void EvaluateRow(DataRow row)
         {
             EvaluateRow(row, _lastLanguagesToCheck);
         }
 
-        /// <summary>
-        ///     Sets error field on the row depending on missing translations etc
-        /// </summary>
         public void EvaluateRow(DataRow row, string[] languagesToCheck)
         {
             _lastLanguagesToCheck = languagesToCheck;
@@ -428,7 +363,6 @@ namespace EntryTranslator.ResourceOperations
             {
                 if (!RowContainsTranslation(row, languageHolder.LanguageId))
                 {
-                    // Some translations are missing
                     row[colNameError] = true;
                     return;
                 }
@@ -443,7 +377,7 @@ namespace EntryTranslator.ResourceOperations
                 return false;
 
             var value = (string)row[languageId];
-            return !string.IsNullOrWhiteSpace(value) && !(value.StartsWith("[") && value.TrimEnd().EndsWith("]"));
+            return !string.IsNullOrWhiteSpace(value);
         }
 
         /// <summary>
@@ -649,19 +583,6 @@ namespace EntryTranslator.ResourceOperations
 
             Languages.Remove(languageCode.ToLower());
             _stringsTable.Columns.RemoveAt(_stringsTable.Columns[languageCode].Ordinal);
-
-            OnLanguageChange();
-        }
-
-        /// <summary>
-        ///     Revert all non saved changes and reload
-        /// </summary>
-        public void Revert()
-        {
-            StringsTable = null;
-            LoadResource();
-            Dirty = false;
-            _deletedKeys.Clear();
 
             OnLanguageChange();
         }
