@@ -1,6 +1,6 @@
 using System;
 
-namespace EntryTranslator.ResourceOperations
+namespace EntryTranslator.Models
 {
     public sealed class ResourceLoadProgressEventArgs : EventArgs
     {

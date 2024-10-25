@@ -1,7 +1,7 @@
 using System.Configuration;
 using System.Text.RegularExpressions;
 
-namespace EntryTranslator.ResourceOperations
+namespace EntryTranslator.Models
 {
     [SettingsProvider("System.Configuration.LocalFileSettingsProvider")]
     [SettingsGroupName("FindParameters")]

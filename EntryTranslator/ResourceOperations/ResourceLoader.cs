@@ -1,3 +1,4 @@
+using EntryTranslator.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -10,9 +11,6 @@ namespace EntryTranslator.ResourceOperations
 {
     public class ResourceLoader
     {
-        private static readonly IEnumerable<CultureInfo> SupportedCultureCache
-            = CultureInfo.GetCultures(CultureTypes.AllCultures).Where(x => x.Name != string.Empty).ToList();
-
         private readonly Dictionary<string, ResourceHolder> _resourceStore;
 
         public event EventHandler<ResourceLoadProgressEventArgs> ResourceLoadProgress;

@@ -1,4 +1,4 @@
-namespace EntryTranslator.ResourceOperations
+namespace EntryTranslator.Models
 {
     public class PathHolder
     {

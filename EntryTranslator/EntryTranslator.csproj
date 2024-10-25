@@ -194,6 +194,10 @@
     <Compile Include="Dialogs\LanguageHelp.Designer.cs">
       <DependentUpon>LanguageHelp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\LanguageHolder.cs" />
+    <Compile Include="Models\PathHolder.cs" />
+    <Compile Include="Models\ResourceLoadProgressEventArgs.cs" />
+    <Compile Include="Models\SearchParams.cs" />
     <Compile Include="Models\TranslatorBaiduModel.cs" />
     <Compile Include="Models\CultureModel.cs" />
     <Compile Include="Models\LangValuePair.cs" />
@@ -297,12 +301,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="ResourceOperations\LanguageHolder.cs" />
-    <Compile Include="ResourceOperations\PathHolder.cs" />
     <Compile Include="ResourceOperations\ResourceHolder.cs" />
     <Compile Include="ResourceOperations\ResourceLoader.cs" />
-    <Compile Include="ResourceOperations\ResourceLoadProgressEventArgs.cs" />
-    <Compile Include="ResourceOperations\SearchParams.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
