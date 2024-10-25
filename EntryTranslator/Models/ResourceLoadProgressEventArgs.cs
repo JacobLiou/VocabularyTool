@@ -26,6 +26,7 @@ namespace EntryTranslator.Models
         public int ProgressTop { get; }
 
         public string CurrentProcess { get; }
+
         public string CurrentlyProcessedItem { get; }
     }
 }

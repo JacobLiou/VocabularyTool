@@ -195,7 +195,6 @@
       <DependentUpon>LanguageHelp.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\LanguageHolder.cs" />
-    <Compile Include="Models\PathHolder.cs" />
     <Compile Include="Models\ResourceLoadProgressEventArgs.cs" />
     <Compile Include="Models\SearchParams.cs" />
     <Compile Include="Models\TranslatorBaiduModel.cs" />

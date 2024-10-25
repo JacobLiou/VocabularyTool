@@ -22,8 +22,6 @@ namespace EntryTranslator.ResourceOperations
 
         private bool _dirty;
 
-        private string _noLanguageLanguage = string.Empty;
-
         private DataTable _stringsTable;
 
         private object _columnChangePreviousValue;

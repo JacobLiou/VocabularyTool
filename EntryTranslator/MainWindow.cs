@@ -400,9 +400,10 @@ namespace EntryTranslator
         {
             if (CurrentResource != null)
             {
+                bool dialogResult = false;
                 try
                 {
-                    AddResourceKey.ShowDialog(this, CurrentResource);
+                    dialogResult = AddResourceKey.ShowDialog(this, CurrentResource);
                 }
                 catch (Exception ex)
                 {
@@ -410,7 +411,8 @@ namespace EntryTranslator
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
-                resourceGrid1.RefreshResourceDisplay();
+                if (dialogResult)
+                    resourceGrid1.RefreshResourceDisplay();
             }
         }
 
