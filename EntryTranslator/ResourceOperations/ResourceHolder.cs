@@ -3,7 +3,6 @@ using EntryTranslator.Properties;
 using EntryTranslator.Utils;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.Design;
 using System.Data;
 using System.IO;
 using System.Linq;
@@ -25,16 +24,16 @@ namespace EntryTranslator.ResourceOperations
 
         public event EventHandler LanguageChange;
 
+        public string Filename { get; set; }
+        public string DisplayFolder { get; set; }
+        public string Id { get; set; }
+        public SortedDictionary<string, LanguageHolder> Languages { get; }
+
         public ResourceHolder()
         {
             Languages = new SortedDictionary<string, LanguageHolder>(StringComparer.OrdinalIgnoreCase);
             _deletedKeys = new List<string>();
         }
-
-        public string Filename { get; set; }
-        public string DisplayFolder { get; set; }
-        public string Id { get; set; }
-        public SortedDictionary<string, LanguageHolder> Languages { get; }
 
         public DataTable StringsTable
         {
@@ -70,46 +69,6 @@ namespace EntryTranslator.ResourceOperations
                     _dirty = value;
                     DirtyChanged?.Invoke(this, EventArgs.Empty);
                 }
-            }
-        }
-
-        /// <summary>
-        ///     The educated guess of the language code for the non translated column
-        ///
-        /// </summary>
-        public string NoLanguageLanguage
-        {
-            get
-            {
-                //TODO eliminate this variable, or make it actually work. Would probably be best to have a solution/project-wide setting for this.
-                /*if (string.IsNullOrEmpty(_noLanguageLanguage))
-                {
-                    NoLanguageLanguage = FindDefaultLanguage();
-                }
-                return _noLanguageLanguage;*/
-
-                return "en";
-            }
-            set
-            {
-                if (value != _noLanguageLanguage)
-                {
-                    _noLanguageLanguage = value;
-                    OnLanguageChange();
-                }
-            }
-        }
-
-        /// <summary>
-        ///     Text shown in the tree view for this resourceholder
-        /// </summary>
-        public string Caption
-        {
-            get
-            {
-                var languages = string.Join(",", Languages.Keys.OrderBy(x => x));
-
-                return $"{Id} ({languages})"; //[{_noLanguageLanguage}]
             }
         }
 
@@ -167,7 +126,6 @@ namespace EntryTranslator.ResourceOperations
                 // BUG Clear the _deletedKeys?
                 foreach (var originalResource in originalResources
                     .Where(originalResource => _deletedKeys.Contains(originalResource.Key))
-                    .Where(originalResource => IsLocalizableString(originalResource.Key, originalResource.Value))
                     .ToList())
                 {
                     originalResources.Remove(originalResource.Key);
@@ -176,7 +134,6 @@ namespace EntryTranslator.ResourceOperations
 
             // Precache the valid keys
             var localizableResourceKeys = originalResources
-                .Where(originalResource => IsLocalizableString(originalResource.Key, originalResource.Value))
                 .Select(x => x.Key).ToList();
 
             // Update originalResources with information stored in _stringsTable.
@@ -215,7 +172,7 @@ namespace EntryTranslator.ResourceOperations
                     if (!localizableResourceKeys.Contains(originalResource.Key)
                         || !string.IsNullOrWhiteSpace(originalResource.Value.GetValueAsString()))
                     {
-                        if (!skipNontranslatableData || IsLocalizableString(originalResource.Key, originalResource.Value))
+                        if (!skipNontranslatableData)
                             writer.AddResource(originalResource.Value);
                     }
                 }
@@ -242,6 +199,7 @@ namespace EntryTranslator.ResourceOperations
         {
             if (!IsDirty)
                 return;
+
             try
             {
                 foreach (var languageHolder in Languages.Values)
@@ -276,9 +234,6 @@ namespace EntryTranslator.ResourceOperations
                 {
                     var key = (string)dataEnumerator.Key;
                     var dataNode = (ResXDataNode)dataEnumerator.Value;
-
-                    if (!IsLocalizableString(key, dataNode))
-                        continue;
 
                     var value = dataNode.GetValueAsString();
 
@@ -318,23 +273,6 @@ namespace EntryTranslator.ResourceOperations
                     }
                 }
             }
-        }
-
-        /// <summary>
-        /// Check if the entry contains a localizable string
-        /// </summary>
-        private static bool IsLocalizableString(string key, ResXDataNode dataNode)
-        {
-            if (key.StartsWith(">>") || (key.StartsWith("$") && key != "$this.Text"))
-                return false;
-
-            if (dataNode == null)
-                return false;
-            if (dataNode.FileRef != null)
-                return false;
-
-            var valueType = dataNode.GetValueTypeName((ITypeResolutionService)null);
-            return valueType.StartsWith("System.String, ");
         }
 
         private string[] _lastLanguagesToCheck;
@@ -538,8 +476,6 @@ namespace EntryTranslator.ResourceOperations
                         {
                             var key = (string)dataEnumerator.Key;
                             var node = (ResXDataNode)dataEnumerator.Value;
-                            if (!IsLocalizableString(key, node))
-                                continue;
 
                             var value = node.GetValueAsString();
                             // Skip saving unnecessary items

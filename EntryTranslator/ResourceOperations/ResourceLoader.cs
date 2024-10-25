@@ -14,8 +14,11 @@ namespace EntryTranslator.ResourceOperations
             = CultureInfo.GetCultures(CultureTypes.AllCultures).Where(x => x.Name != string.Empty).ToList();
 
         private readonly Dictionary<string, ResourceHolder> _resourceStore;
-        private bool _hideEmptyResources;
-        private bool _hideNontranslatedResources;
+
+        public event EventHandler<ResourceLoadProgressEventArgs> ResourceLoadProgress;
+
+        public event EventHandler ResourcesChanged;
+
         private string _openedPath;
 
         public ResourceLoader()
@@ -38,37 +41,9 @@ namespace EntryTranslator.ResourceOperations
             get
             {
                 var result = _resourceStore.Values.AsEnumerable();
-                if (HideEmptyResources)
-                    result = result.Where(x => x.StringsTable.Rows.Count > 0);
-                if (HideNontranslatedResources)
-                    result = result.Where(x => x.Languages.Count > 0);
                 return result;
             }
         }
-
-        public bool HideEmptyResources
-        {
-            get { return _hideEmptyResources; }
-            set
-            {
-                _hideEmptyResources = value;
-                OnResourcesChanged();
-            }
-        }
-
-        public bool HideNontranslatedResources
-        {
-            get { return _hideNontranslatedResources; }
-            set
-            {
-                _hideNontranslatedResources = value;
-                OnResourcesChanged();
-            }
-        }
-
-        public event EventHandler<ResourceLoadProgressEventArgs> ResourceLoadProgress;
-
-        public event EventHandler ResourcesChanged;
 
         /// <summary>
         /// Check and prompt for save
@@ -80,9 +55,7 @@ namespace EntryTranslator.ResourceOperations
 
             if (isDirty)
             {
-                var dialogResult = MessageBox.Show("当前有未保存数据",
-                    "数据保存",
-                    MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+                var dialogResult = MessageBox.Show("当前有未保存数据", "数据保存", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
 
                 // Return false only if user presses cancel
                 if (dialogResult != DialogResult.Yes)
@@ -112,9 +85,7 @@ namespace EntryTranslator.ResourceOperations
 
         public void OpenProject(string selectedPath)
         {
-            Close();
-
-            OnResourceLoadProgress(new ResourceLoadProgressEventArgs("������Դ..."));
+            OnResourceLoadProgress(new ResourceLoadProgressEventArgs("加载语言资源..."));
 
             FindResx(selectedPath);
 
@@ -128,8 +99,6 @@ namespace EntryTranslator.ResourceOperations
                 catch (SystemException ex)
                 {
                     _resourceStore.Remove(pair.Key);
-
-                    MessageBox.Show("������Դʧ��", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
 
@@ -179,14 +148,8 @@ namespace EntryTranslator.ResourceOperations
                 // Try to get the language code
                 var potentialLanguageCode = Path.GetExtension(filenameNoExt).TrimStart('.');
 
-                var culture = SupportedCultureCache.FirstOrDefault(
-                    info => info.Name.Equals(potentialLanguageCode, StringComparison.InvariantCultureIgnoreCase));
-
-                if (culture != null)
-                {
-                    // Get rid of the language code to get the base filename
-                    filenameNoExt = Path.GetFileNameWithoutExtension(filenameNoExt);
-                }
+                var culture = potentialLanguageCode;
+                filenameNoExt = Path.GetFileNameWithoutExtension(filenameNoExt);
 
                 ResourceHolder resourceHolder;
                 var key = (displayFolder + "\\" + filenameNoExt).ToLower();
@@ -207,10 +170,10 @@ namespace EntryTranslator.ResourceOperations
 
                 if (culture != null)
                 {
-                    if (resourceHolder.Languages.ContainsKey(culture.Name.ToLower()))
+                    if (resourceHolder.Languages.ContainsKey(culture.ToLower()))
                         throw new InvalidDataException(filename);
 
-                    resourceHolder.Languages.Add(culture.Name.ToLower(), new LanguageHolder(culture.Name, filename));
+                    resourceHolder.Languages.Add(culture.ToLower(), new LanguageHolder(culture, filename));
                 }
             }
 

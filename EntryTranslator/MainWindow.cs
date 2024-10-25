@@ -98,13 +98,6 @@ namespace EntryTranslator
                 resourceGrid1.Refresh();
             };
 
-            Settings.Binder.Subscribe((sender, args) => ResourceLoader.HideEmptyResources = args.NewValue,
-                settings => settings.HideEmptyResources, this);
-            Settings.Binder.Subscribe((sender, args) => ResourceLoader.HideNontranslatedResources = args.NewValue,
-                settings => settings.HideNontranslatedResources, this);
-            Settings.Binder.Subscribe((sender, args) => resourceGrid1.ShowNullValuesAsGrayed = args.NewValue,
-                settings => settings.ShowNullValuesAsGrayed, this);
-
             Settings.Binder.SendUpdates(this);
 
             Icon = Icon.ExtractAssociatedIcon(Assembly.GetAssembly(typeof(MainWindow)).Location);
